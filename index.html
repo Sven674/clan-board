@@ -515,7 +515,7 @@ const WB = {
   prozent: 0.1,       // je Prozentpunkt Zerstörung in der Woche
   gehalten: 3,        // je Stern, den der Gegner auf der eigenen Basis NICHT geholt hat
   letzterBonus: 0.5,  // Faktor, wenn es letzte Saison schon einen Bonus gab
-  reserve: 3,         // so viele zusätzlich vorschlagen, falls jemand nicht will
+  vorschlaege: 10,    // so viele Spieler vorschlagen (mehr als Boni, falls jemand nicht will)
 };
 const prevSeasonOf = s => { let [y,m] = s.split('-').map(Number); m--; if(!m){ m = 12; y--; } return y + '-' + String(m).padStart(2,'0'); };
 const monthDE = s => { const [y,m] = s.split('-'); return new Date(+y, +m-1, 1).toLocaleDateString('de-DE',{month:'long'}); };
@@ -561,7 +561,7 @@ function bonusCard(c){
   const running = s.rounds.find(r => r.state === 'inWar');
   const stand = done ? 'Ligawoche beendet.' : 'Zwischenstand' + (running ? ', Tag ' + running.day + ' läuft.' : ' nach ' + s.rounds.filter(r => r.final).length + ' von 7 Tagen.');
   const n = info.anzahl;
-  const show = n == null ? ok : ok.slice(0, n + WB.reserve);
+  const show = ok.slice(0, Math.max(WB.vorschlaege, n ?? 0));
   const mark = (r,i) => r.got ? '<span class="pill ok">erhalten</span>'
     : n == null ? '' : i < n ? '<span class="pill">Bonus</span>' : '<span class="pill">Reserve</span>';
   const list = show.length
@@ -570,8 +570,8 @@ function bonusCard(c){
   const outList = outs.length
     ? `<details style="margin-top:8px"><summary>Nicht berücksichtigt (${outs.length})</summary><ul class="list">${outs.map(r => `<li><span><b>${esc(r.name)}</b></span><span class="muted">${esc(r.out)}</span></li>`).join('')}</ul></details>` : '';
   const head = `<p class="muted" style="margin-top:-4px">${stand} ` + (n == null
-    ? 'Anzahl der Boni noch nicht eingetragen, deshalb alle in Reihenfolge.</p>'
-    : `<b>${n} Boni</b>, dazu ${WB.reserve} in Reserve.</p>`);
+    ? `Die besten ${WB.vorschlaege}. Anzahl der Boni noch nicht eingetragen.</p>`
+    : `<b>${n} Boni</b>, die besten ${Math.max(WB.vorschlaege, n)} vorgeschlagen.</p>`);
   let body = `<p style="margin-top:10px">${btn('edit', form, 'Bonus-Angaben bearbeiten', true)}</p>`;
   if(edit){
     const cb = (f, tag) => `<input type="checkbox" data-f="${f}" data-form="${esc(form)}" data-t="${esc(tag)}" ${info[f].includes(tag) ? 'checked' : ''}>`;
