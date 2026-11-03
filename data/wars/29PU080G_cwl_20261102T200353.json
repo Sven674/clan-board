@@ -3,7 +3,7 @@
  "endTime": "20261104T200345.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-03T11:44:55Z",
+ "lastSeen": "2026-11-03T12:16:07Z",
  "members": [
   {
    "attacks": [],
@@ -19,22 +19,6 @@
    "name": "--SVEN--674--",
    "pos": 6,
    "tag": "#200PCP8QQ",
-   "th": 18
-  },
-  {
-   "attacks": [],
-   "defenses": [],
-   "name": "=RS=",
-   "pos": 12,
-   "tag": "#GLPVGVR9",
-   "th": 18
-  },
-  {
-   "attacks": [],
-   "defenses": [],
-   "name": "Uzii",
-   "pos": 17,
-   "tag": "#2Q8GPVV0",
    "th": 18
   },
   {
@@ -56,6 +40,14 @@
   {
    "attacks": [],
    "defenses": [],
+   "name": "EumelTV",
+   "pos": 20,
+   "tag": "#J2QLL8GY",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
    "name": "AGENT 00H",
    "pos": 3,
    "tag": "#80V9Q998",
@@ -64,9 +56,17 @@
   {
    "attacks": [],
    "defenses": [],
-   "name": "Beach",
-   "pos": 5,
-   "tag": "#8LVUJRQP",
+   "name": "Ertanbabo",
+   "pos": 4,
+   "tag": "#PRRJY9G9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Ricky",
+   "pos": 9,
+   "tag": "#LRYLYPG8",
    "th": 18
   },
   {
@@ -75,14 +75,6 @@
    "name": "Legend Papa",
    "pos": 11,
    "tag": "#9RCY8U0VQ",
-   "th": 18
-  },
-  {
-   "attacks": [],
-   "defenses": [],
-   "name": "Filiusberlinius",
-   "pos": 13,
-   "tag": "#2UCJYGU0",
    "th": 18
   },
   {
@@ -104,6 +96,14 @@
   {
    "attacks": [],
    "defenses": [],
+   "name": "Heisenberg",
+   "pos": 16,
+   "tag": "#29JR2282",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
    "name": "Elussa",
    "pos": 7,
    "tag": "#J9CLGUR0",
@@ -112,17 +112,17 @@
   {
    "attacks": [],
    "defenses": [],
-   "name": "Captain Future",
-   "pos": 15,
-   "tag": "#8PGGGL2U8",
+   "name": "Nemesis",
+   "pos": 18,
+   "tag": "#22C0YRV9C",
    "th": 18
   },
   {
    "attacks": [],
    "defenses": [],
-   "name": "hulk",
-   "pos": 10,
-   "tag": "#GRJU2J92",
+   "name": "Captain Future",
+   "pos": 15,
+   "tag": "#8PGGGL2U8",
    "th": 18
   }
  ],

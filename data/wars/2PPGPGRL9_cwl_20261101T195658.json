@@ -3,7 +3,7 @@
  "endTime": "20261103T195655.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-03T11:44:55Z",
+ "lastSeen": "2026-11-03T12:16:07Z",
  "members": [
   {
    "attacks": [
@@ -15,7 +15,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 81,
+     "stars": 2
+    }
+   ],
    "name": "✨Yvonne✨",
    "pos": 8,
    "tag": "#GCRY9CGU",
@@ -126,7 +132,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 12,
+     "defTh": 18,
+     "order": 21,
+     "pct": 86,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -214,7 +228,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 6,
+     "defTh": 18,
+     "order": 22,
+     "pct": 77,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Zucker",
    "pos": 10,
@@ -263,8 +285,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/G7Ud6mE6f9yBGsuWQwjTjlUwmLttz3s8O03YTu5QUhE.png",
   "name": "Esprit Clash",
-  "pct": 49.4,
-  "stars": 19,
+  "pct": 54.8,
+  "stars": 21,
   "tag": "#8J2VQLPU"
  },
  "preparationStartTime": "20261101T195658.000Z",
@@ -272,9 +294,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 10,
-  "pct": 52.333333333333336,
-  "stars": 19
+  "attacks": 12,
+  "pct": 63.2,
+  "stars": 23
  },
  "warTag": "#8R9UGU2RQ"
 }
