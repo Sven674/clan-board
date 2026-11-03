@@ -1,5 +1,22 @@
 {
  "#29PU080G": {
-  "erledigt": {}
+  "erledigt": {},
+  "2026-11": {
+   "anzahl": null,
+   "verzicht": [],
+   "bonus": []
+  },
+  "2026-10": {
+   "anzahl": null,
+   "verzicht": [],
+   "bonus": [
+    "#200PCP8QQ",
+    "#2UCJYGU0",
+    "#92L228UR",
+    "#9GR80Q9P",
+    "#GRJU2J92",
+    "#J9CLGUR0"
+   ]
+  }
  }
 }
