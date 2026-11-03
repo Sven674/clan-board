@@ -59,7 +59,9 @@ tbody tr.openrow:hover td{background:var(--openbg);filter:brightness(.97)}
 input[data-f][type=checkbox]{width:26px;height:26px;vertical-align:middle;cursor:pointer;accent-color:var(--ok)}
 input[data-f][type=number],input[data-pin]{font:inherit;font-size:17px;padding:9px 12px;min-height:46px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 input[data-f][type=number]{width:90px!important}
-input[data-pin]{width:200px!important}
+input[data-pin]{width:160px!important}
+.saverow{margin-top:12px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.pinlbl{display:inline-flex;align-items:center;gap:8px;margin-right:6px;font-weight:600}
 select.bigsel{font:inherit;font-size:17px;padding:9px 12px;min-height:46px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .volgrid label{display:flex;align-items:center;gap:10px;padding:8px 4px;font-size:16px;cursor:pointer}
 .fdedit td{padding-top:10px;padding-bottom:10px}
@@ -380,7 +382,8 @@ function benchCalc(rounds, roster, teamSize, vol){
 const leaders = clanTag => {
   const all = S.data.clans.flatMap(c => c.memberList.filter(m => m.role === 'leader' || m.role === 'coLeader')
     .map(m => ({tag: m.tag, name: m.name, clan: c.tag, clanName: c.name})));
-  return [...all.filter(m => m.clan === clanTag), ...all.filter(m => m.clan !== clanTag)];
+  const abc = (a,b) => a.name.localeCompare(b.name, 'de');
+  return [...all.filter(m => m.clan === clanTag).sort(abc), ...all.filter(m => m.clan !== clanTag).sort(abc)];
 };
 const nameOf = tag => { for(const c of S.data.clans){ const m = c.memberList.find(x => x.tag === tag); if(m) return m.name; } return tag; };
 const volCount = opt => (((S.fd[opt.clan] || {}).freiwillig || {})[opt.key] || []).length;
@@ -409,8 +412,8 @@ function doneForm(opt){
     : `<p><label>Wer meldet? <select data-f="by" data-form="${esc(form)}" class="bigsel">${leaders(opt.clan).map(m =>
         `<option value="${esc(m.tag)}" ${m.tag === edit.by ? 'selected' : ''}>${esc(m.name)}${m.clan !== opt.clan ? ' (' + esc(m.clanName) + ')' : ''}</option>`).join('')}</select></label></p>`;
   return `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
-    ${ask}${pinField(form)}${msgHtml(form)}
-    <p style="margin-top:10px">${btn('save', form, edit.undo ? 'Zurücknehmen' : 'Als fertig melden')} ${btn('cancel', form, 'Abbrechen')}</p></div>`;
+    ${ask}${msgHtml(form)}
+    <p class="saverow">${pinField(form)}${btn('save', form, edit.undo ? 'Zurücknehmen' : 'Als fertig melden')} ${btn('cancel', form, 'Abbrechen')}${pinForget(form)}</p></div>`;
 }
 
 function benchActions(opt, rows){
@@ -431,19 +434,23 @@ function volForm(opt, rows){
   const names = [...rows].sort((a,b) => a.name.localeCompare(b.name, 'de'));
   return `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
     <p class="muted">Wer setzt für ${esc(opt.label)} freiwillig aus?</p>
-    ${pinField(form)}
     <div class="volgrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:2px 12px">
     ${names.map(r => `<label><input type="checkbox" data-f="tags" data-form="${esc(form)}" data-t="${esc(r.tag)}" ${edit.tags.includes(r.tag) ? 'checked' : ''}> ${esc(r.name)}</label>`).join('')}
     </div>${msgHtml(form)}
-    <p style="margin-top:10px">${btn('save', form, 'Speichern')} ${btn('cancel', form, 'Abbrechen')}</p></div>`;
+    <p class="saverow">${pinField(form)}${btn('save', form, 'Speichern')} ${btn('cancel', form, 'Abbrechen')}${pinForget(form)}</p></div>`;
 }
 
 function benchCard(title, calc, unit, opt){
   if(!calc) return `<div class="card"><h2>${title}</h2><span class="muted">Noch zu wenig Daten. Die Empfehlung erscheint, sobald der erste ${unit} gelaufen ist.</span></div>`;
   const sit = [...calc.rows.filter(r => r.sit && r.vol), ...calc.rows.filter(r => r.sit && !r.vol)];
   const freed = calc.rows.filter(r => r.freed);
-  const clash = calc.target ? sit.filter(r => r.inTarget) : [];
-  const list = calc.bench === 0
+  const fertig = !!(opt && doneOf(opt) && calc.target);
+  const clash = calc.target && !fertig ? sit.filter(r => r.inTarget) : [];
+  const actual = fertig ? [...calc.rows.filter(r => r.inTarget === false && r.vol), ...calc.rows.filter(r => r.inTarget === false && !r.vol)] : [];
+  const list = fertig
+    ? (actual.length ? `<ul class="list">${actual.map(r => `<li><span><b>${esc(r.name)}</b>${r.vol ? ' <span class="pill">freiwillig</span>' : ''}<br><span class="muted">${esc(r.why)}</span></span><span><span class="pill ok">setzt aus</span></span></li>`).join('')}</ul>`
+                     : '<p>Niemand setzt aus.</p>')
+    : calc.bench === 0
     ? '<p>Alle können spielen, es muss niemand aussetzen.</p>'
     : `<ul class="list">${sit.map(r => `<li><span><b>${esc(r.name)}</b>${r.vol ? ' <span class="pill">freiwillig</span>' : ''}<br><span class="muted">${esc(r.why)}</span></span><span>${Math.round(r.score)} Pkt.${r.inTarget===true?' <span class="pill bad">noch aufgestellt</span>':r.inTarget===false?' <span class="pill ok">umgesetzt</span>':''}</span></li>`).join('')}</ul>`;
   const table = calc.rows.map((r,i) => `<tr class="${r.sit?'openrow':''}">
@@ -455,10 +462,10 @@ function benchCard(title, calc, unit, opt){
     ${calc.target ? `<td>${r.inTarget ? 'ja' : 'nein'}</td>` : ''}</tr>`).join('');
   return `<div class="card"><h2>${title}</h2>
     ${opt ? doneBanner(opt) : ''}
-    <p class="muted" style="margin-top:-4px">${calc.total} Teilnehmer, ${calc.teamSize} spielen: <b>${calc.bench} setzen aus</b></p>
+    <p class="muted" style="margin-top:-4px">${calc.total} Teilnehmer, ${fertig ? calc.total - actual.length : calc.teamSize} spielen: <b>${fertig ? actual.length : calc.bench} ${fertig ? (actual.length === 1 ? 'setzt' : 'setzen') + ' aus (Stand im Spiel)' : 'setzen aus'}</b></p>
     ${list}
-    ${freed.length ? `<p class="muted" style="font-size:14px">Darf spielen, weil jemand freiwillig aussetzt: ${freed.map(r => '<b>' + esc(r.name) + '</b>').join(', ')}</p>` : ''}
-    ${calc.target && calc.bench && !clash.length ? `<p class="sieg" style="font-size:14px;font-weight:600">Alle Empfehlungen für ${unit} ${calc.nextNo} sind umgesetzt.</p>` : ''}
+    ${freed.length && !fertig ? `<p class="muted" style="font-size:14px">Darf spielen, weil jemand freiwillig aussetzt: ${freed.map(r => '<b>' + esc(r.name) + '</b>').join(', ')}</p>` : ''}
+    ${calc.target && calc.bench && !clash.length && !fertig ? `<p class="sieg" style="font-size:14px;font-weight:600">Alle Empfehlungen für ${unit} ${calc.nextNo} sind umgesetzt.</p>` : ''}
     ${clash.length ? `<p class="err" style="font-size:14px">${clash.length} der Empfohlenen ${clash.length===1?'ist':'sind'} im Spiel schon für ${unit} ${calc.nextNo} aufgestellt.</p>` : ''}
     <details style="margin-top:8px"><summary>Alle Spieler mit Punkten anzeigen</summary>
     <div class="table-wrap" style="margin-top:8px"><table><thead><tr><th>Spieler</th><th>Punkte</th><th>Letzter Angriff</th><th>Letzte Verteidigung</th><th>Gespielt</th><th>Ausgesetzt</th>${calc.target?'<th>Aufgestellt</th>':''}</tr></thead><tbody>${table}</tbody></table></div></details>
@@ -512,9 +519,15 @@ function applyBonus(tag, d){
 function applyDone(tag, key, v){ const B = fdClan(tag); B.erledigt = Object.assign({}, B.erledigt); if(v) B.erledigt[key] = v; else delete B.erledigt[key]; }
 function applyVol(tag, key, tags){ const B = fdClan(tag); B.freiwillig = Object.assign({}, B.freiwillig, {[key]: tags}); }
 
+function pinForget(form){
+  let saved = ''; try{ saved = localStorage.getItem('clanboard-pin') || ''; }catch(e){}
+  return saved ? btn('forgetpin', form, 'PIN vergessen') : '';
+}
+
 function pinField(form){
   let saved = ''; try{ saved = localStorage.getItem('clanboard-pin') || ''; }catch(e){}
-  return saved ? '' : `<p><label>PIN: <input type="password" data-pin="${esc(form)}" value="${esc(S.pin[form] || '')}" style="width:140px" autocomplete="current-password"></label></p>`;
+  return saved ? `<span class="muted" style="font-size:14px;margin-right:6px">PIN auf diesem Gerät gespeichert</span>`
+    : `<label class="pinlbl">PIN <input type="password" data-pin="${esc(form)}" value="${esc(S.pin[form] || '')}" autocomplete="current-password"></label>`;
 }
 
 // Schickt die Angaben ab. apply() trägt sie bei Erfolg sofort lokal ein.
@@ -551,6 +564,7 @@ function fdEvents(app){
     if(act === 'edit'){ S.edit[form] = S.forms[form](); delete S.msg[form]; render(); }
     else if(act === 'cancel'){ delete S.edit[form]; delete S.msg[form]; render(); }
     else if(act === 'save') S.saves[form]();
+    else if(act === 'forgetpin'){ try{ localStorage.removeItem('clanboard-pin'); }catch(e){} render(); }
   };
   app.oninput = e => { const p = e.target.closest('[data-pin]'); if(p) S.pin[p.dataset.pin] = p.value; };
   app.onchange = e => {
@@ -636,11 +650,10 @@ function bonusCard(c){
     const cb = (f, tag) => `<input type="checkbox" data-f="${f}" data-form="${esc(form)}" data-t="${esc(tag)}" ${info[f].includes(tag) ? 'checked' : ''}>`;
     body = `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
       <p><label>Anzahl Boni (steht im Spiel beim Verteilen): <input type="number" min="0" max="50" style="width:70px" data-f="anzahl" data-form="${esc(form)}" value="${n ?? ''}"></label></p>
-      ${pinField(form)}
       <div class="table-wrap"><table><thead><tr><th>Spieler</th><th>Will keinen Bonus</th><th>Bonus ${monthDE(info.season)}</th><th>Bonus ${monthDE(info.prev)}</th></tr></thead><tbody class="fdedit">
-      ${roster.map(m => `<tr><td><span class="name">${esc(m.name)}</span></td><td>${cb('verzicht', m.tag)}</td><td>${cb('bonus', m.tag)}</td><td>${cb('prevBonus', m.tag)}</td></tr>`).join('')}
+      ${[...roster].sort((a,b) => a.name.localeCompare(b.name, 'de')).map(m => `<tr><td><span class="name">${esc(m.name)}</span></td><td>${cb('verzicht', m.tag)}</td><td>${cb('bonus', m.tag)}</td><td>${cb('prevBonus', m.tag)}</td></tr>`).join('')}
       </tbody></table></div>
-      <p style="margin-top:10px">${btn('save', form, 'Speichern')} ${btn('cancel', form, 'Abbrechen')}</p></div>`;
+      <p class="saverow">${pinField(form)}${btn('save', form, 'Speichern')} ${btn('cancel', form, 'Abbrechen')}${pinForget(form)}</p></div>`;
   }
   return `<div class="card"><h2>Bonus-Empfehlung ${esc(c.name)} (Liga ${monthDE(s.season)})</h2>
     ${head}${list}${outList}${msgHtml(form)}${body}
