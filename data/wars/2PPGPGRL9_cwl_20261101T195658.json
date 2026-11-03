@@ -3,7 +3,7 @@
  "endTime": "20261103T195655.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-03T11:12:41Z",
+ "lastSeen": "2026-11-03T11:44:55Z",
  "members": [
   {
    "attacks": [
@@ -31,7 +31,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 97,
+     "stars": 2
+    }
+   ],
    "name": "mimi",
    "pos": 11,
    "tag": "#2YLVQRY9",
@@ -257,8 +263,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/G7Ud6mE6f9yBGsuWQwjTjlUwmLttz3s8O03YTu5QUhE.png",
   "name": "Esprit Clash",
-  "pct": 42.93333333333333,
-  "stars": 17,
+  "pct": 49.4,
+  "stars": 19,
   "tag": "#8J2VQLPU"
  },
  "preparationStartTime": "20261101T195658.000Z",
