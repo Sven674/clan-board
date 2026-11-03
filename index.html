@@ -17,7 +17,7 @@
 }}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-header{padding:18px 16px 8px;max-width:1200px;margin:0 auto}
+header{padding:10px 16px 8px;max-width:1200px;margin:0 auto}
 h1{margin:0;font-size:22px;letter-spacing:.2px}
 h2{font-size:17px;margin:0 0 10px}
 .sub{color:var(--mut);font-size:13px}
@@ -71,16 +71,34 @@ dialog h3{margin:0 0 4px}
 .thdist{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;align-items:center;font-size:13px}
 details summary{cursor:pointer;list-style-position:outside}
 input[type=search]{width:100%;max-width:280px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;margin-bottom:10px}
+.banner{position:relative;overflow:hidden;color:#fff7e6;border-bottom:3px solid #e6b43c;background:#2a0f2e url("img/coc-banner.webp") center 32%/cover no-repeat}
+.banner::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,6,24,.88) 0%,rgba(18,6,24,.62) 38%,rgba(18,6,24,.08) 70%,rgba(18,6,24,.25) 100%)}
+.banner-in{max-width:1200px;margin:0 auto;padding:22px 16px;min-height:190px;display:flex;align-items:center;gap:22px;position:relative;z-index:1}
+.coc-logo{height:120px;width:auto;flex-shrink:0;filter:drop-shadow(0 4px 8px rgba(0,0,0,.6))}
+.titel{border-left:2px solid rgba(230,180,60,.7);padding-left:20px}
+.banner h1{font-size:40px;line-height:1.1;color:#fff7e6;text-shadow:0 2px 6px rgba(0,0,0,.8)}
+.banner .claim{font-size:15px;margin-top:4px;color:#f3d991;text-shadow:0 1px 3px rgba(0,0,0,.8)}
+@media (max-width:640px){.banner-in{min-height:0;padding:16px;gap:14px}.coc-logo{height:62px}.titel{padding-left:12px}.banner h1{font-size:23px}.banner .claim{display:none}}
+footer{max-width:1200px;margin:0 auto;padding:0 16px 30px;font-size:11px;color:var(--mut)}
 </style>
 </head>
 <body>
+<div class="banner">
+  <div class="banner-in">
+    <img class="coc-logo" src="img/coc-logo.webp" alt="Clash of Clans">
+    <div class="titel">
+      <h1>Ü40 Pur <span style="white-space:nowrap">Clan-Board</span></h1>
+      <div class="claim">Ü40 Pur &amp; Ü40 Pur 2</div>
+    </div>
+  </div>
+</div>
 <header>
-  <h1>Ü40 Pur Clan-Board</h1>
   <div class="sub" id="updated">Lade Daten …</div>
   <div class="tabs" id="clanTabs"></div>
 </header>
 <main id="app"></main>
 <dialog id="dlg"></dialog>
+<footer>This material is unofficial and is not endorsed by Supercell. For more information see Supercell's Fan Content Policy: <a href="https://www.supercell.com/fan-content-policy" style="color:inherit">www.supercell.com/fan-content-policy</a>.</footer>
 
 <script>
 const S = {data:null, clan:0, view:'mitglieder', sort:{key:'missed',dir:-1}, q:''};
