@@ -51,6 +51,9 @@ tbody tr.openrow:hover td{background:var(--openbg);filter:brightness(.97)}
 .g{background:var(--ok)}.y{background:var(--warn)}.r{background:var(--bad)}.n{background:var(--line)}
 .raiddots span{display:inline-block;width:9px;height:9px;border-radius:2px;margin-left:2px}
 .pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;background:var(--chip)}
+.pill.ok{background:var(--ok);color:#fff}.pill.bad{background:var(--bad);color:#fff}
+.reload{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:4px 12px;margin-left:8px;cursor:pointer}
+.reload:disabled{opacity:.6}
 .sieg{color:var(--ok)}.niederlage{color:var(--bad)}.unentschieden{color:var(--warn)}
 .list{margin:0;padding:0;list-style:none}
 .list li{padding:8px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
@@ -93,7 +96,7 @@ footer{max-width:1200px;margin:0 auto;padding:0 16px 30px;font-size:11px;color:v
   </div>
 </div>
 <header>
-  <div class="sub" id="updated">Lade Daten …</div>
+  <div class="sub"><span id="updated">Lade Daten …</span><button class="reload" id="reload" type="button" onclick="load(true)">Aktualisieren</button></div>
   <div class="tabs" id="clanTabs"></div>
 </header>
 <main id="app"></main>
@@ -359,7 +362,7 @@ function benchCard(title, calc, unit){
   const clash = calc.target ? sit.filter(r => r.inTarget) : [];
   const list = calc.bench === 0
     ? '<p>Alle können spielen, es muss niemand aussetzen.</p>'
-    : `<ul class="list">${sit.map(r => `<li><span><b>${esc(r.name)}</b><br><span class="muted">${esc(r.why)}</span></span><span>${Math.round(r.score)} Pkt.${r.inTarget?' <span class="pill niederlage">ist aufgestellt</span>':''}</span></li>`).join('')}</ul>`;
+    : `<ul class="list">${sit.map(r => `<li><span><b>${esc(r.name)}</b><br><span class="muted">${esc(r.why)}</span></span><span>${Math.round(r.score)} Pkt.${r.inTarget===true?' <span class="pill bad">noch aufgestellt</span>':r.inTarget===false?' <span class="pill ok">umgesetzt</span>':''}</span></li>`).join('')}</ul>`;
   const table = calc.rows.map((r,i) => `<tr class="${r.sit?'openrow':''}">
     <td>${i+1}. <span class="name">${esc(r.name)}</span></td>
     <td><b>${Math.round(r.score)}</b></td>
@@ -370,6 +373,7 @@ function benchCard(title, calc, unit){
   return `<div class="card"><h2>${title}</h2>
     <p class="muted" style="margin-top:-4px">${calc.total} Teilnehmer, ${calc.teamSize} spielen: <b>${calc.bench} setzen aus</b></p>
     ${list}
+    ${calc.target && calc.bench && !clash.length ? `<p class="sieg" style="font-size:14px;font-weight:600">Alle Empfehlungen für ${unit} ${calc.nextNo} sind umgesetzt.</p>` : ''}
     ${clash.length ? `<p class="err" style="font-size:14px">${clash.length} der Empfohlenen ${clash.length===1?'ist':'sind'} im Spiel schon für ${unit} ${calc.nextNo} aufgestellt.</p>` : ''}
     <details style="margin-top:8px"><summary>Alle Spieler mit Punkten anzeigen</summary>
     <div class="table-wrap" style="margin-top:8px"><table><thead><tr><th>Spieler</th><th>Punkte</th><th>Letzter Angriff</th><th>Letzte Verteidigung</th><th>Gespielt</th><th>Ausgesetzt</th>${calc.target?'<th>Aufgestellt</th>':''}</tr></thead><tbody>${table}</tbody></table></div></details>
@@ -496,6 +500,11 @@ function mergeLive(live){
     if(!c || lc.error) return;
     CLAN_FIELDS.forEach(k => { if(lc[k] !== undefined) c[k] = lc[k]; });
     c.currentWar = lc.currentWar;
+    const lp = lc.cwlPrep, cr = c.cwl && c.cwl.rounds;
+    if(lp && cr){
+      const r = cr.find(x => x.day === lp.day && x.state === 'preparation');
+      if(r){ r.lineup = {}; lp.lineup.forEach(m => r.lineup[m.tag] = {att:[], def:null, name:m.name}); }
+    }
     const byTag = {}; c.memberList.forEach(m => byTag[m.tag] = m);
     c.memberList = lc.memberList.map(lm => Object.assign(
       {war:{}, raids:[], profile:{}, games:null, joinedAt:null, lastActive:null, joins:1},
@@ -505,12 +514,14 @@ function mergeLive(live){
 
 const fmtT = s => parseT(s).toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
 
-async function load(){
+async function load(force){
   let live = null;
+  const btn = document.getElementById('reload');
+  btn.disabled = true; btn.textContent = 'Lädt …';
   try{
     const [r, lr] = await Promise.all([
       fetch('data/board.json?t=' + Date.now(), {cache:'no-store'}),
-      fetch(LIVE_URL).then(x => x.ok ? x.json() : null).catch(() => null),
+      fetch(force ? LIVE_URL + '?t=' + Date.now() : LIVE_URL, force ? {cache:'no-store'} : {}).then(x => x.ok ? x.json() : null).catch(() => null),
     ]);
     if(!r.ok) throw new Error(r.status);
     S.data = await r.json();
@@ -519,12 +530,13 @@ async function load(){
     if(S.clan!=='alle' && !S.data.clans[S.clan]) S.clan = 0;
     const hist = 'Verlauf ' + fmtT(S.data.generated) + ' (' + ago(S.data.generated) + ')';
     document.getElementById('updated').textContent = live
-      ? 'Live: ' + fmtT(live.generated) + ' Uhr · ' + hist + ' · neu laden holt den aktuellen Stand'
+      ? 'Live: ' + fmtT(live.generated) + ' Uhr · ' + hist
       : 'Stand: ' + hist + ' · Live-Abfrage gerade nicht erreichbar';
     render();
   }catch(e){
     document.getElementById('updated').innerHTML = '<span class="err">Daten konnten nicht geladen werden.</span>';
   }
+  btn.disabled = false; btn.textContent = 'Aktualisieren';
 }
 restore(); load(); setInterval(load, 2*60*1000);
 </script>

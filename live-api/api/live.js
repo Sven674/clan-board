@@ -33,9 +33,11 @@ function compactWar(war, clanTag, kind) {
   };
 }
 
+// Liefert den laufenden Ligatag (war) und die Vorbereitungsrunde (prep), deren
+// Aufstellung sich noch ändern kann. prep.day ist der Ligatag (1-7).
 async function currentCwl(clanTag) {
   const group = await api(`/clans/${enc(clanTag)}/currentwar/leaguegroup`);
-  if (!group || group._error || !group.rounds) return null;
+  if (!group || group._error || !group.rounds) return { war: null, prep: null };
   // von der neuesten Runde rückwärts: laufender Kampftag vor Vorbereitung
   let prep = null;
   for (let i = group.rounds.length - 1; i >= 0; i--) {
@@ -44,11 +46,13 @@ async function currentCwl(clanTag) {
     const wars = await Promise.all(tags.map((t) => api(`/clanwarleagues/wars/${enc(t)}`)));
     const w = wars.find((x) => x && !x._error && (x.clan.tag === clanTag || x.opponent.tag === clanTag));
     if (!w) continue;
-    if (w.state === "inWar") return compactWar(w, clanTag, "cwl");
-    if (w.state === "preparation") { prep = prep || compactWar(w, clanTag, "cwl"); continue; }
-    return prep || compactWar(w, clanTag, "cwl");
+    if (w.state === "preparation") {
+      if (!prep) prep = Object.assign(compactWar(w, clanTag, "cwl"), { day: i + 1 });
+      continue;
+    }
+    return { war: compactWar(w, clanTag, "cwl"), prep };
   }
-  return prep;
+  return { war: prep, prep };
 }
 
 async function clanLive(clanTag) {
@@ -57,9 +61,9 @@ async function clanLive(clanTag) {
     api(`/clans/${enc(clanTag)}/currentwar`),
   ]);
   if (!info || info._error) return { tag: clanTag, error: info && info._error };
-  let war = null;
+  let war = null, cwlPrep = null;
   if (cur && !cur._error && cur.state && cur.state !== "notInWar") war = compactWar(cur, clanTag, "regular");
-  else war = await currentCwl(clanTag);
+  else ({ war, prep: cwlPrep } = await currentCwl(clanTag));
   return {
     tag: clanTag,
     name: info.name, members: info.members, level: info.clanLevel, points: info.clanPoints,
@@ -71,6 +75,8 @@ async function clanLive(clanTag) {
       donations: m.donations, received: m.donationsReceived,
     })),
     currentWar: war,
+    cwlPrep: cwlPrep && { day: cwlPrep.day, opponent: cwlPrep.opponent.name,
+                          lineup: cwlPrep.members.map((m) => ({ tag: m.tag, name: m.name })) },
   };
 }
 
