@@ -1,4 +1,5 @@
-// Speichert Angaben der Führung: Bonus (Anzahl, Verzicht, erhaltene Boni) und freiwillige Aussetzer.
+// Speichert Angaben der Führung: Bonus (Anzahl, Verzicht, erhaltene Boni), freiwillige Aussetzer
+// und die Fertig-Meldung für die Aufstellung.
 // Prüft die PIN (Umgebungsvariable BONUS_PIN) und stößt den GitHub-Workflow speichern.yml an,
 // der data/fuehrung.json ins Repo schreibt.
 
@@ -35,6 +36,12 @@ function clean(b) {
       prevBonus: tags(b.prevBonus),
     };
     return c.season && c.anzahl !== undefined && c.verzicht && c.bonus && c.prevSeason && c.prevBonus ? c : null;
+  }
+  if (b.type === "erledigt") {
+    const c = { type: "erledigt", clan, key: KEY.test(b.key || "") ? b.key : null,
+                by: b.by === null ? null : (typeof b.by === "string" && TAG.test(b.by) ? b.by : undefined),
+                at: new Date().toISOString().slice(0, 19) + "Z" };
+    return c.key && c.by !== undefined ? c : null;
   }
   if (b.type === "freiwillig") {
     const c = { type: "freiwillig", clan, key: KEY.test(b.key || "") ? b.key : null, tags: tags(b.tags) };

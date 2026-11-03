@@ -3,6 +3,7 @@
 Aufbau je Clan-Tag:
   "JJJJ-MM": {"anzahl": int|None, "verzicht": [Tags], "bonus": [Tags]}   Bonus je Ligasaison
   "freiwillig": {"liga:JJJJ-MM:Tag" | "krieg:...": [Tags]}              freiwillige Aussetzer
+  "erledigt": {"liga:JJJJ-MM:Tag" | "krieg:...": {"by": Tag, "at": Zeit}} Aufstellung fertig gemeldet
 """
 import json
 import os
@@ -51,6 +52,17 @@ def main():
         fw[key] = tags(p.get("tags"))
         for old in list(fw)[:-KEEP_FREIWILLIG]:
             del fw[old]
+    elif p.get("type") == "erledigt":
+        key, by, at = p.get("key") or "", p.get("by"), p.get("at") or ""
+        if not KEY.match(key) or (by is not None and not TAG.match(by)) \
+                or not re.match(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$", at):
+            raise SystemExit("Ungültige Fertig-Meldung")
+        er = c.setdefault("erledigt", {})
+        er.pop(key, None)
+        if by:
+            er[key] = {"by": by, "at": at}
+        for old in list(er)[:-KEEP_FREIWILLIG]:
+            del er[old]
     else:
         raise SystemExit("Unbekannte Art")
 

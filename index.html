@@ -54,11 +54,13 @@ tbody tr.openrow:hover td{background:var(--openbg);filter:brightness(.97)}
 .pill.ok{background:var(--ok);color:#fff}.pill.bad{background:var(--bad);color:#fff}
 .reload{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:4px 12px;margin-left:8px;cursor:pointer}
 .reload:disabled{opacity:.6}
+.reload.okbtn{background:var(--ok);border-color:var(--ok);color:#fff}
 .reload.act{font-size:16px;padding:11px 20px;min-height:46px;margin:4px 8px 4px 0}
-input[data-f][type=checkbox]{width:26px;height:26px;vertical-align:middle;cursor:pointer}
+input[data-f][type=checkbox]{width:26px;height:26px;vertical-align:middle;cursor:pointer;accent-color:var(--ok)}
 input[data-f][type=number],input[data-pin]{font:inherit;font-size:17px;padding:9px 12px;min-height:46px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 input[data-f][type=number]{width:90px!important}
 input[data-pin]{width:200px!important}
+select.bigsel{font:inherit;font-size:17px;padding:9px 12px;min-height:46px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .volgrid label{display:flex;align-items:center;gap:10px;padding:8px 4px;font-size:16px;cursor:pointer}
 .fdedit td{padding-top:10px;padding-bottom:10px}
 .sieg{color:var(--ok)}.niederlage{color:var(--bad)}.unentschieden{color:var(--warn)}
@@ -374,13 +376,58 @@ function benchCalc(rounds, roster, teamSize, vol){
   return {rows, bench, teamSize, total: roster.length, target, nextNo: (target ? target.day : past.length + 1)};
 }
 
+// Fertig-Meldung: zeigt der Führung, dass die Aufstellung für den nächsten Tag/Krieg schon gemacht ist.
+const leaders = clanTag => {
+  const all = S.data.clans.flatMap(c => c.memberList.filter(m => m.role === 'leader' || m.role === 'coLeader')
+    .map(m => ({tag: m.tag, name: m.name, clan: c.tag, clanName: c.name})));
+  return [...all.filter(m => m.clan === clanTag), ...all.filter(m => m.clan !== clanTag)];
+};
+const nameOf = tag => { for(const c of S.data.clans){ const m = c.memberList.find(x => x.tag === tag); if(m) return m.name; } return tag; };
+const volCount = opt => (((S.fd[opt.clan] || {}).freiwillig || {})[opt.key] || []).length;
+const doneOf = opt => ((S.fd[opt.clan] || {}).erledigt || {})[opt.key] || null;
+
+function doneBanner(opt){
+  const d = doneOf(opt);
+  return d ? `<p style="background:var(--ok);color:#fff;border-radius:8px;padding:10px 12px;font-weight:600;margin:4px 0 10px">Aufstellung für ${esc(opt.label)} ist fertig. Gemeldet von ${esc(nameOf(d.by))} um ${fmtT(d.at)} Uhr.</p>` : '';
+}
+
+function doneForm(opt){
+  const form = 'done' + opt.clan + opt.key, done = doneOf(opt);
+  S.forms[form] = () => {
+    let last = ''; try{ last = localStorage.getItem('clanboard-ich') || ''; }catch(e){}
+    const ls = leaders(opt.clan);
+    return {undo: !!done, by: ls.some(m => m.tag === last) ? last : (ls[0] || {}).tag};
+  };
+  S.saves[form] = () => { const d = S.edit[form];
+    if(!d.undo){ try{ localStorage.setItem('clanboard-ich', d.by); }catch(e){} }
+    postFd(form, {type: 'erledigt', clan: opt.clan, key: opt.key, by: d.undo ? null : d.by},
+           () => applyDone(opt.clan, opt.key, d.undo ? null : {by: d.by, at: new Date().toISOString()})); };
+  const edit = S.edit[form];
+  if(!edit) return null;
+  const ask = edit.undo
+    ? `<p>Die Aufstellung für ${esc(opt.label)} ist als fertig gemeldet. Meldung zurücknehmen?</p>`
+    : `<p><label>Wer meldet? <select data-f="by" data-form="${esc(form)}" class="bigsel">${leaders(opt.clan).map(m =>
+        `<option value="${esc(m.tag)}" ${m.tag === edit.by ? 'selected' : ''}>${esc(m.name)}${m.clan !== opt.clan ? ' (' + esc(m.clanName) + ')' : ''}</option>`).join('')}</select></label></p>`;
+  return `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
+    ${ask}${pinField(form)}${msgHtml(form)}
+    <p style="margin-top:10px">${btn('save', form, edit.undo ? 'Zurücknehmen' : 'Als fertig melden')} ${btn('cancel', form, 'Abbrechen')}</p></div>`;
+}
+
+function benchActions(opt, rows){
+  const vf = 'vol' + opt.clan + opt.key, df = 'done' + opt.clan + opt.key;
+  const v = volForm(opt, rows), d = doneForm(opt);
+  if(v) return v;
+  if(d) return d;
+  return msgHtml(vf) + msgHtml(df) + `<p style="margin-top:10px">${volCount(opt) ? btn('edit', vf, 'Freiwillige Aussetzer: ' + volCount(opt) + ' eingetragen', 'okbtn') : btn('edit', vf, 'Freiwillige Aussetzer eintragen')} ${doneOf(opt) ? btn('edit', df, 'Aufstellung ist fertig', 'okbtn') : btn('edit', df, 'Aufstellung fertig melden')}</p>`;
+}
+
 function volForm(opt, rows){
   const form = 'vol' + opt.clan + opt.key;
   S.forms[form] = () => ({tags: [...((S.fd[opt.clan] || {}).freiwillig || {})[opt.key] || []]});
   S.saves[form] = () => { const d = S.edit[form];
     postFd(form, {type: 'freiwillig', clan: opt.clan, key: opt.key, tags: d.tags}, () => applyVol(opt.clan, opt.key, d.tags)); };
   const edit = S.edit[form];
-  if(!edit) return msgHtml(form) + `<p style="margin-top:10px">${btn('edit', form, 'Freiwillige Aussetzer eintragen', true)}</p>`;
+  if(!edit) return null;
   const names = [...rows].sort((a,b) => a.name.localeCompare(b.name, 'de'));
   return `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
     <p class="muted">Wer setzt für ${esc(opt.label)} freiwillig aus?</p>
@@ -388,7 +435,7 @@ function volForm(opt, rows){
     <div class="volgrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:2px 12px">
     ${names.map(r => `<label><input type="checkbox" data-f="tags" data-form="${esc(form)}" data-t="${esc(r.tag)}" ${edit.tags.includes(r.tag) ? 'checked' : ''}> ${esc(r.name)}</label>`).join('')}
     </div>${msgHtml(form)}
-    <p style="margin-top:10px">${btn('save', form, 'Speichern', true)} ${btn('cancel', form, 'Abbrechen')}</p></div>`;
+    <p style="margin-top:10px">${btn('save', form, 'Speichern')} ${btn('cancel', form, 'Abbrechen')}</p></div>`;
 }
 
 function benchCard(title, calc, unit, opt){
@@ -407,6 +454,7 @@ function benchCard(title, calc, unit, opt){
     <td>${r.played}</td><td>${r.sat}</td>
     ${calc.target ? `<td>${r.inTarget ? 'ja' : 'nein'}</td>` : ''}</tr>`).join('');
   return `<div class="card"><h2>${title}</h2>
+    ${opt ? doneBanner(opt) : ''}
     <p class="muted" style="margin-top:-4px">${calc.total} Teilnehmer, ${calc.teamSize} spielen: <b>${calc.bench} setzen aus</b></p>
     ${list}
     ${freed.length ? `<p class="muted" style="font-size:14px">Darf spielen, weil jemand freiwillig aussetzt: ${freed.map(r => '<b>' + esc(r.name) + '</b>').join(', ')}</p>` : ''}
@@ -414,7 +462,7 @@ function benchCard(title, calc, unit, opt){
     ${clash.length ? `<p class="err" style="font-size:14px">${clash.length} der Empfohlenen ${clash.length===1?'ist':'sind'} im Spiel schon für ${unit} ${calc.nextNo} aufgestellt.</p>` : ''}
     <details style="margin-top:8px"><summary>Alle Spieler mit Punkten anzeigen</summary>
     <div class="table-wrap" style="margin-top:8px"><table><thead><tr><th>Spieler</th><th>Punkte</th><th>Letzter Angriff</th><th>Letzte Verteidigung</th><th>Gespielt</th><th>Ausgesetzt</th>${calc.target?'<th>Aufgestellt</th>':''}</tr></thead><tbody>${table}</tbody></table></div></details>
-    ${opt ? volForm(opt, calc.rows) : ''}
+    ${opt ? benchActions(opt, calc.rows) : ''}
     <p class="legend">Freiwillige Aussetzer zählen zuerst, die übrigen Plätze gehen nach Punkten. Mehr Punkte = eher aussetzen. Je fehlender Stern ${W.sternFehlt}, je fehlendes Prozent ${W.prozentFehlt}, vergessener Angriff ${W.vergessen}, je kassierter Stern auf der eigenen Basis ${W.sternKassiert}, je kassiertes Prozent ${W.prozentKassiert}, minus ${W.schonAusgesetzt} je Mal schon ausgesetzt. Gewertet wird jeweils der letzte Angriff und die stärkste gegnerische Attacke im letzten Einsatz. Die Empfehlung ist ein Vorschlag, die Entscheidung trifft die Führung.</p></div>`;
 }
 
@@ -461,6 +509,7 @@ function applyBonus(tag, d){
   B[d.season] = {anzahl: d.anzahl, verzicht: d.verzicht, bonus: d.bonus};
   B[d.prev] = Object.assign({anzahl: null, verzicht: []}, B[d.prev], {bonus: d.prevBonus});
 }
+function applyDone(tag, key, v){ const B = fdClan(tag); B.erledigt = Object.assign({}, B.erledigt); if(v) B.erledigt[key] = v; else delete B.erledigt[key]; }
 function applyVol(tag, key, tags){ const B = fdClan(tag); B.freiwillig = Object.assign({}, B.freiwillig, {[key]: tags}); }
 
 function pinField(form){
@@ -493,7 +542,7 @@ async function postFd(form, body, apply){
 }
 
 const msgHtml = form => { const m = S.msg[form]; return m ? `<p class="${m.err ? 'err' : 'sieg'}" style="font-size:14px;font-weight:600">${esc(m.text)}</p>` : ''; };
-const btn = (act, form, label) => `<button class="reload act" data-act="${act}" data-form="${esc(form)}">${label}</button>`;
+const btn = (act, form, label, cls) => `<button class="reload act ${cls || ''}" data-act="${act}" data-form="${esc(form)}">${label}</button>`;
 
 function fdEvents(app){
   app.onclick = e => {
@@ -508,6 +557,7 @@ function fdEvents(app){
     const el = e.target.closest('[data-f]'); if(!el) return;
     const d = S.edit[el.dataset.form]; if(!d) return;
     const f = el.dataset.f;
+    if(f === 'by'){ d.by = el.value; return; }
     if(f === 'anzahl'){ const v = parseInt(el.value, 10); d.anzahl = Number.isInteger(v) && v >= 0 && v <= 50 ? v : null; return render(); }
     const t = el.dataset.t;
     d[f] = el.checked ? [...new Set([...d[f], t])] : d[f].filter(x => x !== t);
@@ -579,7 +629,9 @@ function bonusCard(c){
   const head = `<p class="muted" style="margin-top:-4px">${stand} ` + (n == null
     ? `Die besten ${WB.vorschlaege}. Anzahl der Boni noch nicht eingetragen.</p>`
     : `<b>${n} Boni</b>, die besten ${Math.max(WB.vorschlaege, n)} vorgeschlagen.</p>`);
-  let body = `<p style="margin-top:10px">${btn('edit', form, 'Bonus-Angaben bearbeiten', true)}</p>`;
+  const given = info.bonus.length, allGiven = n != null && n > 0 && given >= n;
+  let body = `<p style="margin-top:10px">${allGiven ? btn('edit', form, 'Boni verteilt (' + given + ' von ' + n + ')', 'okbtn')
+    : btn('edit', form, 'Bonus-Angaben bearbeiten' + (n ? ' (' + given + ' von ' + n + ' verteilt)' : ''))}</p>`;
   if(edit){
     const cb = (f, tag) => `<input type="checkbox" data-f="${f}" data-form="${esc(form)}" data-t="${esc(tag)}" ${info[f].includes(tag) ? 'checked' : ''}>`;
     body = `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
@@ -588,7 +640,7 @@ function bonusCard(c){
       <div class="table-wrap"><table><thead><tr><th>Spieler</th><th>Will keinen Bonus</th><th>Bonus ${monthDE(info.season)}</th><th>Bonus ${monthDE(info.prev)}</th></tr></thead><tbody class="fdedit">
       ${roster.map(m => `<tr><td><span class="name">${esc(m.name)}</span></td><td>${cb('verzicht', m.tag)}</td><td>${cb('bonus', m.tag)}</td><td>${cb('prevBonus', m.tag)}</td></tr>`).join('')}
       </tbody></table></div>
-      <p style="margin-top:10px">${btn('save', form, 'Speichern', true)} ${btn('cancel', form, 'Abbrechen')}</p></div>`;
+      <p style="margin-top:10px">${btn('save', form, 'Speichern')} ${btn('cancel', form, 'Abbrechen')}</p></div>`;
   }
   return `<div class="card"><h2>Bonus-Empfehlung ${esc(c.name)} (Liga ${monthDE(s.season)})</h2>
     ${head}${list}${outList}${msgHtml(form)}${body}
