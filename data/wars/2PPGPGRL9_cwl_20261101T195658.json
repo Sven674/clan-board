@@ -3,7 +3,7 @@
  "endTime": "20261103T195655.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-03T12:46:47Z",
+ "lastSeen": "2026-11-03T13:17:43Z",
  "members": [
   {
    "attacks": [
@@ -59,7 +59,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "NobbyNobbs",
    "pos": 19,
    "tag": "#L08LQ8YJL",
@@ -293,8 +299,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/G7Ud6mE6f9yBGsuWQwjTjlUwmLttz3s8O03YTu5QUhE.png",
   "name": "Esprit Clash",
-  "pct": 54.8,
-  "stars": 21,
+  "pct": 61.46666666666667,
+  "stars": 24,
   "tag": "#8J2VQLPU"
  },
  "preparationStartTime": "20261101T195658.000Z",
