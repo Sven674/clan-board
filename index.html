@@ -159,7 +159,7 @@ function rows(){
       ratio: m.received ? m.donations/m.received : (m.donations ? 99 : null),
       raidAtt: m.raids.reduce((a,r)=>a+r.attacks,0),
       activeTs: m.lastActive ? parseT(m.lastActive).getTime() : 0,
-      joinTs: m.joinedAt ? parseT(m.joinedAt).getTime() : 0,
+      joinTs: m.joinedAt && m.joinedAt !== BOARD_START ? parseT(m.joinedAt).getTime() : 0,
     }));
     });
   });
@@ -249,7 +249,7 @@ function memberTable(){
       <td>${r.games==null?'–':fmtN(r.games)}</td>
       <td style="text-align:left;font-size:12px">${(r.boosts||[]).map(esc).join(', ')||'<span class="muted">–</span>'}</td>
       <td>${r.lastActive?ago(r.lastActive):'<span class="muted">noch offen</span>'}</td>
-      <td>${dateDE(r.joinedAt)}</td>
+      <td>${joinDE(r)}</td>
     </tr>`;
   }).join('');
   return `<div class="card"><input type="search" placeholder="Spieler suchen" value="${esc(S.q)}" id="q">
@@ -459,7 +459,7 @@ function detail(tag, clanName){
       <span>Hauptstadtgold gespendet</span><span>${fmtN(p.capitalContrib)}${m.capitalWeek?' · diese Woche '+fmtN(m.capitalWeek):''}</span>
       <span>Aktive Supertruppen</span><span>${(m.boosts||[]).map(esc).join(', ')||'–'}</span>
       <span>Spenden Vorsaison</span><span>${m.donationsPrev?fmtN(m.donationsPrev[0].d)+' / '+fmtN(m.donationsPrev[0].r):'–'}</span>
-      <span>Im Clan seit</span><span>${dateDE(m.joinedAt)}${m.joins>1?' ('+m.joins+'. Beitritt)':''}</span>
+      <span>Im Clan seit</span><span>${joinDE(m)}${m.joins>1?' ('+m.joins+'. Beitritt)':''}</span>
       <span>Zuletzt aktiv</span><span>${m.lastActive?ago(m.lastActive):'noch offen'}</span>
       ${heroes}
     </div>`;
@@ -489,6 +489,10 @@ function render(){
 
 function save(){ try{ localStorage.setItem('clanboard', JSON.stringify({clan:S.clan, view:S.view, sort:S.sort})); }catch(e){} }
 function restore(){ try{ Object.assign(S, JSON.parse(localStorage.getItem('clanboard')||'{}')); }catch(e){} }
+
+// Erster Abruf des Boards: Wer da schon im Clan war, hat kein echtes Beitrittsdatum (die API liefert keins).
+const BOARD_START = '2026-11-03T08:39:06Z';
+const joinDE = m => m.joinedAt === BOARD_START ? 'vor 03.11.' : dateDE(m.joinedAt);
 
 const LIVE_URL = 'https://clan-board-live.vercel.app/api/live';
 const CLAN_FIELDS = ['name','members','level','points','warWins','warLosses','warTies','warWinStreak','isWarLogPublic'];
