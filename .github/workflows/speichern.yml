@@ -1,0 +1,48 @@
+name: Angaben der Führung speichern
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: "Angaben als JSON (kommt von der Live-Funktion)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+# Bewusst ohne concurrency-Gruppe: GitHub würde dort wartende Läufe verwerfen.
+# Gleichzeitige Läufe lösen Zusammenstöße unten selbst (neu holen, Angabe neu anwenden).
+
+jobs:
+  save:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Datei schreiben
+        env:
+          PAYLOAD: ${{ inputs.payload }}
+        run: python3 scripts/speichern.py
+      - name: Speichern
+        env:
+          PAYLOAD: ${{ inputs.payload }}
+        run: |
+          git config user.name "clan-board-bot"
+          git config user.email "clan-board-bot@users.noreply.github.com"
+          git add data/fuehrung.json
+          git diff --cached --quiet && exit 0
+          git commit -q -m "Angaben der Führung aktualisiert"
+          # Bei Zusammenstoß: neuen Stand holen und die Angabe darauf neu anwenden
+          for i in 1 2 3 4 5; do
+            git push && exit 0
+            sleep $((i * 3))
+            git fetch -q origin main && git reset -q --hard origin/main
+            python3 scripts/speichern.py
+            git add data/fuehrung.json
+            git diff --cached --quiet && exit 0
+            git commit -q -m "Angaben der Führung aktualisiert"
+          done
+          exit 1

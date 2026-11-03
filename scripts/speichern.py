@@ -1,0 +1,63 @@
+"""Schreibt Angaben der Führung aus dem Board (Umgebungsvariable PAYLOAD) nach data/fuehrung.json.
+
+Aufbau je Clan-Tag:
+  "JJJJ-MM": {"anzahl": int|None, "verzicht": [Tags], "bonus": [Tags]}   Bonus je Ligasaison
+  "freiwillig": {"liga:JJJJ-MM:Tag" | "krieg:...": [Tags]}              freiwillige Aussetzer
+"""
+import json
+import os
+import re
+
+TAG = re.compile(r"^#[0289PYLQGRJCUV]{3,12}$")
+SEASON = re.compile(r"^\d{4}-(0[1-9]|1[0-2])$")
+KEY = re.compile(r"^(liga|krieg):[0-9A-Za-z:.\-]{1,40}$")
+CLANS = {"#29PU080G", "#2PPGPGRL9"}
+PATH = os.path.join(os.path.dirname(__file__), "..", "data", "fuehrung.json")
+KEEP_FREIWILLIG = 30
+
+
+def tags(x):
+    if not isinstance(x, list) or len(x) > 60 or not all(isinstance(t, str) and TAG.match(t) for t in x):
+        raise SystemExit("Ungültige Tags")
+    return sorted(set(x))
+
+
+def main():
+    p = json.loads(os.environ["PAYLOAD"])
+    clan = p.get("clan")
+    if clan not in CLANS:
+        raise SystemExit("Ungültiger Clan")
+    try:
+        with open(PATH, encoding="utf-8") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        data = {}
+    c = data.setdefault(clan, {})
+
+    if p.get("type") == "bonus":
+        season, prev, anzahl = p.get("season"), p.get("prevSeason"), p.get("anzahl")
+        if not SEASON.match(season or "") or not SEASON.match(prev or ""):
+            raise SystemExit("Ungültige Saison")
+        if anzahl is not None and not (isinstance(anzahl, int) and 0 <= anzahl <= 50):
+            raise SystemExit("Ungültige Anzahl")
+        c[season] = {"anzahl": anzahl, "verzicht": tags(p.get("verzicht")), "bonus": tags(p.get("bonus"))}
+        c.setdefault(prev, {"anzahl": None, "verzicht": []})["bonus"] = tags(p.get("prevBonus"))
+    elif p.get("type") == "freiwillig":
+        key = p.get("key") or ""
+        if not KEY.match(key):
+            raise SystemExit("Ungültiger Schlüssel")
+        fw = c.setdefault("freiwillig", {})
+        fw.pop(key, None)
+        fw[key] = tags(p.get("tags"))
+        for old in list(fw)[:-KEEP_FREIWILLIG]:
+            del fw[old]
+    else:
+        raise SystemExit("Unbekannte Art")
+
+    with open(PATH, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=1)
+        f.write("\n")
+
+
+if __name__ == "__main__":
+    main()

@@ -104,7 +104,7 @@ footer{max-width:1200px;margin:0 auto;padding:0 16px 30px;font-size:11px;color:v
 <footer>This material is unofficial and is not endorsed by Supercell. For more information see Supercell's Fan Content Policy: <a href="https://www.supercell.com/fan-content-policy" style="color:inherit">www.supercell.com/fan-content-policy</a>.</footer>
 
 <script>
-const S = {data:null, clan:0, view:'mitglieder', sort:{key:'missed',dir:-1}, q:''};
+const S = {data:null, clan:0, view:'mitglieder', sort:{key:'missed',dir:-1}, q:'', fd:{}, edit:{}, pending:[], msg:{}, pin:{}, forms:{}, saves:{}};
 const ROLE = {leader:'Anführer', coLeader:'Vize', admin:'Ältester', member:''};
 const fmtN = n => n==null ? '–' : Number(n).toLocaleString('de-DE');
 const pct = (a,b) => b ? Math.round(a/b*100) : null;
@@ -261,8 +261,11 @@ function memberTable(){
 function regularBench(c){
   const rr = c.regularRounds || [];
   const roster = c.memberList.filter(m => (m.profile||{}).warPreference === 'in').map(m => ({tag:m.tag, name:m.name}));
-  const lastSize = (rr.filter(r => r.state !== 'preparation').slice(-1)[0] || {}).teamSize;
-  return benchCard(`Aussetz-Empfehlung ${esc(c.name)} für den nächsten Krieg`, benchCalc(rr, roster, lastSize), 'Krieg');
+  const lastPast = rr.filter(r => r.state !== 'preparation').slice(-1)[0] || {};
+  const key = lastPast.end ? 'krieg:' + lastPast.end : null;
+  const vol = key ? ((S.fd[c.tag] || {}).freiwillig || {})[key] : null;
+  return benchCard(`Aussetz-Empfehlung ${esc(c.name)} für den nächsten Krieg`, benchCalc(rr, roster, lastPast.teamSize, vol), 'Krieg',
+                   key ? {clan: c.tag, key, label: 'den nächsten Krieg'} : null);
 }
 
 function warList(){
@@ -312,7 +315,7 @@ const W = {
   schonAusgesetzt: 60, // Abzug je Tag/Krieg, an dem schon ausgesetzt wurde
 };
 
-function benchCalc(rounds, roster, teamSize){
+function benchCalc(rounds, roster, teamSize, vol){
   const target = rounds.find(r => r.state === 'preparation');
   const past = rounds.filter(r => r.state !== 'preparation');
   if(!past.length || !roster.length || !teamSize) return null;
@@ -352,19 +355,45 @@ function benchCalc(rounds, roster, teamSize){
   });
   rows.sort((a,b) => b.score - a.score || b.played - a.played);
   const bench = Math.max(0, roster.length - teamSize);
-  rows.forEach((r,i) => r.sit = i < bench);
+  // Freiwillige setzen zuerst aus, die übrigen Plätze gehen nach Punkten.
+  vol = (vol || []).filter(t => rows.some(r => r.tag === t));
+  const need = Math.max(0, bench - vol.length);
+  let k = 0;
+  rows.forEach((r,i) => {
+    r.vol = vol.includes(r.tag);
+    r.sit = r.vol || k++ < need;
+    r.freed = !r.sit && i < bench;   // wäre ohne Freiwillige dran gewesen
+  });
   return {rows, bench, teamSize, total: roster.length, target, nextNo: (target ? target.day : past.length + 1)};
 }
 
-function benchCard(title, calc, unit){
+function volForm(opt, rows){
+  const form = 'vol' + opt.clan + opt.key;
+  S.forms[form] = () => ({tags: [...((S.fd[opt.clan] || {}).freiwillig || {})[opt.key] || []]});
+  S.saves[form] = () => { const d = S.edit[form];
+    postFd(form, {type: 'freiwillig', clan: opt.clan, key: opt.key, tags: d.tags}, () => applyVol(opt.clan, opt.key, d.tags)); };
+  const edit = S.edit[form];
+  if(!edit) return msgHtml(form) + `<p style="margin-top:10px">${btn('edit', form, 'Freiwillige Aussetzer eintragen', true)}</p>`;
+  const names = [...rows].sort((a,b) => a.name.localeCompare(b.name, 'de'));
+  return `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
+    <p class="muted">Wer setzt für ${esc(opt.label)} freiwillig aus?</p>
+    ${pinField(form)}
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:4px 12px">
+    ${names.map(r => `<label><input type="checkbox" data-f="tags" data-form="${esc(form)}" data-t="${esc(r.tag)}" ${edit.tags.includes(r.tag) ? 'checked' : ''}> ${esc(r.name)}</label>`).join('')}
+    </div>${msgHtml(form)}
+    <p style="margin-top:10px">${btn('save', form, 'Speichern', true)} ${btn('cancel', form, 'Abbrechen')}</p></div>`;
+}
+
+function benchCard(title, calc, unit, opt){
   if(!calc) return `<div class="card"><h2>${title}</h2><span class="muted">Noch zu wenig Daten. Die Empfehlung erscheint, sobald der erste ${unit} gelaufen ist.</span></div>`;
-  const sit = calc.rows.filter(r => r.sit);
+  const sit = [...calc.rows.filter(r => r.sit && r.vol), ...calc.rows.filter(r => r.sit && !r.vol)];
+  const freed = calc.rows.filter(r => r.freed);
   const clash = calc.target ? sit.filter(r => r.inTarget) : [];
   const list = calc.bench === 0
     ? '<p>Alle können spielen, es muss niemand aussetzen.</p>'
-    : `<ul class="list">${sit.map(r => `<li><span><b>${esc(r.name)}</b><br><span class="muted">${esc(r.why)}</span></span><span>${Math.round(r.score)} Pkt.${r.inTarget===true?' <span class="pill bad">noch aufgestellt</span>':r.inTarget===false?' <span class="pill ok">umgesetzt</span>':''}</span></li>`).join('')}</ul>`;
+    : `<ul class="list">${sit.map(r => `<li><span><b>${esc(r.name)}</b>${r.vol ? ' <span class="pill">freiwillig</span>' : ''}<br><span class="muted">${esc(r.why)}</span></span><span>${Math.round(r.score)} Pkt.${r.inTarget===true?' <span class="pill bad">noch aufgestellt</span>':r.inTarget===false?' <span class="pill ok">umgesetzt</span>':''}</span></li>`).join('')}</ul>`;
   const table = calc.rows.map((r,i) => `<tr class="${r.sit?'openrow':''}">
-    <td>${i+1}. <span class="name">${esc(r.name)}</span></td>
+    <td>${i+1}. <span class="name">${esc(r.name)}</span>${r.vol ? ' <span class="pill">freiwillig</span>' : ''}</td>
     <td><b>${Math.round(r.score)}</b></td>
     <td>${r.lastAtt ? r.lastAtt.map(x => x[0]+'★ '+x[1]+' %').join(', ') : '–'}</td>
     <td>${r.lastDef ? r.lastDef[0]+'★ '+r.lastDef[1]+' %' : '–'}</td>
@@ -373,11 +402,13 @@ function benchCard(title, calc, unit){
   return `<div class="card"><h2>${title}</h2>
     <p class="muted" style="margin-top:-4px">${calc.total} Teilnehmer, ${calc.teamSize} spielen: <b>${calc.bench} setzen aus</b></p>
     ${list}
+    ${freed.length ? `<p class="muted" style="font-size:14px">Darf spielen, weil jemand freiwillig aussetzt: ${freed.map(r => '<b>' + esc(r.name) + '</b>').join(', ')}</p>` : ''}
     ${calc.target && calc.bench && !clash.length ? `<p class="sieg" style="font-size:14px;font-weight:600">Alle Empfehlungen für ${unit} ${calc.nextNo} sind umgesetzt.</p>` : ''}
     ${clash.length ? `<p class="err" style="font-size:14px">${clash.length} der Empfohlenen ${clash.length===1?'ist':'sind'} im Spiel schon für ${unit} ${calc.nextNo} aufgestellt.</p>` : ''}
     <details style="margin-top:8px"><summary>Alle Spieler mit Punkten anzeigen</summary>
     <div class="table-wrap" style="margin-top:8px"><table><thead><tr><th>Spieler</th><th>Punkte</th><th>Letzter Angriff</th><th>Letzte Verteidigung</th><th>Gespielt</th><th>Ausgesetzt</th>${calc.target?'<th>Aufgestellt</th>':''}</tr></thead><tbody>${table}</tbody></table></div></details>
-    <p class="legend">Mehr Punkte = eher aussetzen. Je fehlender Stern ${W.sternFehlt}, je fehlendes Prozent ${W.prozentFehlt}, vergessener Angriff ${W.vergessen}, je kassierter Stern auf der eigenen Basis ${W.sternKassiert}, je kassiertes Prozent ${W.prozentKassiert}, minus ${W.schonAusgesetzt} je Mal schon ausgesetzt. Gewertet wird jeweils der letzte Angriff und die stärkste gegnerische Attacke im letzten Einsatz. Die Empfehlung ist ein Vorschlag, die Entscheidung trifft die Führung.</p></div>`;
+    ${opt ? volForm(opt, calc.rows) : ''}
+    <p class="legend">Freiwillige Aussetzer zählen zuerst, die übrigen Plätze gehen nach Punkten. Mehr Punkte = eher aussetzen. Je fehlender Stern ${W.sternFehlt}, je fehlendes Prozent ${W.prozentFehlt}, vergessener Angriff ${W.vergessen}, je kassierter Stern auf der eigenen Basis ${W.sternKassiert}, je kassiertes Prozent ${W.prozentKassiert}, minus ${W.schonAusgesetzt} je Mal schon ausgesetzt. Gewertet wird jeweils der letzte Angriff und die stärkste gegnerische Attacke im letzten Einsatz. Die Empfehlung ist ein Vorschlag, die Entscheidung trifft die Führung.</p></div>`;
 }
 
 function cwlView(){
@@ -399,15 +430,162 @@ function cwlView(){
       <td>${p.missed?`<span class="niederlage">${p.missed}</span>`:'0'}</td>
       <td>${p.defs?(p.defStars/p.defs).toFixed(2):'–'}</td></tr>`).join('');
     const teamSize = (s.rounds[s.rounds.length-1] || {}).teamSize;
-    const calc = s.rounds.length >= 7 && s.rounds.every(r => r.final) ? null : benchCalc(s.rounds, s.roster || [], teamSize);
+    const prep = s.rounds.find(r => r.state === 'preparation');
+    const nextDay = prep ? prep.day : s.rounds.filter(r => r.state !== 'preparation').length + 1;
+    const volKey = 'liga:' + s.season + ':' + nextDay;
+    const vol = ((S.fd[c.tag] || {}).freiwillig || {})[volKey];
+    const calc = s.rounds.length >= 7 && s.rounds.every(r => r.final) ? null : benchCalc(s.rounds, s.roster || [], teamSize, vol);
     const rec = s.rounds.length >= 7 && s.rounds.every(r => r.final)
       ? `<div class="card"><h2>Aussetz-Empfehlung</h2><span class="muted">Die Ligawoche ist vorbei.</span></div>`
-      : (s.roster ? benchCard(`Aussetz-Empfehlung ${esc(c.name)} für Liga-Tag ${calc ? calc.nextNo : ''}`, calc, 'Tag') : '');
+      : (s.roster ? benchCard(`Aussetz-Empfehlung ${esc(c.name)} für Liga-Tag ${calc ? calc.nextNo : ''}`, calc, 'Tag', {clan: c.tag, key: volKey, label: 'Liga-Tag ' + nextDay}) : '');
     return rec + `<div class="card"><h2>Clankriegsliga ${esc(c.name)}: ${monat}</h2>${days}</div>
       <div class="card"><h2>Rangliste Liga ${esc(c.name)}</h2>
       <div class="table-wrap"><table><thead><tr><th>Spieler</th><th>Einsätze</th><th>Angriffe</th><th>Sterne</th><th>Ø Sterne</th><th>Ø Zerstörung</th><th>3 Sterne</th><th>Verpasst</th><th>Ø kassiert</th></tr></thead><tbody>${rows}</tbody></table></div>
-      <p class="legend">Einsätze = Tage in der Aufstellung. Verpasst = aufgestellt, aber nicht angegriffen (nur abgeschlossene Tage). Ø kassiert = Sterne, die der Gegner im Schnitt auf dieser Basis geholt hat.</p></div>`;
+      <p class="legend">Einsätze = Tage in der Aufstellung. Verpasst = aufgestellt, aber nicht angegriffen (nur abgeschlossene Tage). Ø kassiert = Sterne, die der Gegner im Schnitt auf dieser Basis geholt hat.</p></div>` + bonusCard(c);
   }).join('');
+}
+
+// ---------- Angaben der Führung speichern (Bonus, freiwillige Aussetzer) ----------
+const SAVE_URL = 'https://clan-board-live.vercel.app/api/speichern';
+const fdClan = tag => (S.fd[tag] = S.fd[tag] || {});
+
+function applyBonus(tag, d){
+  const B = fdClan(tag);
+  B[d.season] = {anzahl: d.anzahl, verzicht: d.verzicht, bonus: d.bonus};
+  B[d.prev] = Object.assign({anzahl: null, verzicht: []}, B[d.prev], {bonus: d.prevBonus});
+}
+function applyVol(tag, key, tags){ const B = fdClan(tag); B.freiwillig = Object.assign({}, B.freiwillig, {[key]: tags}); }
+
+function pinField(form){
+  let saved = ''; try{ saved = localStorage.getItem('clanboard-pin') || ''; }catch(e){}
+  return saved ? '' : `<p><label>PIN: <input type="password" data-pin="${esc(form)}" value="${esc(S.pin[form] || '')}" style="width:140px" autocomplete="current-password"></label></p>`;
+}
+
+// Schickt die Angaben ab. apply() trägt sie bei Erfolg sofort lokal ein.
+async function postFd(form, body, apply){
+  let pin = (S.pin[form] || '').trim();
+  if(!pin){ try{ pin = localStorage.getItem('clanboard-pin') || ''; }catch(e){} }
+  if(!pin){ S.msg[form] = {err: true, text: 'Bitte PIN eingeben.'}; return render(); }
+  S.msg[form] = {text: 'Speichere …'}; render();
+  try{
+    const r = await fetch(SAVE_URL, {method: 'POST', headers: {'Content-Type': 'application/json'},
+                                     body: JSON.stringify(Object.assign({pin}, body))});
+    const j = await r.json().catch(() => ({}));
+    if(r.status === 403){ try{ localStorage.removeItem('clanboard-pin'); }catch(e){} }
+    if(!r.ok) throw new Error(j.error || ('Fehler ' + r.status));
+    try{ localStorage.setItem('clanboard-pin', pin); }catch(e){}
+    delete S.pin[form];
+    S.pending.push({at: Date.now(), apply});
+    apply();
+    delete S.edit[form];
+    S.msg[form] = {text: 'Gespeichert. Für alle anderen sichtbar in etwa 2 Minuten.'};
+  }catch(e){
+    S.msg[form] = {err: true, text: 'Nicht gespeichert: ' + e.message};
+  }
+  render();
+}
+
+const msgHtml = form => { const m = S.msg[form]; return m ? `<p class="${m.err ? 'err' : 'sieg'}" style="font-size:14px;font-weight:600">${esc(m.text)}</p>` : ''; };
+const btn = (act, form, label, first) => `<button class="reload" ${first ? 'style="margin:0"' : ''} data-act="${act}" data-form="${esc(form)}">${label}</button>`;
+
+function fdEvents(app){
+  app.onclick = e => {
+    const b = e.target.closest('[data-act]'); if(!b) return;
+    const form = b.dataset.form, act = b.dataset.act;
+    if(act === 'edit'){ S.edit[form] = S.forms[form](); delete S.msg[form]; render(); }
+    else if(act === 'cancel'){ delete S.edit[form]; delete S.msg[form]; render(); }
+    else if(act === 'save') S.saves[form]();
+  };
+  app.oninput = e => { const p = e.target.closest('[data-pin]'); if(p) S.pin[p.dataset.pin] = p.value; };
+  app.onchange = e => {
+    const el = e.target.closest('[data-f]'); if(!el) return;
+    const d = S.edit[el.dataset.form]; if(!d) return;
+    const f = el.dataset.f;
+    if(f === 'anzahl'){ const v = parseInt(el.value, 10); d.anzahl = Number.isInteger(v) && v >= 0 && v <= 50 ? v : null; return render(); }
+    const t = el.dataset.t;
+    d[f] = el.checked ? [...new Set([...d[f], t])] : d[f].filter(x => x !== t);
+    render();
+  };
+}
+
+// ---------- Bonus-Empfehlung ----------
+// Bewertet die ganze Ligawoche. Gewichte hier anpassen, wenn die Führung es anders will.
+const WB = {
+  stern: 10,          // je Stern in der Woche
+  prozent: 0.1,       // je Prozentpunkt Zerstörung in der Woche
+  gehalten: 3,        // je Stern, den der Gegner auf der eigenen Basis NICHT geholt hat
+  letzterBonus: 0.5,  // Faktor, wenn es letzte Saison schon einen Bonus gab
+  reserve: 3,         // so viele zusätzlich vorschlagen, falls jemand nicht will
+};
+const prevSeasonOf = s => { let [y,m] = s.split('-').map(Number); m--; if(!m){ m = 12; y--; } return y + '-' + String(m).padStart(2,'0'); };
+const monthDE = s => { const [y,m] = s.split('-'); return new Date(+y, +m-1, 1).toLocaleDateString('de-DE',{month:'long'}); };
+
+function bonusInfo(c){
+  const s = c.cwl, B = S.fd[c.tag] || {};
+  const prev = prevSeasonOf(s.season), cur = B[s.season] || {}, pb = B[prev] || {};
+  return {season: s.season, prev, anzahl: cur.anzahl ?? null,
+          verzicht: [...(cur.verzicht || [])], bonus: [...(cur.bonus || [])], prevBonus: [...(pb.bonus || [])]};
+}
+
+function bonusCalc(c, info){
+  const s = c.cwl;
+  const byTag = {}; s.players.forEach(p => byTag[p.tag] = p);
+  const roster = s.roster && s.roster.length ? s.roster : s.players;
+  const rows = roster.map(m => {
+    const p = byTag[m.tag] || {attacks:0, stars:0, pct:0, missed:0, defs:0, defStars:0};
+    const held = 3 * p.defs - p.defStars, why = [];
+    let out = null;
+    if(info.verzicht.includes(m.tag)) out = 'verzichtet diese Saison';
+    else if(p.missed) out = p.missed + '× Angriff vergessen';
+    else if(!p.attacks) out = 'noch kein Angriff';
+    let score = p.stars * WB.stern + p.pct * WB.prozent + held * WB.gehalten;
+    if(p.attacks) why.push(p.attacks + (p.attacks === 1 ? ' Angriff' : ' Angriffe') + ' · ' + p.stars + '★ · Ø ' + (p.pct / p.attacks).toFixed(0) + ' %');
+    if(p.defs) why.push(held + '★ gehalten');
+    if(info.prevBonus.includes(m.tag)){ score *= WB.letzterBonus; why.push('Bonus im ' + monthDE(info.prev) + ', halbiert'); }
+    return {tag: m.tag, name: m.name || p.name, score, out, why: why.join(' · '), got: info.bonus.includes(m.tag)};
+  });
+  return {roster,
+          ok: rows.filter(r => !r.out).sort((a,b) => b.score - a.score),
+          outs: rows.filter(r => r.out).sort((a,b) => b.score - a.score)};
+}
+
+function bonusCard(c){
+  if(!c.cwl || !c.cwl.players.length) return '';
+  const s = c.cwl, form = 'bonus' + c.tag;
+  S.forms[form] = () => bonusInfo(c);
+  S.saves[form] = () => { const d = S.edit[form];
+    postFd(form, {type: 'bonus', clan: c.tag, season: d.season, anzahl: d.anzahl, verzicht: d.verzicht,
+                  bonus: d.bonus, prevSeason: d.prev, prevBonus: d.prevBonus}, () => applyBonus(c.tag, d)); };
+  const edit = S.edit[form], info = edit || bonusInfo(c), {ok, outs, roster} = bonusCalc(c, info);
+  const done = s.rounds.length >= 7 && s.rounds.every(r => r.final);
+  const running = s.rounds.find(r => r.state === 'inWar');
+  const stand = done ? 'Ligawoche beendet.' : 'Zwischenstand' + (running ? ', Tag ' + running.day + ' läuft.' : ' nach ' + s.rounds.filter(r => r.final).length + ' von 7 Tagen.');
+  const n = info.anzahl;
+  const show = n == null ? ok : ok.slice(0, n + WB.reserve);
+  const mark = (r,i) => r.got ? '<span class="pill ok">erhalten</span>'
+    : n == null ? '' : i < n ? '<span class="pill">Bonus</span>' : '<span class="pill">Reserve</span>';
+  const list = show.length
+    ? `<ul class="list">${show.map((r,i) => `<li><span>${i+1}. <b>${esc(r.name)}</b><br><span class="muted">${esc(r.why)}</span></span><span>${Math.round(r.score)} Pkt. ${mark(r,i)}</span></li>`).join('')}</ul>`
+    : '<p class="muted">Noch niemand mit Angriff in dieser Woche.</p>';
+  const outList = outs.length
+    ? `<details style="margin-top:8px"><summary>Nicht berücksichtigt (${outs.length})</summary><ul class="list">${outs.map(r => `<li><span><b>${esc(r.name)}</b></span><span class="muted">${esc(r.out)}</span></li>`).join('')}</ul></details>` : '';
+  const head = `<p class="muted" style="margin-top:-4px">${stand} ` + (n == null
+    ? 'Anzahl der Boni noch nicht eingetragen, deshalb alle in Reihenfolge.</p>'
+    : `<b>${n} Boni</b>, dazu ${WB.reserve} in Reserve.</p>`);
+  let body = `<p style="margin-top:10px">${btn('edit', form, 'Bonus-Angaben bearbeiten', true)}</p>`;
+  if(edit){
+    const cb = (f, tag) => `<input type="checkbox" data-f="${f}" data-form="${esc(form)}" data-t="${esc(tag)}" ${info[f].includes(tag) ? 'checked' : ''}>`;
+    body = `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
+      <p><label>Anzahl Boni (steht im Spiel beim Verteilen): <input type="number" min="0" max="50" style="width:70px" data-f="anzahl" data-form="${esc(form)}" value="${n ?? ''}"></label></p>
+      ${pinField(form)}
+      <div class="table-wrap"><table><thead><tr><th>Spieler</th><th>Will keinen Bonus</th><th>Bonus ${monthDE(info.season)}</th><th>Bonus ${monthDE(info.prev)}</th></tr></thead><tbody class="fdedit">
+      ${roster.map(m => `<tr><td><span class="name">${esc(m.name)}</span></td><td>${cb('verzicht', m.tag)}</td><td>${cb('bonus', m.tag)}</td><td>${cb('prevBonus', m.tag)}</td></tr>`).join('')}
+      </tbody></table></div>
+      <p style="margin-top:10px">${btn('save', form, 'Speichern', true)} ${btn('cancel', form, 'Abbrechen')}</p></div>`;
+  }
+  return `<div class="card"><h2>Bonus-Empfehlung ${esc(c.name)} (Liga ${monthDE(s.season)})</h2>
+    ${head}${list}${outList}${msgHtml(form)}${body}
+    <p class="legend">Bewertet wird die ganze Ligawoche: je Stern ${WB.stern}, je Prozent Zerstörung ${WB.prozent}, je gehaltenem Stern auf der eigenen Basis ${WB.gehalten}. Wer letzte Saison einen Bonus bekam, bekommt die Hälfte der Punkte. Wer einen Angriff vergessen hat, keinen Angriff hatte oder verzichtet, fällt raus. Die Empfehlung ist ein Vorschlag, die Entscheidung trifft die Führung.</p></div>`;
 }
 
 function gamesList(){
@@ -481,7 +659,8 @@ function render(){
   const th = app.querySelector('thead');
   if(th) th.onclick = e => { const h=e.target.closest('th'); if(!h) return; const k=h.dataset.k;
     S.sort = S.sort.key===k ? {key:k,dir:-S.sort.dir} : {key:k,dir:(k==='name'?1:-1)}; save(); render(); };
-  const tb = app.querySelector('tbody');
+  fdEvents(app);
+  const tb = app.querySelector('tbody:not(.fdedit)');
   if(tb) tb.onclick = e => { const tr=e.target.closest('tr'); if(tr) detail(tr.dataset.tag, tr.dataset.clan); };
   const q = app.querySelector('#q');
   if(q) q.oninput = () => { S.q=q.value; const pos=q.selectionStart; render(); const n=document.getElementById('q'); n.focus(); n.setSelectionRange(pos,pos); };
@@ -523,13 +702,17 @@ async function load(force){
   const btn = document.getElementById('reload');
   btn.disabled = true; btn.textContent = 'Lädt …';
   try{
-    const [r, lr] = await Promise.all([
+    const [r, br, lr] = await Promise.all([
       fetch('data/board.json?t=' + Date.now(), {cache:'no-store'}),
+      fetch('data/fuehrung.json?t=' + Date.now(), {cache:'no-store'}).then(x => x.ok ? x.json() : {}).catch(() => ({})),
       fetch(force ? LIVE_URL + '?t=' + Date.now() : LIVE_URL, force ? {cache:'no-store'} : {}).then(x => x.ok ? x.json() : null).catch(() => null),
     ]);
     if(!r.ok) throw new Error(r.status);
     S.data = await r.json();
     live = lr;
+    S.fd = br || {};
+    S.pending = S.pending.filter(p => Date.now() - p.at < 10*60*1000);
+    S.pending.forEach(p => p.apply());
     if(live && live.clans) mergeLive(live);
     if(S.clan!=='alle' && !S.data.clans[S.clan]) S.clan = 0;
     const hist = 'Verlauf ' + fmtT(S.data.generated) + ' (' + ago(S.data.generated) + ')';

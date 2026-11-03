@@ -16,3 +16,11 @@ Clans ändern: `config.json`.
 **Schlüssel erneuern:** an ZWEI Stellen tauschen: GitHub-Secret `COC_API_TOKEN` und Vercel-Umgebungsvariable `COC_API_TOKEN` (danach `npx vercel deploy --prod` in `live-api/`).
 
 **Absicherung Zeitplan:** GitHubs Zeitplan startet unzuverlässig. Die Live-Funktion stößt deshalb beim Seitenaufruf den Abruf an, wenn der letzte älter als 30 Minuten ist. Dafür liegt bei Vercel `GH_DISPATCH_TOKEN` (Fine-grained Token „Clan-Board-Ausloeser“, nur dieses Repo, nur Actions).
+
+## Angaben der Führung (Bonus, freiwillige Aussetzer)
+
+Im Liga-Tab kann die Führung mit PIN eintragen: Anzahl Boni, wer verzichtet, wer einen Bonus bekam (aktuelle und letzte Saison) und freiwillige Aussetzer für den nächsten Liga-Tag bzw. Krieg.
+
+Ablauf: Seite → Vercel `api/speichern` (prüft PIN `BONUS_PIN`) → startet Workflow `speichern.yml` → `scripts/speichern.py` schreibt `data/fuehrung.json` → nach ca. 2 Minuten für alle sichtbar.
+
+**PIN ändern:** Vercel, Projekt `clan-board-live`, Settings, Environment Variables, `BONUS_PIN`. Danach `npx vercel deploy --prod` in `live-api/`.
