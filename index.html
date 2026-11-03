@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ü40 Pur Clan-Board</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath d=%27M16 2l12 6v8c0 7-5 12-12 14C9 28 4 23 4 16V8z%27 fill=%27%23b5651d%27/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f4f1ea;--card:#fffdf8;--ink:#1f1d1a;--mut:#6d675e;--line:#e3ddd1;
+  --acc:#b5651d;--acc2:#2f5d8a;--ok:#2e7d4f;--warn:#c58a00;--bad:#b23a2e;--chip:#efe9dd;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#15171b;--card:#1d2026;--ink:#ece8e1;--mut:#9a958c;--line:#2d313a;
+  --acc:#e0913f;--acc2:#6fa3d6;--ok:#4fb47a;--warn:#e2b23c;--bad:#e0675a;--chip:#272b33;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+header{padding:18px 16px 8px;max-width:1200px;margin:0 auto}
+h1{margin:0;font-size:22px;letter-spacing:.2px}
+h2{font-size:17px;margin:0 0 10px}
+.sub{color:var(--mut);font-size:13px}
+main{max-width:1200px;margin:0 auto;padding:0 16px 40px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 12px;border-radius:999px;font:inherit;cursor:pointer}
+.tabs button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.kpi b{display:block;font-size:20px}
+.kpi span{color:var(--mut);font-size:12px}
+.clanhead{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.clanhead img{width:52px;height:52px}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap;text-align:right}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--card);z-index:1}
+thead th{position:sticky;top:0;background:var(--chip);cursor:pointer;font-size:12px;text-transform:uppercase;letter-spacing:.3px;color:var(--mut);user-select:none}
+thead th:first-child{z-index:2;background:var(--chip)}
+thead th.sorted{color:var(--ink)}
+tbody tr{cursor:pointer}
+tbody tr:hover td{background:var(--chip)}
+.name{font-weight:600}
+.role{font-size:11px;color:var(--mut);margin-left:4px}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:middle}
+.g{background:var(--ok)}.y{background:var(--warn)}.r{background:var(--bad)}.n{background:var(--line)}
+.raiddots span{display:inline-block;width:9px;height:9px;border-radius:2px;margin-left:2px}
+.pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;background:var(--chip)}
+.sieg{color:var(--ok)}.niederlage{color:var(--bad)}.unentschieden{color:var(--warn)}
+.list{margin:0;padding:0;list-style:none}
+.list li{padding:8px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.list li:last-child{border-bottom:0}
+.muted{color:var(--mut)}
+.open-attacks{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.open-attacks span{background:var(--chip);border-radius:6px;padding:3px 8px;font-size:13px}
+.warbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.score{font-size:26px;font-weight:700}
+.legend{font-size:12px;color:var(--mut);margin-top:8px}
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);max-width:520px;width:calc(100% - 32px);padding:18px}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog h3{margin:0 0 4px}
+.dl{display:grid;grid-template-columns:1fr auto;gap:4px 12px;font-size:14px;margin-top:10px}
+.dl span:nth-child(odd){color:var(--mut)}
+.close{float:right;border:0;background:none;color:var(--mut);font-size:22px;cursor:pointer}
+.err{color:var(--bad)}
+input[type=search]{width:100%;max-width:280px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;margin-bottom:10px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Ü40 Pur Clan-Board</h1>
+  <div class="sub" id="updated">Lade Daten …</div>
+  <div class="tabs" id="clanTabs"></div>
+</header>
+<main id="app"></main>
+<dialog id="dlg"></dialog>
+
+<script>
+const S = {data:null, clan:0, view:'mitglieder', sort:{key:'missed',dir:-1}, q:''};
+const ROLE = {leader:'Anführer', coLeader:'Vize', admin:'Ältester', member:''};
+const fmtN = n => n==null ? '–' : Number(n).toLocaleString('de-DE');
+const pct = (a,b) => b ? Math.round(a/b*100) : null;
+const esc = s => String(s??'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function parseT(s){
+  if(!s) return null;
+  if(/^\d{8}T/.test(s)) s = s.replace(/^(\d{4})(\d\d)(\d\d)T(\d\d)(\d\d)(\d\d).*$/, '$1-$2-$3T$4:$5:$6Z');
+  return new Date(s);
+}
+function ago(s){
+  const d = parseT(s); if(!d) return '–';
+  const m = (Date.now()-d)/60000;
+  if(m < 60) return 'vor ' + Math.max(1,Math.round(m)) + ' Min.';
+  if(m < 1440) return 'vor ' + Math.round(m/60) + ' Std.';
+  return 'vor ' + Math.round(m/1440) + ' Tg.';
+}
+function until(s){
+  const d = parseT(s); if(!d) return '';
+  const m = (d-Date.now())/60000;
+  if(m <= 0) return 'beendet';
+  const h = Math.floor(m/60), mm = Math.floor(m%60);
+  return h ? `noch ${h} Std. ${mm} Min.` : `noch ${mm} Min.`;
+}
+function dateDE(s){ const d=parseT(s); return d ? d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'2-digit'}) : '–'; }
+
+function ampel(w){
+  if(!w || !w.recentWars) return {c:'n', t:'noch keine abgeschlossenen Kriege erfasst'};
+  if(w.recentMissed === 0) return {c:'g', t:'kein Angriff vergessen'};
+  if(w.recentMissed <= 2) return {c:'y', t:w.recentMissed+' Angriff(e) vergessen'};
+  return {c:'r', t:w.recentMissed+' Angriffe vergessen'};
+}
+
+function rows(){
+  const d = S.data; if(!d) return [];
+  const clans = S.clan === 'alle' ? d.clans : [d.clans[S.clan]];
+  let out = [];
+  clans.forEach(c => c.memberList.forEach(m => {
+    const w = m.war || {};
+    out.push(Object.assign({}, m, {
+      clanName: c.name,
+      missed: w.recentMissed ?? -1,
+      usage: pct(w.attacks||0, w.possible||0),
+      avgStars: w.attacks ? w.stars/w.attacks : null,
+      triple: pct(w.triples||0, w.attacks||0),
+      ratio: m.received ? m.donations/m.received : (m.donations ? 99 : null),
+      raidAtt: m.raids.reduce((a,r)=>a+r.attacks,0),
+      activeTs: m.lastActive ? parseT(m.lastActive).getTime() : 0,
+      joinTs: m.joinedAt ? parseT(m.joinedAt).getTime() : 0,
+    }));
+  }));
+  if(S.q){ const q=S.q.toLowerCase(); out = out.filter(r => r.name.toLowerCase().includes(q) || r.tag.toLowerCase().includes(q)); }
+  const k = S.sort.key, dir = S.sort.dir;
+  out.sort((a,b) => {
+    let x=a[k], y=b[k];
+    if(typeof x === 'string' || typeof y === 'string') return dir * String(x??'').localeCompare(String(y??''),'de');
+    x = x ?? -Infinity; y = y ?? -Infinity;
+    return dir * (x - y);
+  });
+  return out;
+}
+
+function renderTabs(){
+  const t = document.getElementById('clanTabs');
+  const btns = S.data.clans.map((c,i) => `<button data-clan="${i}" class="${S.clan===i?'on':''}">${esc(c.name||c.tag)}</button>`);
+  btns.push(`<button data-clan="alle" class="${S.clan==='alle'?'on':''}">Beide Clans</button>`);
+  t.innerHTML = btns.join('');
+  t.onclick = e => { const b=e.target.closest('button'); if(!b) return; S.clan = b.dataset.clan==='alle'?'alle':+b.dataset.clan; save(); render(); };
+}
+
+function clanHead(c){
+  const games = c.memberList.reduce((a,m)=>a+(m.games||0),0);
+  return `<div class="card">
+    <div class="clanhead">${c.badge?`<img src="${esc(c.badge)}" alt="">`:''}
+      <div><h2 style="margin:0">${esc(c.name)} <span class="muted" style="font-weight:400;font-size:13px">${esc(c.tag)}</span></h2>
+      <div class="sub">Level ${fmtN(c.level)} · ${esc(c.warLeague||'')} · Clanstadt ${esc(c.capitalLeague||'')}</div></div></div>
+    <div class="grid">
+      <div class="kpi"><b>${fmtN(c.members)}/50</b><span>Mitglieder</span></div>
+      <div class="kpi"><b>${fmtN(c.warWins)}</b><span>Kriegssiege${c.warLosses!=null?` · ${fmtN(c.warLosses)} Niederl.`:''}</span></div>
+      <div class="kpi"><b>${fmtN(c.warWinStreak)}</b><span>Siegesserie</span></div>
+      <div class="kpi"><b>${fmtN(c.points)}</b><span>Clanpunkte</span></div>
+      <div class="kpi"><b>${fmtN(games)}</b><span>Clanspiele (Monat)</span></div>
+    </div>
+    ${c.isWarLogPublic===false?'<p class="err">Kriegsprotokoll ist privat. In den Clan-Einstellungen auf öffentlich stellen, sonst fehlen Kriegsdaten.</p>':''}
+  </div>`;
+}
+
+function liveWar(c){
+  const w = c.currentWar;
+  if(!w) return `<div class="card"><h2>Aktueller Krieg</h2><span class="muted">Gerade kein Krieg.</span></div>`;
+  const label = {preparation:'Vorbereitung', inWar:'Kampftag läuft', warEnded:'Beendet'}[w.state] || w.state;
+  const open = (w.members||[]).filter(m => m.attacks.length < w.apm).sort((a,b)=>a.pos-b.pos);
+  const time = w.state==='preparation' ? 'Start ' + until(w.start).replace('noch ','in ') : until(w.end);
+  return `<div class="card"><h2>${w.kind==='cwl'?'Clankriegsliga':'Clankrieg'}: ${label}</h2>
+    <div class="warbar"><span class="score">${w.us.stars} : ${w.opponent.stars}</span>
+      <span>gegen <b>${esc(w.opponent.name)}</b><br><span class="muted">${w.us.pct.toFixed(1)} % : ${w.opponent.pct.toFixed(1)} % · ${w.teamSize} gegen ${w.teamSize} · ${time}</span></span></div>
+    ${w.state!=='preparation' ? `<div style="margin-top:10px"><b>${open.length? 'Noch Angriffe offen ('+open.length+')':'Alle haben angegriffen'}</b>
+      <div class="open-attacks">${open.map(m=>`<span>${m.pos}. ${esc(m.name)} · RH${m.th} · ${w.apm-m.attacks.length} offen</span>`).join('')}</div></div>` : ''}
+  </div>`;
+}
+
+const COLS = [
+  ['name','Spieler'],['missed','Ampel'],['th','RH'],['usage','Angriffe genutzt'],['avgStars','Ø Sterne'],
+  ['triple','3-Sterne-Quote'],['donations','Gespendet'],['received','Erhalten'],['ratio','Quote'],
+  ['raidAtt','Clanstadt (4 Wo.)'],['games','Clanspiele'],['activeTs','Zuletzt aktiv'],['joinTs','Im Clan seit'],
+];
+
+function memberTable(){
+  const rs = rows();
+  const multi = S.clan === 'alle';
+  const head = COLS.map(([k,l]) => `<th data-k="${k}" class="${S.sort.key===k?'sorted':''}">${l}${S.sort.key===k?(S.sort.dir>0?' ▲':' ▼'):''}</th>`).join('');
+  const body = rs.map(r => {
+    const a = ampel(r.war);
+    const raid = r.raids.map(x => {
+      const c = x.attacks>=x.limit ? 'g' : x.attacks>0 ? 'y' : (x.state==='ongoing' ? 'n' : 'r');
+      return `<span class="${c}" title="${dateDE(x.start)}: ${x.attacks}/${x.limit}"></span>`;
+    }).join('');
+    return `<tr data-tag="${esc(r.tag)}" data-clan="${esc(r.clanName)}">
+      <td><span class="name">${esc(r.name)}</span><span class="role">${ROLE[r.role]||''}</span>${multi?`<div class="muted" style="font-size:11px">${esc(r.clanName)}</div>`:''}</td>
+      <td title="${esc(a.t)}"><span class="dot ${a.c}"></span> ${r.war&&r.war.recentWars?r.war.recentMissed:''}</td>
+      <td>${r.th??'–'}</td>
+      <td>${r.usage==null?'–':r.usage+' %'}</td>
+      <td>${r.avgStars==null?'–':r.avgStars.toFixed(2)}</td>
+      <td>${r.triple==null?'–':r.triple+' %'}</td>
+      <td>${fmtN(r.donations)}</td><td>${fmtN(r.received)}</td>
+      <td>${r.ratio==null?'–':(r.ratio>=99?'∞':r.ratio.toFixed(2))}</td>
+      <td class="raiddots">${r.raidAtt} ${raid}</td>
+      <td>${r.games==null?'–':fmtN(r.games)}</td>
+      <td>${r.lastActive?ago(r.lastActive):'<span class="muted">noch offen</span>'}</td>
+      <td>${dateDE(r.joinedAt)}</td>
+    </tr>`;
+  }).join('');
+  return `<div class="card"><input type="search" placeholder="Spieler suchen" value="${esc(S.q)}" id="q">
+    <div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
+    <div class="legend">Ampel = vergessene Kriegsangriffe in den letzten 10 abgeschlossenen Kriegen (grün 0, gelb 1–2, rot ab 3). Grau = noch keine Daten.
+    Spenden zählen seit Saisonbeginn. „Zuletzt aktiv“ leitet sich aus Änderungen am Spielerprofil ab (Spenden, Siege, Upgrades, Erfolge), die API liefert keinen Online-Status. Spaltenkopf antippen zum Sortieren, Zeile antippen für Details.</div></div>`;
+}
+
+function warList(){
+  const clans = S.clan==='alle' ? S.data.clans : [S.data.clans[S.clan]];
+  return clans.map(c => `<div class="card"><h2>Kriege ${esc(c.name)}</h2>${
+    c.wars.length ? `<ul class="list">${c.wars.map(w => `<li><span>
+      <b class="${w.result}">${{sieg:'Sieg',niederlage:'Niederlage',unentschieden:'Unentschieden',offen:'läuft'}[w.result]}</b>
+      ${w.kind==='cwl'?'<span class="pill">Liga</span>':''} gegen ${esc(w.opponent.name)}<br>
+      <span class="muted">${dateDE(w.end)} · ${w.us.stars}:${w.opponent.stars} Sterne · ${w.teamSize} gegen ${w.teamSize}</span></span>
+      <span class="muted" style="text-align:right">${w.final ? (w.missed.length ? 'Vergessen: '+w.missed.map(m=>esc(m.name)+(m.missed>1?' ('+m.missed+')':'')).join(', ') : 'Keiner vergessen') : ''}</span></li>`).join('')}</ul>`
+    : '<span class="muted">Noch keine Kriege erfasst. Die Aufzeichnung beginnt mit dem ersten Abruf.</span>'}</div>`).join('');
+}
+
+function raidList(){
+  const clans = S.clan==='alle' ? S.data.clans : [S.data.clans[S.clan]];
+  return clans.map(c => `<div class="card"><h2>Clanstadt ${esc(c.name)}</h2>${
+    c.raids.length ? `<ul class="list">${c.raids.map(r => `<li><span><b>${dateDE(r.startTime)} bis ${dateDE(r.endTime)}</b> ${r.state==='ongoing'?'<span class="pill">läuft</span>':''}<br>
+      <span class="muted">${fmtN(r.capitalTotalLoot)} Hauptstadtgold · ${fmtN(r.totalAttacks)} Angriffe · ${r.participants} Teilnehmer</span></span>
+      <span class="muted">${r.offensiveReward!=null?'Raidmedaillen '+fmtN(r.offensiveReward+r.defensiveReward):''}</span></li>`).join('')}</ul>
+      <p class="legend">Wer am Wochenende nicht angegriffen hat, erscheint in der Mitgliedertabelle als rotes Kästchen.</p>`
+    : '<span class="muted">Noch keine Raid-Wochenenden erfasst.</span>'}</div>`).join('');
+}
+
+function gamesList(){
+  const rs = rows().filter(r => r.games!=null).sort((a,b)=>b.games-a.games);
+  return `<div class="card"><h2>Clanspiele diesen Monat</h2>${rs.length?`<ul class="list">${rs.map((r,i)=>`<li><span>${i+1}. <b>${esc(r.name)}</b>${S.clan==='alle'?' <span class="muted">'+esc(r.clanName)+'</span>':''}</span><span>${fmtN(r.games)} Punkte</span></li>`).join('')}</ul>`
+    :'<span class="muted">Die Clanspiele laufen vom 22. bis 28. des Monats. Punkte werden ab dem ersten Abruf im Zeitraum gezählt.</span>'}</div>`;
+}
+
+function logText(l){
+  const n = `<b>${esc(l.name)}</b>`, rl = r => ROLE[r] || 'Mitglied';
+  switch(l.type){
+    case 'join': return `<span class="sieg">beigetreten</span> ${n}`;
+    case 'leave': return `<span class="niederlage">ausgetreten</span> ${n}`;
+    case 'role': return `${n}: ${rl(l.from)} → <b>${rl(l.to)}</b>`;
+    case 'name': return `${esc(l.from)} heißt jetzt ${n}`;
+    case 'th': return `${n}: Rathaus ${l.from} → <b>${l.to}</b>`;
+    case 'warPref': return `${n}: Kriegsbereitschaft ${l.to==='in'?'<span class="sieg">an</span>':'<span class="niederlage">aus</span>'}`;
+  }
+  return n;
+}
+
+function logList(){
+  const clans = S.clan==='alle' ? S.data.clans : [S.data.clans[S.clan]];
+  return clans.map(c => `<div class="card"><h2>Protokoll ${esc(c.name)}</h2>${
+    c.log.length ? `<ul class="list">${c.log.map(l=>`<li><span>${logText(l)} <span class="muted">RH${l.th??'?'}</span></span><span class="muted">${dateDE(l.time)}</span></li>`).join('')}</ul>`
+    : '<span class="muted">Noch nichts.</span>'}</div>`).join('');
+}
+
+function detail(tag, clanName){
+  const c = S.data.clans.find(c => c.name===clanName) || S.data.clans[0];
+  const m = c.memberList.find(m => m.tag===tag); if(!m) return;
+  const w = m.war||{}, p = m.profile||{};
+  const heroes = Object.entries(p.heroes||{}).map(([k,v])=>`<span>${esc(k)}</span><span>${v}</span>`).join('');
+  const dlg = document.getElementById('dlg');
+  dlg.innerHTML = `<button class="close" aria-label="Schließen">×</button>
+    <h3>${esc(m.name)}</h3><div class="sub">${esc(m.tag)} · ${ROLE[m.role]||'Mitglied'} · ${esc(c.name)}</div>
+    <div class="dl">
+      <span>Rathaus</span><span>${m.th}</span>
+      <span>Erfahrungslevel</span><span>${m.exp}</span>
+      <span>Trophäen / Liga</span><span>${fmtN(m.trophies)} · ${esc(m.league||'')}</span>
+      <span>Kriegsbereitschaft</span><span>${p.warPreference==='in'?'dabei':p.warPreference==='out'?'ausgesetzt':'–'}</span>
+      <span>Kriegssterne gesamt</span><span>${fmtN(p.warStars)}</span>
+      <span>Erfasste Kriege</span><span>${w.wars||0} (davon Liga ${w.cwlWars||0})</span>
+      <span>Angriffe vergessen gesamt</span><span>${w.missed||0}${w.lastMissed?' · zuletzt '+dateDE(w.lastMissed):''}</span>
+      <span>3 Sterne gegen gleiches RH</span><span>${w.sameThAttacks? pct(w.sameThTriples,w.sameThAttacks)+' % ('+w.sameThTriples+'/'+w.sameThAttacks+')':'–'}</span>
+      <span>Ø Zerstörung</span><span>${w.attacks?(w.pct/w.attacks).toFixed(1)+' %':'–'}</span>
+      <span>Angriffssiege (Saison)</span><span>${fmtN(p.attackWins)}</span>
+      <span>Hauptstadtgold gespendet</span><span>${fmtN(p.capitalContrib)}</span>
+      <span>Spenden Vorsaison</span><span>${m.donationsPrev?fmtN(m.donationsPrev[0].d)+' / '+fmtN(m.donationsPrev[0].r):'–'}</span>
+      <span>Im Clan seit</span><span>${dateDE(m.joinedAt)}${m.joins>1?' ('+m.joins+'. Beitritt)':''}</span>
+      <span>Zuletzt aktiv</span><span>${m.lastActive?ago(m.lastActive):'noch offen'}</span>
+      ${heroes}
+    </div>`;
+  dlg.querySelector('.close').onclick = () => dlg.close();
+  dlg.showModal();
+}
+
+function render(){
+  renderTabs();
+  const app = document.getElementById('app');
+  let html = '';
+  if(S.clan !== 'alle'){ const c=S.data.clans[S.clan]; html += clanHead(c) + liveWar(c); }
+  else html += S.data.clans.map(liveWar).join('');
+  const views = [['mitglieder','Mitglieder'],['kriege','Kriege'],['clanstadt','Clanstadt'],['clanspiele','Clanspiele'],['log','Protokoll']];
+  html += `<div class="tabs" id="viewTabs">${views.map(([k,l])=>`<button data-v="${k}" class="${S.view===k?'on':''}">${l}</button>`).join('')}</div>`;
+  html += {mitglieder:memberTable, kriege:warList, clanstadt:raidList, clanspiele:gamesList, log:logList}[S.view]();
+  app.innerHTML = html;
+  app.querySelector('#viewTabs').onclick = e => { const b=e.target.closest('button'); if(!b) return; S.view=b.dataset.v; save(); render(); };
+  const th = app.querySelector('thead');
+  if(th) th.onclick = e => { const h=e.target.closest('th'); if(!h) return; const k=h.dataset.k;
+    S.sort = S.sort.key===k ? {key:k,dir:-S.sort.dir} : {key:k,dir:(k==='name'?1:-1)}; save(); render(); };
+  const tb = app.querySelector('tbody');
+  if(tb) tb.onclick = e => { const tr=e.target.closest('tr'); if(tr) detail(tr.dataset.tag, tr.dataset.clan); };
+  const q = app.querySelector('#q');
+  if(q) q.oninput = () => { S.q=q.value; const pos=q.selectionStart; render(); const n=document.getElementById('q'); n.focus(); n.setSelectionRange(pos,pos); };
+}
+
+function save(){ try{ localStorage.setItem('clanboard', JSON.stringify({clan:S.clan, view:S.view, sort:S.sort})); }catch(e){} }
+function restore(){ try{ Object.assign(S, JSON.parse(localStorage.getItem('clanboard')||'{}')); }catch(e){} }
+
+async function load(){
+  try{
+    const r = await fetch('data/board.json?t=' + Date.now(), {cache:'no-store'});
+    if(!r.ok) throw new Error(r.status);
+    S.data = await r.json();
+    if(S.clan!=='alle' && !S.data.clans[S.clan]) S.clan = 0;
+    document.getElementById('updated').textContent = 'Stand: ' + parseT(S.data.generated).toLocaleString('de-DE',{dateStyle:'medium',timeStyle:'short'}) + ' (' + ago(S.data.generated) + ') · aktualisiert sich alle 30 Minuten';
+    render();
+  }catch(e){
+    document.getElementById('updated').innerHTML = '<span class="err">Daten konnten nicht geladen werden.</span>';
+  }
+}
+restore(); load(); setInterval(load, 5*60*1000);
+</script>
+</body>
+</html>
