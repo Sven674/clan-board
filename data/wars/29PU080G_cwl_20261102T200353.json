@@ -3,7 +3,7 @@
  "endTime": "20261104T200345.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-03T13:48:56Z",
+ "lastSeen": "2026-11-03T15:11:43Z",
  "members": [
   {
    "attacks": [],
@@ -80,14 +80,6 @@
   {
    "attacks": [],
    "defenses": [],
-   "name": "grautvornixe",
-   "pos": 19,
-   "tag": "#PRRQ29JP",
-   "th": 18
-  },
-  {
-   "attacks": [],
-   "defenses": [],
    "name": "Sir COColores",
    "pos": 8,
    "tag": "#YVCLP0RJ",
@@ -123,6 +115,14 @@
    "name": "Captain Future",
    "pos": 15,
    "tag": "#8PGGGL2U8",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "hulk",
+   "pos": 10,
+   "tag": "#GRJU2J92",
    "th": 18
   }
  ],

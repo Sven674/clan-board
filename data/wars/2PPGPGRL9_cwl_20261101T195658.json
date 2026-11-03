@@ -3,7 +3,7 @@
  "endTime": "20261103T195655.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-03T13:48:56Z",
+ "lastSeen": "2026-11-03T15:11:43Z",
  "members": [
   {
    "attacks": [
@@ -81,7 +81,13 @@
      "stars": 1
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Schlumpfmausi",
    "pos": 12,
    "tag": "#LG09VQ8J",
@@ -251,7 +257,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 86,
+     "stars": 2
+    }
+   ],
    "name": "Zucker",
    "pos": 10,
    "tag": "#2CY2GL9J",
@@ -299,8 +311,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/G7Ud6mE6f9yBGsuWQwjTjlUwmLttz3s8O03YTu5QUhE.png",
   "name": "Esprit Clash",
-  "pct": 61.46666666666667,
-  "stars": 24,
+  "pct": 73.86666666666666,
+  "stars": 29,
   "tag": "#8J2VQLPU"
  },
  "preparationStartTime": "20261101T195658.000Z",
