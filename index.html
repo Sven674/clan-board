@@ -54,6 +54,13 @@ tbody tr.openrow:hover td{background:var(--openbg);filter:brightness(.97)}
 .pill.ok{background:var(--ok);color:#fff}.pill.bad{background:var(--bad);color:#fff}
 .reload{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:4px 12px;margin-left:8px;cursor:pointer}
 .reload:disabled{opacity:.6}
+.reload.act{font-size:16px;padding:11px 20px;min-height:46px;margin:4px 8px 4px 0}
+input[data-f][type=checkbox]{width:26px;height:26px;vertical-align:middle;cursor:pointer}
+input[data-f][type=number],input[data-pin]{font:inherit;font-size:17px;padding:9px 12px;min-height:46px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+input[data-f][type=number]{width:90px!important}
+input[data-pin]{width:200px!important}
+.volgrid label{display:flex;align-items:center;gap:10px;padding:8px 4px;font-size:16px;cursor:pointer}
+.fdedit td{padding-top:10px;padding-bottom:10px}
 .sieg{color:var(--ok)}.niederlage{color:var(--bad)}.unentschieden{color:var(--warn)}
 .list{margin:0;padding:0;list-style:none}
 .list li{padding:8px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
@@ -378,7 +385,7 @@ function volForm(opt, rows){
   return `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
     <p class="muted">Wer setzt für ${esc(opt.label)} freiwillig aus?</p>
     ${pinField(form)}
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:4px 12px">
+    <div class="volgrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:2px 12px">
     ${names.map(r => `<label><input type="checkbox" data-f="tags" data-form="${esc(form)}" data-t="${esc(r.tag)}" ${edit.tags.includes(r.tag) ? 'checked' : ''}> ${esc(r.name)}</label>`).join('')}
     </div>${msgHtml(form)}
     <p style="margin-top:10px">${btn('save', form, 'Speichern', true)} ${btn('cancel', form, 'Abbrechen')}</p></div>`;
@@ -486,7 +493,7 @@ async function postFd(form, body, apply){
 }
 
 const msgHtml = form => { const m = S.msg[form]; return m ? `<p class="${m.err ? 'err' : 'sieg'}" style="font-size:14px;font-weight:600">${esc(m.text)}</p>` : ''; };
-const btn = (act, form, label, first) => `<button class="reload" ${first ? 'style="margin:0"' : ''} data-act="${act}" data-form="${esc(form)}">${label}</button>`;
+const btn = (act, form, label) => `<button class="reload act" data-act="${act}" data-form="${esc(form)}">${label}</button>`;
 
 function fdEvents(app){
   app.onclick = e => {
