@@ -113,6 +113,14 @@ def compact_war(war, clan_tag, kind, war_tag=None):
         us, them = war["opponent"], war["clan"]
     opp_th = {m["tag"]: m.get("townhallLevel") for m in them.get("members", [])}
     opp_pos = {m["tag"]: m.get("mapPosition") for m in them.get("members", [])}
+    # Verteidigungen: Angriffe des Gegners auf unsere Spieler
+    defenses = {}
+    for om in them.get("members", []):
+        for a in om.get("attacks", []) or []:
+            defenses.setdefault(a.get("defenderTag"), []).append({
+                "stars": a.get("stars", 0), "pct": a.get("destructionPercentage", 0),
+                "attTh": om.get("townhallLevel"),
+            })
     members = []
     for m in us.get("members", []):
         attacks = []
@@ -127,6 +135,7 @@ def compact_war(war, clan_tag, kind, war_tag=None):
         members.append({
             "tag": m["tag"], "name": m.get("name"), "th": m.get("townhallLevel"),
             "pos": m.get("mapPosition"), "attacks": attacks,
+            "defenses": defenses.get(m["tag"], []),
         })
     rec = {
         "kind": kind,
@@ -190,7 +199,7 @@ def fetch_wars(clan_tag, fetched_at):
 # ---------------------------------------------------------------- Clanstadt
 
 def fetch_raids(clan_tag):
-    res = api("/clans/%s/capitalraidseasons?limit=3" % enc(clan_tag))
+    res = api("/clans/%s/capitalraidseasons?limit=10" % enc(clan_tag))
     if not res or "_error" in res:
         return
     for season in res.get("items", []):
@@ -211,7 +220,13 @@ def fetch_raids(clan_tag):
             } for m in season.get("members", []) or []],
         }
         key = "%s_%s" % (safe(clan_tag), (season.get("startTime") or "x")[:15])
-        write_json(os.path.join(DATA, "raids", key + ".json"), rec, pretty=True)
+        path = os.path.join(DATA, "raids", key + ".json")
+        # Die API liefert die Spielerliste nur fürs letzte Wochenende:
+        # eine gespeicherte Liste nie durch eine leere ersetzen
+        old = read_json(path, None)
+        if not rec["members"] and old and old.get("members"):
+            rec["members"] = old["members"]
+        write_json(path, rec, pretty=True)
 
 
 # ---------------------------------------------------------------- Mitglieder
@@ -279,7 +294,20 @@ def update_members(clan, state, fetched_at):
                 "legend": (p.get("legendStatistics") or {}).get("legendTrophies"),
                 "builderTrophies": p.get("builderBaseTrophies"),
                 "gamesTotal": games_total,
+                "boosts": [x["name"] for x in p.get("troops", []) or []
+                           if x.get("superTroopIsActive")],
             }
+            # Hauptstadtgold je Raid-Woche (Freitag 07:00 UTC bis Freitag)
+            wk_start = (fetched_at - timedelta(days=(fetched_at.weekday() - 4) % 7)).replace(
+                hour=7, minute=0, second=0, microsecond=0)
+            if fetched_at < wk_start:
+                wk_start -= timedelta(days=7)
+            cap = t.setdefault("capital", {})
+            ck = wk_start.strftime("%Y-%m-%d")
+            cw = cap.setdefault(ck, {"base": p.get("clanCapitalContributions", 0)})
+            cw["gold"] = p.get("clanCapitalContributions", 0) - cw["base"]
+            for k in sorted(cap)[:-6]:
+                del cap[k]
             # Clanspiele: Startwert beim ersten Abruf im Zeitfenster merken
             games = t.setdefault("games", {})
             if in_games:
@@ -355,7 +383,13 @@ def war_member_stats(wars, recent_n):
                 "pct": 0.0, "recentMissed": 0, "recentWars": 0, "possible": 0,
                 "cwlWars": 0, "cwlStars": 0, "cwlMissed": 0, "sameThTriples": 0,
                 "sameThAttacks": 0, "lastMissed": None,
+                "defs": 0, "defStars": 0, "defTriples": 0,
             })
+            for dfn in m.get("defenses", []):
+                s["defs"] += 1
+                s["defStars"] += dfn["stars"]
+                if dfn["stars"] == 3:
+                    s["defTriples"] += 1
             used = len(m["attacks"])
             missed = max(0, apm - used)
             s["wars"] += 1
@@ -384,6 +418,50 @@ def war_member_stats(wars, recent_n):
     return stats
 
 
+def latest_capital_gold(t):
+    cap = t.get("capital") or {}
+    return cap[max(cap)].get("gold") if cap else None
+
+
+def cwl_season(wars):
+    """Auswertung der neuesten Ligasaison: Tage und Spieler."""
+    cwl = [w for w in wars if w.get("kind") == "cwl" and w.get("preparationStartTime")]
+    if not cwl:
+        return None
+    season = max(w["preparationStartTime"][:6] for w in cwl)
+    days = sorted([w for w in cwl if w["preparationStartTime"][:6] == season],
+                  key=lambda w: w["preparationStartTime"])
+    players = {}
+    rounds = []
+    for i, w in enumerate(days, 1):
+        a, b = w["us"], w["opponent"]
+        res = "offen"
+        if w.get("final"):
+            res = "sieg" if (a["stars"], a["pct"]) > (b["stars"], b["pct"]) else (
+                "niederlage" if (a["stars"], a["pct"]) < (b["stars"], b["pct"]) else "unentschieden")
+        rounds.append({"day": i, "state": w["state"], "result": res, "opponent": b["name"],
+                       "us": a["stars"], "them": b["stars"], "usPct": a["pct"], "themPct": b["pct"]})
+        for m in w["members"]:
+            p = players.setdefault(m["tag"], {"tag": m["tag"], "name": m["name"], "th": m.get("th"),
+                                              "lineup": 0, "attacks": 0, "stars": 0, "pct": 0.0,
+                                              "triples": 0, "missed": 0, "defStars": 0, "defs": 0})
+            p["name"] = m["name"]
+            p["lineup"] += 1
+            for at in m["attacks"]:
+                p["attacks"] += 1
+                p["stars"] += at["stars"]
+                p["pct"] += at["pct"]
+                if at["stars"] == 3:
+                    p["triples"] += 1
+            if w.get("final") and not m["attacks"]:
+                p["missed"] += 1
+            for dfn in m.get("defenses", []):
+                p["defs"] += 1
+                p["defStars"] += dfn["stars"]
+    ranking = sorted(players.values(), key=lambda p: (-p["stars"], -p["pct"]))
+    return {"season": season[:4] + "-" + season[4:6], "rounds": rounds, "players": ranking}
+
+
 def build_board(state, live, fetched_at):
     board = {"generated": iso(fetched_at), "clans": []}
     for clan_tag in CONFIG["clans"]:
@@ -392,7 +470,9 @@ def build_board(state, live, fetched_at):
         wars = load_records("wars", clan_tag)
         raids = load_records("raids", clan_tag)
         ws = war_member_stats(wars, CONFIG.get("recent_wars", 10))
-        raids_sorted = sorted(raids, key=lambda r: r.get("startTime") or "")[-4:]
+        raids_all = sorted(raids, key=lambda r: r.get("startTime") or "")
+        # für die Spielerwerte nur Wochenenden mit bekannter Teilnehmerliste
+        raids_sorted = [r for r in raids_all if r.get("members")][-4:]
         gs_key = fetched_at.strftime("%Y-%m")
 
         members = []
@@ -427,6 +507,8 @@ def build_board(state, live, fetched_at):
                 "raids": raid_hist,
                 "games": games.get(gs_key, {}).get("points"),
                 "gamesHistory": {k: v.get("points") for k, v in games.items()},
+                "capitalWeek": latest_capital_gold(t),
+                "boosts": (t.get("profile") or {}).get("boosts", []),
             })
 
         def war_summary(w):
@@ -476,7 +558,9 @@ def build_board(state, live, fetched_at):
             "raids": [dict({k: r.get(k) for k in (
                 "startTime", "endTime", "state", "capitalTotalLoot", "raidsCompleted",
                 "totalAttacks", "offensiveReward", "defensiveReward")},
-                participants=len(r["members"])) for r in raids_sorted][::-1],
+                participants=len(r["members"]),
+                members=sorted(r["members"], key=lambda x: -x["loot"])) for r in raids_all][::-1],
+            "cwl": cwl_season(wars),
             "log": cs.get("log", [])[-60:][::-1],
         })
     return board

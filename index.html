@@ -68,6 +68,8 @@ dialog h3{margin:0 0 4px}
 .dl span:nth-child(odd){color:var(--mut)}
 .close{float:right;border:0;background:none;color:var(--mut);font-size:22px;cursor:pointer}
 .err{color:var(--bad)}
+.thdist{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;align-items:center;font-size:13px}
+details summary{cursor:pointer;list-style-position:outside}
 input[type=search]{width:100%;max-width:280px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;margin-bottom:10px}
 </style>
 </head>
@@ -131,6 +133,8 @@ function rows(){
       usage: pct(w.attacks||0, w.possible||0),
       avgStars: w.attacks ? w.stars/w.attacks : null,
       triple: pct(w.triples||0, w.attacks||0),
+      defAvg: w.defs ? w.defStars/w.defs : null,
+      boostsN: (m.boosts||[]).length,
       ratio: m.received ? m.donations/m.received : (m.donations ? 99 : null),
       raidAtt: m.raids.reduce((a,r)=>a+r.attacks,0),
       activeTs: m.lastActive ? parseT(m.lastActive).getTime() : 0,
@@ -157,6 +161,11 @@ function renderTabs(){
   t.onclick = e => { const b=e.target.closest('button'); if(!b) return; S.clan = b.dataset.clan==='alle'?'alle':+b.dataset.clan; save(); render(); };
 }
 
+function thDist(list){
+  const n = {}; list.forEach(m => { if(m.th) n[m.th] = (n[m.th]||0) + 1; });
+  return Object.keys(n).sort((a,b)=>b-a).map(t => `<span class="pill">RH${t}: ${n[t]}</span>`).join(' ');
+}
+
 function clanHead(c){
   const games = c.memberList.reduce((a,m)=>a+(m.games||0),0);
   return `<div class="card">
@@ -170,6 +179,7 @@ function clanHead(c){
       <div class="kpi"><b>${fmtN(c.points)}</b><span>Clanpunkte</span></div>
       <div class="kpi"><b>${fmtN(games)}</b><span>Clanspiele (Monat)</span></div>
     </div>
+    <div class="thdist"><span class="muted">Rathäuser:</span> ${thDist(c.memberList)}</div>
     ${c.isWarLogPublic===false?'<p class="err">Kriegsprotokoll ist privat. In den Clan-Einstellungen auf öffentlich stellen, sonst fehlen Kriegsdaten.</p>':''}
   </div>`;
 }
@@ -190,8 +200,8 @@ function liveWar(c){
 
 const COLS = [
   ['name','Spieler'],['missed','Ampel'],['th','RH'],['usage','Angriffe genutzt'],['avgStars','Ø Sterne'],
-  ['triple','3-Sterne-Quote'],['donations','Gespendet'],['received','Erhalten'],['ratio','Quote'],
-  ['raidAtt','Clanstadt (4 Wo.)'],['games','Clanspiele'],['activeTs','Zuletzt aktiv'],['joinTs','Im Clan seit'],
+  ['triple','3-Sterne-Quote'],['defAvg','Ø Sterne kassiert'],['donations','Gespendet'],['received','Erhalten'],['ratio','Quote'],
+  ['raidAtt','Clanstadt (4 Wo.)'],['games','Clanspiele'],['boostsN','Supertruppen'],['activeTs','Zuletzt aktiv'],['joinTs','Im Clan seit'],
 ];
 
 function memberTable(){
@@ -211,17 +221,19 @@ function memberTable(){
       <td>${r.usage==null?'–':r.usage+' %'}</td>
       <td>${r.avgStars==null?'–':r.avgStars.toFixed(2)}</td>
       <td>${r.triple==null?'–':r.triple+' %'}</td>
+      <td title="${r.war&&r.war.defs?r.war.defs+' Verteidigungen, '+r.war.defTriples+'x 3 Sterne kassiert':''}">${r.defAvg==null?'–':r.defAvg.toFixed(2)}</td>
       <td>${fmtN(r.donations)}</td><td>${fmtN(r.received)}</td>
       <td>${r.ratio==null?'–':(r.ratio>=99?'∞':r.ratio.toFixed(2))}</td>
       <td class="raiddots">${r.raidAtt} ${raid}</td>
       <td>${r.games==null?'–':fmtN(r.games)}</td>
+      <td style="text-align:left;font-size:12px">${(r.boosts||[]).map(esc).join(', ')||'<span class="muted">–</span>'}</td>
       <td>${r.lastActive?ago(r.lastActive):'<span class="muted">noch offen</span>'}</td>
       <td>${dateDE(r.joinedAt)}</td>
     </tr>`;
   }).join('');
   return `<div class="card"><input type="search" placeholder="Spieler suchen" value="${esc(S.q)}" id="q">
     <div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
-    <div class="legend">Orange hinterlegt = hat im laufenden Krieg noch Angriffe offen. Ampel =vergessene Kriegsangriffe in den letzten 10 abgeschlossenen Kriegen (grün 0, gelb 1–2, rot ab 3). Grau = noch keine Daten.
+    <div class="legend">Orange hinterlegt = hat im laufenden Krieg noch Angriffe offen. Ampel = vergessene Kriegsangriffe in den letzten 10 abgeschlossenen Kriegen (grün 0, gelb 1–2, rot ab 3). Grau = noch keine Daten.
     Spenden zählen seit Saisonbeginn. „Zuletzt aktiv“ leitet sich aus Änderungen am Spielerprofil ab (Spenden, Siege, Upgrades, Erfolge), die API liefert keinen Online-Status. Spaltenkopf antippen zum Sortieren, Zeile antippen für Details.</div></div>`;
 }
 
@@ -238,12 +250,52 @@ function warList(){
 
 function raidList(){
   const clans = S.clan==='alle' ? S.data.clans : [S.data.clans[S.clan]];
-  return clans.map(c => `<div class="card"><h2>Clanstadt ${esc(c.name)}</h2>${
-    c.raids.length ? `<ul class="list">${c.raids.map(r => `<li><span><b>${dateDE(r.startTime)} bis ${dateDE(r.endTime)}</b> ${r.state==='ongoing'?'<span class="pill">läuft</span>':''}<br>
-      <span class="muted">${fmtN(r.capitalTotalLoot)} Hauptstadtgold · ${fmtN(r.totalAttacks)} Angriffe · ${r.participants} Teilnehmer</span></span>
-      <span class="muted">${r.offensiveReward!=null?'Raidmedaillen '+fmtN(r.offensiveReward+r.defensiveReward):''}</span></li>`).join('')}</ul>
-      <p class="legend">Wer am Wochenende nicht angegriffen hat, erscheint in der Mitgliedertabelle als rotes Kästchen.</p>`
-    : '<span class="muted">Noch keine Raid-Wochenenden erfasst.</span>'}</div>`).join('');
+  return clans.map(c => {
+    const inClan = new Set(c.memberList.map(m => m.tag));
+    const gold = c.memberList.filter(m => m.capitalWeek).sort((a,b) => b.capitalWeek - a.capitalWeek);
+    const weekends = c.raids.length ? `<ul class="list">${c.raids.map(r => {
+      const head = `<b>${dateDE(r.startTime)} bis ${dateDE(r.endTime)}</b> ${r.state==='ongoing'?'<span class="pill">läuft</span>':''}
+        <span class="muted"> · ${fmtN(r.capitalTotalLoot)} Gold · ${fmtN(r.totalAttacks)} Angriffe${r.participants?' · '+r.participants+' Teilnehmer':''}${r.offensiveReward!=null?' · '+fmtN(r.offensiveReward+r.defensiveReward)+' Raidmedaillen':''}</span>`;
+      if(!r.participants) return `<li style="display:block">${head}<div class="legend">Keine Spielerliste: Die API liefert sie nur fürs jeweils letzte Wochenende.</div></li>`;
+      const missing = c.memberList.filter(m => !(r.members||[]).some(x => x.tag === m.tag));
+      return `<li style="display:block"><details><summary>${head}</summary>
+        <div class="table-wrap" style="margin-top:8px"><table><thead><tr><th>Spieler</th><th>Angriffe</th><th>Erbeutet</th><th>Ø je Angriff</th></tr></thead><tbody>
+        ${(r.members||[]).map(x => `<tr><td>${esc(x.name)}${inClan.has(x.tag)?'':' <span class="muted">(nicht mehr im Clan)</span>'}</td><td>${x.attacks}/${x.limit}</td><td>${fmtN(x.loot)}</td><td>${x.attacks?fmtN(Math.round(x.loot/x.attacks)):'–'}</td></tr>`).join('')}
+        </tbody></table></div>
+        ${missing.length?`<p class="legend">Nicht teilgenommen (heute im Clan): ${missing.map(m=>esc(m.name)).join(', ')}</p>`:''}
+      </details></li>`;
+    }).join('')}</ul>` : '<span class="muted">Noch keine Raid-Wochenenden erfasst.</span>';
+    return `<div class="card"><h2>Clanstadt ${esc(c.name)}</h2>${weekends}
+      <p class="legend">Wochenende antippen für die Spielerliste. „Nicht teilgenommen“ bezieht sich auf die heutigen Mitglieder, wer damals noch nicht im Clan war, steht also auch dort.</p></div>
+      <div class="card"><h2>Hauptstadtgold gespendet diese Woche</h2>${gold.length
+        ? `<ul class="list">${gold.map((m,i)=>`<li><span>${i+1}. <b>${esc(m.name)}</b></span><span>${fmtN(m.capitalWeek)}</span></li>`).join('')}</ul>`
+        : '<span class="muted">Diese Woche noch keine Spenden erfasst. Gezählt wird ab dem ersten Abruf der Woche (Freitag).</span>'}</div>`;
+  }).join('');
+}
+
+function cwlView(){
+  const clans = S.clan==='alle' ? S.data.clans : [S.data.clans[S.clan]];
+  const resTxt = {sieg:'Sieg', niederlage:'Niederlage', unentschieden:'Unentschieden', offen:'läuft'};
+  return clans.map(c => {
+    const s = c.cwl;
+    if(!s) return `<div class="card"><h2>Clankriegsliga ${esc(c.name)}</h2><span class="muted">Noch keine Ligasaison erfasst. Die Liga läuft jeweils in der ersten Woche des Monats.</span></div>`;
+    const [y,mo] = s.season.split('-');
+    const monat = new Date(+y, +mo-1, 1).toLocaleDateString('de-DE',{month:'long', year:'numeric'});
+    const days = `<ul class="list">${s.rounds.map(r => `<li><span><b>Tag ${r.day}</b> gegen ${esc(r.opponent)}<br><span class="muted">${r.state==='preparation'?'Vorbereitung':r.us+' : '+r.them+' Sterne · '+r.usPct.toFixed(1)+' % : '+r.themPct.toFixed(1)+' %'}</span></span>
+      <b class="${r.result}">${r.state==='preparation'?'':resTxt[r.result]}</b></li>`).join('')}</ul>`;
+    const rows = s.players.map((p,i) => `<tr>
+      <td>${i+1}. <span class="name">${esc(p.name)}</span> <span class="role">RH${p.th??'?'}</span></td>
+      <td>${p.lineup}</td><td>${p.attacks}</td><td><b>${p.stars}</b></td>
+      <td>${p.attacks?(p.stars/p.attacks).toFixed(2):'–'}</td>
+      <td>${p.attacks?(p.pct/p.attacks).toFixed(0)+' %':'–'}</td>
+      <td>${p.triples}</td>
+      <td>${p.missed?`<span class="niederlage">${p.missed}</span>`:'0'}</td>
+      <td>${p.defs?(p.defStars/p.defs).toFixed(2):'–'}</td></tr>`).join('');
+    return `<div class="card"><h2>Clankriegsliga ${esc(c.name)}: ${monat}</h2>${days}</div>
+      <div class="card"><h2>Rangliste Liga ${esc(c.name)}</h2>
+      <div class="table-wrap"><table><thead><tr><th>Spieler</th><th>Einsätze</th><th>Angriffe</th><th>Sterne</th><th>Ø Sterne</th><th>Ø Zerstörung</th><th>3 Sterne</th><th>Verpasst</th><th>Ø kassiert</th></tr></thead><tbody>${rows}</tbody></table></div>
+      <p class="legend">Einsätze = Tage in der Aufstellung. Verpasst = aufgestellt, aber nicht angegriffen (nur abgeschlossene Tage). Ø kassiert = Sterne, die der Gegner im Schnitt auf dieser Basis geholt hat.</p></div>`;
+  }).join('');
 }
 
 function gamesList(){
@@ -291,7 +343,9 @@ function detail(tag, clanName){
       <span>3 Sterne gegen gleiches RH</span><span>${w.sameThAttacks? pct(w.sameThTriples,w.sameThAttacks)+' % ('+w.sameThTriples+'/'+w.sameThAttacks+')':'–'}</span>
       <span>Ø Zerstörung</span><span>${w.attacks?(w.pct/w.attacks).toFixed(1)+' %':'–'}</span>
       <span>Angriffssiege (Saison)</span><span>${fmtN(p.attackWins)}</span>
-      <span>Hauptstadtgold gespendet</span><span>${fmtN(p.capitalContrib)}</span>
+      <span>Verteidigungen im Krieg</span><span>${w.defs? w.defs+' · Ø '+(w.defStars/w.defs).toFixed(2)+' Sterne kassiert':'–'}</span>
+      <span>Hauptstadtgold gespendet</span><span>${fmtN(p.capitalContrib)}${m.capitalWeek?' · diese Woche '+fmtN(m.capitalWeek):''}</span>
+      <span>Aktive Supertruppen</span><span>${(m.boosts||[]).map(esc).join(', ')||'–'}</span>
       <span>Spenden Vorsaison</span><span>${m.donationsPrev?fmtN(m.donationsPrev[0].d)+' / '+fmtN(m.donationsPrev[0].r):'–'}</span>
       <span>Im Clan seit</span><span>${dateDE(m.joinedAt)}${m.joins>1?' ('+m.joins+'. Beitritt)':''}</span>
       <span>Zuletzt aktiv</span><span>${m.lastActive?ago(m.lastActive):'noch offen'}</span>
@@ -307,9 +361,9 @@ function render(){
   let html = '';
   if(S.clan !== 'alle'){ const c=S.data.clans[S.clan]; html += clanHead(c) + liveWar(c); }
   else html += S.data.clans.map(liveWar).join('');
-  const views = [['mitglieder','Mitglieder'],['kriege','Kriege'],['clanstadt','Clanstadt'],['clanspiele','Clanspiele'],['log','Protokoll']];
+  const views = [['mitglieder','Mitglieder'],['kriege','Kriege'],['liga','Liga'],['clanstadt','Clanstadt'],['clanspiele','Clanspiele'],['log','Protokoll']];
   html += `<div class="tabs" id="viewTabs">${views.map(([k,l])=>`<button data-v="${k}" class="${S.view===k?'on':''}">${l}</button>`).join('')}</div>`;
-  html += {mitglieder:memberTable, kriege:warList, clanstadt:raidList, clanspiele:gamesList, log:logList}[S.view]();
+  html += {mitglieder:memberTable, kriege:warList, liga:cwlView, clanstadt:raidList, clanspiele:gamesList, log:logList}[S.view]();
   app.innerHTML = html;
   app.querySelector('#viewTabs').onclick = e => { const b=e.target.closest('button'); if(!b) return; S.view=b.dataset.v; save(); render(); };
   const th = app.querySelector('thead');
