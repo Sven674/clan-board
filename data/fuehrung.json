@@ -1,6 +1,11 @@
 {
  "#29PU080G": {
-  "erledigt": {},
+  "erledigt": {
+   "liga:2026-11:2": {
+    "by": "#200PCP8QQ",
+    "at": "2026-11-03T13:26:14Z"
+   }
+  },
   "2026-11": {
    "anzahl": null,
    "verzicht": [],
