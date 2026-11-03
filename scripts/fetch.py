@@ -423,7 +423,7 @@ def latest_capital_gold(t):
     return cap[max(cap)].get("gold") if cap else None
 
 
-def cwl_season(wars):
+def cwl_season(wars, roster=None):
     """Auswertung der neuesten Ligasaison: Tage und Spieler."""
     cwl = [w for w in wars if w.get("kind") == "cwl" and w.get("preparationStartTime")]
     if not cwl:
@@ -440,7 +440,10 @@ def cwl_season(wars):
             res = "sieg" if (a["stars"], a["pct"]) > (b["stars"], b["pct"]) else (
                 "niederlage" if (a["stars"], a["pct"]) < (b["stars"], b["pct"]) else "unentschieden")
         rounds.append({"day": i, "state": w["state"], "result": res, "opponent": b["name"],
-                       "us": a["stars"], "them": b["stars"], "usPct": a["pct"], "themPct": b["pct"]})
+                       "us": a["stars"], "them": b["stars"], "usPct": a["pct"], "themPct": b["pct"],
+                       "final": bool(w.get("final")), "teamSize": w.get("teamSize"),
+                       "apm": w.get("attacksPerMember") or 1,
+                       "lineup": lineup_detail(w)})
         for m in w["members"]:
             p = players.setdefault(m["tag"], {"tag": m["tag"], "name": m["name"], "th": m.get("th"),
                                               "lineup": 0, "attacks": 0, "stars": 0, "pct": 0.0,
@@ -459,7 +462,35 @@ def cwl_season(wars):
                 p["defs"] += 1
                 p["defStars"] += dfn["stars"]
     ranking = sorted(players.values(), key=lambda p: (-p["stars"], -p["pct"]))
-    return {"season": season[:4] + "-" + season[4:6], "rounds": rounds, "players": ranking}
+    out = {"season": season[:4] + "-" + season[4:6], "rounds": rounds, "players": ranking,
+           "roster": None}
+    if roster and roster.get("season", "")[:7].replace("-", "") == season:
+        out["roster"] = roster["members"]
+    return out
+
+
+def lineup_detail(w):
+    """Pro aufgestelltem Spieler: Angriffe [Sterne, %] und beste gegnerische Attacke auf ihn."""
+    out = {}
+    for m in w["members"]:
+        defs = m.get("defenses", [])
+        best = max(defs, key=lambda d: (d["stars"], d["pct"])) if defs else None
+        out[m["tag"]] = {
+            "name": m["name"],
+            "att": [[a["stars"], a["pct"]] for a in m["attacks"]],
+            "def": [best["stars"], best["pct"]] if best else None,
+        }
+    return out
+
+
+def regular_rounds(wars, n=6):
+    """Die letzten normalen Kriege im selben Format wie die Liga-Tage."""
+    reg = sorted([w for w in wars if w.get("kind") == "regular" and w.get("preparationStartTime")],
+                 key=lambda w: w["preparationStartTime"])[-n:]
+    return [{"day": i, "state": w["state"], "final": bool(w.get("final")),
+             "teamSize": w.get("teamSize"), "apm": w.get("attacksPerMember") or 2,
+             "opponent": w["opponent"]["name"], "end": w.get("endTime"),
+             "lineup": lineup_detail(w)} for i, w in enumerate(reg, 1)]
 
 
 def build_board(state, live, fetched_at):
@@ -560,7 +591,8 @@ def build_board(state, live, fetched_at):
                 "totalAttacks", "offensiveReward", "defensiveReward")},
                 participants=len(r["members"]),
                 members=sorted(r["members"], key=lambda x: -x["loot"])) for r in raids_all][::-1],
-            "cwl": cwl_season(wars),
+            "cwl": cwl_season(wars, state.get("cwlRoster", {}).get(clan_tag)),
+            "regularRounds": regular_rounds(wars),
             "log": cs.get("log", [])[-60:][::-1],
         })
     return board
@@ -579,7 +611,16 @@ def main():
             sys.exit("Clan %s nicht abrufbar: %s" % (clan_tag, info))
         state.setdefault("info", {})[clan_tag] = {k: v for k, v in info.items() if k != "memberList"}
         update_members(info, state, fetched_at)
-        current, cwl, _ = fetch_wars(clan_tag, fetched_at)
+        current, cwl, group = fetch_wars(clan_tag, fetched_at)
+        # angemeldete Liga-Teilnehmer der Saison merken
+        if group and group.get("season"):
+            ours = next((c for c in group.get("clans", []) if c.get("tag") == clan_tag), None)
+            if ours:
+                state.setdefault("cwlRoster", {})[clan_tag] = {
+                    "season": group["season"],
+                    "members": [{"tag": m["tag"], "name": m.get("name"), "th": m.get("townHallLevel")}
+                                for m in ours.get("members", [])],
+                }
         fetch_raids(clan_tag)
         live[clan_tag] = {"info": info, "current": current, "cwl": cwl}
         print("%s: %d Mitglieder, Krieg: %s, CWL: %s" % (

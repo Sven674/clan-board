@@ -237,9 +237,16 @@ function memberTable(){
     Spenden zählen seit Saisonbeginn. „Zuletzt aktiv“ leitet sich aus Änderungen am Spielerprofil ab (Spenden, Siege, Upgrades, Erfolge), die API liefert keinen Online-Status. Spaltenkopf antippen zum Sortieren, Zeile antippen für Details.</div></div>`;
 }
 
+function regularBench(c){
+  const rr = c.regularRounds || [];
+  const roster = c.memberList.filter(m => (m.profile||{}).warPreference === 'in').map(m => ({tag:m.tag, name:m.name}));
+  const lastSize = (rr.filter(r => r.state !== 'preparation').slice(-1)[0] || {}).teamSize;
+  return benchCard(`Aussetz-Empfehlung ${esc(c.name)} für den nächsten Krieg`, benchCalc(rr, roster, lastSize), 'Krieg');
+}
+
 function warList(){
   const clans = S.clan==='alle' ? S.data.clans : [S.data.clans[S.clan]];
-  return clans.map(c => `<div class="card"><h2>Kriege ${esc(c.name)}</h2>${
+  return clans.map(c => regularBench(c) + `<div class="card"><h2>Kriege ${esc(c.name)}</h2>${
     c.wars.length ? `<ul class="list">${c.wars.map(w => `<li><span>
       <b class="${w.result}">${{sieg:'Sieg',niederlage:'Niederlage',unentschieden:'Unentschieden',offen:'läuft'}[w.result]}</b>
       ${w.kind==='cwl'?'<span class="pill">Liga</span>':''} gegen ${esc(w.opponent.name)}<br>
@@ -273,6 +280,84 @@ function raidList(){
   }).join('');
 }
 
+// ---------- Aussetz-Empfehlung ----------
+// Gewichte: mehr Punkte = eher aussetzen. Hier anpassen, wenn die Führung es anders will.
+const W = {
+  sternFehlt: 20,     // je Stern, der beim letzten Angriff gefehlt hat
+  prozentFehlt: 0.2,  // je Prozentpunkt unter 100 beim letzten Angriff
+  vergessen: 100,     // je vergessenem Angriff im letzten Einsatz
+  sternKassiert: 10,  // je Stern, den der Gegner zuletzt auf dieser Basis geholt hat
+  prozentKassiert: 0.1, // je Prozentpunkt Zerstörung auf dieser Basis
+  schonAusgesetzt: 60, // Abzug je Tag/Krieg, an dem schon ausgesetzt wurde
+};
+
+function benchCalc(rounds, roster, teamSize){
+  const target = rounds.find(r => r.state === 'preparation');
+  const past = rounds.filter(r => r.state !== 'preparation');
+  if(!past.length || !roster.length || !teamSize) return null;
+  const rows = roster.map(p => {
+    let played = 0, sat = 0, last = null, lastDef = null;
+    past.forEach(r => { if(r.lineup[p.tag]) played++; else sat++; });
+    for(let i = past.length - 1; i >= 0; i--){
+      const r = past[i], l = r.lineup[p.tag];
+      if(!l) continue;
+      if(!last && (l.att.length || r.final)) last = {r, l};
+      if(!lastDef && l.def) lastDef = {r, l};
+      if(last && lastDef) break;
+    }
+    let score = 0; const why = [];
+    if(last){
+      const apm = last.r.apm || 1;
+      const missed = last.r.final ? Math.max(0, apm - last.l.att.length) : 0;
+      if(missed){ score += missed * W.vergessen; why.push(missed + '× vergessen'); }
+      if(last.l.att.length){
+        const s = last.l.att.reduce((a,x)=>a+x[0],0) / last.l.att.length;
+        const pc = last.l.att.reduce((a,x)=>a+x[1],0) / last.l.att.length;
+        score += (3 - s) * W.sternFehlt + (100 - pc) * W.prozentFehlt;
+        why.push(last.l.att.map(x => x[0] + '★ ' + x[1] + ' %').join(', '));
+      }
+    } else why.push('noch kein Angriff');
+    if(lastDef){
+      const [ds, dp] = lastDef.l.def;
+      score += ds * W.sternKassiert + dp * W.prozentKassiert;
+      why.push(ds === 3 ? 'gedreiert' : 'Verteidigung ' + ds + '★ ' + dp + ' %');
+    }
+    if(sat){ score -= sat * W.schonAusgesetzt; why.push(sat + '× ausgesetzt'); }
+    else why.push('noch nie ausgesetzt');
+    return {tag: p.tag, name: p.name, score, played, sat, why: why.join(' · '),
+            lastAtt: last && last.l.att.length ? last.l.att : null,
+            lastDef: lastDef ? lastDef.l.def : null,
+            inTarget: target ? !!target.lineup[p.tag] : null};
+  });
+  rows.sort((a,b) => b.score - a.score || b.played - a.played);
+  const bench = Math.max(0, roster.length - teamSize);
+  rows.forEach((r,i) => r.sit = i < bench);
+  return {rows, bench, teamSize, total: roster.length, target, nextNo: (target ? target.day : past.length + 1)};
+}
+
+function benchCard(title, calc, unit){
+  if(!calc) return `<div class="card"><h2>${title}</h2><span class="muted">Noch zu wenig Daten. Die Empfehlung erscheint, sobald der erste ${unit} gelaufen ist.</span></div>`;
+  const sit = calc.rows.filter(r => r.sit);
+  const clash = calc.target ? sit.filter(r => r.inTarget) : [];
+  const list = calc.bench === 0
+    ? '<p>Alle können spielen, es muss niemand aussetzen.</p>'
+    : `<ul class="list">${sit.map(r => `<li><span><b>${esc(r.name)}</b><br><span class="muted">${esc(r.why)}</span></span><span>${Math.round(r.score)} Pkt.${r.inTarget?' <span class="pill niederlage">ist aufgestellt</span>':''}</span></li>`).join('')}</ul>`;
+  const table = calc.rows.map((r,i) => `<tr class="${r.sit?'openrow':''}">
+    <td>${i+1}. <span class="name">${esc(r.name)}</span></td>
+    <td><b>${Math.round(r.score)}</b></td>
+    <td>${r.lastAtt ? r.lastAtt.map(x => x[0]+'★ '+x[1]+' %').join(', ') : '–'}</td>
+    <td>${r.lastDef ? r.lastDef[0]+'★ '+r.lastDef[1]+' %' : '–'}</td>
+    <td>${r.played}</td><td>${r.sat}</td>
+    ${calc.target ? `<td>${r.inTarget ? 'ja' : 'nein'}</td>` : ''}</tr>`).join('');
+  return `<div class="card"><h2>${title}</h2>
+    <p class="muted" style="margin-top:-4px">${calc.total} Teilnehmer, ${calc.teamSize} spielen: <b>${calc.bench} setzen aus</b></p>
+    ${list}
+    ${clash.length ? `<p class="err" style="font-size:14px">${clash.length} der Empfohlenen ${clash.length===1?'ist':'sind'} im Spiel schon für ${unit} ${calc.nextNo} aufgestellt.</p>` : ''}
+    <details style="margin-top:8px"><summary>Alle Spieler mit Punkten anzeigen</summary>
+    <div class="table-wrap" style="margin-top:8px"><table><thead><tr><th>Spieler</th><th>Punkte</th><th>Letzter Angriff</th><th>Letzte Verteidigung</th><th>Gespielt</th><th>Ausgesetzt</th>${calc.target?'<th>Aufgestellt</th>':''}</tr></thead><tbody>${table}</tbody></table></div></details>
+    <p class="legend">Mehr Punkte = eher aussetzen. Je fehlender Stern ${W.sternFehlt}, je fehlendes Prozent ${W.prozentFehlt}, vergessener Angriff ${W.vergessen}, je kassierter Stern auf der eigenen Basis ${W.sternKassiert}, je kassiertes Prozent ${W.prozentKassiert}, minus ${W.schonAusgesetzt} je Mal schon ausgesetzt. Gewertet wird jeweils der letzte Angriff und die stärkste gegnerische Attacke im letzten Einsatz. Die Empfehlung ist ein Vorschlag, die Entscheidung trifft die Führung.</p></div>`;
+}
+
 function cwlView(){
   const clans = S.clan==='alle' ? S.data.clans : [S.data.clans[S.clan]];
   const resTxt = {sieg:'Sieg', niederlage:'Niederlage', unentschieden:'Unentschieden', offen:'läuft'};
@@ -291,7 +376,12 @@ function cwlView(){
       <td>${p.triples}</td>
       <td>${p.missed?`<span class="niederlage">${p.missed}</span>`:'0'}</td>
       <td>${p.defs?(p.defStars/p.defs).toFixed(2):'–'}</td></tr>`).join('');
-    return `<div class="card"><h2>Clankriegsliga ${esc(c.name)}: ${monat}</h2>${days}</div>
+    const teamSize = (s.rounds[s.rounds.length-1] || {}).teamSize;
+    const calc = s.rounds.length >= 7 && s.rounds.every(r => r.final) ? null : benchCalc(s.rounds, s.roster || [], teamSize);
+    const rec = s.rounds.length >= 7 && s.rounds.every(r => r.final)
+      ? `<div class="card"><h2>Aussetz-Empfehlung</h2><span class="muted">Die Ligawoche ist vorbei.</span></div>`
+      : (s.roster ? benchCard(`Aussetz-Empfehlung ${esc(c.name)} für Liga-Tag ${calc ? calc.nextNo : ''}`, calc, 'Tag') : '');
+    return rec + `<div class="card"><h2>Clankriegsliga ${esc(c.name)}: ${monat}</h2>${days}</div>
       <div class="card"><h2>Rangliste Liga ${esc(c.name)}</h2>
       <div class="table-wrap"><table><thead><tr><th>Spieler</th><th>Einsätze</th><th>Angriffe</th><th>Sterne</th><th>Ø Sterne</th><th>Ø Zerstörung</th><th>3 Sterne</th><th>Verpasst</th><th>Ø kassiert</th></tr></thead><tbody>${rows}</tbody></table></div>
       <p class="legend">Einsätze = Tage in der Aufstellung. Verpasst = aufgestellt, aber nicht angegriffen (nur abgeschlossene Tage). Ø kassiert = Sterne, die der Gegner im Schnitt auf dieser Basis geholt hat.</p></div>`;
