@@ -3,11 +3,17 @@
  "endTime": "20261104T195705.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-03T21:56:21Z",
+ "lastSeen": "2026-11-03T22:56:36Z",
  "members": [
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 98,
+     "stars": 2
+    }
+   ],
    "name": "✨Yvonne✨",
    "pos": 8,
    "tag": "#GCRY9CGU",
@@ -15,7 +21,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 92,
+     "stars": 2
+    }
+   ],
    "name": "HaraldKehl",
    "pos": 13,
    "tag": "#QJG9CR0Q",
@@ -121,7 +133,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 90,
+     "stars": 2
+    }
+   ],
    "name": "Simone",
    "pos": 9,
    "tag": "#UGYG0PY9",
@@ -137,7 +155,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 73,
+     "stars": 1
+    }
+   ],
    "name": "LEGENDE",
    "pos": 21,
    "tag": "#P8Q89LYQ9",
@@ -161,7 +185,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "mini1000000",
    "pos": 7,
    "tag": "#LQ0YCGLL2",
@@ -183,7 +213,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 69,
+     "stars": 2
+    }
+   ],
    "name": "Mone",
    "pos": 15,
    "tag": "#L09Y0G0G9",
@@ -193,8 +229,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/VRfG7PZkPDzBdV3tw9l4EkAdmQPYdywBkeC7lvgpHzI.png",
   "name": "شام العز",
-  "pct": 24.2,
-  "stars": 10,
+  "pct": 59.0,
+  "stars": 22,
   "tag": "#J99G00LL"
  },
  "preparationStartTime": "20261102T195706.000Z",
