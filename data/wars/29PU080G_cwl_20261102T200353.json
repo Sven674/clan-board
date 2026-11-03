@@ -3,10 +3,11 @@
  "endTime": "20261104T200345.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-03T08:47:23Z",
+ "lastSeen": "2026-11-03T09:15:42Z",
  "members": [
   {
    "attacks": [],
+   "defenses": [],
    "name": "theBASTIan",
    "pos": 1,
    "tag": "#92L228UR",
@@ -14,6 +15,7 @@
   },
   {
    "attacks": [],
+   "defenses": [],
    "name": "--SVEN--674--",
    "pos": 6,
    "tag": "#200PCP8QQ",
@@ -21,6 +23,7 @@
   },
   {
    "attacks": [],
+   "defenses": [],
    "name": "=RS=",
    "pos": 12,
    "tag": "#GLPVGVR9",
@@ -28,6 +31,7 @@
   },
   {
    "attacks": [],
+   "defenses": [],
    "name": "Uzii",
    "pos": 17,
    "tag": "#2Q8GPVV0",
@@ -35,6 +39,7 @@
   },
   {
    "attacks": [],
+   "defenses": [],
    "name": "Chrisdoc",
    "pos": 2,
    "tag": "#9GR80Q9P",
@@ -42,6 +47,7 @@
   },
   {
    "attacks": [],
+   "defenses": [],
    "name": "OlMcGoldi",
    "pos": 14,
    "tag": "#YR0Y90G",
@@ -49,6 +55,7 @@
   },
   {
    "attacks": [],
+   "defenses": [],
    "name": "AGENT 00H",
    "pos": 3,
    "tag": "#80V9Q998",
@@ -56,6 +63,7 @@
   },
   {
    "attacks": [],
+   "defenses": [],
    "name": "Beach",
    "pos": 5,
    "tag": "#8LVUJRQP",
@@ -63,6 +71,7 @@
   },
   {
    "attacks": [],
+   "defenses": [],
    "name": "Legend Papa",
    "pos": 11,
    "tag": "#9RCY8U0VQ",
@@ -70,6 +79,7 @@
   },
   {
    "attacks": [],
+   "defenses": [],
    "name": "Filiusberlinius",
    "pos": 13,
    "tag": "#2UCJYGU0",
@@ -77,6 +87,7 @@
   },
   {
    "attacks": [],
+   "defenses": [],
    "name": "grautvornixe",
    "pos": 19,
    "tag": "#PRRQ29JP",
@@ -84,6 +95,7 @@
   },
   {
    "attacks": [],
+   "defenses": [],
    "name": "Sir COColores",
    "pos": 8,
    "tag": "#YVCLP0RJ",
@@ -91,6 +103,7 @@
   },
   {
    "attacks": [],
+   "defenses": [],
    "name": "Elussa",
    "pos": 7,
    "tag": "#J9CLGUR0",
@@ -98,6 +111,7 @@
   },
   {
    "attacks": [],
+   "defenses": [],
    "name": "Captain Future",
    "pos": 15,
    "tag": "#8PGGGL2U8",
@@ -105,6 +119,7 @@
   },
   {
    "attacks": [],
+   "defenses": [],
    "name": "hulk",
    "pos": 10,
    "tag": "#GRJU2J92",
