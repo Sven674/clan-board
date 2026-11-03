@@ -1,0 +1,131 @@
+{
+ "attacksPerMember": 1,
+ "endTime": "20261104T195705.000Z",
+ "final": false,
+ "kind": "cwl",
+ "lastSeen": "2026-11-03T08:39:06Z",
+ "members": [
+  {
+   "attacks": [],
+   "name": "✨Yvonne✨",
+   "pos": 8,
+   "tag": "#GCRY9CGU",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "HaraldKehl",
+   "pos": 13,
+   "tag": "#QJG9CR0Q",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "Vinci",
+   "pos": 6,
+   "tag": "#VYQY8VG8",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "NobbyNobbs",
+   "pos": 19,
+   "tag": "#L08LQ8YJL",
+   "th": 17
+  },
+  {
+   "attacks": [],
+   "name": "der. Cool.",
+   "pos": 3,
+   "tag": "#QCJY9QPC",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "☠️Happy Day ☠️",
+   "pos": 5,
+   "tag": "#Y80LGCUPJ",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "Sven",
+   "pos": 16,
+   "tag": "#J0UYJ09P",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "LL ⭐️minimaus⭐️",
+   "pos": 22,
+   "tag": "#208R29C92",
+   "th": 16
+  },
+  {
+   "attacks": [],
+   "name": "1000000",
+   "pos": 1,
+   "tag": "#V029UQCU",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "Simone",
+   "pos": 9,
+   "tag": "#UGYG0PY9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "LEGENDE",
+   "pos": 21,
+   "tag": "#P8Q89LYQ9",
+   "th": 16
+  },
+  {
+   "attacks": [],
+   "name": "Zucker",
+   "pos": 10,
+   "tag": "#2CY2GL9J",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "mini1000000",
+   "pos": 7,
+   "tag": "#LQ0YCGLL2",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "Lonestar",
+   "pos": 4,
+   "tag": "#28CJUY0G9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "Mone",
+   "pos": 15,
+   "tag": "#L09Y0G0G9",
+   "th": 18
+  }
+ ],
+ "opponent": {
+  "badge": "https://api-assets.clashofclans.com/badges/70/VRfG7PZkPDzBdV3tw9l4EkAdmQPYdywBkeC7lvgpHzI.png",
+  "name": "شام العز",
+  "pct": 0.0,
+  "stars": 0,
+  "tag": "#J99G00LL"
+ },
+ "preparationStartTime": "20261102T195706.000Z",
+ "startTime": "20261103T195705.000Z",
+ "state": "preparation",
+ "teamSize": 15,
+ "us": {
+  "attacks": 0,
+  "pct": 0.0,
+  "stars": 0
+ },
+ "warTag": "#8RP0QPPY9"
+}

@@ -1,0 +1,203 @@
+{
+ "attacksPerMember": 1,
+ "endTime": "20261103T195655.000Z",
+ "final": false,
+ "kind": "cwl",
+ "lastSeen": "2026-11-03T08:39:06Z",
+ "members": [
+  {
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 18,
+     "order": 1,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "name": "✨Yvonne✨",
+   "pos": 8,
+   "tag": "#GCRY9CGU",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 9,
+     "defTh": 18,
+     "order": 12,
+     "pct": 73,
+     "stars": 2
+    }
+   ],
+   "name": "mimi",
+   "pos": 11,
+   "tag": "#2YLVQRY9",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 13,
+     "defTh": 18,
+     "order": 8,
+     "pct": 53,
+     "stars": 2
+    }
+   ],
+   "name": "NobbyNobbs",
+   "pos": 19,
+   "tag": "#L08LQ8YJL",
+   "th": 17
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 18,
+     "order": 4,
+     "pct": 90,
+     "stars": 1
+    }
+   ],
+   "name": "Schlumpfmausi",
+   "pos": 12,
+   "tag": "#LG09VQ8J",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 6,
+     "pct": 70,
+     "stars": 2
+    }
+   ],
+   "name": "Odin",
+   "pos": 2,
+   "tag": "#92RP8G9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "der. Cool.",
+   "pos": 4,
+   "tag": "#QCJY9QPC",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "☠️Happy Day ☠️",
+   "pos": 5,
+   "tag": "#Y80LGCUPJ",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "Alex12",
+   "pos": 18,
+   "tag": "#9GPR28YG",
+   "th": 17
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 11,
+     "defTh": 18,
+     "order": 7,
+     "pct": 71,
+     "stars": 2
+    }
+   ],
+   "name": "Gaspode",
+   "pos": 14,
+   "tag": "#2QRJRJY0V",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 15,
+     "defTh": 18,
+     "order": 3,
+     "pct": 72,
+     "stars": 2
+    }
+   ],
+   "name": "LL ⭐️minimaus⭐️",
+   "pos": 22,
+   "tag": "#208R29C92",
+   "th": 16
+  },
+  {
+   "attacks": [],
+   "name": "supersplint",
+   "pos": 20,
+   "tag": "#L9QQRVGP",
+   "th": 17
+  },
+  {
+   "attacks": [],
+   "name": "Simone",
+   "pos": 9,
+   "tag": "#UGYG0PY9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "Zucker",
+   "pos": 10,
+   "tag": "#2CY2GL9J",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 16,
+     "pct": 81,
+     "stars": 2
+    }
+   ],
+   "name": "mini1000000",
+   "pos": 7,
+   "tag": "#LQ0YCGLL2",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 11,
+     "pct": 83,
+     "stars": 2
+    }
+   ],
+   "name": "Lonestar",
+   "pos": 3,
+   "tag": "#28CJUY0G9",
+   "th": 18
+  }
+ ],
+ "opponent": {
+  "badge": "https://api-assets.clashofclans.com/badges/70/G7Ud6mE6f9yBGsuWQwjTjlUwmLttz3s8O03YTu5QUhE.png",
+  "name": "Esprit Clash",
+  "pct": 42.93333333333333,
+  "stars": 17,
+  "tag": "#8J2VQLPU"
+ },
+ "preparationStartTime": "20261101T195658.000Z",
+ "startTime": "20261102T195655.000Z",
+ "state": "inWar",
+ "teamSize": 15,
+ "us": {
+  "attacks": 9,
+  "pct": 46.2,
+  "stars": 18
+ },
+ "warTag": "#8R9UGU2RQ"
+}

@@ -1,0 +1,227 @@
+{
+ "attacksPerMember": 1,
+ "endTime": "20261103T200335.000Z",
+ "final": false,
+ "kind": "cwl",
+ "lastSeen": "2026-11-03T08:39:06Z",
+ "members": [
+  {
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 7,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "name": "theBASTIan",
+   "pos": 1,
+   "tag": "#92L228UR",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "--SVEN--674--",
+   "pos": 6,
+   "tag": "#200PCP8QQ",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 10,
+     "pct": 95,
+     "stars": 2
+    }
+   ],
+   "name": "=RS=",
+   "pos": 12,
+   "tag": "#GLPVGVR9",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 6,
+     "defTh": 18,
+     "order": 23,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "name": "Uzii",
+   "pos": 17,
+   "tag": "#2Q8GPVV0",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 18,
+     "order": 3,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "name": "Chrisdoc",
+   "pos": 2,
+   "tag": "#9GR80Q9P",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 12,
+     "defTh": 18,
+     "order": 22,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "name": "OlMcGoldi",
+   "pos": 14,
+   "tag": "#YR0Y90G",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "AGENT 00H",
+   "pos": 3,
+   "tag": "#80V9Q998",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 18,
+     "order": 26,
+     "pct": 83,
+     "stars": 2
+    }
+   ],
+   "name": "Beach",
+   "pos": 5,
+   "tag": "#8LVUJRQP",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 9,
+     "defTh": 18,
+     "order": 2,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "name": "Legend Papa",
+   "pos": 11,
+   "tag": "#9RCY8U0VQ",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 7,
+     "defTh": 18,
+     "order": 25,
+     "pct": 89,
+     "stars": 2
+    }
+   ],
+   "name": "Filiusberlinius",
+   "pos": 13,
+   "tag": "#2UCJYGU0",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "name": "grautvornixe",
+   "pos": 19,
+   "tag": "#PRRQ29JP",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 18,
+     "order": 9,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "name": "Sir COColores",
+   "pos": 8,
+   "tag": "#YVCLP0RJ",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 15,
+     "defTh": 18,
+     "order": 19,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "name": "Elussa",
+   "pos": 7,
+   "tag": "#J9CLGUR0",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 13,
+     "defTh": 18,
+     "order": 24,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "name": "Captain Future",
+   "pos": 15,
+   "tag": "#8PGGGL2U8",
+   "th": 18
+  },
+  {
+   "attacks": [
+    {
+     "defPos": 14,
+     "defTh": 18,
+     "order": 20,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "name": "hulk",
+   "pos": 10,
+   "tag": "#GRJU2J92",
+   "th": 18
+  }
+ ],
+ "opponent": {
+  "badge": "https://api-assets.clashofclans.com/badges/70/oP0CbYnUQYToiGiy0kOcn1sFsSPxbXXbPfmpv_uzJdE.png",
+  "name": "FOX HOUND",
+  "pct": 90.66666666666667,
+  "stars": 39,
+  "tag": "#UJ9UYQR2"
+ },
+ "preparationStartTime": "20261101T200337.000Z",
+ "startTime": "20261102T200335.000Z",
+ "state": "inWar",
+ "teamSize": 15,
+ "us": {
+  "attacks": 12,
+  "pct": 77.8,
+  "stars": 33
+ },
+ "warTag": "#8J8Q28YYC"
+}
