@@ -8,3 +8,9 @@ Statistik-Board für die Clans Ü40 Pur (#29PU080G) und Ü40 Pur 2 (#2PPGPGRL9).
 - Lokal testen: `COC_API_TOKEN_FILE=~/.config/clan-board/token python3 scripts/fetch.py`, dann `python3 -m http.server` und `localhost:8000` öffnen.
 
 Clans ändern: `config.json`.
+
+## Live-Abfrage (Vercel)
+
+`live-api/` ist eine kleine Serverfunktion bei Vercel (Projekt `clan-board-live`, https://clan-board-live.vercel.app/api/live). Sie liefert beim Seitenaufruf den aktuellen Krieg und die Mitgliederliste, 60 Sekunden zwischengespeichert. Fällt sie aus, zeigt die Seite den 30-Minuten-Stand.
+
+**Schlüssel erneuern:** an ZWEI Stellen tauschen: GitHub-Secret `COC_API_TOKEN` und Vercel-Umgebungsvariable `COC_API_TOKEN` (danach `npx vercel deploy --prod` in `live-api/`).

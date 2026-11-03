@@ -1,0 +1,5 @@
+{
+  "name": "clan-board-live",
+  "private": true,
+  "engines": { "node": ">=20" }
+}

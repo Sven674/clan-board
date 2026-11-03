@@ -324,19 +324,47 @@ function render(){
 function save(){ try{ localStorage.setItem('clanboard', JSON.stringify({clan:S.clan, view:S.view, sort:S.sort})); }catch(e){} }
 function restore(){ try{ Object.assign(S, JSON.parse(localStorage.getItem('clanboard')||'{}')); }catch(e){} }
 
+const LIVE_URL = 'https://clan-board-live.vercel.app/api/live';
+const CLAN_FIELDS = ['name','members','level','points','warWins','warLosses','warTies','warWinStreak','isWarLogPublic'];
+
+// Live-Daten (Krieg, Mitgliederliste) über den gespeicherten Verlauf legen
+function mergeLive(live){
+  live.clans.forEach(lc => {
+    const c = S.data.clans.find(x => x.tag === lc.tag);
+    if(!c || lc.error) return;
+    CLAN_FIELDS.forEach(k => { if(lc[k] !== undefined) c[k] = lc[k]; });
+    c.currentWar = lc.currentWar;
+    const byTag = {}; c.memberList.forEach(m => byTag[m.tag] = m);
+    c.memberList = lc.memberList.map(lm => Object.assign(
+      {war:{}, raids:[], profile:{}, games:null, joinedAt:null, lastActive:null, joins:1},
+      byTag[lm.tag] || {}, lm));
+  });
+}
+
+const fmtT = s => parseT(s).toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
+
 async function load(){
+  let live = null;
   try{
-    const r = await fetch('data/board.json?t=' + Date.now(), {cache:'no-store'});
+    const [r, lr] = await Promise.all([
+      fetch('data/board.json?t=' + Date.now(), {cache:'no-store'}),
+      fetch(LIVE_URL).then(x => x.ok ? x.json() : null).catch(() => null),
+    ]);
     if(!r.ok) throw new Error(r.status);
     S.data = await r.json();
+    live = lr;
+    if(live && live.clans) mergeLive(live);
     if(S.clan!=='alle' && !S.data.clans[S.clan]) S.clan = 0;
-    document.getElementById('updated').textContent = 'Stand: ' + parseT(S.data.generated).toLocaleString('de-DE',{dateStyle:'medium',timeStyle:'short'}) + ' (' + ago(S.data.generated) + ') · aktualisiert sich alle 30 Minuten';
+    const hist = 'Verlauf ' + fmtT(S.data.generated) + ' (' + ago(S.data.generated) + ')';
+    document.getElementById('updated').textContent = live
+      ? 'Live: ' + fmtT(live.generated) + ' Uhr · ' + hist + ' · neu laden holt den aktuellen Stand'
+      : 'Stand: ' + hist + ' · Live-Abfrage gerade nicht erreichbar';
     render();
   }catch(e){
     document.getElementById('updated').innerHTML = '<span class="err">Daten konnten nicht geladen werden.</span>';
   }
 }
-restore(); load(); setInterval(load, 5*60*1000);
+restore(); load(); setInterval(load, 2*60*1000);
 </script>
 </body>
 </html>
