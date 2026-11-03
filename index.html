@@ -40,6 +40,11 @@ thead th:first-child{z-index:2;background:var(--chip)}
 thead th.sorted{color:var(--ink)}
 tbody tr{cursor:pointer}
 tbody tr:hover td{background:var(--chip)}
+:root{--openbg:#fbe3c4}
+@media (prefers-color-scheme:dark){:root{--openbg:#4a3418}}
+tbody tr.openrow td{background:var(--openbg)}
+tbody tr.openrow:hover td{background:var(--openbg);filter:brightness(.97)}
+.openbadge{display:inline-block;font-size:11px;font-weight:600;color:#fff;background:var(--acc);border-radius:999px;padding:0 7px;margin-left:4px}
 .name{font-weight:600}
 .role{font-size:11px;color:var(--mut);margin-left:4px}
 .dot{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:middle}
@@ -114,10 +119,14 @@ function rows(){
   const d = S.data; if(!d) return [];
   const clans = S.clan === 'alle' ? d.clans : [d.clans[S.clan]];
   let out = [];
-  clans.forEach(c => c.memberList.forEach(m => {
+  clans.forEach(c => {
+    const cw = c.currentWar, openMap = {};
+    if(cw && cw.state === 'inWar') (cw.members||[]).forEach(x => { if(x.attacks.length < cw.apm) openMap[x.tag] = cw.apm - x.attacks.length; });
+    c.memberList.forEach(m => {
     const w = m.war || {};
     out.push(Object.assign({}, m, {
       clanName: c.name,
+      openNow: openMap[m.tag] || 0,
       missed: w.recentMissed ?? -1,
       usage: pct(w.attacks||0, w.possible||0),
       avgStars: w.attacks ? w.stars/w.attacks : null,
@@ -127,7 +136,8 @@ function rows(){
       activeTs: m.lastActive ? parseT(m.lastActive).getTime() : 0,
       joinTs: m.joinedAt ? parseT(m.joinedAt).getTime() : 0,
     }));
-  }));
+    });
+  });
   if(S.q){ const q=S.q.toLowerCase(); out = out.filter(r => r.name.toLowerCase().includes(q) || r.tag.toLowerCase().includes(q)); }
   const k = S.sort.key, dir = S.sort.dir;
   out.sort((a,b) => {
@@ -194,8 +204,8 @@ function memberTable(){
       const c = x.attacks>=x.limit ? 'g' : x.attacks>0 ? 'y' : (x.state==='ongoing' ? 'n' : 'r');
       return `<span class="${c}" title="${dateDE(x.start)}: ${x.attacks}/${x.limit}"></span>`;
     }).join('');
-    return `<tr data-tag="${esc(r.tag)}" data-clan="${esc(r.clanName)}">
-      <td><span class="name">${esc(r.name)}</span><span class="role">${ROLE[r.role]||''}</span>${multi?`<div class="muted" style="font-size:11px">${esc(r.clanName)}</div>`:''}</td>
+    return `<tr data-tag="${esc(r.tag)}" data-clan="${esc(r.clanName)}" class="${r.openNow?'openrow':''}" ${r.openNow?`title="${r.openNow} Angriff(e) im laufenden Krieg offen"`:''}>
+      <td><span class="name">${esc(r.name)}</span><span class="role">${ROLE[r.role]||''}</span>${r.openNow?` <span class="openbadge">${r.openNow} offen</span>`:''}${multi?`<div class="muted" style="font-size:11px">${esc(r.clanName)}</div>`:''}</td>
       <td title="${esc(a.t)}"><span class="dot ${a.c}"></span> ${r.war&&r.war.recentWars?r.war.recentMissed:''}</td>
       <td>${r.th??'–'}</td>
       <td>${r.usage==null?'–':r.usage+' %'}</td>
@@ -211,7 +221,7 @@ function memberTable(){
   }).join('');
   return `<div class="card"><input type="search" placeholder="Spieler suchen" value="${esc(S.q)}" id="q">
     <div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
-    <div class="legend">Ampel = vergessene Kriegsangriffe in den letzten 10 abgeschlossenen Kriegen (grün 0, gelb 1–2, rot ab 3). Grau = noch keine Daten.
+    <div class="legend">Orange hinterlegt = hat im laufenden Krieg noch Angriffe offen. Ampel =vergessene Kriegsangriffe in den letzten 10 abgeschlossenen Kriegen (grün 0, gelb 1–2, rot ab 3). Grau = noch keine Daten.
     Spenden zählen seit Saisonbeginn. „Zuletzt aktiv“ leitet sich aus Änderungen am Spielerprofil ab (Spenden, Siege, Upgrades, Erfolge), die API liefert keinen Online-Status. Spaltenkopf antippen zum Sortieren, Zeile antippen für Details.</div></div>`;
 }
 
