@@ -1,9 +1,9 @@
 {
  "attacksPerMember": 1,
  "endTime": "20261103T200335.000Z",
- "final": false,
+ "final": true,
  "kind": "cwl",
- "lastSeen": "2026-11-03T18:36:26Z",
+ "lastSeen": "2026-11-03T20:38:53Z",
  "members": [
   {
    "attacks": [
@@ -345,7 +345,7 @@
  },
  "preparationStartTime": "20261101T200337.000Z",
  "startTime": "20261102T200335.000Z",
- "state": "inWar",
+ "state": "warEnded",
  "teamSize": 15,
  "us": {
   "attacks": 15,

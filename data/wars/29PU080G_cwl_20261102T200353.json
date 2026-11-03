@@ -3,7 +3,7 @@
  "endTime": "20261104T200345.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-03T18:36:26Z",
+ "lastSeen": "2026-11-03T20:38:53Z",
  "members": [
   {
    "attacks": [],
@@ -70,7 +70,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 11,
+     "defTh": 18,
+     "order": 2,
+     "pct": 82,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Legend Papa",
    "pos": 11,
@@ -78,7 +86,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 1,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Sir COColores",
    "pos": 8,
@@ -94,7 +110,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 14,
+     "defTh": 17,
+     "order": 3,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Elussa",
    "pos": 7,
@@ -135,12 +159,12 @@
  },
  "preparationStartTime": "20261102T200353.000Z",
  "startTime": "20261103T200345.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 3,
+  "pct": 18.8,
+  "stars": 8
  },
  "warTag": "#8J8GVCV2C"
 }

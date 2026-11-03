@@ -3,7 +3,7 @@
  "endTime": "20261104T195705.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-03T18:36:26Z",
+ "lastSeen": "2026-11-03T20:38:53Z",
  "members": [
   {
    "attacks": [],
@@ -39,7 +39,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "der. Cool.",
    "pos": 3,
    "tag": "#QCJY9QPC",
@@ -71,7 +77,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "1000000",
    "pos": 1,
    "tag": "#V029UQCU",
@@ -111,7 +123,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 81,
+     "stars": 2
+    }
+   ],
    "name": "Lonestar",
    "pos": 4,
    "tag": "#28CJUY0G9",
@@ -129,13 +147,13 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/VRfG7PZkPDzBdV3tw9l4EkAdmQPYdywBkeC7lvgpHzI.png",
   "name": "شام العز",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 18.733333333333334,
+  "stars": 8,
   "tag": "#J99G00LL"
  },
  "preparationStartTime": "20261102T195706.000Z",
  "startTime": "20261103T195705.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 15,
  "us": {
   "attacks": 0,

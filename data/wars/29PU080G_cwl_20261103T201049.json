@@ -1,0 +1,146 @@
+{
+ "attacksPerMember": 1,
+ "endTime": "20261105T201047.000Z",
+ "final": false,
+ "kind": "cwl",
+ "lastSeen": "2026-11-03T20:38:53Z",
+ "members": [
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "theBASTIan",
+   "pos": 1,
+   "tag": "#92L228UR",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "--SVEN--674--",
+   "pos": 6,
+   "tag": "#200PCP8QQ",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Chrisdoc",
+   "pos": 2,
+   "tag": "#9GR80Q9P",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "OlMcGoldi",
+   "pos": 14,
+   "tag": "#YR0Y90G",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "EumelTV",
+   "pos": 19,
+   "tag": "#J2QLL8GY",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "AGENT 00H",
+   "pos": 3,
+   "tag": "#80V9Q998",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Ertanbabo",
+   "pos": 4,
+   "tag": "#PRRJY9G9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Ricky",
+   "pos": 9,
+   "tag": "#LRYLYPG8",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Legend Papa",
+   "pos": 11,
+   "tag": "#9RCY8U0VQ",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Sir COColores",
+   "pos": 8,
+   "tag": "#YVCLP0RJ",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Heisenberg",
+   "pos": 16,
+   "tag": "#29JR2282",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Elussa",
+   "pos": 7,
+   "tag": "#J9CLGUR0",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Nemesis",
+   "pos": 18,
+   "tag": "#22C0YRV9C",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Captain Future",
+   "pos": 15,
+   "tag": "#8PGGGL2U8",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "hulk",
+   "pos": 10,
+   "tag": "#GRJU2J92",
+   "th": 18
+  }
+ ],
+ "opponent": {
+  "badge": "https://api-assets.clashofclans.com/badges/70/6mh6F2vbeqCazzLEHB1xZIFlU4vKdqgM0i-MJkLpwJk.png",
+  "name": "WeGoJim",
+  "pct": 0.0,
+  "stars": 0,
+  "tag": "#2LJYGVVU2"
+ },
+ "preparationStartTime": "20261103T201049.000Z",
+ "startTime": "20261104T201047.000Z",
+ "state": "preparation",
+ "teamSize": 15,
+ "us": {
+  "attacks": 0,
+  "pct": 0.0,
+  "stars": 0
+ },
+ "warTag": "#8J8CYJPJR"
+}
