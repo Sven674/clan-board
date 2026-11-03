@@ -10,7 +10,13 @@ async function api(path) {
     headers: { Authorization: "Bearer " + process.env.COC_API_TOKEN, Accept: "application/json" },
   });
   if (!r.ok) return { _error: r.status };
-  return r.json();
+  const data = await r.json();
+  // Supercell gibt Daten nur in Abständen neu heraus (Liga-Kriege: 10 Minuten).
+  // max-age = Sekunden bis zur nächsten neuen Fassung.
+  const maxAge = +((r.headers.get("cache-control") || "").match(/max-age=(\d+)/) || [])[1];
+  if (maxAge >= 0 && data && typeof data === "object")
+    Object.defineProperty(data, "_next", { value: new Date(Date.now() + maxAge * 1000).toISOString() });
+  return data;
 }
 
 const enc = (t) => encodeURIComponent(t);
@@ -47,7 +53,7 @@ async function currentCwl(clanTag) {
     const w = wars.find((x) => x && !x._error && (x.clan.tag === clanTag || x.opponent.tag === clanTag));
     if (!w) continue;
     if (w.state === "preparation") {
-      if (!prep) prep = Object.assign(compactWar(w, clanTag, "cwl"), { day: i + 1 });
+      if (!prep) prep = Object.assign(compactWar(w, clanTag, "cwl"), { day: i + 1, next: w._next });
       continue;
     }
     return { war: compactWar(w, clanTag, "cwl"), prep };
@@ -75,7 +81,7 @@ async function clanLive(clanTag) {
       donations: m.donations, received: m.donationsReceived,
     })),
     currentWar: war,
-    cwlPrep: cwlPrep && { day: cwlPrep.day, opponent: cwlPrep.opponent.name,
+    cwlPrep: cwlPrep && { day: cwlPrep.day, opponent: cwlPrep.opponent.name, next: cwlPrep.next,
                           lineup: cwlPrep.members.map((m) => ({ tag: m.tag, name: m.name })) },
   };
 }

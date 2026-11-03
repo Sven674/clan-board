@@ -394,6 +394,15 @@ function doneBanner(opt){
   return d ? `<p style="background:var(--ok);color:#fff;border-radius:8px;padding:10px 12px;font-weight:600;margin:4px 0 10px">Aufstellung für ${esc(opt.label)} ist fertig. Gemeldet von ${esc(nameOf(d.by))} um ${fmtT(d.at)} Uhr.</p>` : '';
 }
 
+// Supercell gibt die Liga-Aufstellung nur alle 10 Minuten neu heraus.
+function syncHint(target){
+  const nx = target.next && parseT(target.next);
+  const when = nx && nx > Date.now()
+    ? `Stand im Board von ${fmtT(new Date(nx - 10*60*1000).toISOString())} Uhr, nächste Aktualisierung ca. ${fmtT(target.next)} Uhr.`
+    : '';
+  return `<p class="muted" style="font-size:14px;margin:0 0 10px">Änderungen an der Aufstellung im Spiel gibt Supercell nur alle 10 Minuten heraus. ${when}</p>`;
+}
+
 function doneForm(opt){
   const form = 'done' + opt.clan + opt.key, done = doneOf(opt);
   S.forms[form] = () => {
@@ -462,6 +471,7 @@ function benchCard(title, calc, unit, opt){
     ${calc.target ? `<td>${r.inTarget ? 'ja' : 'nein'}</td>` : ''}</tr>`).join('');
   return `<div class="card"><h2>${title}</h2>
     ${opt ? doneBanner(opt) : ''}
+    ${calc.target && unit === 'Tag' ? syncHint(calc.target) : ''}
     <p class="muted" style="margin-top:-4px">${calc.total} Teilnehmer, ${fertig ? calc.total - actual.length : calc.teamSize} spielen: <b>${fertig ? actual.length : calc.bench} ${fertig ? (actual.length === 1 ? 'setzt' : 'setzen') + ' aus (Stand im Spiel)' : 'setzen aus'}</b></p>
     ${list}
     ${freed.length && !fertig ? `<p class="muted" style="font-size:14px">Darf spielen, weil jemand freiwillig aussetzt: ${freed.map(r => '<b>' + esc(r.name) + '</b>').join(', ')}</p>` : ''}
@@ -758,7 +768,7 @@ function mergeLive(live){
     const lp = lc.cwlPrep, cr = c.cwl && c.cwl.rounds;
     if(lp && cr){
       const r = cr.find(x => x.day === lp.day && x.state === 'preparation');
-      if(r){ r.lineup = {}; lp.lineup.forEach(m => r.lineup[m.tag] = {att:[], def:null, name:m.name}); }
+      if(r){ r.next = lp.next; r.lineup = {};lp.lineup.forEach(m => r.lineup[m.tag] = {att:[], def:null, name:m.name}); }
     }
     const byTag = {}; c.memberList.forEach(m => byTag[m.tag] = m);
     c.memberList = lc.memberList.map(lm => Object.assign(
