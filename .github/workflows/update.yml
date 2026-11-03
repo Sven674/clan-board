@@ -18,6 +18,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -30,5 +32,12 @@ jobs:
           git config user.name "clan-board-bot"
           git config user.email "clan-board-bot@users.noreply.github.com"
           git add data
-          git diff --cached --quiet || git commit -q -m "Daten $(date -u +%Y-%m-%dT%H:%MZ)"
-          git push
+          git diff --cached --quiet && exit 0
+          git commit -q -m "Daten $(date -u +%Y-%m-%dT%H:%MZ)"
+          # Bei Zusammenstoß mit einem anderen Push: neuen Stand holen, eigene Daten gewinnen lassen, erneut versuchen
+          for i in 1 2 3 4 5; do
+            git push && exit 0
+            git pull --rebase -X theirs || { git rebase --abort; exit 1; }
+            sleep $((i * 3))
+          done
+          exit 1
