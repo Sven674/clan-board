@@ -3,7 +3,7 @@
  "endTime": "20261104T195705.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-03T20:38:53Z",
+ "lastSeen": "2026-11-03T21:56:21Z",
  "members": [
   {
    "attacks": [],
@@ -53,14 +53,28 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 82,
+     "stars": 2
+    }
+   ],
    "name": "☠️Happy Day ☠️",
    "pos": 5,
    "tag": "#Y80LGCUPJ",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 16,
+     "defTh": 17,
+     "order": 8,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Sven",
    "pos": 16,
@@ -68,7 +82,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 19,
+     "defTh": 17,
+     "order": 4,
+     "pct": 90,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "LL ⭐️minimaus⭐️",
    "pos": 22,
@@ -76,7 +98,15 @@
    "th": 16
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 6,
+     "pct": 86,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -98,7 +128,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 18,
+     "defTh": 17,
+     "order": 5,
+     "pct": 51,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "LEGENDE",
    "pos": 21,
@@ -114,7 +152,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 7,
+     "defTh": 18,
+     "order": 7,
+     "pct": 69,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "mini1000000",
    "pos": 7,
@@ -147,8 +193,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/VRfG7PZkPDzBdV3tw9l4EkAdmQPYdywBkeC7lvgpHzI.png",
   "name": "شام العز",
-  "pct": 18.733333333333334,
-  "stars": 8,
+  "pct": 24.2,
+  "stars": 10,
   "tag": "#J99G00LL"
  },
  "preparationStartTime": "20261102T195706.000Z",
@@ -156,9 +202,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 5,
+  "pct": 26.4,
+  "stars": 11
  },
  "warTag": "#8RP0QPPY9"
 }
