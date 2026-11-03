@@ -74,15 +74,36 @@ async function clanLive(clanTag) {
   };
 }
 
+// Absicherung, falls GitHubs Zeitplan ausfällt: ist der letzte Datenabruf älter als
+// 30 Minuten und läuft gerade keiner, wird er beim Seitenaufruf angestoßen.
+const REPO = "Sven674/clan-board";
+async function kickUpdate() {
+  const tok = process.env.GH_DISPATCH_TOKEN;
+  if (!tok) return "kein Token";
+  const h = { Authorization: "Bearer " + tok, Accept: "application/vnd.github+json",
+              "User-Agent": "clan-board-live" };
+  const r = await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/update.yml/runs?per_page=1`, { headers: h });
+  if (!r.ok) return "Abfrage " + r.status;
+  const run = ((await r.json()).workflow_runs || [])[0];
+  if (run && (run.status !== "completed" || Date.now() - Date.parse(run.created_at) < 30 * 60 * 1000)) return "aktuell";
+  const d = await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/update.yml/dispatches`, {
+    method: "POST", headers: h, body: JSON.stringify({ ref: "main" }),
+  });
+  return d.status === 204 ? "angestoßen" : "Start " + d.status;
+}
+
 module.exports = async (req, res) => {
   const origin = req.headers.origin;
   if (ORIGINS.includes(origin)) res.setHeader("Access-Control-Allow-Origin", origin);
   res.setHeader("Vary", "Origin");
   if (req.method === "OPTIONS") return res.status(204).end();
   try {
-    const clans = await Promise.all(CLANS.map(clanLive));
+    const [clans, update] = await Promise.all([
+      Promise.all(CLANS.map(clanLive)),
+      kickUpdate().catch(() => "Fehler"),
+    ]);
     res.setHeader("Cache-Control", "public, s-maxage=60, stale-while-revalidate=30");
-    res.status(200).json({ generated: new Date().toISOString(), clans });
+    res.status(200).json({ generated: new Date().toISOString(), update, clans });
   } catch (e) {
     res.setHeader("Cache-Control", "no-store");
     res.status(502).json({ error: "Abruf fehlgeschlagen" });

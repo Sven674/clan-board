@@ -14,3 +14,5 @@ Clans ändern: `config.json`.
 `live-api/` ist eine kleine Serverfunktion bei Vercel (Projekt `clan-board-live`, https://clan-board-live.vercel.app/api/live). Sie liefert beim Seitenaufruf den aktuellen Krieg und die Mitgliederliste, 60 Sekunden zwischengespeichert. Fällt sie aus, zeigt die Seite den 30-Minuten-Stand.
 
 **Schlüssel erneuern:** an ZWEI Stellen tauschen: GitHub-Secret `COC_API_TOKEN` und Vercel-Umgebungsvariable `COC_API_TOKEN` (danach `npx vercel deploy --prod` in `live-api/`).
+
+**Absicherung Zeitplan:** GitHubs Zeitplan startet unzuverlässig. Die Live-Funktion stößt deshalb beim Seitenaufruf den Abruf an, wenn der letzte älter als 30 Minuten ist. Dafür liegt bei Vercel `GH_DISPATCH_TOKEN` (Fine-grained Token „Clan-Board-Ausloeser“, nur dieses Repo, nur Actions).
