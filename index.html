@@ -770,6 +770,15 @@ function mergeLive(live){
       const r = cr.find(x => x.day === lp.day && x.state === 'preparation');
       if(r){ r.next = lp.next; r.lineup = {};lp.lineup.forEach(m => r.lineup[m.tag] = {att:[], def:null, name:m.name}); }
     }
+    // Angriffe des laufenden Liga-Tags live übernehmen, sonst zählt die Aussetz-Empfehlung erst nach dem nächsten Verlauf-Abruf
+    const lw = lc.currentWar;
+    if(lw && lw.kind === 'cwl' && lw.state === 'inWar' && cr){
+      const r = cr.find(x => x.state === 'inWar');
+      if(r) lw.members.forEach(m => {
+        const l = r.lineup[m.tag];
+        if(l && m.attacks && m.attacks.length > l.att.length) l.att = m.attacks.map(a => [a.stars, a.pct]);
+      });
+    }
     const byTag = {}; c.memberList.forEach(m => byTag[m.tag] = m);
     c.memberList = lc.memberList.map(lm => Object.assign(
       {war:{}, raids:[], profile:{}, games:null, joinedAt:null, lastActive:null, joins:1},
