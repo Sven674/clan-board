@@ -3,7 +3,7 @@
  "endTime": "20261104T202907.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-04T11:13:36Z",
+ "lastSeen": "2026-11-04T12:28:34Z",
  "members": [
   {
    "attacks": [
@@ -53,7 +53,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Chrisdoc",
    "pos": 2,
    "tag": "#9GR80Q9P",
@@ -245,8 +251,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/v691L60TibauYNHNyStYuwlPdGA5SJOh6KEBP0AMA-w.png",
   "name": "BeYKoZLuLaR",
-  "pct": 31.466666666666665,
-  "stars": 11,
+  "pct": 38.13333333333333,
+  "stars": 14,
   "tag": "#QP802LRQ"
  },
  "preparationStartTime": "20261102T200353.000Z",

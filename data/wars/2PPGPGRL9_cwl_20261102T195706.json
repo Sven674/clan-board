@@ -3,7 +3,7 @@
  "endTime": "20261104T202144.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-04T11:13:36Z",
+ "lastSeen": "2026-11-04T12:28:34Z",
  "members": [
   {
    "attacks": [
@@ -28,7 +28,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 11,
+     "defTh": 18,
+     "order": 24,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -221,7 +229,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 98,
+     "stars": 2
+    }
+   ],
    "name": "Zucker",
    "pos": 10,
    "tag": "#2CY2GL9J",
@@ -289,8 +303,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/VRfG7PZkPDzBdV3tw9l4EkAdmQPYdywBkeC7lvgpHzI.png",
   "name": "شام العز",
-  "pct": 69.2,
-  "stars": 27,
+  "pct": 75.73333333333333,
+  "stars": 29,
   "tag": "#J99G00LL"
  },
  "preparationStartTime": "20261102T195706.000Z",
@@ -298,9 +312,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 11,
-  "pct": 62.93333333333333,
-  "stars": 27
+  "attacks": 12,
+  "pct": 69.6,
+  "stars": 30
  },
  "warTag": "#8RP0QPPY9"
 }
