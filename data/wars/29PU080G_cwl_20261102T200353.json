@@ -3,7 +3,7 @@
  "endTime": "20261104T202907.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-04T12:28:34Z",
+ "lastSeen": "2026-11-04T14:44:15Z",
  "members": [
   {
    "attacks": [
@@ -88,15 +88,37 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 17,
+     "defTh": 17,
+     "order": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 93,
+     "stars": 2
+    }
+   ],
    "name": "EumelTV",
    "pos": 20,
    "tag": "#J2QLL8GY",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 6,
+     "defTh": 18,
+     "order": 20,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -217,14 +239,28 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 77,
+     "stars": 2
+    }
+   ],
    "name": "Nemesis",
    "pos": 18,
    "tag": "#22C0YRV9C",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 13,
+     "defTh": 18,
+     "order": 22,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Captain Future",
    "pos": 15,
@@ -251,8 +287,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/v691L60TibauYNHNyStYuwlPdGA5SJOh6KEBP0AMA-w.png",
   "name": "BeYKoZLuLaR",
-  "pct": 38.13333333333333,
-  "stars": 14,
+  "pct": 49.46666666666667,
+  "stars": 18,
   "tag": "#QP802LRQ"
  },
  "preparationStartTime": "20261102T200353.000Z",
@@ -260,9 +296,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 10,
-  "pct": 64.53333333333333,
-  "stars": 27
+  "attacks": 13,
+  "pct": 84.53333333333333,
+  "stars": 36
  },
  "warTag": "#8J8GVCV2C"
 }
