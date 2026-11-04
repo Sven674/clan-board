@@ -1,9 +1,9 @@
 {
  "attacksPerMember": 1,
  "endTime": "20261104T202907.000Z",
- "final": false,
+ "final": true,
  "kind": "cwl",
- "lastSeen": "2026-11-04T19:51:32Z",
+ "lastSeen": "2026-11-04T20:36:42Z",
  "members": [
   {
    "attacks": [
@@ -169,7 +169,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 70,
+     "stars": 2
+    }
+   ],
    "name": "Ricky",
    "pos": 9,
    "tag": "#LRYLYPG8",
@@ -185,7 +191,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Legend Papa",
    "pos": 11,
    "tag": "#9RCY8U0VQ",
@@ -311,7 +323,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 76,
+     "stars": 2
+    }
+   ],
    "name": "hulk",
    "pos": 10,
    "tag": "#GRJU2J92",
@@ -321,13 +339,13 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/v691L60TibauYNHNyStYuwlPdGA5SJOh6KEBP0AMA-w.png",
   "name": "BeYKoZLuLaR",
-  "pct": 67.2,
-  "stars": 26,
+  "pct": 83.6,
+  "stars": 33,
   "tag": "#QP802LRQ"
  },
  "preparationStartTime": "20261102T200353.000Z",
  "startTime": "20261103T200345.000Z",
- "state": "inWar",
+ "state": "warEnded",
  "teamSize": 15,
  "us": {
   "attacks": 15,

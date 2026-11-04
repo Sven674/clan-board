@@ -1,0 +1,146 @@
+{
+ "attacksPerMember": 1,
+ "endTime": "20261106T203559.000Z",
+ "final": false,
+ "kind": "cwl",
+ "lastSeen": "2026-11-04T20:36:42Z",
+ "members": [
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "=RS=",
+   "pos": 12,
+   "tag": "#GLPVGVR9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Uzii",
+   "pos": 17,
+   "tag": "#2Q8GPVV0",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Chrisdoc",
+   "pos": 2,
+   "tag": "#9GR80Q9P",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "OlMcGoldi",
+   "pos": 14,
+   "tag": "#YR0Y90G",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "EumelTV",
+   "pos": 19,
+   "tag": "#J2QLL8GY",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "AGENT 00H",
+   "pos": 3,
+   "tag": "#80V9Q998",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Ertanbabo",
+   "pos": 4,
+   "tag": "#PRRJY9G9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Beach",
+   "pos": 5,
+   "tag": "#8LVUJRQP",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Ricky",
+   "pos": 9,
+   "tag": "#LRYLYPG8",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Filiusberlinius",
+   "pos": 13,
+   "tag": "#2UCJYGU0",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "grautvornixe",
+   "pos": 20,
+   "tag": "#PRRQ29JP",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Sir COColores",
+   "pos": 8,
+   "tag": "#YVCLP0RJ",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Heisenberg",
+   "pos": 16,
+   "tag": "#29JR2282",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Nemesis",
+   "pos": 18,
+   "tag": "#22C0YRV9C",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Captain Future",
+   "pos": 15,
+   "tag": "#8PGGGL2U8",
+   "th": 18
+  }
+ ],
+ "opponent": {
+  "badge": "https://api-assets.clashofclans.com/badges/70/cI6iSPw67RAavtAaX2kSluFRdd1ScMDoqPiUVbTxzEA.png",
+  "name": "Galinette cendr",
+  "pct": 0.0,
+  "stars": 0,
+  "tag": "#2QGJRLLYY"
+ },
+ "preparationStartTime": "20261104T203601.000Z",
+ "startTime": "20261105T203559.000Z",
+ "state": "preparation",
+ "teamSize": 15,
+ "us": {
+  "attacks": 0,
+  "pct": 0.0,
+  "stars": 0
+ },
+ "warTag": "#8J8VRQL9C"
+}

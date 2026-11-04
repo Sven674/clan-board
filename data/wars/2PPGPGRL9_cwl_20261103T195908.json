@@ -3,10 +3,18 @@
  "endTime": "20261105T202252.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-04T19:51:32Z",
+ "lastSeen": "2026-11-04T20:36:42Z",
  "members": [
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 18,
+     "order": 3,
+     "pct": 90,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "✨Yvonne✨",
    "pos": 8,
@@ -95,7 +103,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 72,
+     "stars": 2
+    }
+   ],
    "name": "1000000",
    "pos": 1,
    "tag": "#V029UQCU",
@@ -103,7 +117,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "LEGENDE",
    "pos": 21,
    "tag": "#P8Q89LYQ9",
@@ -111,7 +131,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 92,
+     "stars": 2
+    }
+   ],
    "name": "Lonestar",
    "pos": 4,
    "tag": "#28CJUY0G9",
@@ -129,18 +155,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/17wSFLx4VVSX1K7Ej23lYiN_CEPkh1jr1w44_mIgvwQ.png",
   "name": "actif family",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 17.6,
+  "stars": 7,
   "tag": "#2GV2RCGC8"
  },
  "preparationStartTime": "20261103T195908.000Z",
  "startTime": "20261104T202252.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 1,
+  "pct": 6.0,
+  "stars": 2
  },
  "warTag": "#8RP8V99CC"
 }

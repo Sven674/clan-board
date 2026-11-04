@@ -1,0 +1,146 @@
+{
+ "attacksPerMember": 1,
+ "endTime": "20261106T202301.000Z",
+ "final": false,
+ "kind": "cwl",
+ "lastSeen": "2026-11-04T20:36:42Z",
+ "members": [
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "✨Yvonne✨",
+   "pos": 8,
+   "tag": "#GCRY9CGU",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "HaraldKehl",
+   "pos": 14,
+   "tag": "#QJG9CR0Q",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "mimi",
+   "pos": 10,
+   "tag": "#2YLVQRY9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Vinci",
+   "pos": 6,
+   "tag": "#VYQY8VG8",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Schlumpfmausi",
+   "pos": 12,
+   "tag": "#LG09VQ8J",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Odin",
+   "pos": 2,
+   "tag": "#92RP8G9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "☠️Happy Day ☠️",
+   "pos": 5,
+   "tag": "#Y80LGCUPJ",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Alex12",
+   "pos": 18,
+   "tag": "#9GPR28YG",
+   "th": 17
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Gaspode",
+   "pos": 13,
+   "tag": "#2QRJRJY0V",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Sven",
+   "pos": 16,
+   "tag": "#J0UYJ09P",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "supersplint",
+   "pos": 20,
+   "tag": "#L9QQRVGP",
+   "th": 17
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "1000000",
+   "pos": 1,
+   "tag": "#V029UQCU",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "LEGENDE",
+   "pos": 21,
+   "tag": "#P8Q89LYQ9",
+   "th": 16
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Lonestar",
+   "pos": 4,
+   "tag": "#28CJUY0G9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Mone",
+   "pos": 15,
+   "tag": "#L09Y0G0G9",
+   "th": 18
+  }
+ ],
+ "opponent": {
+  "badge": "https://api-assets.clashofclans.com/badges/70/s6Re-uxsUOraGTp_eM2wvLQZD_QlDTy7zHXfaXL30hQ.png",
+  "name": "LT - Latrai",
+  "pct": 0.0,
+  "stars": 0,
+  "tag": "#J98LQP0"
+ },
+ "preparationStartTime": "20261104T202303.000Z",
+ "startTime": "20261105T202301.000Z",
+ "state": "preparation",
+ "teamSize": 15,
+ "us": {
+  "attacks": 0,
+  "pct": 0.0,
+  "stars": 0
+ },
+ "warTag": "#8RPY90R9C"
+}

@@ -3,7 +3,7 @@
  "endTime": "20261105T203515.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-04T19:51:32Z",
+ "lastSeen": "2026-11-04T20:36:42Z",
  "members": [
   {
    "attacks": [],
@@ -11,6 +11,14 @@
    "name": "=RS=",
    "pos": 12,
    "tag": "#GLPVGVR9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Uzii",
+   "pos": 17,
+   "tag": "#2Q8GPVV0",
    "th": 18
   },
   {
@@ -104,14 +112,6 @@
   {
    "attacks": [],
    "defenses": [],
-   "name": "Elussa",
-   "pos": 7,
-   "tag": "#J9CLGUR0",
-   "th": 18
-  },
-  {
-   "attacks": [],
-   "defenses": [],
    "name": "Nemesis",
    "pos": 18,
    "tag": "#22C0YRV9C",
@@ -135,7 +135,7 @@
  },
  "preparationStartTime": "20261103T201049.000Z",
  "startTime": "20261104T203515.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 15,
  "us": {
   "attacks": 0,
