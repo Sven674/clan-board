@@ -3,10 +3,18 @@
  "endTime": "20261104T195705.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-04T02:10:54Z",
+ "lastSeen": "2026-11-04T06:46:48Z",
  "members": [
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 18,
+     "order": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -48,7 +56,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 17,
+     "defTh": 17,
+     "order": 19,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "NobbyNobbs",
    "pos": 19,
@@ -174,7 +190,15 @@
    "th": 16
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 18,
+     "order": 17,
+     "pct": 75,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Zucker",
    "pos": 10,
@@ -244,9 +268,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 5,
-  "pct": 26.4,
-  "stars": 11
+  "attacks": 8,
+  "pct": 44.733333333333334,
+  "stars": 19
  },
  "warTag": "#8RP0QPPY9"
 }

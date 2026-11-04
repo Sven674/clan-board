@@ -3,7 +3,7 @@
  "endTime": "20261104T200345.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-04T02:10:54Z",
+ "lastSeen": "2026-11-04T06:46:48Z",
  "members": [
   {
    "attacks": [],
@@ -28,7 +28,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 18,
+     "order": 7,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Chrisdoc",
    "pos": 2,
@@ -66,7 +74,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 18,
+     "defTh": 17,
+     "order": 9,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Ertanbabo",
    "pos": 4,
@@ -162,7 +178,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 18,
+     "order": 8,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "hulk",
    "pos": 10,
@@ -182,9 +206,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 4,
-  "pct": 24.866666666666667,
-  "stars": 10
+  "attacks": 7,
+  "pct": 44.86666666666667,
+  "stars": 19
  },
  "warTag": "#8J8GVCV2C"
 }

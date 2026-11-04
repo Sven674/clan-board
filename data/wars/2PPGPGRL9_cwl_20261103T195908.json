@@ -3,7 +3,7 @@
  "endTime": "20261105T195800.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-04T02:10:54Z",
+ "lastSeen": "2026-11-04T06:46:48Z",
  "members": [
   {
    "attacks": [],
@@ -24,6 +24,14 @@
   {
    "attacks": [],
    "defenses": [],
+   "name": "mimi",
+   "pos": 10,
+   "tag": "#2YLVQRY9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
    "name": "Vinci",
    "pos": 6,
    "tag": "#VYQY8VG8",
@@ -32,17 +40,17 @@
   {
    "attacks": [],
    "defenses": [],
-   "name": "NobbyNobbs",
-   "pos": 19,
-   "tag": "#L08LQ8YJL",
-   "th": 17
+   "name": "Schlumpfmausi",
+   "pos": 12,
+   "tag": "#LG09VQ8J",
+   "th": 18
   },
   {
    "attacks": [],
    "defenses": [],
-   "name": "der. Cool.",
-   "pos": 3,
-   "tag": "#QCJY9QPC",
+   "name": "Odin",
+   "pos": 2,
+   "tag": "#92RP8G9",
    "th": 18
   },
   {
@@ -56,6 +64,22 @@
   {
    "attacks": [],
    "defenses": [],
+   "name": "Alex12",
+   "pos": 18,
+   "tag": "#9GPR28YG",
+   "th": 17
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Gaspode",
+   "pos": 13,
+   "tag": "#2QRJRJY0V",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
    "name": "Sven",
    "pos": 16,
    "tag": "#J0UYJ09P",
@@ -64,10 +88,10 @@
   {
    "attacks": [],
    "defenses": [],
-   "name": "LL ⭐️minimaus⭐️",
-   "pos": 22,
-   "tag": "#208R29C92",
-   "th": 16
+   "name": "supersplint",
+   "pos": 20,
+   "tag": "#L9QQRVGP",
+   "th": 17
   },
   {
    "attacks": [],
@@ -80,34 +104,10 @@
   {
    "attacks": [],
    "defenses": [],
-   "name": "Simone",
-   "pos": 9,
-   "tag": "#UGYG0PY9",
-   "th": 18
-  },
-  {
-   "attacks": [],
-   "defenses": [],
    "name": "LEGENDE",
    "pos": 21,
    "tag": "#P8Q89LYQ9",
    "th": 16
-  },
-  {
-   "attacks": [],
-   "defenses": [],
-   "name": "Zucker",
-   "pos": 11,
-   "tag": "#2CY2GL9J",
-   "th": 18
-  },
-  {
-   "attacks": [],
-   "defenses": [],
-   "name": "mini1000000",
-   "pos": 7,
-   "tag": "#LQ0YCGLL2",
-   "th": 18
   },
   {
    "attacks": [],
