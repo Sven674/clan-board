@@ -3,10 +3,18 @@
  "endTime": "20261105T203515.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-04T20:36:42Z",
+ "lastSeen": "2026-11-04T23:34:37Z",
  "members": [
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 18,
+     "order": 4,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "=RS=",
    "pos": 12,
@@ -14,7 +22,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 7,
+     "defTh": 18,
+     "order": 3,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Uzii",
    "pos": 17,
@@ -31,7 +47,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "OlMcGoldi",
    "pos": 14,
    "tag": "#YR0Y90G",
@@ -94,7 +116,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 6,
+     "defTh": 18,
+     "order": 1,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Sir COColores",
    "pos": 8,
@@ -129,8 +159,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/6mh6F2vbeqCazzLEHB1xZIFlU4vKdqgM0i-MJkLpwJk.png",
   "name": "WeGoJim",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 6.666666666666667,
+  "stars": 3,
   "tag": "#2LJYGVVU2"
  },
  "preparationStartTime": "20261103T201049.000Z",
@@ -138,9 +168,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 3,
+  "pct": 20.0,
+  "stars": 9
  },
  "warTag": "#8J8CYJPJR"
 }

@@ -3,7 +3,7 @@
  "endTime": "20261105T202252.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-04T20:36:42Z",
+ "lastSeen": "2026-11-04T23:34:37Z",
  "members": [
   {
    "attacks": [
@@ -46,7 +46,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 18,
+     "order": 8,
+     "pct": 90,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Schlumpfmausi",
    "pos": 12,
@@ -54,7 +62,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 6,
+     "pct": 90,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Odin",
    "pos": 2,
@@ -79,7 +95,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 83,
+     "stars": 2
+    }
+   ],
    "name": "Gaspode",
    "pos": 13,
    "tag": "#2QRJRJY0V",
@@ -130,7 +152,15 @@
    "th": 16
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 18,
+     "order": 7,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -155,8 +185,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/17wSFLx4VVSX1K7Ej23lYiN_CEPkh1jr1w44_mIgvwQ.png",
   "name": "actif family",
-  "pct": 17.6,
-  "stars": 7,
+  "pct": 23.133333333333333,
+  "stars": 9,
   "tag": "#2GV2RCGC8"
  },
  "preparationStartTime": "20261103T195908.000Z",
@@ -164,9 +194,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 1,
-  "pct": 6.0,
-  "stars": 2
+  "attacks": 4,
+  "pct": 24.666666666666668,
+  "stars": 9
  },
  "warTag": "#8RP8V99CC"
 }
