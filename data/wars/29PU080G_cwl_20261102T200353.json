@@ -3,7 +3,7 @@
  "endTime": "20261104T202907.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-04T16:25:14Z",
+ "lastSeen": "2026-11-04T17:55:12Z",
  "members": [
   {
    "attacks": [
@@ -160,7 +160,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 7,
+     "defTh": 18,
+     "order": 27,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Ricky",
    "pos": 9,
@@ -281,7 +289,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 66,
+     "stars": 2
+    }
+   ],
    "name": "Captain Future",
    "pos": 15,
    "tag": "#8PGGGL2U8",
@@ -307,8 +321,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/v691L60TibauYNHNyStYuwlPdGA5SJOh6KEBP0AMA-w.png",
   "name": "BeYKoZLuLaR",
-  "pct": 62.8,
-  "stars": 24,
+  "pct": 67.2,
+  "stars": 26,
   "tag": "#QP802LRQ"
  },
  "preparationStartTime": "20261102T200353.000Z",
@@ -316,9 +330,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 14,
-  "pct": 86.93333333333334,
-  "stars": 37
+  "attacks": 15,
+  "pct": 93.6,
+  "stars": 40
  },
  "warTag": "#8J8GVCV2C"
 }
