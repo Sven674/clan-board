@@ -3,22 +3,14 @@
  "endTime": "20261105T203515.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-04T14:44:15Z",
+ "lastSeen": "2026-11-04T15:15:39Z",
  "members": [
   {
    "attacks": [],
    "defenses": [],
-   "name": "theBASTIan",
-   "pos": 1,
-   "tag": "#92L228UR",
-   "th": 18
-  },
-  {
-   "attacks": [],
-   "defenses": [],
-   "name": "--SVEN--674--",
-   "pos": 6,
-   "tag": "#200PCP8QQ",
+   "name": "=RS=",
+   "pos": 12,
+   "tag": "#GLPVGVR9",
    "th": 18
   },
   {
@@ -64,6 +56,14 @@
   {
    "attacks": [],
    "defenses": [],
+   "name": "Beach",
+   "pos": 5,
+   "tag": "#8LVUJRQP",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
    "name": "Ricky",
    "pos": 9,
    "tag": "#LRYLYPG8",
@@ -72,9 +72,17 @@
   {
    "attacks": [],
    "defenses": [],
-   "name": "Legend Papa",
-   "pos": 11,
-   "tag": "#9RCY8U0VQ",
+   "name": "Filiusberlinius",
+   "pos": 13,
+   "tag": "#2UCJYGU0",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "grautvornixe",
+   "pos": 20,
+   "tag": "#PRRQ29JP",
    "th": 18
   },
   {
@@ -115,14 +123,6 @@
    "name": "Captain Future",
    "pos": 15,
    "tag": "#8PGGGL2U8",
-   "th": 18
-  },
-  {
-   "attacks": [],
-   "defenses": [],
-   "name": "hulk",
-   "pos": 10,
-   "tag": "#GRJU2J92",
    "th": 18
   }
  ],
