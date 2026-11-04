@@ -1,9 +1,9 @@
 {
  "attacksPerMember": 1,
- "endTime": "20261104T195705.000Z",
+ "endTime": "20261104T202144.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-04T06:46:48Z",
+ "lastSeen": "2026-11-04T09:24:04Z",
  "members": [
   {
    "attacks": [
@@ -42,7 +42,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 20,
+     "pct": 73,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -125,7 +133,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "LL ⭐️minimaus⭐️",
    "pos": 22,
    "tag": "#208R29C92",
@@ -259,8 +273,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/VRfG7PZkPDzBdV3tw9l4EkAdmQPYdywBkeC7lvgpHzI.png",
   "name": "شام العز",
-  "pct": 62.53333333333333,
-  "stars": 24,
+  "pct": 69.2,
+  "stars": 27,
   "tag": "#J99G00LL"
  },
  "preparationStartTime": "20261102T195706.000Z",
@@ -268,9 +282,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 8,
-  "pct": 44.733333333333334,
-  "stars": 19
+  "attacks": 9,
+  "pct": 49.6,
+  "stars": 21
  },
  "warTag": "#8RP0QPPY9"
 }
