@@ -3,7 +3,7 @@
  "endTime": "20261104T195705.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-03T22:56:36Z",
+ "lastSeen": "2026-11-04T02:10:54Z",
  "members": [
   {
    "attacks": [],
@@ -35,7 +35,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 53,
+     "stars": 2
+    }
+   ],
    "name": "Vinci",
    "pos": 6,
    "tag": "#VYQY8VG8",
@@ -229,8 +235,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/VRfG7PZkPDzBdV3tw9l4EkAdmQPYdywBkeC7lvgpHzI.png",
   "name": "شام العز",
-  "pct": 59.0,
-  "stars": 22,
+  "pct": 62.53333333333333,
+  "stars": 24,
   "tag": "#J99G00LL"
  },
  "preparationStartTime": "20261102T195706.000Z",
