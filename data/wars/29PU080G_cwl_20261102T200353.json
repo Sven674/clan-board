@@ -3,7 +3,7 @@
  "endTime": "20261104T202907.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-04T15:15:39Z",
+ "lastSeen": "2026-11-04T16:25:14Z",
  "members": [
   {
    "attacks": [
@@ -37,7 +37,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "--SVEN--674--",
    "pos": 6,
    "tag": "#200PCP8QQ",
@@ -200,7 +206,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 9,
+     "defTh": 18,
+     "order": 25,
+     "pct": 36,
+     "stars": 1
+    }
+   ],
    "defenses": [
     {
      "attTh": 17,
@@ -223,7 +237,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Elussa",
    "pos": 7,
    "tag": "#J9CLGUR0",
@@ -287,8 +307,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/v691L60TibauYNHNyStYuwlPdGA5SJOh6KEBP0AMA-w.png",
   "name": "BeYKoZLuLaR",
-  "pct": 49.46666666666667,
-  "stars": 18,
+  "pct": 62.8,
+  "stars": 24,
   "tag": "#QP802LRQ"
  },
  "preparationStartTime": "20261102T200353.000Z",
@@ -296,9 +316,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 13,
-  "pct": 84.53333333333333,
-  "stars": 36
+  "attacks": 14,
+  "pct": 86.93333333333334,
+  "stars": 37
  },
  "warTag": "#8J8GVCV2C"
 }
