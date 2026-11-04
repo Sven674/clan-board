@@ -53,6 +53,10 @@ def load_token():
 TOKEN = None
 
 
+class Voruebergehend(Exception):
+    """API oder Proxy kurz nicht erreichbar (Wartung, Überlastung, Verbindungsfehler)."""
+
+
 def api(path):
     url = BASE + path
     req = urllib.request.Request(url, headers={
@@ -67,15 +71,18 @@ def api(path):
             if e.code in (403, 404):
                 # 403 = Kriegsprotokoll privat oder Schlüssel/IP falsch, 404 = nicht vorhanden
                 return {"_error": e.code, "_reason": e.read().decode("utf-8", "replace")[:200]}
-            if e.code in (429, 500, 502, 503, 504) and attempt < 2:
-                time.sleep(3 * (attempt + 1))
-                continue
+            # 429 = zu viele Anfragen, 5xx = Wartung (503) oder Proxy-/Cloudflare-Fehler (520-530)
+            if e.code == 429 or e.code >= 500:
+                if attempt < 2:
+                    time.sleep(10 * (attempt + 1))
+                    continue
+                raise Voruebergehend("HTTP %s bei %s" % (e.code, path))
             raise
-        except urllib.error.URLError:
+        except (urllib.error.URLError, TimeoutError) as e:
             if attempt < 2:
-                time.sleep(3)
+                time.sleep(10 * (attempt + 1))
                 continue
-            raise
+            raise Voruebergehend("Verbindung fehlgeschlagen bei %s: %s" % (path, e))
 
 
 def enc(tag):
@@ -632,4 +639,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Voruebergehend as e:
+        # Kurze Störung: nichts speichern, Lauf trotzdem als erfolgreich beenden,
+        # damit GitHub keine Fehler-Mail schickt. Der nächste Lauf holt alles nach.
+        print("::warning::Übersprungen, Clash-API vorübergehend nicht erreichbar (%s)" % e)
+        sys.exit(0)
