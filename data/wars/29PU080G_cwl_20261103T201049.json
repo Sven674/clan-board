@@ -3,7 +3,7 @@
  "endTime": "20261105T203515.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-05T03:42:35Z",
+ "lastSeen": "2026-11-05T07:54:34Z",
  "members": [
   {
    "attacks": [
@@ -15,7 +15,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 77,
+     "stars": 2
+    }
+   ],
    "name": "=RS=",
    "pos": 12,
    "tag": "#GLPVGVR9",
@@ -38,7 +44,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 11,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -66,7 +80,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 17,
+     "defTh": 17,
+     "order": 13,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "EumelTV",
    "pos": 19,
@@ -102,8 +124,22 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 18,
+     "order": 14,
+     "pct": 88,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Beach",
    "pos": 5,
    "tag": "#8LVUJRQP",
@@ -118,7 +154,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 11,
+     "defTh": 18,
+     "order": 12,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -183,8 +227,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/6mh6F2vbeqCazzLEHB1xZIFlU4vKdqgM0i-MJkLpwJk.png",
   "name": "WeGoJim",
-  "pct": 33.0,
-  "stars": 14,
+  "pct": 44.8,
+  "stars": 19,
   "tag": "#2LJYGVVU2"
  },
  "preparationStartTime": "20261103T201049.000Z",
@@ -192,9 +236,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 3,
-  "pct": 20.0,
-  "stars": 9
+  "attacks": 7,
+  "pct": 45.86666666666667,
+  "stars": 20
  },
  "warTag": "#8J8CYJPJR"
 }

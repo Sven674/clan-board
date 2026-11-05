@@ -3,7 +3,7 @@
  "endTime": "20261105T202252.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-05T03:42:35Z",
+ "lastSeen": "2026-11-05T07:54:34Z",
  "members": [
   {
    "attacks": [
@@ -30,7 +30,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 9,
+     "defTh": 18,
+     "order": 12,
+     "pct": 81,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "mimi",
    "pos": 10,
@@ -39,7 +47,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 31,
+     "stars": 1
+    }
+   ],
    "name": "Vinci",
    "pos": 6,
    "tag": "#VYQY8VG8",
@@ -79,7 +93,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "☠️Happy Day ☠️",
    "pos": 5,
    "tag": "#Y80LGCUPJ",
@@ -109,7 +129,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 78,
+     "stars": 2
+    }
+   ],
    "name": "Sven",
    "pos": 16,
    "tag": "#J0UYJ09P",
@@ -138,7 +164,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 19,
+     "defTh": 17,
+     "order": 13,
+     "pct": 39,
+     "stars": 1
+    }
+   ],
    "defenses": [
     {
      "attTh": 17,
@@ -174,7 +208,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 14,
+     "defTh": 18,
+     "order": 14,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Mone",
    "pos": 15,
@@ -185,8 +227,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/17wSFLx4VVSX1K7Ej23lYiN_CEPkh1jr1w44_mIgvwQ.png",
   "name": "actif family",
-  "pct": 23.133333333333333,
-  "stars": 9,
+  "pct": 37.06666666666667,
+  "stars": 15,
   "tag": "#2GV2RCGC8"
  },
  "preparationStartTime": "20261103T195908.000Z",
@@ -194,9 +236,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 4,
-  "pct": 24.666666666666668,
-  "stars": 9
+  "attacks": 7,
+  "pct": 39.333333333333336,
+  "stars": 15
  },
  "warTag": "#8RP8V99CC"
 }
