@@ -430,12 +430,13 @@ def latest_capital_gold(t):
     return cap[max(cap)].get("gold") if cap else None
 
 
-def cwl_season(wars, roster=None):
-    """Auswertung der neuesten Ligasaison: Tage und Spieler."""
+def cwl_season(wars, roster=None, back=0):
+    """Auswertung einer Ligasaison: Tage und Spieler. back=0 neueste, back=1 die davor."""
     cwl = [w for w in wars if w.get("kind") == "cwl" and w.get("preparationStartTime")]
-    if not cwl:
+    seasons = sorted({w["preparationStartTime"][:6] for w in cwl}, reverse=True)
+    if len(seasons) <= back:
         return None
-    season = max(w["preparationStartTime"][:6] for w in cwl)
+    season = seasons[back]
     days = sorted([w for w in cwl if w["preparationStartTime"][:6] == season],
                   key=lambda w: w["preparationStartTime"])
     players = {}
@@ -474,6 +475,13 @@ def cwl_season(wars, roster=None):
     if roster and roster.get("season", "")[:7].replace("-", "") == season:
         out["roster"] = roster["members"]
     return out
+
+
+def cwl_prev_light(s):
+    """Nur das Nötige der Vorwoche: Saison und Tage mit Aufstellung."""
+    if not s:
+        return None
+    return {"season": s["season"], "rounds": s["rounds"]}
 
 
 def lineup_detail(w):
@@ -599,6 +607,8 @@ def build_board(state, live, fetched_at):
                 participants=len(r["members"]),
                 members=sorted(r["members"], key=lambda x: -x["loot"])) for r in raids_all][::-1],
             "cwl": cwl_season(wars, state.get("cwlRoster", {}).get(clan_tag)),
+            # Vorwoche: entscheidet am ersten Liga-Tag, wer aussetzt (vergessen, schwächster letzter Tag)
+            "cwlPrev": cwl_prev_light(cwl_season(wars, back=1)),
             "regularRounds": regular_rounds(wars),
             "log": cs.get("log", [])[-60:][::-1],
         })

@@ -59,9 +59,15 @@ tbody tr.openrow:hover td{background:var(--openbg);filter:brightness(.97)}
 input[data-f][type=checkbox]{width:26px;height:26px;vertical-align:middle;cursor:pointer;accent-color:var(--ok)}
 input[data-f][type=number],input[data-pin]{font:inherit;font-size:17px;padding:9px 12px;min-height:46px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 input[data-f][type=number]{width:90px!important}
-input[data-pin]{width:160px!important}
+input[data-pin]{width:230px!important;font-size:28px!important;letter-spacing:8px;text-align:center;border:2px solid var(--acc)!important;min-height:56px!important}
 .saverow{margin-top:12px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
-.pinlbl{display:inline-flex;align-items:center;gap:8px;margin-right:6px;font-weight:600}
+.pinbox{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;background:var(--openbg);border:2px solid var(--acc);border-radius:10px;padding:12px 14px;margin-bottom:6px}
+.pinbox b{font-size:18px}
+.pincount{font-size:16px;font-weight:600;min-width:130px}
+.pinbox.ok{background:var(--chip);border-color:var(--ok)}
+.pill.warn{background:var(--warn);color:#fff}
+.pill.big{font-size:14px;font-weight:600;padding:3px 10px}
+.benchright{display:flex;flex-direction:column;align-items:flex-end;gap:4px;text-align:right;white-space:nowrap}
 select.bigsel{font:inherit;font-size:17px;padding:9px 12px;min-height:46px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .volgrid label{display:flex;align-items:center;gap:10px;padding:8px 4px;font-size:16px;cursor:pointer}
 .fdedit td{padding-top:10px;padding-bottom:10px}
@@ -145,8 +151,7 @@ function dateDE(s){ const d=parseT(s); return d ? d.toLocaleDateString('de-DE',{
 function ampel(w){
   if(!w || !w.recentWars) return {c:'n', t:'noch keine abgeschlossenen Kriege erfasst'};
   if(w.recentMissed === 0) return {c:'g', t:'kein Angriff vergessen'};
-  if(w.recentMissed <= 2) return {c:'y', t:w.recentMissed+' Angriff(e) vergessen'};
-  return {c:'r', t:w.recentMissed+' Angriffe vergessen'};
+  return {c:'r', t:w.recentMissed+' Angriff(e) vergessen'};
 }
 
 function rows(){
@@ -265,7 +270,7 @@ function memberTable(){
   }).join('');
   return `<div class="card"><input type="search" placeholder="Spieler suchen" value="${esc(S.q)}" id="q">
     <div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
-    <div class="legend">Orange hinterlegt = hat im laufenden Krieg noch Angriffe offen. Ampel = vergessene Kriegsangriffe in den letzten 10 abgeschlossenen Kriegen (grün 0, gelb 1–2, rot ab 3). Grau = noch keine Daten.
+    <div class="legend">Orange hinterlegt = hat im laufenden Krieg noch Angriffe offen. Ampel = vergessene Kriegsangriffe in den letzten 10 abgeschlossenen Kriegen (grün: keiner vergessen, rot: mindestens einer vergessen, Zahl = wie viele). Grau = noch keine Daten.
     Spenden zählen seit Saisonbeginn. „Zuletzt aktiv“ leitet sich aus Änderungen am Spielerprofil ab (Spenden, Siege, Upgrades, Erfolge), die API liefert keinen Online-Status. Spaltenkopf antippen zum Sortieren, Zeile antippen für Details.</div></div>`;
 }
 
@@ -318,62 +323,80 @@ function raidList(){
 // ---------- Aussetz-Empfehlung ----------
 // Gewichte: mehr Punkte = eher aussetzen. Hier anpassen, wenn die Führung es anders will.
 const W = {
-  sternFehlt: 20,     // je Stern, der beim letzten Angriff gefehlt hat
+  pflichtBis: 2,      // Pflicht-Aussetzer: letzter Angriff mit so vielen Sternen oder weniger (oder vergessen)
+  sternFehlt: 30,     // je Stern, der beim letzten Angriff gefehlt hat
   prozentFehlt: 0.2,  // je Prozentpunkt unter 100 beim letzten Angriff
   vergessen: 100,     // je vergessenem Angriff im letzten Einsatz
-  sternKassiert: 10,  // je Stern, den der Gegner zuletzt auf dieser Basis geholt hat
+  sternKassiert: 5,   // je Stern, den der Gegner zuletzt auf dieser Basis geholt hat
   prozentKassiert: 0.1, // je Prozentpunkt Zerstörung auf dieser Basis
-  schonAusgesetzt: 60, // Abzug je Tag/Krieg, an dem schon ausgesetzt wurde
+  schonAusgesetzt: 10, // Abzug je Tag/Krieg, an dem schon ausgesetzt wurde (bewusst klein: Leistung geht vor)
 };
+// Offene Angriffe am laufenden Liga-/Kriegstag (Angriffe werden live übernommen).
+const openToday = (rounds, tag) => { const r = (rounds || []).find(x => x.state === 'inWar'); const l = r && r.lineup[tag];
+  return l ? Math.max(0, (r.apm || 1) - l.att.length) : 0; };
 
-function benchCalc(rounds, roster, teamSize, vol){
+// Liga: Wer einen Angriff vergisst, ist für den Rest der Woche raus und setzt am ersten Tag der nächsten Liga aus.
+function cwlBan(rounds, label){
+  const ban = {};
+  rounds.filter(r => r.final).forEach(r => Object.entries(r.lineup).forEach(([tag, l]) => {
+    if(l.att.length < (r.apm || 1) && !ban[tag]) ban[tag] = label(r.day);
+  }));
+  return ban;
+}
+
+function benchCalc(rounds, roster, teamSize, vol, ban){
+  ban = ban || {};
   const target = rounds.find(r => r.state === 'preparation');
   const past = rounds.filter(r => r.state !== 'preparation');
   if(!past.length || !roster.length || !teamSize) return null;
+  // Gewertet wird nur der aktuelle Tag/Krieg: Angriff und Verteidigung der dort Aufgestellten.
+  // Wer dort ausgesetzt hat, spielt als Nächstes. Wer noch nicht angegriffen hat, ist noch nicht bewertet.
+  const cur = past[past.length - 1];
   const rows = roster.map(p => {
-    let played = 0, sat = 0, last = null, lastDef = null;
+    let played = 0, sat = 0;
     past.forEach(r => { if(r.lineup[p.tag]) played++; else sat++; });
-    for(let i = past.length - 1; i >= 0; i--){
-      const r = past[i], l = r.lineup[p.tag];
-      if(!l) continue;
-      if(!last && (l.att.length || r.final)) last = {r, l};
-      if(!lastDef && l.def) lastDef = {r, l};
-      if(last && lastDef) break;
-    }
-    let score = 0; const why = [];
-    if(last){
-      const apm = last.r.apm || 1;
-      const missed = last.r.final ? Math.max(0, apm - last.l.att.length) : 0;
-      if(missed){ score += missed * W.vergessen; why.push(missed + '× vergessen'); }
-      if(last.l.att.length){
-        const s = last.l.att.reduce((a,x)=>a+x[0],0) / last.l.att.length;
-        const pc = last.l.att.reduce((a,x)=>a+x[1],0) / last.l.att.length;
+    const l = cur.lineup[p.tag], apm = cur.apm || 1;
+    let score = 0, pflicht = '', group, why = [];
+    if(ban[p.tag]){ group = -1; pflicht = ban[p.tag]; why.push({t: ban[p.tag], bad: true}); }
+    else if(!l){ group = 3; why.push({t: 'hat am aktuellen ' + (cur.day ? 'Tag' : 'Krieg') + ' ausgesetzt, spielt als Nächstes'}); }
+    else {
+      const missed = cur.final ? Math.max(0, apm - l.att.length) : 0;
+      if(missed){ score += missed * W.vergessen; why.push({t: 'Angriff vergessen', bad: true}); pflicht = 'Angriff vergessen'; }
+      const weak = l.att.filter(x => x[0] <= W.pflichtBis);
+      if(weak.length && !pflicht) pflicht = 'nur ' + Math.min(...weak.map(x => x[0])) + '★';
+      if(l.att.length){
+        const s = l.att.reduce((a,x)=>a+x[0],0) / l.att.length;
+        const pc = l.att.reduce((a,x)=>a+x[1],0) / l.att.length;
         score += (3 - s) * W.sternFehlt + (100 - pc) * W.prozentFehlt;
-        why.push(last.l.att.map(x => x[0] + '★ ' + x[1] + ' %').join(', '));
+        why.push({t: 'Angriff ' + l.att.map(x => x[0] + '★ ' + x[1] + ' %').join(', '), bad: !!weak.length});
       }
-    } else why.push('noch kein Angriff');
-    if(lastDef){
-      const [ds, dp] = lastDef.l.def;
-      score += ds * W.sternKassiert + dp * W.prozentKassiert;
-      why.push(ds === 3 ? 'gedreiert' : 'Verteidigung ' + ds + '★ ' + dp + ' %');
+      if(l.def){
+        const [ds, dp] = l.def;
+        score += ds * W.sternKassiert + dp * W.prozentKassiert;
+        why.push({t: 'Verteidigung ' + ds + '★ ' + dp + ' %'});
+      }
+      if(sat) score -= sat * W.schonAusgesetzt;
+      if(pflicht) group = 0;
+      else if(l.att.length || missed) group = 1;
+      else { group = 2; why.unshift({t: 'greift noch an, noch nicht bewertet'}); }
     }
-    if(sat){ score -= sat * W.schonAusgesetzt; why.push(sat + '× ausgesetzt'); }
-    else why.push('noch nie ausgesetzt');
-    return {tag: p.tag, name: p.name, score, played, sat, why: why.join(' · '),
-            lastAtt: last && last.l.att.length ? last.l.att : null,
-            lastDef: lastDef ? lastDef.l.def : null,
+    return {tag: p.tag, name: p.name, score, played, sat, pflicht, group, open: openToday(rounds, p.tag), why,
+            lastAtt: l && l.att.length ? l.att : null,
+            lastDef: l && l.def ? l.def : null,
             inTarget: target ? !!target.lineup[p.tag] : null};
   });
-  rows.sort((a,b) => b.score - a.score || b.played - a.played);
+  // Reihenfolge: Pflicht-Aussetzer, dann nach Punkten, dann noch nicht Bewertete, zuletzt wer am aktuellen Tag ausgesetzt hat.
+  rows.sort((a,b) => a.group - b.group || b.score - a.score || b.played - a.played);
   const bench = Math.max(0, roster.length - teamSize);
-  // Freiwillige setzen zuerst aus, die übrigen Plätze gehen nach Punkten.
+  // Freiwillige setzen zuerst aus, die übrigen Plätze gehen der Reihe nach. Wer am aktuellen Tag ausgesetzt hat, bleibt drin.
   vol = (vol || []).filter(t => rows.some(r => r.tag === t));
-  const need = Math.max(0, bench - vol.length);
+  const banned = rows.filter(r => r.group === -1 && !vol.includes(r.tag)).length;
+  const need = Math.max(0, bench - vol.length - banned);
   let k = 0;
   rows.forEach((r,i) => {
     r.vol = vol.includes(r.tag);
-    r.sit = r.vol || k++ < need;
-    r.freed = !r.sit && i < bench;   // wäre ohne Freiwillige dran gewesen
+    r.sit = r.vol || r.group === -1 || (r.group >= 0 && r.group < 3 && k++ < need);
+    r.freed = !r.sit && i < bench && r.group < 3;   // wäre ohne Freiwillige dran gewesen
   });
   return {rows, bench, teamSize, total: roster.length, target, nextNo: (target ? target.day : past.length + 1)};
 }
@@ -452,35 +475,43 @@ function volForm(opt, rows){
 function benchCard(title, calc, unit, opt){
   if(!calc) return `<div class="card"><h2>${title}</h2><span class="muted">Noch zu wenig Daten. Die Empfehlung erscheint, sobald der erste ${unit} gelaufen ist.</span></div>`;
   const sit = [...calc.rows.filter(r => r.sit && r.vol), ...calc.rows.filter(r => r.sit && !r.vol)];
+  const over = sit.length - calc.bench;
   const freed = calc.rows.filter(r => r.freed);
   const fertig = !!(opt && doneOf(opt) && calc.target);
   const clash = calc.target && !fertig ? sit.filter(r => r.inTarget) : [];
   const actual = fertig ? [...calc.rows.filter(r => r.inTarget === false && r.vol), ...calc.rows.filter(r => r.inTarget === false && !r.vol)] : [];
+  const whyHtml = r => r.why.map(w => `<span class="${w.bad ? 'err' : 'muted'}"${w.bad ? ' style="font-weight:600"' : ''}>${esc(w.t)}</span>`).join('<span class="muted"> · </span>');
+  const left = r => `<span><b>${esc(r.name)}</b>${r.vol ? ' <span class="pill">freiwillig</span>' : ''}${r.open ? ' <span class="openbadge">noch nicht angegriffen</span>' : ''}<br><span style="font-size:14px">${whyHtml(r)}</span></span>`;
+  const satTxt = r => `<span class="muted" style="font-size:12px">${r.sat ? r.sat + '× ausgesetzt' : 'nie ausgesetzt'}</span>`;
+  const right = (r, status) => `<span class="benchright"><span>${r.group >= 0 && r.group < 2 ? Math.round(r.score) + ' Pkt. ' : ''}${status}</span>${satTxt(r)}</span>`;
   const list = fertig
-    ? (actual.length ? `<ul class="list">${actual.map(r => `<li><span><b>${esc(r.name)}</b>${r.vol ? ' <span class="pill">freiwillig</span>' : ''}<br><span class="muted">${esc(r.why)}</span></span><span><span class="pill ok">setzt aus</span></span></li>`).join('')}</ul>`
+    ? (actual.length ? `<ul class="list">${actual.map(r => `<li>${left(r)}${right(Object.assign({}, r, {group: 9}), '<span class="pill ok">setzt aus</span>')}</li>`).join('')}</ul>`
                      : '<p>Niemand setzt aus.</p>')
     : calc.bench === 0
     ? '<p>Alle können spielen, es muss niemand aussetzen.</p>'
-    : `<ul class="list">${sit.map(r => `<li><span><b>${esc(r.name)}</b>${r.vol ? ' <span class="pill">freiwillig</span>' : ''}<br><span class="muted">${esc(r.why)}</span></span><span>${Math.round(r.score)} Pkt.${r.inTarget===true?' <span class="pill bad">noch aufgestellt</span>':r.inTarget===false?' <span class="pill ok">umgesetzt</span>':''}</span></li>`).join('')}</ul>`;
+    : `<ul class="list">${sit.map(r => `<li>${left(r)}${right(r, r.inTarget===true?'<span class="pill bad">noch aufgestellt</span>':r.inTarget===false?'<span class="pill ok">umgesetzt</span>':'')}</li>`).join('')}</ul>`;
   const table = calc.rows.map((r,i) => `<tr class="${r.sit?'openrow':''}">
-    <td>${i+1}. <span class="name">${esc(r.name)}</span>${r.vol ? ' <span class="pill">freiwillig</span>' : ''}</td>
-    <td><b>${Math.round(r.score)}</b></td>
+    <td>${i+1}. <span class="name">${esc(r.name)}</span>${r.open ? ` <span class="openbadge">${r.open} offen</span>` : ''}${r.vol ? ' <span class="pill">freiwillig</span>' : ''}${r.pflicht ? ` <span class="pill bad">Pflicht</span>` : ''}</td>
+    <td><b>${r.group >= 0 && r.group < 2 ? Math.round(r.score) : "–"}</b></td>
     <td>${r.lastAtt ? r.lastAtt.map(x => x[0]+'★ '+x[1]+' %').join(', ') : '–'}</td>
     <td>${r.lastDef ? r.lastDef[0]+'★ '+r.lastDef[1]+' %' : '–'}</td>
-    <td>${r.played}</td><td>${r.sat}</td>
+    <td>${r.played}</td><td>${r.sat ? `<span class="pill ok">${r.sat}×</span>` : 'nein'}</td>
     ${calc.target ? `<td>${r.inTarget ? 'ja' : 'nein'}</td>` : ''}</tr>`).join('');
   return `<div class="card"><h2>${title}</h2>
     ${opt ? doneBanner(opt) : ''}
     ${calc.target && unit === 'Tag' ? syncHint(calc.target) : ''}
     <p class="muted" style="margin-top:-4px">${calc.total} Teilnehmer, ${fertig ? calc.total - actual.length : calc.teamSize} spielen: <b>${fertig ? actual.length : calc.bench} ${fertig ? (actual.length === 1 ? 'setzt' : 'setzen') + ' aus (Stand im Spiel)' : 'setzen aus'}</b></p>
+    ${calc.prevNote ? `<p class="muted" style="font-size:14px">${calc.prevNote}</p>` : ''}
     ${list}
+    ${over > 0 && !fertig ? `<p class="err" style="font-size:14px">Es müssten ${sit.length} aussetzen, frei sind aber nur ${calc.bench} Plätze. Die Führung muss entscheiden, wer trotzdem spielt.</p>` : ''}
     ${freed.length && !fertig ? `<p class="muted" style="font-size:14px">Darf spielen, weil jemand freiwillig aussetzt: ${freed.map(r => '<b>' + esc(r.name) + '</b>').join(', ')}</p>` : ''}
     ${calc.target && calc.bench && !clash.length && !fertig ? `<p class="sieg" style="font-size:14px;font-weight:600">Alle Empfehlungen für ${unit} ${calc.nextNo} sind umgesetzt.</p>` : ''}
     ${clash.length ? `<p class="err" style="font-size:14px">${clash.length} der Empfohlenen ${clash.length===1?'ist':'sind'} im Spiel schon für ${unit} ${calc.nextNo} aufgestellt.</p>` : ''}
     <details style="margin-top:8px"><summary>Alle Spieler mit Punkten anzeigen</summary>
-    <div class="table-wrap" style="margin-top:8px"><table><thead><tr><th>Spieler</th><th>Punkte</th><th>Letzter Angriff</th><th>Letzte Verteidigung</th><th>Gespielt</th><th>Ausgesetzt</th>${calc.target?'<th>Aufgestellt</th>':''}</tr></thead><tbody>${table}</tbody></table></div></details>
+    <div class="table-wrap" style="margin-top:8px"><table><thead><tr><th>Spieler</th><th>Punkte</th><th>Angriff aktueller Tag</th><th>Verteidigung aktueller Tag</th><th>Gespielt</th><th>Ausgesetzt</th>${calc.target?'<th>Aufgestellt</th>':''}</tr></thead><tbody>${table}</tbody></table></div></details>
     ${opt ? benchActions(opt, calc.rows) : ''}
-    <p class="legend">Freiwillige Aussetzer zählen zuerst, die übrigen Plätze gehen nach Punkten. Mehr Punkte = eher aussetzen. Je fehlender Stern ${W.sternFehlt}, je fehlendes Prozent ${W.prozentFehlt}, vergessener Angriff ${W.vergessen}, je kassierter Stern auf der eigenen Basis ${W.sternKassiert}, je kassiertes Prozent ${W.prozentKassiert}, minus ${W.schonAusgesetzt} je Mal schon ausgesetzt. Gewertet wird jeweils der letzte Angriff und die stärkste gegnerische Attacke im letzten Einsatz. Die Empfehlung ist ein Vorschlag, die Entscheidung trifft die Führung.</p></div>`;
+    ${calc.rows.some(r => r.pflicht && !r.sit) ? `<p class="muted" style="font-size:14px">Pflicht, aber kein Aussetz-Platz mehr frei, spielt deshalb: ${calc.rows.filter(r => r.pflicht && !r.sit).map(r => '<b>' + esc(r.name) + '</b>').join(', ')}</p>` : ''}
+    <p class="legend">${unit === 'Tag' ? 'Liga: Wer einen Angriff vergisst, ist für den Rest der Woche raus und setzt auch am ersten Tag der nächsten Liga aus. Am ersten Liga-Tag zählt der letzte Tag der Vorwoche. ' : ''}Reihenfolge: zuerst Freiwillige und Gesperrte, dann Pflicht-Aussetzer (Angriff am aktuellen Tag mit ${W.pflichtBis} Sterne oder weniger oder vergessen, gilt auch, wenn jemand schon ausgesetzt hat), dann nach Punkten. Mehr Punkte = eher aussetzen. Gewertet werden nur Angriff und Verteidigung am aktuellen Tag. Wer dort noch nicht angegriffen hat, ist noch nicht bewertet und rückt nur nach, wenn sonst Plätze fehlen. Wer am aktuellen Tag ausgesetzt hat, spielt als Nächstes. Je fehlender Stern ${W.sternFehlt}, je fehlendes Prozent ${W.prozentFehlt}, vergessener Angriff ${W.vergessen}, je kassierter Stern auf der eigenen Basis ${W.sternKassiert}, je kassiertes Prozent ${W.prozentKassiert}, minus ${W.schonAusgesetzt} je Mal schon ausgesetzt. Als Verteidigung zählt die stärkste gegnerische Attacke am aktuellen Tag. Die Empfehlung ist ein Vorschlag, die Entscheidung trifft die Führung.</p></div>`;
 }
 
 function cwlView(){
@@ -493,27 +524,39 @@ function cwlView(){
     const monat = new Date(+y, +mo-1, 1).toLocaleDateString('de-DE',{month:'long', year:'numeric'});
     const days = `<ul class="list">${s.rounds.map(r => `<li><span><b>Tag ${r.day}</b> gegen ${esc(r.opponent)}<br><span class="muted">${r.state==='preparation'?'Vorbereitung':r.us+' : '+r.them+' Sterne · '+r.usPct.toFixed(1)+' % : '+r.themPct.toFixed(1)+' %'}</span></span>
       <b class="${r.result}">${r.state==='preparation'?'':resTxt[r.result]}</b></li>`).join('')}</ul>`;
-    const rows = s.players.map((p,i) => `<tr>
+    // Ausgesetzt = in der Liga-Teilnehmerliste, aber an einem gelaufenen Tag nicht aufgestellt.
+    const pastR = s.rounds.filter(r => r.state !== 'preparation');
+    const inRoster = new Set((s.roster || []).map(m => m.tag));
+    const satN = tag => inRoster.has(tag) ? pastR.filter(r => !r.lineup[tag]).length : null;
+    const all = [...s.players, ...(s.roster || []).filter(m => !s.players.some(p => p.tag === m.tag))
+      .map(m => ({tag: m.tag, name: m.name, th: m.th, attacks: 0, stars: 0, pct: 0, triples: 0, missed: 0, defs: 0, defStars: 0}))];
+    const rows = all.map((p,i) => { const n = satN(p.tag), o = openToday(s.rounds, p.tag); return `<tr class="${o ? 'openrow' : ''}" ${o ? `title="${o} Angriff(e) heute offen"` : ''}>
       <td>${i+1}. <span class="name">${esc(p.name)}</span> <span class="role">RH${p.th??'?'}</span></td>
-      <td>${p.lineup}</td><td>${p.attacks}</td><td><b>${p.stars}</b></td>
+      <td>${n == null ? '–' : n ? `<span class="pill ok big">ja, ${n}×</span>` : '<span class="pill big">nein</span>'}</td>
+      <td style="text-align:center;white-space:nowrap">${p.attacks}${o ? ` <span class="openbadge">${o} offen</span>` : ''}</td><td><b>${p.stars}</b></td>
       <td>${p.attacks?(p.stars/p.attacks).toFixed(2):'–'}</td>
       <td>${p.attacks?(p.pct/p.attacks).toFixed(0)+' %':'–'}</td>
-      <td>${p.triples}</td>
       <td>${p.missed?`<span class="niederlage">${p.missed}</span>`:'0'}</td>
-      <td>${p.defs?(p.defStars/p.defs).toFixed(2):'–'}</td></tr>`).join('');
+      <td>${p.defs?(p.defStars/p.defs).toFixed(2):'–'}</td></tr>`; }).join('');
     const teamSize = (s.rounds[s.rounds.length-1] || {}).teamSize;
     const prep = s.rounds.find(r => r.state === 'preparation');
     const nextDay = prep ? prep.day : s.rounds.filter(r => r.state !== 'preparation').length + 1;
     const volKey = 'liga:' + s.season + ':' + nextDay;
     const vol = ((S.fd[c.tag] || {}).freiwillig || {})[volKey];
-    const calc = s.rounds.length >= 7 && s.rounds.every(r => r.final) ? null : benchCalc(s.rounds, s.roster || [], teamSize, vol);
+    // Erster Liga-Tag: Grundlage ist die Vorwoche (Vergessene gesperrt, sonst zählt deren letzter Tag).
+    const pv = c.cwlPrev, firstDay = !s.rounds.some(r => r.state !== 'preparation') && pv && pv.rounds.length;
+    const ban = firstDay ? cwlBan(pv.rounds, d => 'in der Vorwoche an Tag ' + d + ' vergessen')
+                         : cwlBan(s.rounds, d => 'Tag ' + d + ' vergessen, raus bis Wochenende');
+    const calcRounds = firstDay ? [...pv.rounds.filter(r => r.state !== 'preparation'), ...s.rounds] : s.rounds;
+    const calc = s.rounds.length >= 7 && s.rounds.every(r => r.final) ? null : benchCalc(calcRounds, s.roster || [], teamSize, vol, ban);
+    if(calc && firstDay) calc.prevNote = 'Erster Liga-Tag: Gewertet wird der letzte Tag der Vorwoche. Wer dort einen Angriff vergessen hat, setzt aus.';
     const rec = s.rounds.length >= 7 && s.rounds.every(r => r.final)
       ? `<div class="card"><h2>Aussetz-Empfehlung</h2><span class="muted">Die Ligawoche ist vorbei.</span></div>`
       : (s.roster ? benchCard(`Aussetz-Empfehlung ${esc(c.name)} für Liga-Tag ${calc ? calc.nextNo : ''}`, calc, 'Tag', {clan: c.tag, key: volKey, label: 'Liga-Tag ' + nextDay}) : '');
     return rec + `<div class="card"><h2>Clankriegsliga ${esc(c.name)}: ${monat}</h2>${days}</div>
       <div class="card"><h2>Rangliste Liga ${esc(c.name)}</h2>
-      <div class="table-wrap"><table><thead><tr><th>Spieler</th><th>Einsätze</th><th>Angriffe</th><th>Sterne</th><th>Ø Sterne</th><th>Ø Zerstörung</th><th>3 Sterne</th><th>Verpasst</th><th>Ø kassiert</th></tr></thead><tbody>${rows}</tbody></table></div>
-      <p class="legend">Einsätze = Tage in der Aufstellung. Verpasst = aufgestellt, aber nicht angegriffen (nur abgeschlossene Tage). Ø kassiert = Sterne, die der Gegner im Schnitt auf dieser Basis geholt hat.</p></div>` + bonusCard(c);
+      <div class="table-wrap"><table><thead><tr><th>Spieler</th><th>Ausgesetzt</th><th style="text-align:center">Angriffe</th><th>Sterne</th><th>Ø Sterne</th><th>Ø Zerstörung</th><th>Verpasst</th><th>Ø kassiert</th></tr></thead><tbody>${rows}</tbody></table></div>
+      <p class="legend">Orange hinterlegt = heute noch Angriff offen. Ausgesetzt = als Liga-Teilnehmer gemeldet, aber an einem gelaufenen Tag nicht aufgestellt. Verpasst = aufgestellt, aber nicht angegriffen (nur abgeschlossene Tage). Ø kassiert = Sterne, die der Gegner im Schnitt auf dieser Basis geholt hat.</p></div>` + bonusCard(c);
   }).join('');
 }
 
@@ -534,10 +577,13 @@ function pinForget(form){
   return saved ? btn('forgetpin', form, 'PIN vergessen') : '';
 }
 
+const PIN_LEN = 6;
+const pinCount = v => { const n = (v || '').length; return n >= PIN_LEN ? '<span class="sieg">✓ 6 von 6 Ziffern</span>' : n + ' von ' + PIN_LEN + ' Ziffern'; };
+
 function pinField(form){
   let saved = ''; try{ saved = localStorage.getItem('clanboard-pin') || ''; }catch(e){}
-  return saved ? `<span class="muted" style="font-size:14px;margin-right:6px">PIN auf diesem Gerät gespeichert</span>`
-    : `<label class="pinlbl">PIN <input type="password" data-pin="${esc(form)}" value="${esc(S.pin[form] || '')}" autocomplete="current-password"></label>`;
+  return saved ? `<div class="pinbox ok"><b>PIN ist auf diesem Gerät gespeichert</b> <span class="muted">Einfach speichern.</span></div>`
+    : `<label class="pinbox"><b>PIN der Führung (6 Ziffern)</b><input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="${PIN_LEN}" data-pin="${esc(form)}" value="${esc(S.pin[form] || '')}" autocomplete="current-password"><span class="pincount" data-pincount="${esc(form)}">${pinCount(S.pin[form])}</span><span class="muted" style="font-size:14px;flex-basis:100%">Nur einmal nötig, danach merkt sich das Gerät die PIN.</span></label>`;
 }
 
 // Schickt die Angaben ab. apply() trägt sie bei Erfolg sofort lokal ein.
@@ -545,6 +591,7 @@ async function postFd(form, body, apply){
   let pin = (S.pin[form] || '').trim();
   if(!pin){ try{ pin = localStorage.getItem('clanboard-pin') || ''; }catch(e){} }
   if(!pin){ S.msg[form] = {err: true, text: 'Bitte PIN eingeben.'}; return render(); }
+  if(!/^\d{6}$/.test(pin)){ S.msg[form] = {err: true, text: 'Die PIN hat genau 6 Ziffern, eingegeben sind ' + pin.length + '.'}; return render(); }
   S.msg[form] = {text: 'Speichere …'}; render();
   try{
     const r = await fetch(SAVE_URL, {method: 'POST', headers: {'Content-Type': 'application/json'},
@@ -576,7 +623,10 @@ function fdEvents(app){
     else if(act === 'save') S.saves[form]();
     else if(act === 'forgetpin'){ try{ localStorage.removeItem('clanboard-pin'); }catch(e){} render(); }
   };
-  app.oninput = e => { const p = e.target.closest('[data-pin]'); if(p) S.pin[p.dataset.pin] = p.value; };
+  app.oninput = e => { const p = e.target.closest('[data-pin]'); if(!p) return;
+    p.value = p.value.replace(/\D/g, '').slice(0, PIN_LEN); S.pin[p.dataset.pin] = p.value;
+    const c = document.querySelector(`[data-pincount="${CSS.escape(p.dataset.pin)}"]`); if(c) c.innerHTML = pinCount(p.value); };
+  app.onkeydown = e => { const p = e.target.closest('[data-pin]'); if(p && e.key === 'Enter'){ e.preventDefault(); S.saves[p.dataset.pin](); } };
   app.onchange = e => {
     const el = e.target.closest('[data-f]'); if(!el) return;
     const d = S.edit[el.dataset.form]; if(!d) return;
@@ -621,7 +671,7 @@ function bonusCalc(c, info){
     else if(!p.attacks) out = 'noch kein Angriff';
     let score = p.stars * WB.stern + p.pct * WB.prozent + held * WB.gehalten;
     if(p.attacks) why.push(p.attacks + (p.attacks === 1 ? ' Angriff' : ' Angriffe') + ' · ' + p.stars + '★ · Ø ' + (p.pct / p.attacks).toFixed(0) + ' %');
-    if(p.defs) why.push(held + '★ gehalten');
+    if(p.defs) why.push('Verteidigung: ' + held + ' von ' + 3 * p.defs + ' Sternen gehalten');
     if(info.prevBonus.includes(m.tag)){ score *= WB.letzterBonus; why.push('Bonus im ' + monthDE(info.prev) + ', halbiert'); }
     return {tag: m.tag, name: m.name || p.name, score, out, why: why.join(' · '), got: info.bonus.includes(m.tag)};
   });
