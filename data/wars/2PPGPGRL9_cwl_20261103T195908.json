@@ -3,7 +3,7 @@
  "endTime": "20261105T202252.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-05T16:30:15Z",
+ "lastSeen": "2026-11-05T17:51:04Z",
  "members": [
   {
    "attacks": [
@@ -176,7 +176,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 16,
+     "defTh": 17,
+     "order": 25,
+     "pct": 97,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 17,
@@ -287,7 +295,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 89,
+     "stars": 1
+    }
+   ],
    "name": "Mone",
    "pos": 15,
    "tag": "#L09Y0G0G9",
@@ -297,8 +311,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/17wSFLx4VVSX1K7Ej23lYiN_CEPkh1jr1w44_mIgvwQ.png",
   "name": "actif family",
-  "pct": 62.53333333333333,
-  "stars": 25,
+  "pct": 68.46666666666667,
+  "stars": 26,
   "tag": "#2GV2RCGC8"
  },
  "preparationStartTime": "20261103T195908.000Z",
@@ -306,9 +320,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 12,
-  "pct": 67.46666666666667,
-  "stars": 27
+  "attacks": 13,
+  "pct": 73.93333333333334,
+  "stars": 29
  },
  "warTag": "#8RP8V99CC"
 }

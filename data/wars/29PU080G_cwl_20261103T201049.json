@@ -3,7 +3,7 @@
  "endTime": "20261105T203515.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-05T16:30:15Z",
+ "lastSeen": "2026-11-05T17:51:04Z",
  "members": [
   {
    "attacks": [
@@ -103,7 +103,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "EumelTV",
    "pos": 19,
    "tag": "#J2QLL8GY",
@@ -168,7 +174,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 18,
+     "order": 28,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -309,8 +323,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/6mh6F2vbeqCazzLEHB1xZIFlU4vKdqgM0i-MJkLpwJk.png",
   "name": "WeGoJim",
-  "pct": 90.13333333333334,
-  "stars": 38,
+  "pct": 96.8,
+  "stars": 41,
   "tag": "#2LJYGVVU2"
  },
  "preparationStartTime": "20261103T201049.000Z",
@@ -318,9 +332,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 12,
-  "pct": 76.73333333333333,
-  "stars": 34
+  "attacks": 13,
+  "pct": 83.4,
+  "stars": 37
  },
  "warTag": "#8J8CYJPJR"
 }
