@@ -3,7 +3,7 @@
  "endTime": "20261105T203515.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-05T13:16:12Z",
+ "lastSeen": "2026-11-05T13:36:37Z",
  "members": [
   {
    "attacks": [
@@ -155,7 +155,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Ricky",
    "pos": 9,
    "tag": "#LRYLYPG8",
@@ -263,8 +269,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/6mh6F2vbeqCazzLEHB1xZIFlU4vKdqgM0i-MJkLpwJk.png",
   "name": "WeGoJim",
-  "pct": 56.8,
-  "stars": 23,
+  "pct": 63.46666666666667,
+  "stars": 26,
   "tag": "#2LJYGVVU2"
  },
  "preparationStartTime": "20261103T201049.000Z",

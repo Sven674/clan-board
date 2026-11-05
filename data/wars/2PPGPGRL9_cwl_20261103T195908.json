@@ -3,7 +3,7 @@
  "endTime": "20261105T202252.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-05T13:16:12Z",
+ "lastSeen": "2026-11-05T13:36:37Z",
  "members": [
   {
    "attacks": [
@@ -29,7 +29,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 70,
+     "stars": 2
+    }
+   ],
    "name": "HaraldKehl",
    "pos": 14,
    "tag": "#QJG9CR0Q",
@@ -283,8 +289,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/17wSFLx4VVSX1K7Ej23lYiN_CEPkh1jr1w44_mIgvwQ.png",
   "name": "actif family",
-  "pct": 57.86666666666667,
-  "stars": 23,
+  "pct": 62.53333333333333,
+  "stars": 25,
   "tag": "#2GV2RCGC8"
  },
  "preparationStartTime": "20261103T195908.000Z",
