@@ -3,7 +3,7 @@
  "endTime": "20261105T203515.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-05T11:10:21Z",
+ "lastSeen": "2026-11-05T12:11:19Z",
  "members": [
   {
    "attacks": [
@@ -241,7 +241,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 91,
+     "stars": 2
+    }
+   ],
    "name": "Captain Future",
    "pos": 15,
    "tag": "#8PGGGL2U8",
@@ -251,8 +257,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/6mh6F2vbeqCazzLEHB1xZIFlU4vKdqgM0i-MJkLpwJk.png",
   "name": "WeGoJim",
-  "pct": 44.8,
-  "stars": 19,
+  "pct": 50.86666666666667,
+  "stars": 21,
   "tag": "#2LJYGVVU2"
  },
  "preparationStartTime": "20261103T201049.000Z",
