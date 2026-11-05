@@ -3,7 +3,7 @@
  "endTime": "20261105T203515.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-04T23:34:37Z",
+ "lastSeen": "2026-11-05T03:42:35Z",
  "members": [
   {
    "attacks": [
@@ -39,7 +39,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Chrisdoc",
    "pos": 2,
    "tag": "#9GR80Q9P",
@@ -69,7 +75,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "AGENT 00H",
    "pos": 3,
    "tag": "#80V9Q998",
@@ -77,7 +89,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Ertanbabo",
    "pos": 4,
    "tag": "#PRRJY9G9",
@@ -101,7 +119,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 95,
+     "stars": 2
+    }
+   ],
    "name": "Filiusberlinius",
    "pos": 13,
    "tag": "#2UCJYGU0",
@@ -159,8 +183,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/6mh6F2vbeqCazzLEHB1xZIFlU4vKdqgM0i-MJkLpwJk.png",
   "name": "WeGoJim",
-  "pct": 6.666666666666667,
-  "stars": 3,
+  "pct": 33.0,
+  "stars": 14,
   "tag": "#2LJYGVVU2"
  },
  "preparationStartTime": "20261103T201049.000Z",
