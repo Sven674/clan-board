@@ -3,7 +3,7 @@
  "endTime": "20261105T202252.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-05T09:08:55Z",
+ "lastSeen": "2026-11-05T11:10:21Z",
  "members": [
   {
    "attacks": [
@@ -45,7 +45,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 37,
+     "stars": 1
+    }
+   ],
    "name": "mimi",
    "pos": 10,
    "tag": "#2YLVQRY9",
@@ -121,7 +127,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 97,
+     "stars": 2
+    }
+   ],
    "name": "Alex12",
    "pos": 18,
    "tag": "#9GPR28YG",
@@ -255,8 +267,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/17wSFLx4VVSX1K7Ej23lYiN_CEPkh1jr1w44_mIgvwQ.png",
   "name": "actif family",
-  "pct": 48.93333333333333,
-  "stars": 20,
+  "pct": 57.86666666666667,
+  "stars": 23,
   "tag": "#2GV2RCGC8"
  },
  "preparationStartTime": "20261103T195908.000Z",

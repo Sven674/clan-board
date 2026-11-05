@@ -3,7 +3,7 @@
  "endTime": "20261105T203515.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-05T09:08:55Z",
+ "lastSeen": "2026-11-05T11:10:21Z",
  "members": [
   {
    "attacks": [
@@ -66,7 +66,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 18,
+     "order": 16,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -176,7 +184,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 18,
+     "defTh": 17,
+     "order": 15,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "grautvornixe",
    "pos": 20,
@@ -208,7 +224,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 14,
+     "defTh": 17,
+     "order": 17,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Nemesis",
    "pos": 18,
@@ -236,9 +260,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 7,
-  "pct": 45.86666666666667,
-  "stars": 20
+  "attacks": 10,
+  "pct": 65.86666666666666,
+  "stars": 29
  },
  "warTag": "#8J8CYJPJR"
 }
