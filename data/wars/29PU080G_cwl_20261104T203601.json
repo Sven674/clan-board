@@ -3,7 +3,7 @@
  "endTime": "20261106T203559.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-05T20:14:43Z",
+ "lastSeen": "2026-11-06T01:05:43Z",
  "members": [
   {
    "attacks": [],
@@ -38,7 +38,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 15,
+     "defTh": 18,
+     "order": 1,
+     "pct": 76,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "EumelTV",
    "pos": 19,
@@ -63,7 +71,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 61,
+     "stars": 2
+    }
+   ],
    "name": "Ricky",
    "pos": 9,
    "tag": "#LRYLYPG8",
@@ -79,7 +93,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Filiusberlinius",
    "pos": 13,
    "tag": "#2UCJYGU0",
@@ -129,18 +149,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/cI6iSPw67RAavtAaX2kSluFRdd1ScMDoqPiUVbTxzEA.png",
   "name": "Galinette cendr",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 10.733333333333333,
+  "stars": 5,
   "tag": "#2QGJRLLYY"
  },
  "preparationStartTime": "20261104T203601.000Z",
  "startTime": "20261105T203559.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 1,
+  "pct": 5.066666666666666,
+  "stars": 2
  },
  "warTag": "#8J8VRQL9C"
 }

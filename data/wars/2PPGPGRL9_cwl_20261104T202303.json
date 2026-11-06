@@ -3,11 +3,17 @@
  "endTime": "20261106T202301.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-05T20:14:43Z",
+ "lastSeen": "2026-11-06T01:05:43Z",
  "members": [
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 99,
+     "stars": 2
+    }
+   ],
    "name": "mimi",
    "pos": 10,
    "tag": "#2YLVQRY9",
@@ -38,7 +44,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 9,
+     "pct": 82,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Odin",
    "pos": 2,
@@ -47,7 +61,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 88,
+     "stars": 2
+    }
+   ],
    "name": "der. Cool.",
    "pos": 3,
    "tag": "#QCJY9QPC",
@@ -55,7 +75,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Alex12",
    "pos": 18,
    "tag": "#9GPR28YG",
@@ -79,7 +105,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "LL ⭐️minimaus⭐️",
    "pos": 22,
    "tag": "#208R29C92",
@@ -94,7 +126,15 @@
    "th": 17
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 5,
+     "pct": 52,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "1000000",
    "pos": 1,
@@ -102,8 +142,22 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 6,
+     "defTh": 18,
+     "order": 8,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 89,
+     "stars": 2
+    }
+   ],
    "name": "Simone",
    "pos": 9,
    "tag": "#UGYG0PY9",
@@ -118,7 +172,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 3,
+     "pct": 59,
+     "stars": 1
+    }
+   ],
    "defenses": [],
    "name": "mini1000000",
    "pos": 7,
@@ -129,18 +191,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/s6Re-uxsUOraGTp_eM2wvLQZD_QlDTy7zHXfaXL30hQ.png",
   "name": "LT - Latrai",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 31.733333333333334,
+  "stars": 12,
   "tag": "#J98LQP0"
  },
  "preparationStartTime": "20261104T202303.000Z",
  "startTime": "20261105T202301.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 4,
+  "pct": 19.533333333333335,
+  "stars": 8
  },
  "warTag": "#8RPY90R9C"
 }
