@@ -1,0 +1,40 @@
+{
+ "capitalTotalLoot": 64916,
+ "defensiveReward": 0,
+ "endTime": "20261109T070000.000Z",
+ "members": [
+  {
+   "attacks": 4,
+   "limit": 6,
+   "loot": 18597,
+   "name": "Vinci",
+   "tag": "#VYQY8VG8"
+  },
+  {
+   "attacks": 1,
+   "limit": 6,
+   "loot": 6246,
+   "name": "☠️Happy Day ☠️",
+   "tag": "#Y80LGCUPJ"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 20185,
+   "name": "Sven",
+   "tag": "#J0UYJ09P"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 19888,
+   "name": "1000000",
+   "tag": "#V029UQCU"
+  }
+ ],
+ "offensiveReward": 0,
+ "raidsCompleted": 0,
+ "startTime": "20261106T070000.000Z",
+ "state": "ongoing",
+ "totalAttacks": 17
+}

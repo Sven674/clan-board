@@ -3,7 +3,7 @@
  "endTime": "20261106T203559.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-06T07:52:56Z",
+ "lastSeen": "2026-11-06T13:04:28Z",
  "members": [
   {
    "attacks": [
@@ -15,15 +15,35 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 93,
+     "stars": 1
+    }
+   ],
    "name": "theBASTIan",
    "pos": 1,
    "tag": "#92L228UR",
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 18,
+     "order": 16,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 82,
+     "stars": 2
+    }
+   ],
    "name": "--SVEN--674--",
    "pos": 6,
    "tag": "#200PCP8QQ",
@@ -52,7 +72,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 15,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Uzii",
    "pos": 17,
@@ -77,7 +105,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 82,
+     "stars": 2
+    }
+   ],
    "name": "AGENT 00H",
    "pos": 3,
    "tag": "#80V9Q998",
@@ -85,7 +119,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 81,
+     "stars": 2
+    }
+   ],
    "name": "Ertanbabo",
    "pos": 4,
    "tag": "#PRRJY9G9",
@@ -107,7 +147,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Legend Papa",
    "pos": 11,
    "tag": "#9RCY8U0VQ",
@@ -199,8 +245,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/cI6iSPw67RAavtAaX2kSluFRdd1ScMDoqPiUVbTxzEA.png",
   "name": "Galinette cendr",
-  "pct": 27.066666666666666,
-  "stars": 11,
+  "pct": 56.266666666666666,
+  "stars": 21,
   "tag": "#2QGJRLLYY"
  },
  "preparationStartTime": "20261104T203601.000Z",
@@ -208,9 +254,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 5,
-  "pct": 30.866666666666667,
-  "stars": 13
+  "attacks": 7,
+  "pct": 44.2,
+  "stars": 19
  },
  "warTag": "#8J8VRQL9C"
 }
