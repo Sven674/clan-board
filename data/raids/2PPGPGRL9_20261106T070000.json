@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 136725,
+ "capitalTotalLoot": 147762,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -32,6 +32,13 @@
    "tag": "#Y80LGCUPJ"
   },
   {
+   "attacks": 3,
+   "limit": 6,
+   "loot": 11037,
+   "name": "koboldtöter",
+   "tag": "#2UV08GUJ"
+  },
+  {
    "attacks": 6,
    "limit": 6,
    "loot": 18325,
@@ -57,5 +64,5 @@
  "raidsCompleted": 1,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 32
+ "totalAttacks": 35
 }

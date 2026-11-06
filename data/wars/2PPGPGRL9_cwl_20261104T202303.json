@@ -3,7 +3,7 @@
  "endTime": "20261106T202301.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-06T18:08:40Z",
+ "lastSeen": "2026-11-06T18:38:58Z",
  "members": [
   {
    "attacks": [
@@ -37,7 +37,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Vinci",
    "pos": 6,
    "tag": "#VYQY8VG8",
@@ -98,7 +104,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 18,
+     "order": 25,
+     "pct": 61,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -254,7 +268,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 18,
+     "order": 24,
+     "pct": 78,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -293,8 +315,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/s6Re-uxsUOraGTp_eM2wvLQZD_QlDTy7zHXfaXL30hQ.png",
   "name": "LT - Latrai",
-  "pct": 61.2,
-  "stars": 23,
+  "pct": 67.86666666666666,
+  "stars": 26,
   "tag": "#J98LQP0"
  },
  "preparationStartTime": "20261104T202303.000Z",
@@ -302,9 +324,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 13,
-  "pct": 70.2,
-  "stars": 27
+  "attacks": 15,
+  "pct": 79.46666666666667,
+  "stars": 31
  },
  "warTag": "#8RPY90R9C"
 }
