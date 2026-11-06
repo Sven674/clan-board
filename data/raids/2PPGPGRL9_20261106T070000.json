@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 147762,
+ "capitalTotalLoot": 169131,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -30,6 +30,13 @@
    "loot": 17413,
    "name": "☠️Happy Day ☠️",
    "tag": "#Y80LGCUPJ"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 21369,
+   "name": "Gaspode",
+   "tag": "#2QRJRJY0V"
   },
   {
    "attacks": 3,
@@ -64,5 +71,5 @@
  "raidsCompleted": 1,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 35
+ "totalAttacks": 41
 }

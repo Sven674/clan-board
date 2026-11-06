@@ -3,7 +3,7 @@
  "endTime": "20261106T203559.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-06T18:38:58Z",
+ "lastSeen": "2026-11-06T19:10:57Z",
  "members": [
   {
    "attacks": [
@@ -234,8 +234,22 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 18,
+     "order": 26,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Elussa",
    "pos": 7,
    "tag": "#J9CLGUR0",
@@ -295,7 +309,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 74,
+     "stars": 2
+    }
+   ],
    "name": "hulk",
    "pos": 10,
    "tag": "#GRJU2J92",
@@ -305,8 +325,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/cI6iSPw67RAavtAaX2kSluFRdd1ScMDoqPiUVbTxzEA.png",
   "name": "Galinette cendr",
-  "pct": 67.2,
-  "stars": 25,
+  "pct": 78.8,
+  "stars": 30,
   "tag": "#2QGJRLLYY"
  },
  "preparationStartTime": "20261104T203601.000Z",
@@ -314,9 +334,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 13,
-  "pct": 80.46666666666667,
-  "stars": 33
+  "attacks": 14,
+  "pct": 87.13333333333334,
+  "stars": 36
  },
  "warTag": "#8J8VRQL9C"
 }
