@@ -1,8 +1,15 @@
 {
- "capitalTotalLoot": 194384,
+ "capitalTotalLoot": 216790,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
+  {
+   "attacks": 2,
+   "limit": 6,
+   "loot": 11106,
+   "name": "✨Yvonne✨",
+   "tag": "#GCRY9CGU"
+  },
   {
    "attacks": 3,
    "limit": 6,
@@ -18,9 +25,9 @@
    "tag": "#VYQY8VG8"
   },
   {
-   "attacks": 2,
+   "attacks": 4,
    "limit": 6,
-   "loot": 10447,
+   "loot": 21747,
    "name": "Odin",
    "tag": "#92RP8G9"
   },
@@ -85,5 +92,5 @@
  "raidsCompleted": 2,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 49
+ "totalAttacks": 53
 }

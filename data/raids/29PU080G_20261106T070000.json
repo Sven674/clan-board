@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 204893,
+ "capitalTotalLoot": 215137,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -25,9 +25,9 @@
    "tag": "#GLPVGVR9"
   },
   {
-   "attacks": 3,
+   "attacks": 6,
    "limit": 6,
-   "loot": 14601,
+   "loot": 24845,
    "name": "EumelTV",
    "tag": "#J2QLL8GY"
   },
@@ -68,8 +68,8 @@
   }
  ],
  "offensiveReward": 0,
- "raidsCompleted": 2,
+ "raidsCompleted": 3,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 44
+ "totalAttacks": 47
 }

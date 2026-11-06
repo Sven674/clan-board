@@ -3,11 +3,25 @@
  "endTime": "20261107T203805.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-06T20:29:37Z",
+ "lastSeen": "2026-11-06T21:27:03Z",
  "members": [
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 3,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 79,
+     "stars": 2
+    }
+   ],
    "name": "theBASTIan",
    "pos": 1,
    "tag": "#92L228UR",
@@ -47,7 +61,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "OlMcGoldi",
    "pos": 14,
    "tag": "#YR0Y90G",
@@ -71,7 +91,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 96,
+     "stars": 2
+    }
+   ],
    "name": "Legend Papa",
    "pos": 10,
    "tag": "#9RCY8U0VQ",
@@ -129,18 +155,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/aC-r9cPxFqof5zzRda8cbZVhNplSdSTVtVyL7uPQGfs.png",
   "name": "scorpion",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 18.333333333333332,
+  "stars": 7,
   "tag": "#VL0C8LJ"
  },
  "preparationStartTime": "20261105T203807.000Z",
  "startTime": "20261106T203805.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 1,
+  "pct": 6.666666666666667,
+  "stars": 3
  },
  "warTag": "#8J9820URQ"
 }
