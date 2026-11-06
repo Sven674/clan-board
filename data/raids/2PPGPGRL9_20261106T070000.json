@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 169131,
+ "capitalTotalLoot": 179501,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -53,6 +53,13 @@
    "tag": "#90UQ0JQR0"
   },
   {
+   "attacks": 5,
+   "limit": 5,
+   "loot": 10370,
+   "name": "Schlaubi",
+   "tag": "#QRCRLYLGJ"
+  },
+  {
    "attacks": 6,
    "limit": 6,
    "loot": 20185,
@@ -71,5 +78,5 @@
  "raidsCompleted": 1,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 41
+ "totalAttacks": 46
 }

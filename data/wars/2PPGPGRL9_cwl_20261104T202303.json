@@ -3,7 +3,7 @@
  "endTime": "20261106T202301.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-06T19:10:57Z",
+ "lastSeen": "2026-11-06T19:59:06Z",
  "members": [
   {
    "attacks": [
@@ -59,7 +59,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "NobbyNobbs",
    "pos": 19,
    "tag": "#L08LQ8YJL",
@@ -245,7 +251,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 78,
+     "stars": 2
+    }
+   ],
    "name": "1000000",
    "pos": 1,
    "tag": "#V029UQCU",
@@ -321,8 +333,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/s6Re-uxsUOraGTp_eM2wvLQZD_QlDTy7zHXfaXL30hQ.png",
   "name": "LT - Latrai",
-  "pct": 74.53333333333333,
-  "stars": 29,
+  "pct": 86.4,
+  "stars": 34,
   "tag": "#J98LQP0"
  },
  "preparationStartTime": "20261104T202303.000Z",
