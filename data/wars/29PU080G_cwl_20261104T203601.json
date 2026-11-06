@@ -3,7 +3,7 @@
  "endTime": "20261106T203559.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-06T13:04:28Z",
+ "lastSeen": "2026-11-06T15:48:38Z",
  "members": [
   {
    "attacks": [
@@ -132,7 +132,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 6,
+     "defTh": 18,
+     "order": 23,
+     "pct": 83,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -146,7 +154,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 9,
+     "defTh": 18,
+     "order": 20,
+     "pct": 93,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -212,15 +228,37 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 14,
+     "defTh": 18,
+     "order": 21,
+     "pct": 76,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 93,
+     "stars": 2
+    }
+   ],
    "name": "Nemesis",
    "pos": 18,
    "tag": "#22C0YRV9C",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 18,
+     "defTh": 16,
+     "order": 19,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -234,7 +272,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 12,
+     "defTh": 18,
+     "order": 22,
+     "pct": 92,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "hulk",
    "pos": 10,
@@ -245,8 +291,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/cI6iSPw67RAavtAaX2kSluFRdd1ScMDoqPiUVbTxzEA.png",
   "name": "Galinette cendr",
-  "pct": 56.266666666666666,
-  "stars": 21,
+  "pct": 62.46666666666667,
+  "stars": 23,
   "tag": "#2QGJRLLYY"
  },
  "preparationStartTime": "20261104T203601.000Z",
@@ -254,9 +300,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 7,
-  "pct": 44.2,
-  "stars": 19
+  "attacks": 12,
+  "pct": 73.8,
+  "stars": 30
  },
  "warTag": "#8J8VRQL9C"
 }

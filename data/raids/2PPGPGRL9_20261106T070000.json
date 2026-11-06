@@ -1,21 +1,42 @@
 {
- "capitalTotalLoot": 64916,
+ "capitalTotalLoot": 136725,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
   {
-   "attacks": 4,
+   "attacks": 3,
    "limit": 6,
-   "loot": 18597,
+   "loot": 23475,
+   "name": "Zool",
+   "tag": "#292UQJ2LJ"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 26992,
    "name": "Vinci",
    "tag": "#VYQY8VG8"
   },
   {
-   "attacks": 1,
+   "attacks": 2,
    "limit": 6,
-   "loot": 6246,
+   "loot": 10447,
+   "name": "Odin",
+   "tag": "#92RP8G9"
+  },
+  {
+   "attacks": 3,
+   "limit": 6,
+   "loot": 17413,
    "name": "☠️Happy Day ☠️",
    "tag": "#Y80LGCUPJ"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 18325,
+   "name": "Apollo",
+   "tag": "#90UQ0JQR0"
   },
   {
    "attacks": 6,
@@ -33,8 +54,8 @@
   }
  ],
  "offensiveReward": 0,
- "raidsCompleted": 0,
+ "raidsCompleted": 1,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 17
+ "totalAttacks": 32
 }
