@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 157033,
+ "capitalTotalLoot": 204893,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -18,18 +18,25 @@
    "tag": "#200PCP8QQ"
   },
   {
-   "attacks": 2,
+   "attacks": 4,
    "limit": 6,
-   "loot": 11471,
+   "loot": 22709,
    "name": "=RS=",
    "tag": "#GLPVGVR9"
   },
   {
-   "attacks": 1,
+   "attacks": 3,
    "limit": 6,
-   "loot": 4491,
+   "loot": 14601,
    "name": "EumelTV",
    "tag": "#J2QLL8GY"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 26512,
+   "name": "AGENT 00H",
+   "tag": "#80V9Q998"
   },
   {
    "attacks": 6,
@@ -64,5 +71,5 @@
  "raidsCompleted": 2,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 34
+ "totalAttacks": 44
 }

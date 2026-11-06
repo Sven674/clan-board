@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 179501,
+ "capitalTotalLoot": 194384,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -23,6 +23,13 @@
    "loot": 10447,
    "name": "Odin",
    "tag": "#92RP8G9"
+  },
+  {
+   "attacks": 3,
+   "limit": 6,
+   "loot": 14883,
+   "name": "Azog",
+   "tag": "#QQCCR8RC"
   },
   {
    "attacks": 3,
@@ -75,8 +82,8 @@
   }
  ],
  "offensiveReward": 0,
- "raidsCompleted": 1,
+ "raidsCompleted": 2,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 46
+ "totalAttacks": 49
 }
