@@ -1,0 +1,33 @@
+{
+ "capitalTotalLoot": 31693,
+ "defensiveReward": 0,
+ "endTime": "20261109T070000.000Z",
+ "members": [
+  {
+   "attacks": 2,
+   "limit": 6,
+   "loot": 9883,
+   "name": "theBASTIan",
+   "tag": "#92L228UR"
+  },
+  {
+   "attacks": 2,
+   "limit": 6,
+   "loot": 11471,
+   "name": "=RS=",
+   "tag": "#GLPVGVR9"
+  },
+  {
+   "attacks": 2,
+   "limit": 6,
+   "loot": 10339,
+   "name": "Captain Future",
+   "tag": "#8PGGGL2U8"
+  }
+ ],
+ "offensiveReward": 0,
+ "raidsCompleted": 0,
+ "startTime": "20261106T070000.000Z",
+ "state": "ongoing",
+ "totalAttacks": 6
+}

@@ -3,10 +3,18 @@
  "endTime": "20261106T202301.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-06T01:05:43Z",
+ "lastSeen": "2026-11-06T07:52:56Z",
  "members": [
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 7,
+     "defTh": 18,
+     "order": 13,
+     "pct": 81,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -20,7 +28,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 18,
+     "order": 15,
+     "pct": 87,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Vinci",
    "pos": 6,
@@ -28,7 +44,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 16,
+     "defTh": 18,
+     "order": 14,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "NobbyNobbs",
    "pos": 19,
@@ -53,7 +77,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Odin",
    "pos": 2,
    "tag": "#92RP8G9",
@@ -88,7 +118,15 @@
    "th": 17
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 11,
+     "defTh": 18,
+     "order": 12,
+     "pct": 94,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Gaspode",
    "pos": 13,
@@ -118,8 +156,22 @@
    "th": 16
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 18,
+     "defTh": 17,
+     "order": 16,
+     "pct": 98,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "supersplint",
    "pos": 20,
    "tag": "#L9QQRVGP",
@@ -191,8 +243,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/s6Re-uxsUOraGTp_eM2wvLQZD_QlDTy7zHXfaXL30hQ.png",
   "name": "LT - Latrai",
-  "pct": 31.733333333333334,
-  "stars": 12,
+  "pct": 45.06666666666667,
+  "stars": 18,
   "tag": "#J98LQP0"
  },
  "preparationStartTime": "20261104T202303.000Z",
@@ -200,9 +252,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 4,
-  "pct": 19.533333333333335,
-  "stars": 8
+  "attacks": 9,
+  "pct": 50.2,
+  "stars": 19
  },
  "warTag": "#8RPY90R9C"
 }

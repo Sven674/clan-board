@@ -3,10 +3,18 @@
  "endTime": "20261106T203559.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-06T01:05:43Z",
+ "lastSeen": "2026-11-06T07:52:56Z",
  "members": [
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 9,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "theBASTIan",
    "pos": 1,
@@ -22,8 +30,22 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 18,
+     "order": 7,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 80,
+     "stars": 2
+    }
+   ],
    "name": "=RS=",
    "pos": 12,
    "tag": "#GLPVGVR9",
@@ -92,7 +114,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 18,
+     "order": 6,
+     "pct": 87,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -106,8 +136,22 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 13,
+     "defTh": 18,
+     "order": 4,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 16,
+     "pct": 79,
+     "stars": 2
+    }
+   ],
    "name": "grautvornixe",
    "pos": 20,
    "tag": "#PRRQ29JP",
@@ -131,7 +175,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 86,
+     "stars": 2
+    }
+   ],
    "name": "Captain Future",
    "pos": 15,
    "tag": "#8PGGGL2U8",
@@ -149,8 +199,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/cI6iSPw67RAavtAaX2kSluFRdd1ScMDoqPiUVbTxzEA.png",
   "name": "Galinette cendr",
-  "pct": 10.733333333333333,
-  "stars": 5,
+  "pct": 27.066666666666666,
+  "stars": 11,
   "tag": "#2QGJRLLYY"
  },
  "preparationStartTime": "20261104T203601.000Z",
@@ -158,9 +208,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 1,
-  "pct": 5.066666666666666,
-  "stars": 2
+  "attacks": 5,
+  "pct": 30.866666666666667,
+  "stars": 13
  },
  "warTag": "#8J8VRQL9C"
 }

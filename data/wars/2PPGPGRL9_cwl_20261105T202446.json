@@ -3,22 +3,22 @@
  "endTime": "20261107T202444.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-06T01:05:43Z",
+ "lastSeen": "2026-11-06T07:52:56Z",
  "members": [
   {
    "attacks": [],
    "defenses": [],
-   "name": "mimi",
-   "pos": 10,
-   "tag": "#2YLVQRY9",
+   "name": "✨Yvonne✨",
+   "pos": 8,
+   "tag": "#GCRY9CGU",
    "th": 18
   },
   {
    "attacks": [],
    "defenses": [],
-   "name": "Vinci",
-   "pos": 6,
-   "tag": "#VYQY8VG8",
+   "name": "HaraldKehl",
+   "pos": 14,
+   "tag": "#QJG9CR0Q",
    "th": 18
   },
   {
@@ -56,25 +56,9 @@
   {
    "attacks": [],
    "defenses": [],
-   "name": "Alex12",
-   "pos": 18,
-   "tag": "#9GPR28YG",
-   "th": 17
-  },
-  {
-   "attacks": [],
-   "defenses": [],
-   "name": "Gaspode",
-   "pos": 13,
-   "tag": "#2QRJRJY0V",
-   "th": 18
-  },
-  {
-   "attacks": [],
-   "defenses": [],
-   "name": "Sven",
-   "pos": 16,
-   "tag": "#J0UYJ09P",
+   "name": "☠️Happy Day ☠️",
+   "pos": 5,
+   "tag": "#Y80LGCUPJ",
    "th": 18
   },
   {
@@ -96,18 +80,18 @@
   {
    "attacks": [],
    "defenses": [],
-   "name": "1000000",
-   "pos": 1,
-   "tag": "#V029UQCU",
+   "name": "Simone",
+   "pos": 9,
+   "tag": "#UGYG0PY9",
    "th": 18
   },
   {
    "attacks": [],
    "defenses": [],
-   "name": "Simone",
-   "pos": 9,
-   "tag": "#UGYG0PY9",
-   "th": 18
+   "name": "LEGENDE",
+   "pos": 21,
+   "tag": "#P8Q89LYQ9",
+   "th": 16
   },
   {
    "attacks": [],
@@ -123,6 +107,22 @@
    "name": "mini1000000",
    "pos": 7,
    "tag": "#LQ0YCGLL2",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Lonestar",
+   "pos": 4,
+   "tag": "#28CJUY0G9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Mone",
+   "pos": 15,
+   "tag": "#L09Y0G0G9",
    "th": 18
   }
  ],
