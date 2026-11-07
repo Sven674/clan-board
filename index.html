@@ -280,7 +280,7 @@ function regularBench(c){
   const lastPast = rr.filter(r => r.state !== 'preparation').slice(-1)[0] || {};
   const key = lastPast.end ? 'krieg:' + lastPast.end : null;
   const vol = key ? ((S.fd[c.tag] || {}).freiwillig || {})[key] : null;
-  return benchCard(`Aussetz-Empfehlung ${esc(c.name)} für den nächsten Krieg`, benchCalc(rr, roster, lastPast.teamSize, vol), 'Krieg',
+  return benchCard(`Aussetz-Empfehlung ${esc(c.name)} für den nächsten Krieg`, benchCalc(rr, roster, lastPast.teamSize, vol, null, FAIR_ONLY.includes(c.tag)), 'Krieg',
                    key ? {clan: c.tag, key, label: 'den nächsten Krieg'} : null);
 }
 
@@ -321,16 +321,13 @@ function raidList(){
 }
 
 // ---------- Aussetz-Empfehlung ----------
-// Gewichte: mehr Punkte = eher aussetzen. Hier anpassen, wenn die Führung es anders will.
+// Regeln (Sven, 07.11.): Erst Gesperrte/Freiwillige, dann Pflicht (≤ pflichtBis Sterne am aktuellen Tag),
+// dann wer seltener ausgesetzt hat, dann wer mehr Sterne auf der eigenen Basis kassiert hat, dann wessen Aussetzen am längsten her ist.
 const W = {
-  pflichtBis: 2,      // Pflicht-Aussetzer: letzter Angriff mit so vielen Sternen oder weniger (oder vergessen)
-  sternFehlt: 30,     // je Stern, der beim letzten Angriff gefehlt hat
-  prozentFehlt: 0.2,  // je Prozentpunkt unter 100 beim letzten Angriff
-  vergessen: 100,     // je vergessenem Angriff im letzten Einsatz
-  sternKassiert: 5,   // je Stern, den der Gegner zuletzt auf dieser Basis geholt hat
-  prozentKassiert: 0.1, // je Prozentpunkt Zerstörung auf dieser Basis
-  schonAusgesetzt: 10, // Abzug je Tag/Krieg, an dem schon ausgesetzt wurde (bewusst klein: Leistung geht vor)
+  pflichtBis: 2,      // Pflicht-Aussetzer: Angriff am aktuellen Tag mit so vielen Sternen oder weniger (oder vergessen)
 };
+// Clans, in denen nur gerecht gewechselt wird, ohne Leistung (Sven, 07.11.: Ü40 Pur 2).
+const FAIR_ONLY = ['#2PPGPGRL9'];
 // Offene Angriffe am laufenden Liga-/Kriegstag (Angriffe werden live übernommen).
 const openToday = (rounds, tag) => { const r = (rounds || []).find(x => x.state === 'inWar'); const l = r && r.lineup[tag];
   return l ? Math.max(0, (r.apm || 1) - l.att.length) : 0; };
@@ -344,49 +341,54 @@ function cwlBan(rounds, label){
   return ban;
 }
 
-function benchCalc(rounds, roster, teamSize, vol, ban){
+// fair = true: nur gerechtes Wechseln, Angriff und Verteidigung zählen nicht.
+// skip = Anzahl vorangestellter Runden (Vorwoche), die nur für den aktuellen Tag zählen, nicht fürs Aussetz-Konto.
+function benchCalc(rounds, roster, teamSize, vol, ban, fair, skip){
   ban = ban || {};
   const target = rounds.find(r => r.state === 'preparation');
   const past = rounds.filter(r => r.state !== 'preparation');
   if(!past.length || !roster.length || !teamSize) return null;
-  // Gewertet wird nur der aktuelle Tag/Krieg: Angriff und Verteidigung der dort Aufgestellten.
-  // Wer dort ausgesetzt hat, spielt als Nächstes. Wer noch nicht angegriffen hat, ist noch nicht bewertet.
+  // Gewertet wird nur der aktuelle Tag/Krieg. Wer dort ausgesetzt hat, spielt als Nächstes.
   const cur = past[past.length - 1];
+  const counted = past.slice(skip || 0);
+  const unit = cur.day ? 'Tag' : 'Krieg';
+  const satLabel = i => counted[i].day ? 'Tag ' + counted[i].day : (counted.length - i === 1 ? 'im letzten Krieg' : 'vor ' + (counted.length - i) + ' Kriegen');
   const rows = roster.map(p => {
-    let played = 0, sat = 0;
-    past.forEach(r => { if(r.lineup[p.tag]) played++; else sat++; });
+    let played = 0, sat = 0, lastSat = -1;
+    counted.forEach((r,i) => { if(r.lineup[p.tag]) played++; else { sat++; lastSat = i; } });
     const l = cur.lineup[p.tag], apm = cur.apm || 1;
-    let score = 0, pflicht = '', group, why = [];
+    let pflicht = '', group, why = [], down = 0;
+    const satWhy = sat ? 'zuletzt ausgesetzt ' + satLabel(lastSat) : 'noch nie ausgesetzt';
     if(ban[p.tag]){ group = -1; pflicht = ban[p.tag]; why.push({t: ban[p.tag], bad: true}); }
-    else if(!l){ group = 3; why.push({t: 'hat am aktuellen ' + (cur.day ? 'Tag' : 'Krieg') + ' ausgesetzt, spielt als Nächstes'}); }
+    else if(!l){ group = 3; why.push({t: 'hat am aktuellen ' + unit + ' ausgesetzt, spielt als Nächstes'}); }
+    else if(fair){ group = 1; why.push({t: satWhy}); }
     else {
       const missed = cur.final ? Math.max(0, apm - l.att.length) : 0;
-      if(missed){ score += missed * W.vergessen; why.push({t: 'Angriff vergessen', bad: true}); pflicht = 'Angriff vergessen'; }
+      if(missed){ why.push({t: 'Angriff vergessen', bad: true}); pflicht = 'Angriff vergessen'; }
       const weak = l.att.filter(x => x[0] <= W.pflichtBis);
-      if(weak.length && !pflicht) pflicht = 'nur ' + Math.min(...weak.map(x => x[0])) + '★';
-      if(l.att.length){
-        const s = l.att.reduce((a,x)=>a+x[0],0) / l.att.length;
-        const pc = l.att.reduce((a,x)=>a+x[1],0) / l.att.length;
-        score += (3 - s) * W.sternFehlt + (100 - pc) * W.prozentFehlt;
-        why.push({t: 'Angriff ' + l.att.map(x => x[0] + '★ ' + x[1] + ' %').join(', '), bad: !!weak.length});
-      }
-      if(l.def){
-        const [ds, dp] = l.def;
-        score += ds * W.sternKassiert + dp * W.prozentKassiert;
-        why.push({t: 'Verteidigung ' + ds + '★ ' + dp + ' %'});
-      }
-      if(sat) score -= sat * W.schonAusgesetzt;
-      if(pflicht) group = 0;
-      else if(l.att.length || missed) group = 1;
-      else { group = 2; why.unshift({t: 'greift noch an, noch nicht bewertet'}); }
+      // Schwacher Angriff auf ein kleineres Rathaus wiegt schwerer (Sven, 07.11., nur Ü40 Pur)
+      down = l.th ? weak.filter(x => x[2] && x[2] < l.th).length : 0;
+      if(weak.length && !pflicht) pflicht = 'nur ' + Math.min(...weak.map(x => x[0])) + '★' + (down ? ' auf kleineres Rathaus' : '');
+      if(l.att.length) why.push({t: 'Angriff ' + l.att.map(x => x[0] + '★ ' + x[1] + ' %' + (x[2] ? ' auf RH' + x[2] : '')).join(', ')
+        + (down ? ' (selbst RH' + l.th + ')' : ''), bad: !!weak.length});
+      else if(!missed) why.push({t: 'greift noch an'});
+      if(l.def) why.push({t: 'Verteidigung ' + l.def[0] + '★ ' + l.def[1] + ' %'});
+      if(!pflicht) why.push({t: satWhy});
+      group = pflicht ? 0 : 1;
     }
-    return {tag: p.tag, name: p.name, score, played, sat, pflicht, group, open: openToday(rounds, p.tag), why,
-            lastAtt: l && l.att.length ? l.att : null,
-            lastDef: l && l.def ? l.def : null,
+    const att = l && l.att.length ? l.att : null, def = l && l.def ? l.def : null;
+    return {tag: p.tag, name: p.name, played, sat, lastSat, pflicht, group, down, open: openToday(rounds, p.tag), why,
+            lastAtt: att, lastDef: def, lastSatTxt: sat ? satLabel(lastSat) : 'nie',
+            attS: att ? att.reduce((a,x)=>a+x[0],0) : 9, attP: att ? att.reduce((a,x)=>a+x[1],0) : 999,
+            defS: !fair && def ? def[0] : 0, defP: !fair && def ? def[1] : 0,
             inTarget: target ? !!target.lineup[p.tag] : null};
   });
-  // Reihenfolge: Pflicht-Aussetzer, dann nach Punkten, dann noch nicht Bewertete, zuletzt wer am aktuellen Tag ausgesetzt hat.
-  rows.sort((a,b) => a.group - b.group || b.score - a.score || b.played - a.played);
+  // Pflicht unter sich: zuerst schwache Angriffe auf ein kleineres Rathaus, dann schwächster Angriff.
+  // Sonst: seltener ausgesetzt, mehr kassiert, Aussetzen länger her.
+  rows.sort((a,b) => a.group - b.group
+    || (a.group === 0 ? b.down - a.down || a.attS - b.attS || a.attP - b.attP : 0)
+    || a.sat - b.sat || b.defS - a.defS || b.defP - a.defP || a.lastSat - b.lastSat
+    || a.name.localeCompare(b.name, 'de'));
   const bench = Math.max(0, roster.length - teamSize);
   // Freiwillige setzen zuerst aus, die übrigen Plätze gehen der Reihe nach. Wer am aktuellen Tag ausgesetzt hat, bleibt drin.
   vol = (vol || []).filter(t => rows.some(r => r.tag === t));
@@ -398,7 +400,7 @@ function benchCalc(rounds, roster, teamSize, vol, ban){
     r.sit = r.vol || r.group === -1 || (r.group >= 0 && r.group < 3 && k++ < need);
     r.freed = !r.sit && i < bench && r.group < 3;   // wäre ohne Freiwillige dran gewesen
   });
-  return {rows, bench, teamSize, total: roster.length, target, nextNo: (target ? target.day : past.length + 1)};
+  return {rows, bench, teamSize, total: roster.length, target, fair: !!fair, nextNo: (target ? target.day : past.length + 1)};
 }
 
 // Fertig-Meldung: zeigt der Führung, dass die Aufstellung für den nächsten Tag/Krieg schon gemacht ist.
@@ -483,7 +485,7 @@ function benchCard(title, calc, unit, opt){
   const whyHtml = r => r.why.map(w => `<span class="${w.bad ? 'err' : 'muted'}"${w.bad ? ' style="font-weight:600"' : ''}>${esc(w.t)}</span>`).join('<span class="muted"> · </span>');
   const left = r => `<span><b>${esc(r.name)}</b>${r.vol ? ' <span class="pill">freiwillig</span>' : ''}${r.open ? ' <span class="openbadge">noch nicht angegriffen</span>' : ''}<br><span style="font-size:14px">${whyHtml(r)}</span></span>`;
   const satTxt = r => `<span class="muted" style="font-size:12px">${r.sat ? r.sat + '× ausgesetzt' : 'nie ausgesetzt'}</span>`;
-  const right = (r, status) => `<span class="benchright"><span>${r.group >= 0 && r.group < 2 ? Math.round(r.score) + ' Pkt. ' : ''}${status}</span>${satTxt(r)}</span>`;
+  const right = (r, status) => `<span class="benchright"><span>${status}</span>${satTxt(r)}</span>`;
   const list = fertig
     ? (actual.length ? `<ul class="list">${actual.map(r => `<li>${left(r)}${right(Object.assign({}, r, {group: 9}), '<span class="pill ok">setzt aus</span>')}</li>`).join('')}</ul>`
                      : '<p>Niemand setzt aus.</p>')
@@ -492,10 +494,9 @@ function benchCard(title, calc, unit, opt){
     : `<ul class="list">${sit.map(r => `<li>${left(r)}${right(r, r.inTarget===true?'<span class="pill bad">noch aufgestellt</span>':r.inTarget===false?'<span class="pill ok">umgesetzt</span>':'')}</li>`).join('')}</ul>`;
   const table = calc.rows.map((r,i) => `<tr class="${r.sit?'openrow':''}">
     <td>${i+1}. <span class="name">${esc(r.name)}</span>${r.open ? ` <span class="openbadge">${r.open} offen</span>` : ''}${r.vol ? ' <span class="pill">freiwillig</span>' : ''}${r.pflicht ? ` <span class="pill bad">Pflicht</span>` : ''}</td>
-    <td><b>${r.group >= 0 && r.group < 2 ? Math.round(r.score) : "–"}</b></td>
     <td>${r.lastAtt ? r.lastAtt.map(x => x[0]+'★ '+x[1]+' %').join(', ') : '–'}</td>
     <td>${r.lastDef ? r.lastDef[0]+'★ '+r.lastDef[1]+' %' : '–'}</td>
-    <td>${r.played}</td><td>${r.sat ? `<span class="pill ok">${r.sat}×</span>` : 'nein'}</td>
+    <td>${r.played}</td><td>${r.sat ? `<span class="pill ok">${r.sat}×</span>` : 'nein'}</td><td>${esc(r.lastSatTxt)}</td>
     ${calc.target ? `<td>${r.inTarget ? 'ja' : 'nein'}</td>` : ''}</tr>`).join('');
   return `<div class="card"><h2>${title}</h2>
     ${opt ? doneBanner(opt) : ''}
@@ -507,11 +508,14 @@ function benchCard(title, calc, unit, opt){
     ${freed.length && !fertig ? `<p class="muted" style="font-size:14px">Darf spielen, weil jemand freiwillig aussetzt: ${freed.map(r => '<b>' + esc(r.name) + '</b>').join(', ')}</p>` : ''}
     ${calc.target && calc.bench && !clash.length && !fertig ? `<p class="sieg" style="font-size:14px;font-weight:600">Alle Empfehlungen für ${unit} ${calc.nextNo} sind umgesetzt.</p>` : ''}
     ${clash.length ? `<p class="err" style="font-size:14px">${clash.length} der Empfohlenen ${clash.length===1?'ist':'sind'} im Spiel schon für ${unit} ${calc.nextNo} aufgestellt.</p>` : ''}
-    <details style="margin-top:8px"><summary>Alle Spieler mit Punkten anzeigen</summary>
-    <div class="table-wrap" style="margin-top:8px"><table><thead><tr><th>Spieler</th><th>Punkte</th><th>Angriff aktueller Tag</th><th>Verteidigung aktueller Tag</th><th>Gespielt</th><th>Ausgesetzt</th>${calc.target?'<th>Aufgestellt</th>':''}</tr></thead><tbody>${table}</tbody></table></div></details>
+    <details style="margin-top:8px"><summary>Alle Spieler in Reihenfolge anzeigen</summary>
+    <div class="table-wrap" style="margin-top:8px"><table><thead><tr><th>Spieler</th><th>Angriff aktueller ${unit}</th><th>Verteidigung aktueller ${unit}</th><th>Gespielt</th><th>Ausgesetzt</th><th>Zuletzt ausgesetzt</th>${calc.target?'<th>Aufgestellt</th>':''}</tr></thead><tbody>${table}</tbody></table></div></details>
     ${opt ? benchActions(opt, calc.rows) : ''}
     ${calc.rows.some(r => r.pflicht && !r.sit) ? `<p class="muted" style="font-size:14px">Pflicht, aber kein Aussetz-Platz mehr frei, spielt deshalb: ${calc.rows.filter(r => r.pflicht && !r.sit).map(r => '<b>' + esc(r.name) + '</b>').join(', ')}</p>` : ''}
-    <p class="legend">${unit === 'Tag' ? 'Liga: Wer einen Angriff vergisst, ist für den Rest der Woche raus und setzt auch am ersten Tag der nächsten Liga aus. Am ersten Liga-Tag zählt der letzte Tag der Vorwoche. ' : ''}Reihenfolge: zuerst Freiwillige und Gesperrte, dann Pflicht-Aussetzer (Angriff am aktuellen Tag mit ${W.pflichtBis} Sterne oder weniger oder vergessen, gilt auch, wenn jemand schon ausgesetzt hat), dann nach Punkten. Mehr Punkte = eher aussetzen. Gewertet werden nur Angriff und Verteidigung am aktuellen Tag. Wer dort noch nicht angegriffen hat, ist noch nicht bewertet und rückt nur nach, wenn sonst Plätze fehlen. Wer am aktuellen Tag ausgesetzt hat, spielt als Nächstes. Je fehlender Stern ${W.sternFehlt}, je fehlendes Prozent ${W.prozentFehlt}, vergessener Angriff ${W.vergessen}, je kassierter Stern auf der eigenen Basis ${W.sternKassiert}, je kassiertes Prozent ${W.prozentKassiert}, minus ${W.schonAusgesetzt} je Mal schon ausgesetzt. Als Verteidigung zählt die stärkste gegnerische Attacke am aktuellen Tag. Die Empfehlung ist ein Vorschlag, die Entscheidung trifft die Führung.</p></div>`;
+    <p class="legend">${unit === 'Tag' ? 'Liga: Wer einen Angriff vergisst, ist für den Rest der Woche raus und setzt auch am ersten Tag der nächsten Liga aus. Am ersten Liga-Tag zählt der letzte Tag der Vorwoche. ' : ''}${calc.fair
+      ? `Hier wird nur gerecht gewechselt, Angriff und Verteidigung zählen nicht. Reihenfolge: zuerst Freiwillige${unit === 'Tag' ? ' und Gesperrte' : ''}, dann wer seltener ausgesetzt hat, bei Gleichstand wessen Aussetzen am längsten her ist. Wer am aktuellen ${unit} ausgesetzt hat, spielt als Nächstes.`
+      : `Reihenfolge: zuerst Freiwillige und Gesperrte, dann Pflicht-Aussetzer (Angriff am aktuellen ${unit} mit ${W.pflichtBis} Sternen oder weniger oder vergessen, gilt auch, wenn jemand schon ausgesetzt hat; wer dabei ein kleineres Rathaus angegriffen hat, steht vorn), dann wer seltener ausgesetzt hat. Bei Gleichstand setzt aus, wer am aktuellen ${unit} mehr Sterne auf der eigenen Basis kassiert hat (stärkste gegnerische Attacke), danach wessen Aussetzen am längsten her ist. Wer noch nicht angegriffen hat, wird genauso einsortiert. Wer am aktuellen ${unit} ausgesetzt hat, spielt als Nächstes.`}
+    Die Empfehlung ist ein Vorschlag, die Entscheidung trifft die Führung.</p></div>`;
 }
 
 function cwlView(){
@@ -548,7 +552,8 @@ function cwlView(){
     const ban = firstDay ? cwlBan(pv.rounds, d => 'in der Vorwoche an Tag ' + d + ' vergessen')
                          : cwlBan(s.rounds, d => 'Tag ' + d + ' vergessen, raus bis Wochenende');
     const calcRounds = firstDay ? [...pv.rounds.filter(r => r.state !== 'preparation'), ...s.rounds] : s.rounds;
-    const calc = s.rounds.length >= 7 && s.rounds.every(r => r.final) ? null : benchCalc(calcRounds, s.roster || [], teamSize, vol, ban);
+    const calc = s.rounds.length >= 7 && s.rounds.every(r => r.final) ? null : benchCalc(calcRounds, s.roster || [], teamSize, vol, ban, FAIR_ONLY.includes(c.tag),
+      firstDay ? pv.rounds.filter(r => r.state !== 'preparation').length : 0);
     if(calc && firstDay) calc.prevNote = 'Erster Liga-Tag: Gewertet wird der letzte Tag der Vorwoche. Wer dort einen Angriff vergessen hat, setzt aus.';
     const rec = s.rounds.length >= 7 && s.rounds.every(r => r.final)
       ? `<div class="card"><h2>Aussetz-Empfehlung</h2><span class="muted">Die Ligawoche ist vorbei.</span></div>`
@@ -826,7 +831,7 @@ function mergeLive(live){
       const r = cr.find(x => x.state === 'inWar');
       if(r) lw.members.forEach(m => {
         const l = r.lineup[m.tag];
-        if(l && m.attacks && m.attacks.length > l.att.length) l.att = m.attacks.map(a => [a.stars, a.pct]);
+        if(l && m.attacks && m.attacks.length > l.att.length){ l.att = m.attacks.map(a => [a.stars, a.pct, a.defTh]); if(m.th) l.th = m.th; }
       });
     }
     const byTag = {}; c.memberList.forEach(m => byTag[m.tag] = m);

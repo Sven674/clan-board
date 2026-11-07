@@ -485,14 +485,16 @@ def cwl_prev_light(s):
 
 
 def lineup_detail(w):
-    """Pro aufgestelltem Spieler: Angriffe [Sterne, %] und beste gegnerische Attacke auf ihn."""
+    """Pro aufgestelltem Spieler: Rathaus, Angriffe [Sterne, %, Gegner-Rathaus] und beste gegnerische Attacke auf ihn."""
     out = {}
     for m in w["members"]:
         defs = m.get("defenses", [])
         best = max(defs, key=lambda d: (d["stars"], d["pct"])) if defs else None
         out[m["tag"]] = {
             "name": m["name"],
-            "att": [[a["stars"], a["pct"]] for a in m["attacks"]],
+            "th": m.get("th"),
+            # [Sterne, %, Rathaus des Gegners]
+            "att": [[a["stars"], a["pct"], a.get("defTh")] for a in m["attacks"]],
             "def": [best["stars"], best["pct"]] if best else None,
         }
     return out
