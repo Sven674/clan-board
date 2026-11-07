@@ -3,7 +3,7 @@
  "endTime": "20261107T202444.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T10:03:50Z",
+ "lastSeen": "2026-11-07T12:05:25Z",
  "members": [
   {
    "attacks": [
@@ -118,7 +118,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 23,
+     "defTh": 17,
+     "order": 21,
+     "pct": 77,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "LL ⭐️minimaus⭐️",
    "pos": 22,
@@ -135,7 +143,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 92,
+     "stars": 1
+    }
+   ],
    "name": "supersplint",
    "pos": 20,
    "tag": "#L9QQRVGP",
@@ -269,8 +283,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/-Y6RDR93IB2cHr3lBZ67ymnijCLk_MPE_l_QkZBu_t4.png",
   "name": "!!! AARDVARKE!!",
-  "pct": 58.13333333333333,
-  "stars": 24,
+  "pct": 64.26666666666667,
+  "stars": 25,
   "tag": "#28PP8JP9C"
  },
  "preparationStartTime": "20261105T202446.000Z",
@@ -278,9 +292,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 10,
-  "pct": 55.666666666666664,
-  "stars": 24
+  "attacks": 11,
+  "pct": 60.8,
+  "stars": 26
  },
  "warTag": "#8RPQGY0G2"
 }
