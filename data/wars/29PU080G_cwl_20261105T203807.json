@@ -3,7 +3,7 @@
  "endTime": "20261107T203805.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T08:47:04Z",
+ "lastSeen": "2026-11-07T10:03:50Z",
  "members": [
   {
    "attacks": [
@@ -28,7 +28,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 17,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -184,7 +192,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 18,
+     "order": 16,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Sir COColores",
    "pos": 8,
@@ -242,9 +258,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 7,
-  "pct": 46.53333333333333,
-  "stars": 20
+  "attacks": 9,
+  "pct": 59.86666666666667,
+  "stars": 26
  },
  "warTag": "#8J9820URQ"
 }
