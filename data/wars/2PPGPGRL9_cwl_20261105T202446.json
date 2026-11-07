@@ -3,7 +3,7 @@
  "endTime": "20261107T202444.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T13:38:33Z",
+ "lastSeen": "2026-11-07T14:09:02Z",
  "members": [
   {
    "attacks": [
@@ -118,7 +118,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 25,
+     "pct": 94,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "☠️Happy Day ☠️",
    "pos": 5,
@@ -308,9 +316,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 13,
-  "pct": 69.8,
-  "stars": 30
+  "attacks": 14,
+  "pct": 76.06666666666666,
+  "stars": 32
  },
  "warTag": "#8RPQGY0G2"
 }
