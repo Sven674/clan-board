@@ -48,6 +48,8 @@ tbody tr.openrow:hover td{background:var(--openbg);filter:brightness(.97)}
 .name{font-weight:600}
 .role{font-size:11px;color:var(--mut);margin-left:4px}
 .dot{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:middle}
+/* Ampel = Kriegsbereitschaft im Spiel */
+.ampel{display:inline-block;width:16px;height:16px;border-radius:50%;vertical-align:middle}.ampel.ag{background:#2ecc40}.ampel.ar{background:#ff3b30}
 .g{background:var(--ok)}.y{background:var(--warn)}.r{background:var(--bad)}.n{background:var(--line)}
 .raiddots span{display:inline-block;width:9px;height:9px;border-radius:2px;margin-left:2px}
 .pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;background:var(--chip)}
@@ -148,11 +150,18 @@ function until(s){
 }
 function dateDE(s){ const d=parseT(s); return d ? d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'2-digit'}) : '–'; }
 
-function ampel(w){
-  if(!w || !w.recentWars) return {c:'n', t:'noch keine abgeschlossenen Kriege erfasst'};
-  if(w.recentMissed === 0) return {c:'g', t:'kein Angriff vergessen'};
-  return {c:'r', t:w.recentMissed+' Angriff(e) vergessen'};
+// Vergessene Angriffe in den letzten 10 Kriegen, als Text statt Punkt (Sven, 07.11.: nicht mit der Ampel verwechseln)
+function missedHtml(w){
+  if(!w || !w.recentWars) return '<span class="muted" title="noch keine abgeschlossenen Kriege erfasst">–</span>';
+  return w.recentMissed ? `<span class="pill bad">${w.recentMissed}× vergessen</span>` : '<span class="muted">0</span>';
 }
+// Kriegsbereitschaft, die der Spieler im Spiel selbst stellt
+function warPrefOf(tag){
+  for(const c of S.data.clans){ const m = c.memberList.find(x => x.tag === tag); if(m) return (m.profile||{}).warPreference || null; }
+  return null;
+}
+const ampelHtml = p => p === 'in' ? '<span class="ampel ag" title="Kriegsbereitschaft im Spiel: grün"></span>'
+  : p === 'out' ? '<span class="ampel ar" title="Kriegsbereitschaft im Spiel: rot"></span>' : '<span class="muted">–</span>';
 
 function rows(){
   const d = S.data; if(!d) return [];
@@ -167,6 +176,7 @@ function rows(){
       clanName: c.name,
       openNow: openMap[m.tag] || 0,
       missed: w.recentMissed ?? -1,
+      warPref: (m.profile||{}).warPreference === 'in' ? 1 : (m.profile||{}).warPreference === 'out' ? 0 : -1,
       usage: pct(w.attacks||0, w.possible||0),
       avgStars: w.attacks ? w.stars/w.attacks : null,
       triple: pct(w.triples||0, w.attacks||0),
@@ -236,7 +246,7 @@ function liveWar(c){
 }
 
 const COLS = [
-  ['name','Spieler'],['missed','Ampel'],['th','RH'],['usage','Angriffe genutzt'],['avgStars','Ø Sterne'],
+  ['name','Spieler'],['warPref','Ampel'],['missed','Vergessen'],['th','RH'],['usage','Angriffe genutzt'],['avgStars','Ø Sterne'],
   ['triple','3-Sterne-Quote'],['defAvg','Ø Sterne kassiert'],['donations','Gespendet'],['received','Erhalten'],['ratio','Quote'],
   ['raidAtt','Clanstadt (4 Wo.)'],['games','Clanspiele'],['boostsN','Supertruppen'],['activeTs','Zuletzt aktiv'],['joinTs','Im Clan seit'],
 ];
@@ -246,14 +256,14 @@ function memberTable(){
   const multi = S.clan === 'alle';
   const head = COLS.map(([k,l]) => `<th data-k="${k}" class="${S.sort.key===k?'sorted':''}">${l}${S.sort.key===k?(S.sort.dir>0?' ▲':' ▼'):''}</th>`).join('');
   const body = rs.map(r => {
-    const a = ampel(r.war);
     const raid = r.raids.map(x => {
       const c = x.attacks>=x.limit ? 'g' : x.attacks>0 ? 'y' : (x.state==='ongoing' ? 'n' : 'r');
       return `<span class="${c}" title="${dateDE(x.start)}: ${x.attacks}/${x.limit}"></span>`;
     }).join('');
     return `<tr data-tag="${esc(r.tag)}" data-clan="${esc(r.clanName)}" class="${r.openNow?'openrow':''}" ${r.openNow?`title="${r.openNow} Angriff(e) im laufenden Krieg offen"`:''}>
       <td><span class="name">${esc(r.name)}</span><span class="role">${ROLE[r.role]||''}</span>${r.openNow?` <span class="openbadge">${r.openNow} offen</span>`:''}${multi?`<div class="muted" style="font-size:11px">${esc(r.clanName)}</div>`:''}</td>
-      <td title="${esc(a.t)}"><span class="dot ${a.c}"></span> ${r.war&&r.war.recentWars?r.war.recentMissed:''}</td>
+      <td>${ampelHtml((r.profile||{}).warPreference)}</td>
+      <td>${missedHtml(r.war)}</td>
       <td>${r.th??'–'}</td>
       <td>${r.usage==null?'–':r.usage+' %'}</td>
       <td>${r.avgStars==null?'–':r.avgStars.toFixed(2)}</td>
@@ -270,7 +280,7 @@ function memberTable(){
   }).join('');
   return `<div class="card"><input type="search" placeholder="Spieler suchen" value="${esc(S.q)}" id="q">
     <div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
-    <div class="legend">Orange hinterlegt = hat im laufenden Krieg noch Angriffe offen. Ampel = vergessene Kriegsangriffe in den letzten 10 abgeschlossenen Kriegen (grün: keiner vergessen, rot: mindestens einer vergessen, Zahl = wie viele). Grau = noch keine Daten.
+    <div class="legend">Orange hinterlegt = hat im laufenden Krieg noch Angriffe offen. Ampel = Kriegsbereitschaft, die der Spieler im Spiel selbst stellt (grün/rot, wird alle 30 Minuten abgefragt). Vergessen = vergessene Kriegsangriffe in den letzten 10 abgeschlossenen Kriegen, – = noch keine Daten.
     Spenden zählen seit Saisonbeginn. „Zuletzt aktiv“ leitet sich aus Änderungen am Spielerprofil ab (Spenden, Siege, Upgrades, Erfolge), die API liefert keinen Online-Status. Spaltenkopf antippen zum Sortieren, Zeile antippen für Details.</div></div>`;
 }
 
@@ -484,7 +494,8 @@ function benchCard(title, calc, unit, opt){
   const clash = calc.target && !fertig ? sit.filter(r => r.inTarget) : [];
   const actual = fertig ? [...calc.rows.filter(r => r.inTarget === false && r.vol), ...calc.rows.filter(r => r.inTarget === false && !r.vol)] : [];
   const whyHtml = r => r.why.map(w => `<span class="${w.bad ? 'err' : 'muted'}"${w.bad ? ' style="font-weight:600"' : ''}>${esc(w.t)}</span>`).join('<span class="muted"> · </span>');
-  const left = r => `<span><b>${esc(r.name)}</b>${r.vol ? ' <span class="pill">freiwillig</span>' : ''}${r.open ? ' <span class="openbadge">noch nicht angegriffen</span>' : ''}<br><span style="font-size:14px">${whyHtml(r)}</span></span>`;
+  const volTag = r => r.rot ? ' <span class="pill">freiwillig / Ampel</span> ' + ampelHtml('out') : r.vol ? ' <span class="pill">freiwillig</span>' : '';
+  const left = r => `<span><b>${esc(r.name)}</b>${volTag(r)}${r.open ? ' <span class="openbadge">noch nicht angegriffen</span>' : ''}<br><span style="font-size:14px">${whyHtml(r)}</span></span>`;
   const satTxt = r => `<span class="muted" style="font-size:12px">${r.sat ? r.sat + '× ausgesetzt' : 'nie ausgesetzt'}</span>`;
   const right = (r, status) => `<span class="benchright"><span>${status}</span>${satTxt(r)}</span>`;
   const list = fertig
@@ -494,7 +505,7 @@ function benchCard(title, calc, unit, opt){
     ? '<p>Alle können spielen, es muss niemand aussetzen.</p>'
     : `<ul class="list">${sit.map(r => `<li>${left(r)}${right(r, r.inTarget===true?'<span class="pill bad">noch aufgestellt</span>':r.inTarget===false?'<span class="pill ok">umgesetzt</span>':'')}</li>`).join('')}</ul>`;
   const table = calc.rows.map((r,i) => `<tr class="${r.sit?'openrow':''}">
-    <td>${i+1}. <span class="name">${esc(r.name)}</span>${r.open ? ` <span class="openbadge">${r.open} offen</span>` : ''}${r.vol ? ' <span class="pill">freiwillig</span>' : ''}${r.pflicht ? ` <span class="pill bad">Pflicht</span>` : ''}</td>
+    <td>${i+1}. <span class="name">${esc(r.name)}</span>${r.open ? ` <span class="openbadge">${r.open} offen</span>` : ''}${volTag(r)}${r.pflicht ? ` <span class="pill bad">Pflicht</span>` : ''}</td>
     <td>${r.lastAtt ? r.lastAtt.map(x => x[0]+'★ '+x[1]+' %').join(', ') : '–'}</td>
     <td>${r.lastDef ? r.lastDef[0]+'★ '+r.lastDef[1]+' %' : '–'}</td>
     <td>${r.played}</td><td>${r.sat ? `<span class="pill ok">${r.sat}×</span>` : 'nein'}</td><td>${esc(r.lastSatTxt)}</td>
@@ -537,6 +548,7 @@ function cwlView(){
       .map(m => ({tag: m.tag, name: m.name, th: m.th, attacks: 0, stars: 0, pct: 0, triples: 0, missed: 0, defs: 0, defStars: 0}))];
     const rows = all.map((p,i) => { const n = satN(p.tag), o = openToday(s.rounds, p.tag); return `<tr class="${o ? 'openrow' : ''}" ${o ? `title="${o} Angriff(e) heute offen"` : ''}>
       <td>${i+1}. <span class="name">${esc(p.name)}</span> <span class="role">RH${p.th??'?'}</span></td>
+      <td>${ampelHtml(warPrefOf(p.tag))}</td>
       <td>${n == null ? '–' : n ? `<span class="pill ok big">ja, ${n}×</span>` : '<span class="pill big">nein</span>'}</td>
       <td style="text-align:center;white-space:nowrap">${p.attacks}${o ? ` <span class="openbadge">${o} offen</span>` : ''}</td><td><b>${p.stars}</b></td>
       <td>${p.attacks?(p.stars/p.attacks).toFixed(2):'–'}</td>
@@ -547,7 +559,9 @@ function cwlView(){
     const prep = s.rounds.find(r => r.state === 'preparation');
     const nextDay = prep ? prep.day : s.rounds.filter(r => r.state !== 'preparation').length + 1;
     const volKey = 'liga:' + s.season + ':' + nextDay;
-    const vol = ((S.fd[c.tag] || {}).freiwillig || {})[volKey];
+    // Ampel rot im Spiel = freiwillig (Sven, 07.11.), zusätzlich zu den von der Führung Eingetragenen
+    const rot = (s.roster || []).filter(m => warPrefOf(m.tag) === 'out').map(m => m.tag);
+    const vol = [...new Set([...(((S.fd[c.tag] || {}).freiwillig || {})[volKey] || []), ...rot])];
     // Erster Liga-Tag: Grundlage ist die Vorwoche (Vergessene gesperrt, sonst zählt deren letzter Tag).
     const pv = c.cwlPrev, firstDay = !s.rounds.some(r => r.state !== 'preparation') && pv && pv.rounds.length;
     const ban = firstDay ? cwlBan(pv.rounds, d => 'in der Vorwoche an Tag ' + d + ' vergessen')
@@ -555,14 +569,15 @@ function cwlView(){
     const calcRounds = firstDay ? [...pv.rounds.filter(r => r.state !== 'preparation'), ...s.rounds] : s.rounds;
     const calc = s.rounds.length >= 7 && s.rounds.every(r => r.final) ? null : benchCalc(calcRounds, s.roster || [], teamSize, vol, ban, FAIR_ONLY.includes(c.tag),
       firstDay ? pv.rounds.filter(r => r.state !== 'preparation').length : 0);
+    if(calc) calc.rows.forEach(r => { r.rot = rot.includes(r.tag); });
     if(calc && firstDay) calc.prevNote = 'Erster Liga-Tag: Gewertet wird der letzte Tag der Vorwoche. Wer dort einen Angriff vergessen hat, setzt aus.';
     const rec = s.rounds.length >= 7 && s.rounds.every(r => r.final)
       ? `<div class="card"><h2>Aussetz-Empfehlung</h2><span class="muted">Die Ligawoche ist vorbei.</span></div>`
       : (s.roster ? benchCard(`Aussetz-Empfehlung ${esc(c.name)} für Liga-Tag ${calc ? calc.nextNo : ''}`, calc, 'Tag', {clan: c.tag, key: volKey, label: 'Liga-Tag ' + nextDay}) : '');
     return rec + `<div class="card"><h2>Clankriegsliga ${esc(c.name)}: ${monat}</h2>${days}</div>
       <div class="card"><h2>Rangliste Liga ${esc(c.name)}</h2>
-      <div class="table-wrap"><table><thead><tr><th>Spieler</th><th>Ausgesetzt</th><th style="text-align:center">Angriffe</th><th>Sterne</th><th>Ø Sterne</th><th>Ø Zerstörung</th><th>Verpasst</th><th>Ø kassiert</th></tr></thead><tbody>${rows}</tbody></table></div>
-      <p class="legend">Orange hinterlegt = heute noch Angriff offen. Ausgesetzt = als Liga-Teilnehmer gemeldet, aber an einem gelaufenen Tag nicht aufgestellt. Verpasst = aufgestellt, aber nicht angegriffen (nur abgeschlossene Tage). Ø kassiert = Sterne, die der Gegner im Schnitt auf dieser Basis geholt hat.</p></div>` + bonusCard(c);
+      <div class="table-wrap"><table><thead><tr><th>Spieler</th><th>Ampel</th><th>Ausgesetzt</th><th style="text-align:center">Angriffe</th><th>Sterne</th><th>Ø Sterne</th><th>Ø Zerstörung</th><th>Verpasst</th><th>Ø kassiert</th></tr></thead><tbody>${rows}</tbody></table></div>
+      <p class="legend">Orange hinterlegt = heute noch Angriff offen. Ampel = Kriegsbereitschaft, die der Spieler im Spiel selbst stellt, rot gilt in der Aussetz-Empfehlung als freiwillig. Ausgesetzt = als Liga-Teilnehmer gemeldet, aber an einem gelaufenen Tag nicht aufgestellt. Verpasst = aufgestellt, aber nicht angegriffen (nur abgeschlossene Tage). Ø kassiert = Sterne, die der Gegner im Schnitt auf dieser Basis geholt hat.</p></div>` + bonusCard(c);
   }).join('');
 }
 
