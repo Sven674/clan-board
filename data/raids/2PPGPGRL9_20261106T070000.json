@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 263275,
+ "capitalTotalLoot": 273645,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -16,6 +16,13 @@
    "loot": 23475,
    "name": "Zool",
    "tag": "#292UQJ2LJ"
+  },
+  {
+   "attacks": 2,
+   "limit": 6,
+   "loot": 10370,
+   "name": "mimi",
+   "tag": "#2YLVQRY9"
   },
   {
    "attacks": 6,
@@ -93,11 +100,18 @@
    "loot": 35096,
    "name": "Zucker",
    "tag": "#2CY2GL9J"
+  },
+  {
+   "attacks": 0,
+   "limit": 5,
+   "loot": 0,
+   "name": "mini1000000",
+   "tag": "#LQ0YCGLL2"
   }
  ],
  "offensiveReward": 0,
  "raidsCompleted": 2,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 61
+ "totalAttacks": 63
 }

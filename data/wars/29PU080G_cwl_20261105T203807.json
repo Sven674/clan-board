@@ -3,7 +3,7 @@
  "endTime": "20261107T203805.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T05:59:00Z",
+ "lastSeen": "2026-11-07T07:43:34Z",
  "members": [
   {
    "attacks": [
@@ -116,7 +116,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 18,
+     "order": 14,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Beach",
    "pos": 5,
@@ -146,7 +154,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 15,
+     "defTh": 18,
+     "order": 13,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 17,
@@ -218,9 +234,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 4,
-  "pct": 26.533333333333335,
-  "stars": 11
+  "attacks": 6,
+  "pct": 39.86666666666667,
+  "stars": 17
  },
  "warTag": "#8J9820URQ"
 }
