@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 375378,
+ "capitalTotalLoot": 377998,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -25,9 +25,9 @@
    "tag": "#2YLVQRY9"
   },
   {
-   "attacks": 5,
+   "attacks": 6,
    "limit": 6,
-   "loot": 19915,
+   "loot": 22535,
    "name": "eisbär101",
    "tag": "#9PVJVRYP"
   },
@@ -127,5 +127,5 @@
  "raidsCompleted": 3,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 87
+ "totalAttacks": 88
 }
