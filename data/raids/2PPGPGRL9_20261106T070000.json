@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 377998,
+ "capitalTotalLoot": 380678,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -39,9 +39,9 @@
    "tag": "#VYQY8VG8"
   },
   {
-   "attacks": 5,
+   "attacks": 6,
    "limit": 6,
-   "loot": 25268,
+   "loot": 27948,
    "name": "NobbyNobbs",
    "tag": "#L08LQ8YJL"
   },
@@ -127,5 +127,5 @@
  "raidsCompleted": 3,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 88
+ "totalAttacks": 89
 }

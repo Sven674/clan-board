@@ -3,7 +3,7 @@
  "endTime": "20261107T203805.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T16:53:31Z",
+ "lastSeen": "2026-11-07T17:36:49Z",
  "members": [
   {
    "attacks": [
@@ -268,7 +268,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 20,
+     "defTh": 18,
+     "order": 25,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Captain Future",
    "pos": 15,
@@ -310,9 +318,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 14,
-  "pct": 91.8,
-  "stars": 37
+  "attacks": 15,
+  "pct": 98.46666666666667,
+  "stars": 40
  },
  "warTag": "#8J9820URQ"
 }

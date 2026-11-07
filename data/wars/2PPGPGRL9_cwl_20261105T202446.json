@@ -3,7 +3,7 @@
  "endTime": "20261107T202444.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T16:53:31Z",
+ "lastSeen": "2026-11-07T17:36:49Z",
  "members": [
   {
    "attacks": [
@@ -29,7 +29,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 75,
+     "stars": 1
+    }
+   ],
    "name": "HaraldKehl",
    "pos": 14,
    "tag": "#QJG9CR0Q",
@@ -45,7 +51,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "NobbyNobbs",
    "pos": 19,
    "tag": "#L08LQ8YJL",
@@ -313,8 +325,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/-Y6RDR93IB2cHr3lBZ67ymnijCLk_MPE_l_QkZBu_t4.png",
   "name": "!!! AARDVARKE!!",
-  "pct": 67.26666666666667,
-  "stars": 25,
+  "pct": 78.93333333333334,
+  "stars": 29,
   "tag": "#28PP8JP9C"
  },
  "preparationStartTime": "20261105T202446.000Z",
