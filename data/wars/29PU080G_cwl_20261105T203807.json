@@ -3,7 +3,7 @@
  "endTime": "20261107T203805.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T01:08:08Z",
+ "lastSeen": "2026-11-07T05:59:00Z",
  "members": [
   {
    "attacks": [
@@ -56,7 +56,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 6,
+     "defTh": 18,
+     "order": 12,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Uzii",
    "pos": 17,
@@ -210,9 +218,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 3,
-  "pct": 19.866666666666667,
-  "stars": 8
+  "attacks": 4,
+  "pct": 26.533333333333335,
+  "stars": 11
  },
  "warTag": "#8J9820URQ"
 }
