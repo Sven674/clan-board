@@ -3,7 +3,7 @@
  "endTime": "20261107T203805.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T14:51:00Z",
+ "lastSeen": "2026-11-07T15:29:32Z",
  "members": [
   {
    "attacks": [
@@ -230,7 +230,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 19,
+     "defTh": 18,
+     "order": 23,
+     "pct": 92,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Heisenberg",
    "pos": 16,
@@ -294,9 +302,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 12,
-  "pct": 79.2,
-  "stars": 33
+  "attacks": 13,
+  "pct": 85.33333333333333,
+  "stars": 35
  },
  "warTag": "#8J9820URQ"
 }
