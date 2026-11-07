@@ -3,7 +3,7 @@
  "endTime": "20261107T202444.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T14:09:02Z",
+ "lastSeen": "2026-11-07T14:41:03Z",
  "members": [
   {
    "attacks": [
@@ -127,7 +127,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 45,
+     "stars": 0
+    }
+   ],
    "name": "☠️Happy Day ☠️",
    "pos": 5,
    "tag": "#Y80LGCUPJ",
@@ -307,7 +313,7 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/-Y6RDR93IB2cHr3lBZ67ymnijCLk_MPE_l_QkZBu_t4.png",
   "name": "!!! AARDVARKE!!",
-  "pct": 64.26666666666667,
+  "pct": 67.26666666666667,
   "stars": 25,
   "tag": "#28PP8JP9C"
  },
