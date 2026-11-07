@@ -3,7 +3,7 @@
  "endTime": "20261107T203805.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-06T21:27:03Z",
+ "lastSeen": "2026-11-07T01:08:08Z",
  "members": [
   {
    "attacks": [
@@ -29,7 +29,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "--SVEN--674--",
    "pos": 6,
    "tag": "#200PCP8QQ",
@@ -37,7 +43,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "=RS=",
    "pos": 12,
    "tag": "#GLPVGVR9",
@@ -52,8 +64,22 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 17,
+     "defTh": 18,
+     "order": 10,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Chrisdoc",
    "pos": 2,
    "tag": "#9GR80Q9P",
@@ -90,7 +116,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 18,
+     "order": 7,
+     "pct": 98,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -105,7 +139,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "grautvornixe",
    "pos": 20,
    "tag": "#PRRQ29JP",
@@ -129,7 +169,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Elussa",
    "pos": 7,
    "tag": "#J9CLGUR0",
@@ -155,8 +201,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/aC-r9cPxFqof5zzRda8cbZVhNplSdSTVtVyL7uPQGfs.png",
   "name": "scorpion",
-  "pct": 18.333333333333332,
-  "stars": 7,
+  "pct": 51.666666666666664,
+  "stars": 22,
   "tag": "#VL0C8LJ"
  },
  "preparationStartTime": "20261105T203807.000Z",
@@ -164,9 +210,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 1,
-  "pct": 6.666666666666667,
-  "stars": 3
+  "attacks": 3,
+  "pct": 19.866666666666667,
+  "stars": 8
  },
  "warTag": "#8J9820URQ"
 }

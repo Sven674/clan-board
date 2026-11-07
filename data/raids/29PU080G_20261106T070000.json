@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 215137,
+ "capitalTotalLoot": 278700,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -27,6 +27,20 @@
   {
    "attacks": 6,
    "limit": 6,
+   "loot": 27637,
+   "name": "Chrisdoc",
+   "tag": "#9GR80Q9P"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 26471,
+   "name": "pflegephall",
+   "tag": "#LQLVPQ00"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
    "loot": 24845,
    "name": "EumelTV",
    "tag": "#J2QLL8GY"
@@ -44,6 +58,13 @@
    "loot": 26247,
    "name": "Legend Papa",
    "tag": "#9RCY8U0VQ"
+  },
+  {
+   "attacks": 2,
+   "limit": 6,
+   "loot": 9455,
+   "name": "Elussa",
+   "tag": "#J9CLGUR0"
   },
   {
    "attacks": 6,
@@ -71,5 +92,5 @@
  "raidsCompleted": 3,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 47
+ "totalAttacks": 61
 }
