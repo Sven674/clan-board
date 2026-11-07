@@ -374,7 +374,7 @@ function benchCalc(rounds, roster, teamSize, vol, ban, fair, skip){
       else if(!missed) why.push({t: 'greift noch an'});
       if(l.def) why.push({t: 'Verteidigung ' + l.def[0] + '★ ' + l.def[1] + ' %'});
       if(!pflicht) why.push({t: satWhy});
-      group = pflicht ? 0 : 1;
+      group = missed ? -1 : pflicht ? 0 : 1;   // Vergesser ganz vorn (Sven, 07.11.)
     }
     const att = l && l.att.length ? l.att : null, def = l && l.def ? l.def : null;
     return {tag: p.tag, name: p.name, played, sat, lastSat, pflicht, group, down, open: openToday(rounds, p.tag), why,
@@ -476,7 +476,8 @@ function volForm(opt, rows){
 
 function benchCard(title, calc, unit, opt){
   if(!calc) return `<div class="card"><h2>${title}</h2><span class="muted">Noch zu wenig Daten. Die Empfehlung erscheint, sobald der erste ${unit} gelaufen ist.</span></div>`;
-  const sit = [...calc.rows.filter(r => r.sit && r.vol), ...calc.rows.filter(r => r.sit && !r.vol)];
+  // Anzeige: Vergesser/Gesperrte, dann Freiwillige, dann der Rest (Sven, 07.11.)
+  const sit = [...calc.rows.filter(r => r.sit && !r.vol && r.group === -1), ...calc.rows.filter(r => r.sit && r.vol), ...calc.rows.filter(r => r.sit && !r.vol && r.group !== -1)];
   const over = sit.length - calc.bench;
   const freed = calc.rows.filter(r => r.freed);
   const fertig = !!(opt && doneOf(opt) && calc.target);
@@ -513,8 +514,8 @@ function benchCard(title, calc, unit, opt){
     ${opt ? benchActions(opt, calc.rows) : ''}
     ${calc.rows.some(r => r.pflicht && !r.sit) ? `<p class="muted" style="font-size:14px">Pflicht, aber kein Aussetz-Platz mehr frei, spielt deshalb: ${calc.rows.filter(r => r.pflicht && !r.sit).map(r => '<b>' + esc(r.name) + '</b>').join(', ')}</p>` : ''}
     <p class="legend">${unit === 'Tag' ? 'Liga: Wer einen Angriff vergisst, ist für den Rest der Woche raus und setzt auch am ersten Tag der nächsten Liga aus. Am ersten Liga-Tag zählt der letzte Tag der Vorwoche. ' : ''}${calc.fair
-      ? `Hier wird nur gerecht gewechselt, Angriff und Verteidigung zählen nicht. Reihenfolge: zuerst Freiwillige${unit === 'Tag' ? ' und Gesperrte' : ''}, dann wer seltener ausgesetzt hat, bei Gleichstand wessen Aussetzen am längsten her ist. Wer am aktuellen ${unit} ausgesetzt hat, spielt als Nächstes.`
-      : `Reihenfolge: zuerst Freiwillige und Gesperrte, dann Pflicht-Aussetzer (Angriff am aktuellen ${unit} mit ${W.pflichtBis} Sternen oder weniger oder vergessen, gilt auch, wenn jemand schon ausgesetzt hat; wer dabei ein kleineres Rathaus angegriffen hat, steht vorn), dann wer seltener ausgesetzt hat. Bei Gleichstand setzt aus, wer am aktuellen ${unit} mehr Sterne auf der eigenen Basis kassiert hat (stärkste gegnerische Attacke), danach wessen Aussetzen am längsten her ist. Wer noch nicht angegriffen hat, wird genauso einsortiert. Wer am aktuellen ${unit} ausgesetzt hat, spielt als Nächstes.`}
+      ? `Hier wird nur gerecht gewechselt, Angriff und Verteidigung zählen nicht. Reihenfolge: ${unit === 'Tag' ? 'zuerst Gesperrte (Angriff vergessen), dann Freiwillige' : 'zuerst Freiwillige'}, dann wer seltener ausgesetzt hat, bei Gleichstand wessen Aussetzen am längsten her ist. Wer am aktuellen ${unit} ausgesetzt hat, spielt als Nächstes.`
+      : `Reihenfolge: zuerst wer einen Angriff vergessen hat, dann Freiwillige, dann Pflicht-Aussetzer (Angriff am aktuellen ${unit} mit ${W.pflichtBis} Sternen oder weniger, gilt auch, wenn jemand schon ausgesetzt hat; zuerst wer ein kleineres Rathaus angegriffen hat, dann wer weniger Sterne, dann wer weniger Prozent geholt hat), dann wer seltener ausgesetzt hat. Bei Gleichstand setzt aus, wer am aktuellen ${unit} mehr Sterne auf der eigenen Basis kassiert hat (stärkste gegnerische Attacke), danach wessen Aussetzen am längsten her ist. Wer noch nicht angegriffen hat, wird genauso einsortiert. Wer am aktuellen ${unit} ausgesetzt hat, spielt als Nächstes.`}
     Die Empfehlung ist ein Vorschlag, die Entscheidung trifft die Führung.</p></div>`;
 }
 
