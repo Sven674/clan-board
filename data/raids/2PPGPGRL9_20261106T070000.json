@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 273645,
+ "capitalTotalLoot": 306655,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -39,9 +39,9 @@
    "tag": "#92RP8G9"
   },
   {
-   "attacks": 3,
+   "attacks": 6,
    "limit": 6,
-   "loot": 14883,
+   "loot": 26401,
    "name": "Azog",
    "tag": "#QQCCR8RC"
   },
@@ -102,16 +102,16 @@
    "tag": "#2CY2GL9J"
   },
   {
-   "attacks": 0,
-   "limit": 5,
-   "loot": 0,
+   "attacks": 6,
+   "limit": 6,
+   "loot": 21492,
    "name": "mini1000000",
    "tag": "#LQ0YCGLL2"
   }
  ],
  "offensiveReward": 0,
- "raidsCompleted": 2,
+ "raidsCompleted": 3,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 63
+ "totalAttacks": 72
 }

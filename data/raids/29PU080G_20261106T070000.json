@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 304740,
+ "capitalTotalLoot": 318584,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -53,9 +53,9 @@
    "tag": "#80V9Q998"
   },
   {
-   "attacks": 3,
+   "attacks": 6,
    "limit": 6,
-   "loot": 14256,
+   "loot": 28100,
    "name": "TaLuDa",
    "tag": "#22UU2J8Y8"
   },
@@ -106,5 +106,5 @@
  "raidsCompleted": 4,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 67
+ "totalAttacks": 70
 }
