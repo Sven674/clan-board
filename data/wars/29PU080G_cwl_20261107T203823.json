@@ -1,0 +1,146 @@
+{
+ "attacksPerMember": 1,
+ "endTime": "20261109T203820.000Z",
+ "final": false,
+ "kind": "cwl",
+ "lastSeen": "2026-11-07T22:00:44Z",
+ "members": [
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "theBASTIan",
+   "pos": 1,
+   "tag": "#92L228UR",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "--SVEN--674--",
+   "pos": 6,
+   "tag": "#200PCP8QQ",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "=RS=",
+   "pos": 12,
+   "tag": "#GLPVGVR9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Uzii",
+   "pos": 17,
+   "tag": "#2Q8GPVV0",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Chrisdoc",
+   "pos": 2,
+   "tag": "#9GR80Q9P",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "EumelTV",
+   "pos": 19,
+   "tag": "#J2QLL8GY",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Beach",
+   "pos": 5,
+   "tag": "#8LVUJRQP",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Ricky",
+   "pos": 9,
+   "tag": "#LRYLYPG8",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Legend Papa",
+   "pos": 10,
+   "tag": "#9RCY8U0VQ",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Filiusberlinius",
+   "pos": 13,
+   "tag": "#2UCJYGU0",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Sir COColores",
+   "pos": 8,
+   "tag": "#YVCLP0RJ",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Elussa",
+   "pos": 7,
+   "tag": "#J9CLGUR0",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Nemesis",
+   "pos": 18,
+   "tag": "#22C0YRV9C",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Captain Future",
+   "pos": 15,
+   "tag": "#8PGGGL2U8",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "hulk",
+   "pos": 11,
+   "tag": "#GRJU2J92",
+   "th": 18
+  }
+ ],
+ "opponent": {
+  "badge": "https://api-assets.clashofclans.com/badges/70/-pUagYoAigi8NJOkcDjR_ZUI6Dv9jO1Ain0vOaDeymU.png",
+  "name": "Clash'n Honor",
+  "pct": 0.0,
+  "stars": 0,
+  "tag": "#80Q9U0QL"
+ },
+ "preparationStartTime": "20261107T203823.000Z",
+ "startTime": "20261108T203820.000Z",
+ "state": "preparation",
+ "teamSize": 15,
+ "us": {
+  "attacks": 0,
+  "pct": 0.0,
+  "stars": 0
+ },
+ "warTag": "#8J9LJL90R"
+}

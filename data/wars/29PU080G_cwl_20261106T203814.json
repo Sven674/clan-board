@@ -3,10 +3,18 @@
  "endTime": "20261108T203812.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T19:59:06Z",
+ "lastSeen": "2026-11-07T22:00:44Z",
  "members": [
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 3,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "theBASTIan",
    "pos": 1,
@@ -39,14 +47,28 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Chrisdoc",
    "pos": 2,
    "tag": "#9GR80Q9P",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 36,
+     "defTh": 18,
+     "order": 5,
+     "pct": 70,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "EumelTV",
    "pos": 19,
@@ -87,7 +109,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Sir COColores",
    "pos": 8,
    "tag": "#YVCLP0RJ",
@@ -102,7 +130,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 12,
+     "defTh": 18,
+     "order": 4,
+     "pct": 72,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Nemesis",
    "pos": 18,
@@ -129,18 +165,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/eWmiqEOyt6-qeqfYZQLEtmXPPN9wvE4rPRn5Dt9Ejfs.png",
   "name": "Plasma",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 13.333333333333334,
+  "stars": 6,
   "tag": "#2YVY0JQUL"
  },
  "preparationStartTime": "20261106T203814.000Z",
  "startTime": "20261107T203812.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 3,
+  "pct": 16.133333333333333,
+  "stars": 7
  },
  "warTag": "#8J9PYQ9LV"
 }

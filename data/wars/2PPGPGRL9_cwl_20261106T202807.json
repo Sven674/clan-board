@@ -3,10 +3,18 @@
  "endTime": "20261108T202803.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T19:59:06Z",
+ "lastSeen": "2026-11-07T22:00:44Z",
  "members": [
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 18,
+     "order": 7,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "✨Yvonne✨",
    "pos": 8,
@@ -15,7 +23,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 93,
+     "stars": 2
+    }
+   ],
    "name": "mimi",
    "pos": 10,
    "tag": "#2YLVQRY9",
@@ -38,7 +52,15 @@
    "th": 17
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 18,
+     "order": 2,
+     "pct": 72,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Schlumpfmausi",
    "pos": 12,
@@ -46,8 +68,22 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 5,
+     "pct": 89,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 77,
+     "stars": 1
+    }
+   ],
    "name": "Odin",
    "pos": 2,
    "tag": "#92RP8G9",
@@ -63,7 +99,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Alex12",
    "pos": 18,
    "tag": "#9GPR28YG",
@@ -71,7 +113,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Gaspode",
    "pos": 13,
    "tag": "#2QRJRJY0V",
@@ -79,7 +127,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Sven",
    "pos": 16,
    "tag": "#J0UYJ09P",
@@ -102,7 +156,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 20,
+     "defTh": 17,
+     "order": 4,
+     "pct": 99,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "LEGENDE",
    "pos": 21,
@@ -111,7 +173,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 91,
+     "stars": 2
+    }
+   ],
    "name": "Lonestar",
    "pos": 4,
    "tag": "#28CJUY0G9",
@@ -129,18 +197,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/zcnf_fShlgKWCHKyf_yEN6KUYGHuHKu27I-F9cEY1Ds.png",
   "name": "7em compagnie",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 37.4,
+  "stars": 14,
   "tag": "#Y0QGRVGR"
  },
  "preparationStartTime": "20261106T202807.000Z",
  "startTime": "20261107T202803.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 4,
+  "pct": 24.0,
+  "stars": 9
  },
  "warTag": "#8RPRV8GQQ"
 }

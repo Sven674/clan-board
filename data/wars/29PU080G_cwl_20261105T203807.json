@@ -1,9 +1,9 @@
 {
  "attacksPerMember": 1,
  "endTime": "20261107T203805.000Z",
- "final": false,
+ "final": true,
  "kind": "cwl",
- "lastSeen": "2026-11-07T19:59:06Z",
+ "lastSeen": "2026-11-07T22:00:44Z",
  "members": [
   {
    "attacks": [
@@ -81,7 +81,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 87,
+     "stars": 2
+    }
+   ],
    "name": "Uzii",
    "pos": 17,
    "tag": "#2Q8GPVV0",
@@ -251,7 +257,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Heisenberg",
    "pos": 16,
    "tag": "#29JR2282",
@@ -327,13 +339,13 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/aC-r9cPxFqof5zzRda8cbZVhNplSdSTVtVyL7uPQGfs.png",
   "name": "scorpion",
-  "pct": 83.46666666666667,
-  "stars": 33,
+  "pct": 95.93333333333334,
+  "stars": 38,
   "tag": "#VL0C8LJ"
  },
  "preparationStartTime": "20261105T203807.000Z",
  "startTime": "20261106T203805.000Z",
- "state": "inWar",
+ "state": "warEnded",
  "teamSize": 15,
  "us": {
   "attacks": 15,

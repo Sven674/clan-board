@@ -1,19 +1,19 @@
 {
- "capitalTotalLoot": 384498,
+ "capitalTotalLoot": 420077,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
   {
-   "attacks": 2,
+   "attacks": 4,
    "limit": 6,
-   "loot": 11106,
+   "loot": 20455,
    "name": "✨Yvonne✨",
    "tag": "#GCRY9CGU"
   },
   {
-   "attacks": 5,
+   "attacks": 6,
    "limit": 6,
-   "loot": 35057,
+   "loot": 39142,
    "name": "Zool",
    "tag": "#292UQJ2LJ"
   },
@@ -46,9 +46,9 @@
    "tag": "#L08LQ8YJL"
   },
   {
-   "attacks": 1,
-   "limit": 5,
-   "loot": 3820,
+   "attacks": 6,
+   "limit": 6,
+   "loot": 25965,
    "name": "Schlumpfmausi",
    "tag": "#LG09VQ8J"
   },
@@ -131,8 +131,8 @@
   }
  ],
  "offensiveReward": 0,
- "raidsCompleted": 3,
+ "raidsCompleted": 4,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 90
+ "totalAttacks": 98
 }
