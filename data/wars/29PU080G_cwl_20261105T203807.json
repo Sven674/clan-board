@@ -3,7 +3,7 @@
  "endTime": "20261107T203805.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T18:14:12Z",
+ "lastSeen": "2026-11-07T19:22:12Z",
  "members": [
   {
    "attacks": [
@@ -141,7 +141,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 85,
+     "stars": 2
+    }
+   ],
    "name": "AGENT 00H",
    "pos": 3,
    "tag": "#80V9Q998",
@@ -309,8 +315,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/aC-r9cPxFqof5zzRda8cbZVhNplSdSTVtVyL7uPQGfs.png",
   "name": "scorpion",
-  "pct": 64.46666666666667,
-  "stars": 25,
+  "pct": 70.13333333333334,
+  "stars": 27,
   "tag": "#VL0C8LJ"
  },
  "preparationStartTime": "20261105T203807.000Z",
