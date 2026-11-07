@@ -3,7 +3,7 @@
  "endTime": "20261108T202803.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T19:22:12Z",
+ "lastSeen": "2026-11-07T19:59:06Z",
  "members": [
   {
    "attacks": [],
@@ -11,14 +11,6 @@
    "name": "✨Yvonne✨",
    "pos": 8,
    "tag": "#GCRY9CGU",
-   "th": 18
-  },
-  {
-   "attacks": [],
-   "defenses": [],
-   "name": "HaraldKehl",
-   "pos": 14,
-   "tag": "#QJG9CR0Q",
    "th": 18
   },
   {
@@ -44,6 +36,14 @@
    "pos": 19,
    "tag": "#L08LQ8YJL",
    "th": 17
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Schlumpfmausi",
+   "pos": 12,
+   "tag": "#LG09VQ8J",
+   "th": 18
   },
   {
    "attacks": [],

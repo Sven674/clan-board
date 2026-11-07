@@ -3,7 +3,7 @@
  "endTime": "20261107T203805.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T19:22:12Z",
+ "lastSeen": "2026-11-07T19:59:06Z",
  "members": [
   {
    "attacks": [
@@ -163,7 +163,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Beach",
    "pos": 5,
    "tag": "#8LVUJRQP",
@@ -283,7 +289,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Captain Future",
    "pos": 15,
    "tag": "#8PGGGL2U8",
@@ -315,8 +327,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/aC-r9cPxFqof5zzRda8cbZVhNplSdSTVtVyL7uPQGfs.png",
   "name": "scorpion",
-  "pct": 70.13333333333334,
-  "stars": 27,
+  "pct": 83.46666666666667,
+  "stars": 33,
   "tag": "#VL0C8LJ"
  },
  "preparationStartTime": "20261105T203807.000Z",
