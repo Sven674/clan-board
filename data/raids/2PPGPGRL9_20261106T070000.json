@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 464073,
+ "capitalTotalLoot": 523499,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -62,14 +62,21 @@
   {
    "attacks": 6,
    "limit": 6,
+   "loot": 23439,
+   "name": "der. Cool.",
+   "tag": "#QCJY9QPC"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
    "loot": 26401,
    "name": "Azog",
    "tag": "#QQCCR8RC"
   },
   {
-   "attacks": 3,
+   "attacks": 6,
    "limit": 6,
-   "loot": 17413,
+   "loot": 29343,
    "name": "☠️Happy Day ☠️",
    "tag": "#Y80LGCUPJ"
   },
@@ -135,11 +142,18 @@
    "loot": 21492,
    "name": "mini1000000",
    "tag": "#LQ0YCGLL2"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 24057,
+   "name": "kleiner Eisbär1",
+   "tag": "#L80QCR9UJ"
   }
  ],
  "offensiveReward": 0,
- "raidsCompleted": 4,
+ "raidsCompleted": 6,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 108
+ "totalAttacks": 123
 }

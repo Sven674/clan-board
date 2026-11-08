@@ -3,7 +3,7 @@
  "endTime": "20261108T203812.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-08T09:25:29Z",
+ "lastSeen": "2026-11-08T12:21:04Z",
  "members": [
   {
    "attacks": [
@@ -53,7 +53,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 89,
+     "stars": 1
+    }
+   ],
    "name": "=RS=",
    "pos": 12,
    "tag": "#GLPVGVR9",
@@ -123,14 +129,28 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Beach",
    "pos": 5,
    "tag": "#8LVUJRQP",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 18,
+     "order": 20,
+     "pct": 88,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Ricky",
    "pos": 9,
@@ -138,7 +158,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 13,
+     "defTh": 18,
+     "order": 19,
+     "pct": 99,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -161,7 +189,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Filiusberlinius",
    "pos": 13,
    "tag": "#2UCJYGU0",
@@ -182,7 +216,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 19,
+     "defTh": 18,
+     "order": 17,
+     "pct": 72,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Elussa",
    "pos": 7,
@@ -245,8 +287,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/eWmiqEOyt6-qeqfYZQLEtmXPPN9wvE4rPRn5Dt9Ejfs.png",
   "name": "Plasma",
-  "pct": 39.0,
-  "stars": 15,
+  "pct": 58.266666666666666,
+  "stars": 22,
   "tag": "#2YVY0JQUL"
  },
  "preparationStartTime": "20261106T203814.000Z",
@@ -254,9 +296,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 10,
-  "pct": 60.666666666666664,
-  "stars": 26
+  "attacks": 13,
+  "pct": 77.93333333333334,
+  "stars": 32
  },
  "warTag": "#8J9PYQ9LV"
 }

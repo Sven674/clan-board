@@ -3,7 +3,7 @@
  "endTime": "20261108T202803.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-08T09:25:29Z",
+ "lastSeen": "2026-11-08T12:21:04Z",
  "members": [
   {
    "attacks": [
@@ -81,7 +81,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 86,
+     "stars": 1
+    }
+   ],
    "name": "NobbyNobbs",
    "pos": 19,
    "tag": "#L08LQ8YJL",
@@ -134,7 +140,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 17,
+     "defTh": 17,
+     "order": 23,
+     "pct": 96,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 17,
@@ -193,15 +207,35 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 65,
+     "stars": 2
+    }
+   ],
    "name": "1000000",
    "pos": 1,
    "tag": "#V029UQCU",
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 7,
+     "defTh": 18,
+     "order": 24,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 93,
+     "stars": 2
+    }
+   ],
    "name": "Simone",
    "pos": 9,
    "tag": "#UGYG0PY9",
@@ -217,7 +251,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "LEGENDE",
    "pos": 21,
    "tag": "#P8Q89LYQ9",
@@ -246,7 +286,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 13,
+     "defTh": 18,
+     "order": 22,
+     "pct": 88,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 17,
@@ -263,8 +311,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/zcnf_fShlgKWCHKyf_yEN6KUYGHuHKu27I-F9cEY1Ds.png",
   "name": "7em compagnie",
-  "pct": 54.86666666666667,
-  "stars": 21,
+  "pct": 77.8,
+  "stars": 29,
   "tag": "#Y0QGRVGR"
  },
  "preparationStartTime": "20261106T202807.000Z",
@@ -272,9 +320,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 10,
-  "pct": 60.0,
-  "stars": 24
+  "attacks": 13,
+  "pct": 78.93333333333334,
+  "stars": 31
  },
  "warTag": "#8RPRV8GQQ"
 }
