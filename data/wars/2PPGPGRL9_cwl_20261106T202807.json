@@ -3,7 +3,7 @@
  "endTime": "20261108T202803.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-08T09:18:19Z",
+ "lastSeen": "2026-11-08T09:25:29Z",
  "members": [
   {
    "attacks": [
@@ -247,7 +247,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 76,
+     "stars": 2
+    }
+   ],
    "name": "Mone",
    "pos": 15,
    "tag": "#L09Y0G0G9",
@@ -257,8 +263,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/zcnf_fShlgKWCHKyf_yEN6KUYGHuHKu27I-F9cEY1Ds.png",
   "name": "7em compagnie",
-  "pct": 49.8,
-  "stars": 19,
+  "pct": 54.86666666666667,
+  "stars": 21,
   "tag": "#Y0QGRVGR"
  },
  "preparationStartTime": "20261106T202807.000Z",
