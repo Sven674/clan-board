@@ -3,7 +3,7 @@
  "endTime": "20261108T202803.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-08T18:21:14Z",
+ "lastSeen": "2026-11-08T19:32:23Z",
  "members": [
   {
    "attacks": [
@@ -103,7 +103,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Schlumpfmausi",
    "pos": 12,
    "tag": "#LG09VQ8J",
@@ -327,8 +333,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/zcnf_fShlgKWCHKyf_yEN6KUYGHuHKu27I-F9cEY1Ds.png",
   "name": "7em compagnie",
-  "pct": 77.8,
-  "stars": 29,
+  "pct": 84.46666666666667,
+  "stars": 32,
   "tag": "#Y0QGRVGR"
  },
  "preparationStartTime": "20261106T202807.000Z",
