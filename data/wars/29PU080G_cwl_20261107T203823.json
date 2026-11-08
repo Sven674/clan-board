@@ -3,11 +3,17 @@
  "endTime": "20261109T203820.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-08T20:29:51Z",
+ "lastSeen": "2026-11-08T20:44:17Z",
  "members": [
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "theBASTIan",
    "pos": 1,
    "tag": "#92L228UR",
@@ -79,7 +85,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "grautvornixe",
    "pos": 20,
    "tag": "#PRRQ29JP",
@@ -111,7 +123,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Nemesis",
    "pos": 18,
    "tag": "#22C0YRV9C",
@@ -129,13 +147,13 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/-pUagYoAigi8NJOkcDjR_ZUI6Dv9jO1Ain0vOaDeymU.png",
   "name": "Clash'n Honor",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 20.0,
+  "stars": 9,
   "tag": "#80Q9U0QL"
  },
  "preparationStartTime": "20261107T203823.000Z",
  "startTime": "20261108T203820.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 15,
  "us": {
   "attacks": 0,
