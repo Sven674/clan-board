@@ -3,7 +3,7 @@
  "endTime": "20261109T203820.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-08T16:58:29Z",
+ "lastSeen": "2026-11-08T18:21:14Z",
  "members": [
   {
    "attacks": [],
@@ -48,9 +48,17 @@
   {
    "attacks": [],
    "defenses": [],
-   "name": "EumelTV",
-   "pos": 19,
-   "tag": "#J2QLL8GY",
+   "name": "OlMcGoldi",
+   "pos": 14,
+   "tag": "#YR0Y90G",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "AGENT 00H",
+   "pos": 3,
+   "tag": "#80V9Q998",
    "th": 18
   },
   {
@@ -64,22 +72,6 @@
   {
    "attacks": [],
    "defenses": [],
-   "name": "Ricky",
-   "pos": 9,
-   "tag": "#LRYLYPG8",
-   "th": 18
-  },
-  {
-   "attacks": [],
-   "defenses": [],
-   "name": "Legend Papa",
-   "pos": 10,
-   "tag": "#9RCY8U0VQ",
-   "th": 18
-  },
-  {
-   "attacks": [],
-   "defenses": [],
    "name": "Filiusberlinius",
    "pos": 13,
    "tag": "#2UCJYGU0",
@@ -88,9 +80,25 @@
   {
    "attacks": [],
    "defenses": [],
+   "name": "grautvornixe",
+   "pos": 20,
+   "tag": "#PRRQ29JP",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
    "name": "Sir COColores",
    "pos": 8,
    "tag": "#YVCLP0RJ",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Heisenberg",
+   "pos": 16,
+   "tag": "#29JR2282",
    "th": 18
   },
   {
@@ -107,14 +115,6 @@
    "name": "Nemesis",
    "pos": 18,
    "tag": "#22C0YRV9C",
-   "th": 18
-  },
-  {
-   "attacks": [],
-   "defenses": [],
-   "name": "Captain Future",
-   "pos": 15,
-   "tag": "#8PGGGL2U8",
    "th": 18
   },
   {

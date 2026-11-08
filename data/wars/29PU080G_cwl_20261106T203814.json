@@ -3,7 +3,7 @@
  "endTime": "20261108T203812.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-08T16:58:29Z",
+ "lastSeen": "2026-11-08T18:21:14Z",
  "members": [
   {
    "attacks": [
@@ -37,7 +37,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 96,
+     "stars": 2
+    }
+   ],
    "name": "--SVEN--674--",
    "pos": 6,
    "tag": "#200PCP8QQ",
@@ -220,7 +226,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 20,
+     "defTh": 18,
+     "order": 29,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -319,8 +333,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/eWmiqEOyt6-qeqfYZQLEtmXPPN9wvE4rPRn5Dt9Ejfs.png",
   "name": "Plasma",
-  "pct": 81.53333333333333,
-  "stars": 31,
+  "pct": 87.93333333333334,
+  "stars": 33,
   "tag": "#2YVY0JQUL"
  },
  "preparationStartTime": "20261106T203814.000Z",
@@ -328,9 +342,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 14,
-  "pct": 83.46666666666667,
-  "stars": 34
+  "attacks": 15,
+  "pct": 90.13333333333334,
+  "stars": 37
  },
  "warTag": "#8J9PYQ9LV"
 }
