@@ -3,7 +3,7 @@
  "endTime": "20261108T203812.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T22:56:56Z",
+ "lastSeen": "2026-11-08T01:15:11Z",
  "members": [
   {
    "attacks": [
@@ -15,7 +15,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 99,
+     "stars": 2
+    }
+   ],
    "name": "theBASTIan",
    "pos": 1,
    "tag": "#92L228UR",
@@ -173,8 +179,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/eWmiqEOyt6-qeqfYZQLEtmXPPN9wvE4rPRn5Dt9Ejfs.png",
   "name": "Plasma",
-  "pct": 13.333333333333334,
-  "stars": 6,
+  "pct": 19.933333333333334,
+  "stars": 8,
   "tag": "#2YVY0JQUL"
  },
  "preparationStartTime": "20261106T203814.000Z",

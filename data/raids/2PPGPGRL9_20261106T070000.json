@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 440045,
+ "capitalTotalLoot": 464073,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -111,6 +111,13 @@
   {
    "attacks": 6,
    "limit": 6,
+   "loot": 24028,
+   "name": "LL ⭐️minimaus⭐️",
+   "tag": "#208R29C92"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
    "loot": 19888,
    "name": "1000000",
    "tag": "#V029UQCU"
@@ -134,5 +141,5 @@
  "raidsCompleted": 4,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 102
+ "totalAttacks": 108
 }

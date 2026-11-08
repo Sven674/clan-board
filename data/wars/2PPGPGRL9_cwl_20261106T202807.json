@@ -3,7 +3,7 @@
  "endTime": "20261108T202803.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-07T22:56:56Z",
+ "lastSeen": "2026-11-08T01:15:11Z",
  "members": [
   {
    "attacks": [
@@ -52,7 +52,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 19,
+     "defTh": 17,
+     "order": 12,
+     "pct": 71,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "NobbyNobbs",
    "pos": 19,
@@ -120,7 +128,15 @@
    "th": 17
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 12,
+     "defTh": 18,
+     "order": 13,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -214,9 +230,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 5,
-  "pct": 30.066666666666666,
-  "stars": 11
+  "attacks": 7,
+  "pct": 41.46666666666667,
+  "stars": 16
  },
  "warTag": "#8RPRV8GQQ"
 }
