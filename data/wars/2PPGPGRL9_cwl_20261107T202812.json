@@ -3,7 +3,7 @@
  "endTime": "20261109T202810.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-08T06:20:22Z",
+ "lastSeen": "2026-11-08T09:18:19Z",
  "members": [
   {
    "attacks": [],
@@ -19,14 +19,6 @@
    "name": "Vinci",
    "pos": 6,
    "tag": "#VYQY8VG8",
-   "th": 18
-  },
-  {
-   "attacks": [],
-   "defenses": [],
-   "name": "Schlumpfmausi",
-   "pos": 12,
-   "tag": "#LG09VQ8J",
    "th": 18
   },
   {
@@ -115,6 +107,14 @@
    "name": "mini1000000",
    "pos": 7,
    "tag": "#LQ0YCGLL2",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Lonestar",
+   "pos": 4,
+   "tag": "#28CJUY0G9",
    "th": 18
   },
   {

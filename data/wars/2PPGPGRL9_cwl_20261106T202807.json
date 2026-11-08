@@ -3,7 +3,7 @@
  "endTime": "20261108T202803.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-08T06:20:22Z",
+ "lastSeen": "2026-11-08T09:18:19Z",
  "members": [
   {
    "attacks": [
@@ -15,7 +15,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "✨Yvonne✨",
    "pos": 8,
    "tag": "#GCRY9CGU",
@@ -44,8 +50,22 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 17,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 86,
+     "stars": 2
+    }
+   ],
    "name": "Vinci",
    "pos": 6,
    "tag": "#VYQY8VG8",
@@ -164,7 +184,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 16,
+     "pct": 78,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "1000000",
    "pos": 1,
@@ -196,7 +224,15 @@
    "th": 16
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 18,
+     "order": 14,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -221,8 +257,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/zcnf_fShlgKWCHKyf_yEN6KUYGHuHKu27I-F9cEY1Ds.png",
   "name": "7em compagnie",
-  "pct": 37.4,
-  "stars": 14,
+  "pct": 49.8,
+  "stars": 19,
   "tag": "#Y0QGRVGR"
  },
  "preparationStartTime": "20261106T202807.000Z",
@@ -230,9 +266,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 7,
-  "pct": 41.46666666666667,
-  "stars": 16
+  "attacks": 10,
+  "pct": 60.0,
+  "stars": 24
  },
  "warTag": "#8RPRV8GQQ"
 }

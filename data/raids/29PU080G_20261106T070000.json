@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 371890,
+ "capitalTotalLoot": 408830,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -83,6 +83,13 @@
   {
    "attacks": 5,
    "limit": 6,
+   "loot": 15020,
+   "name": "Filiusberlinius",
+   "tag": "#2UCJYGU0"
+  },
+  {
+   "attacks": 5,
+   "limit": 6,
    "loot": 19676,
    "name": "Elussa",
    "tag": "#J9CLGUR0"
@@ -95,23 +102,23 @@
    "tag": "#22C0YRV9C"
   },
   {
-   "attacks": 4,
+   "attacks": 6,
    "limit": 6,
-   "loot": 20287,
+   "loot": 30614,
    "name": "Captain Future",
    "tag": "#8PGGGL2U8"
   },
   {
-   "attacks": 3,
+   "attacks": 6,
    "limit": 6,
-   "loot": 11922,
+   "loot": 23515,
    "name": "hulk",
    "tag": "#GRJU2J92"
   }
  ],
  "offensiveReward": 0,
- "raidsCompleted": 5,
+ "raidsCompleted": 6,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 84
+ "totalAttacks": 94
 }

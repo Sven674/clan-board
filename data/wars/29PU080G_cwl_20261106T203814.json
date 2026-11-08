@@ -3,7 +3,7 @@
  "endTime": "20261108T203812.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-08T06:20:22Z",
+ "lastSeen": "2026-11-08T09:18:19Z",
  "members": [
   {
    "attacks": [
@@ -28,7 +28,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 15,
+     "pct": 72,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "--SVEN--674--",
    "pos": 6,
@@ -68,7 +76,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 11,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -98,7 +114,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 18,
+     "order": 9,
+     "pct": 96,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Beach",
    "pos": 5,
@@ -115,14 +139,28 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Legend Papa",
    "pos": 10,
    "tag": "#9RCY8U0VQ",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 17,
+     "defTh": 18,
+     "order": 12,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Filiusberlinius",
    "pos": 13,
@@ -161,7 +199,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 87,
+     "stars": 2
+    }
+   ],
    "name": "Nemesis",
    "pos": 18,
    "tag": "#22C0YRV9C",
@@ -176,8 +220,22 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 11,
+     "defTh": 18,
+     "order": 13,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 99,
+     "stars": 2
+    }
+   ],
    "name": "hulk",
    "pos": 11,
    "tag": "#GRJU2J92",
@@ -187,8 +245,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/eWmiqEOyt6-qeqfYZQLEtmXPPN9wvE4rPRn5Dt9Ejfs.png",
   "name": "Plasma",
-  "pct": 19.933333333333334,
-  "stars": 8,
+  "pct": 39.0,
+  "stars": 15,
   "tag": "#2YVY0JQUL"
  },
  "preparationStartTime": "20261106T203814.000Z",
@@ -196,9 +254,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 5,
-  "pct": 29.466666666666665,
-  "stars": 13
+  "attacks": 10,
+  "pct": 60.666666666666664,
+  "stars": 26
  },
  "warTag": "#8J9PYQ9LV"
 }
