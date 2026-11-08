@@ -1,12 +1,12 @@
 {
- "capitalTotalLoot": 523499,
+ "capitalTotalLoot": 555724,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
   {
-   "attacks": 4,
+   "attacks": 6,
    "limit": 6,
-   "loot": 20455,
+   "loot": 29840,
    "name": "✨Yvonne✨",
    "tag": "#GCRY9CGU"
   },
@@ -83,6 +83,13 @@
   {
    "attacks": 6,
    "limit": 6,
+   "loot": 22840,
+   "name": "Alex12",
+   "tag": "#9GPR28YG"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
    "loot": 21369,
    "name": "Gaspode",
    "tag": "#2QRJRJY0V"
@@ -155,5 +162,5 @@
  "raidsCompleted": 6,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 123
+ "totalAttacks": 131
 }
