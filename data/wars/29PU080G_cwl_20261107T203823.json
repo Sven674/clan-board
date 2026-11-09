@@ -3,7 +3,7 @@
  "endTime": "20261109T203820.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-09T07:52:17Z",
+ "lastSeen": "2026-11-09T09:18:51Z",
  "members": [
   {
    "attacks": [
@@ -28,7 +28,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 6,
+     "defTh": 18,
+     "order": 17,
+     "pct": 80,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "--SVEN--674--",
    "pos": 6,
@@ -250,9 +258,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 8,
-  "pct": 46.2,
-  "stars": 17
+  "attacks": 9,
+  "pct": 51.53333333333333,
+  "stars": 19
  },
  "warTag": "#8J9LJL90R"
 }

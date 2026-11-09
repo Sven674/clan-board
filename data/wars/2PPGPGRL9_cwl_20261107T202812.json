@@ -3,7 +3,7 @@
  "endTime": "20261109T202810.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-09T07:52:17Z",
+ "lastSeen": "2026-11-09T09:18:51Z",
  "members": [
   {
    "attacks": [
@@ -15,7 +15,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 80,
+     "stars": 2
+    }
+   ],
    "name": "✨Yvonne✨",
    "pos": 8,
    "tag": "#GCRY9CGU",
@@ -225,8 +231,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/V7cmoSctput0BqPFryJVsEGqV96Wgit9Zx_II4GcatU.png",
   "name": "zulfeqar ALI",
-  "pct": 47.46666666666667,
-  "stars": 19,
+  "pct": 52.8,
+  "stars": 21,
   "tag": "#98JL28Y"
  },
  "preparationStartTime": "20261107T202812.000Z",
