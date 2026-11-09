@@ -3,7 +3,7 @@
  "endTime": "20261109T202810.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-09T11:33:26Z",
+ "lastSeen": "2026-11-09T16:18:17Z",
  "members": [
   {
    "attacks": [
@@ -37,7 +37,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 72,
+     "stars": 2
+    }
+   ],
    "name": "Vinci",
    "pos": 6,
    "tag": "#VYQY8VG8",
@@ -80,8 +86,22 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 20,
+     "defTh": 18,
+     "order": 21,
+     "pct": 66,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 75,
+     "stars": 2
+    }
+   ],
    "name": "Alex12",
    "pos": 18,
    "tag": "#9GPR28YG",
@@ -141,22 +161,50 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "LL ⭐️minimaus⭐️",
    "pos": 22,
    "tag": "#208R29C92",
    "th": 16
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 22,
+     "defTh": 18,
+     "order": 22,
+     "pct": 71,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "supersplint",
    "pos": 20,
    "tag": "#L9QQRVGP",
    "th": 17
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 19,
+     "pct": 71,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -208,7 +256,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 9,
+     "defTh": 18,
+     "order": 20,
+     "pct": 66,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -245,7 +301,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 86,
+     "stars": 2
+    }
+   ],
    "name": "Mone",
    "pos": 15,
    "tag": "#L09Y0G0G9",
@@ -255,8 +317,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/V7cmoSctput0BqPFryJVsEGqV96Wgit9Zx_II4GcatU.png",
   "name": "zulfeqar ALI",
-  "pct": 52.8,
-  "stars": 21,
+  "pct": 81.66666666666667,
+  "stars": 33,
   "tag": "#98JL28Y"
  },
  "preparationStartTime": "20261107T202812.000Z",
@@ -264,9 +326,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 9,
-  "pct": 48.53333333333333,
-  "stars": 19
+  "attacks": 13,
+  "pct": 66.8,
+  "stars": 27
  },
  "warTag": "#8RPUP0QJ2"
 }

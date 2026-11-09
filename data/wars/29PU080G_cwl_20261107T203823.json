@@ -3,7 +3,7 @@
  "endTime": "20261109T203820.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-09T11:33:26Z",
+ "lastSeen": "2026-11-09T16:18:17Z",
  "members": [
   {
    "attacks": [
@@ -60,7 +60,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 12,
+     "defTh": 18,
+     "order": 22,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Uzii",
    "pos": 17,
@@ -90,7 +98,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 13,
+     "defTh": 18,
+     "order": 21,
+     "pct": 96,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -113,7 +129,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 88,
+     "stars": 2
+    }
+   ],
    "name": "AGENT 00H",
    "pos": 3,
    "tag": "#80V9Q998",
@@ -164,7 +186,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 17,
+     "defTh": 18,
+     "order": 19,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -178,7 +208,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 25,
+     "defTh": 18,
+     "order": 23,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Sir COColores",
    "pos": 8,
@@ -186,7 +224,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 23,
+     "defTh": 18,
+     "order": 25,
+     "pct": 62,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Heisenberg",
    "pos": 16,
@@ -203,7 +249,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Elussa",
    "pos": 7,
    "tag": "#J9CLGUR0",
@@ -232,7 +284,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 18,
+     "defTh": 18,
+     "order": 20,
+     "pct": 96,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -249,8 +309,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/-pUagYoAigi8NJOkcDjR_ZUI6Dv9jO1Ain0vOaDeymU.png",
   "name": "Clash'n Honor",
-  "pct": 51.4,
-  "stars": 23,
+  "pct": 63.93333333333333,
+  "stars": 28,
   "tag": "#80Q9U0QL"
  },
  "preparationStartTime": "20261107T203823.000Z",
@@ -258,9 +318,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 9,
-  "pct": 51.53333333333333,
-  "stars": 19
+  "attacks": 15,
+  "pct": 88.46666666666667,
+  "stars": 34
  },
  "warTag": "#8J9LJL90R"
 }
