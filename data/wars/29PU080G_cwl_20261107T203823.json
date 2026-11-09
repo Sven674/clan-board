@@ -3,7 +3,7 @@
  "endTime": "20261109T203820.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-09T18:41:15Z",
+ "lastSeen": "2026-11-09T19:31:25Z",
  "members": [
   {
    "attacks": [
@@ -75,7 +75,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 80,
+     "stars": 2
+    }
+   ],
    "name": "Uzii",
    "pos": 17,
    "tag": "#2Q8GPVV0",
@@ -245,7 +251,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 73,
+     "stars": 2
+    }
+   ],
    "name": "Heisenberg",
    "pos": 16,
    "tag": "#29JR2282",
@@ -321,8 +333,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/-pUagYoAigi8NJOkcDjR_ZUI6Dv9jO1Ain0vOaDeymU.png",
   "name": "Clash'n Honor",
-  "pct": 77.26666666666667,
-  "stars": 34,
+  "pct": 87.46666666666667,
+  "stars": 38,
   "tag": "#80Q9U0QL"
  },
  "preparationStartTime": "20261107T203823.000Z",
