@@ -3,7 +3,7 @@
  "endTime": "20261109T203820.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-09T16:18:17Z",
+ "lastSeen": "2026-11-09T18:41:15Z",
  "members": [
   {
    "attacks": [
@@ -37,7 +37,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "--SVEN--674--",
    "pos": 6,
    "tag": "#200PCP8QQ",
@@ -217,7 +223,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Sir COColores",
    "pos": 8,
    "tag": "#YVCLP0RJ",
@@ -309,8 +321,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/-pUagYoAigi8NJOkcDjR_ZUI6Dv9jO1Ain0vOaDeymU.png",
   "name": "Clash'n Honor",
-  "pct": 63.93333333333333,
-  "stars": 28,
+  "pct": 77.26666666666667,
+  "stars": 34,
   "tag": "#80Q9U0QL"
  },
  "preparationStartTime": "20261107T203823.000Z",

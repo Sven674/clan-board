@@ -3,7 +3,7 @@
  "endTime": "20261109T202810.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-09T16:18:17Z",
+ "lastSeen": "2026-11-09T18:41:15Z",
  "members": [
   {
    "attacks": [
@@ -227,7 +227,13 @@
      "stars": 1
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "LEGENDE",
    "pos": 21,
    "tag": "#P8Q89LYQ9",
@@ -317,8 +323,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/V7cmoSctput0BqPFryJVsEGqV96Wgit9Zx_II4GcatU.png",
   "name": "zulfeqar ALI",
-  "pct": 81.66666666666667,
-  "stars": 33,
+  "pct": 88.33333333333333,
+  "stars": 36,
   "tag": "#98JL28Y"
  },
  "preparationStartTime": "20261107T202812.000Z",
