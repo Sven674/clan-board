@@ -1,6 +1,6 @@
 {
- "capitalTotalLoot": 495946,
- "defensiveReward": 0,
+ "capitalTotalLoot": 524168,
+ "defensiveReward": 227,
  "endTime": "20261109T070000.000Z",
  "members": [
   {
@@ -69,6 +69,13 @@
   {
    "attacks": 6,
    "limit": 6,
+   "loot": 23772,
+   "name": "Beach",
+   "tag": "#8LVUJRQP"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
    "loot": 30202,
    "name": "Ricky",
    "tag": "#LRYLYPG8"
@@ -95,9 +102,9 @@
    "tag": "#9820GCVRP"
   },
   {
-   "attacks": 5,
+   "attacks": 6,
    "limit": 6,
-   "loot": 15020,
+   "loot": 19470,
    "name": "Filiusberlinius",
    "tag": "#2UCJYGU0"
   },
@@ -137,9 +144,9 @@
    "tag": "#UR0Y8JU0"
   }
  ],
- "offensiveReward": 0,
+ "offensiveReward": 219,
  "raidsCompleted": 8,
  "startTime": "20261106T070000.000Z",
- "state": "ongoing",
- "totalAttacks": 111
+ "state": "ended",
+ "totalAttacks": 118
 }

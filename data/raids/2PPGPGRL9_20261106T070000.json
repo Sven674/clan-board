@@ -1,6 +1,6 @@
 {
  "capitalTotalLoot": 595729,
- "defensiveReward": 0,
+ "defensiveReward": 219,
  "endTime": "20261109T070000.000Z",
  "members": [
   {
@@ -172,9 +172,9 @@
    "tag": "#28CJUY0G9"
   }
  ],
- "offensiveReward": 0,
- "raidsCompleted": 7,
+ "offensiveReward": 208,
+ "raidsCompleted": 9,
  "startTime": "20261106T070000.000Z",
- "state": "ongoing",
+ "state": "ended",
  "totalAttacks": 143
 }

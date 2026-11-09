@@ -3,10 +3,18 @@
  "endTime": "20261109T202810.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-09T00:46:07Z",
+ "lastSeen": "2026-11-09T07:52:17Z",
  "members": [
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 13,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "✨Yvonne✨",
    "pos": 8,
@@ -14,7 +22,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 7,
+     "defTh": 18,
+     "order": 14,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Vinci",
    "pos": 6,
@@ -23,7 +39,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "der. Cool.",
    "pos": 3,
    "tag": "#QCJY9QPC",
@@ -31,7 +53,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 80,
+     "stars": 2
+    }
+   ],
    "name": "☠️Happy Day ☠️",
    "pos": 5,
    "tag": "#Y80LGCUPJ",
@@ -55,7 +83,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 86,
+     "stars": 2
+    }
+   ],
    "name": "Gaspode",
    "pos": 13,
    "tag": "#2QRJRJY0V",
@@ -71,7 +105,13 @@
      "stars": 1
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Sven",
    "pos": 16,
    "tag": "#J0UYJ09P",
@@ -95,7 +135,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 75,
+     "stars": 2
+    }
+   ],
    "name": "1000000",
    "pos": 1,
    "tag": "#V029UQCU",
@@ -119,7 +165,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Zucker",
    "pos": 11,
    "tag": "#2CY2GL9J",
@@ -149,7 +201,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Lonestar",
    "pos": 4,
    "tag": "#28CJUY0G9",
@@ -167,8 +225,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/V7cmoSctput0BqPFryJVsEGqV96Wgit9Zx_II4GcatU.png",
   "name": "zulfeqar ALI",
-  "pct": 4.733333333333333,
-  "stars": 1,
+  "pct": 47.46666666666667,
+  "stars": 19,
   "tag": "#98JL28Y"
  },
  "preparationStartTime": "20261107T202812.000Z",
@@ -176,9 +234,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 4,
-  "pct": 19.866666666666667,
-  "stars": 7
+  "attacks": 6,
+  "pct": 33.2,
+  "stars": 13
  },
  "warTag": "#8RPUP0QJ2"
 }
