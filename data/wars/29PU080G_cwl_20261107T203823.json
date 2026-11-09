@@ -3,10 +3,18 @@
  "endTime": "20261109T203820.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-08T20:44:17Z",
+ "lastSeen": "2026-11-09T00:46:07Z",
  "members": [
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 18,
+     "order": 8,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -28,7 +36,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 12,
+     "pct": 93,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "=RS=",
    "pos": 12,
@@ -44,8 +60,22 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 15,
+     "defTh": 18,
+     "order": 5,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Chrisdoc",
    "pos": 2,
    "tag": "#9GR80Q9P",
@@ -53,7 +83,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "OlMcGoldi",
    "pos": 14,
    "tag": "#YR0Y90G",
@@ -69,7 +105,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Beach",
    "pos": 5,
    "tag": "#8LVUJRQP",
@@ -114,7 +156,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 9,
+     "defTh": 18,
+     "order": 7,
+     "pct": 72,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Elussa",
    "pos": 7,
@@ -122,7 +172,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 21,
+     "defTh": 18,
+     "order": 4,
+     "pct": 77,
+     "stars": 1
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -137,7 +195,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 71,
+     "stars": 2
+    }
+   ],
    "name": "hulk",
    "pos": 11,
    "tag": "#GRJU2J92",
@@ -147,8 +211,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/-pUagYoAigi8NJOkcDjR_ZUI6Dv9jO1Ain0vOaDeymU.png",
   "name": "Clash'n Honor",
-  "pct": 20.0,
-  "stars": 9,
+  "pct": 44.733333333333334,
+  "stars": 20,
   "tag": "#80Q9U0QL"
  },
  "preparationStartTime": "20261107T203823.000Z",
@@ -156,9 +220,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 5,
+  "pct": 29.466666666666665,
+  "stars": 11
  },
  "warTag": "#8J9LJL90R"
 }

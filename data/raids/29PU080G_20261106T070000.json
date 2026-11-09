@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 465950,
+ "capitalTotalLoot": 495946,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -128,11 +128,18 @@
    "loot": 23515,
    "name": "hulk",
    "tag": "#GRJU2J92"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 29996,
+   "name": "Sue",
+   "tag": "#UR0Y8JU0"
   }
  ],
  "offensiveReward": 0,
- "raidsCompleted": 6,
+ "raidsCompleted": 8,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 105
+ "totalAttacks": 111
 }

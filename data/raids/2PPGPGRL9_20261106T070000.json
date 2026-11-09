@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 576551,
+ "capitalTotalLoot": 595729,
  "defensiveReward": 0,
  "endTime": "20261109T070000.000Z",
  "members": [
@@ -163,11 +163,18 @@
    "loot": 24057,
    "name": "kleiner Eisbär1",
    "tag": "#L80QCR9UJ"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 19178,
+   "name": "Lonestar",
+   "tag": "#28CJUY0G9"
   }
  ],
  "offensiveReward": 0,
- "raidsCompleted": 6,
+ "raidsCompleted": 7,
  "startTime": "20261106T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 137
+ "totalAttacks": 143
 }
