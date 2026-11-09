@@ -3,7 +3,7 @@
  "endTime": "20261109T202810.000Z",
  "final": false,
  "kind": "cwl",
- "lastSeen": "2026-11-09T09:18:51Z",
+ "lastSeen": "2026-11-09T11:33:26Z",
  "members": [
   {
    "attacks": [
@@ -58,7 +58,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 18,
+     "order": 17,
+     "pct": 75,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -124,7 +132,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 28,
+     "defTh": 17,
+     "order": 18,
+     "pct": 88,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "LL ⭐️minimaus⭐️",
    "pos": 22,
@@ -170,7 +186,15 @@
    "th": 16
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 17,
+     "defTh": 18,
+     "order": 16,
+     "pct": 67,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -240,9 +264,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 6,
-  "pct": 33.2,
-  "stars": 13
+  "attacks": 9,
+  "pct": 48.53333333333333,
+  "stars": 19
  },
  "warTag": "#8RPUP0QJ2"
 }
