@@ -27,8 +27,10 @@
    }
   },
   "2026-11": {
-   "anzahl": null,
-   "verzicht": [],
+   "anzahl": 8,
+   "verzicht": [
+    "#YR0Y90G"
+   ],
    "bonus": []
   },
   "2026-10": {
