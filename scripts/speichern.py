@@ -1,7 +1,7 @@
 """Schreibt Angaben der Führung aus dem Board (Umgebungsvariable PAYLOAD) nach data/fuehrung.json.
 
 Aufbau je Clan-Tag:
-  "JJJJ-MM": {"anzahl": int|None, "verzicht": [Tags], "bonus": [Tags]}   Bonus je Ligasaison
+  "JJJJ-MM": {"anzahl": int|None, "leistung": int (nur Ü40 Pur 2), "verzicht": [Tags], "bonus": [Tags]}   Bonus je Ligasaison
   "freiwillig": {"liga:JJJJ-MM:Tag" | "krieg:...": [Tags]}              freiwillige Aussetzer
   "erledigt": {"liga:JJJJ-MM:Tag" | "krieg:...": {"by": Tag, "at": Zeit}} Aufstellung fertig gemeldet
 """
@@ -41,7 +41,12 @@ def main():
             raise SystemExit("Ungültige Saison")
         if anzahl is not None and not (isinstance(anzahl, int) and 0 <= anzahl <= 50):
             raise SystemExit("Ungültige Anzahl")
+        leistung = p.get("leistung")
+        if leistung is not None and not (isinstance(leistung, int) and 0 <= leistung <= 50):
+            raise SystemExit("Ungültige Anzahl Leistungsboni")
         c[season] = {"anzahl": anzahl, "verzicht": tags(p.get("verzicht")), "bonus": tags(p.get("bonus"))}
+        if leistung is not None:
+            c[season]["leistung"] = leistung
         c.setdefault(prev, {"anzahl": None, "verzicht": []})["bonus"] = tags(p.get("prevBonus"))
     elif p.get("type") == "freiwillig":
         key = p.get("key") or ""

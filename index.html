@@ -33,7 +33,7 @@ main{max-width:1200px;margin:0 auto;padding:0 16px 40px}
 .clanhead img{width:52px;height:52px}
 .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px}
 table{border-collapse:collapse;width:100%;font-size:14px}
-th,td{padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap;text-align:right}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap;text-align:center}
 th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--card);z-index:1}
 thead th{position:sticky;top:0;background:var(--chip);cursor:pointer;font-size:12px;text-transform:uppercase;letter-spacing:.3px;color:var(--mut);user-select:none}
 thead th:first-child{z-index:2;background:var(--chip)}
@@ -43,6 +43,7 @@ tbody tr:hover td{background:var(--chip)}
 :root{--openbg:#fbe3c4}
 @media (prefers-color-scheme:dark){:root{--openbg:#4a3418}}
 tbody tr.openrow td{background:var(--openbg)}
+.bonustab .l{text-align:left}
 tbody tr.openrow:hover td{background:var(--openbg);filter:brightness(.97)}
 .openbadge{display:inline-block;font-size:11px;font-weight:600;color:#fff;background:var(--acc);border-radius:999px;padding:0 7px;margin-left:4px}
 .name{font-weight:600}
@@ -123,7 +124,7 @@ footer{max-width:1200px;margin:0 auto;padding:0 16px 30px;font-size:11px;color:v
 <footer>This material is unofficial and is not endorsed by Supercell. For more information see Supercell's Fan Content Policy: <a href="https://www.supercell.com/fan-content-policy" style="color:inherit">www.supercell.com/fan-content-policy</a>.</footer>
 
 <script>
-const S = {data:null, clan:0, view:'mitglieder', sort:{key:'missed',dir:-1}, q:'', fd:{}, edit:{}, pending:[], msg:{}, pin:{}, forms:{}, saves:{}};
+const S = {data:null, clan:0, view:'mitglieder', sort:{key:'name',dir:1}, q:'', fd:{}, edit:{}, pending:[], msg:{}, pin:{}, forms:{}, saves:{}};
 const ROLE = {leader:'Anführer', coLeader:'Vize', admin:'Ältester', member:''};
 const fmtN = n => n==null ? '–' : Number(n).toLocaleString('de-DE');
 const pct = (a,b) => b ? Math.round(a/b*100) : null;
@@ -151,10 +152,6 @@ function until(s){
 function dateDE(s){ const d=parseT(s); return d ? d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'2-digit'}) : '–'; }
 
 // Vergessene Angriffe in den letzten 10 Kriegen, als Text statt Punkt (Sven, 07.11.: nicht mit der Ampel verwechseln)
-function missedHtml(w){
-  if(!w || !w.recentWars) return '<span class="muted" title="noch keine abgeschlossenen Kriege erfasst">–</span>';
-  return w.recentMissed ? `<span class="pill bad">${w.recentMissed}× vergessen</span>` : '<span class="muted">0</span>';
-}
 // Kriegsbereitschaft, die der Spieler im Spiel selbst stellt
 function warPrefOf(tag){
   for(const c of S.data.clans){ const m = c.memberList.find(x => x.tag === tag); if(m) return (m.profile||{}).warPreference || null; }
@@ -227,6 +224,7 @@ function clanHead(c){
       <div class="kpi"><b>${fmtN(games)}</b><span>Clanspiele (Monat)</span></div>
     </div>
     <div class="thdist"><span class="muted">Rathäuser:</span> ${thDist(c.memberList)}</div>
+    ${ligaLine(c)}
     ${c.isWarLogPublic===false?'<p class="err">Kriegsprotokoll ist privat. In den Clan-Einstellungen auf öffentlich stellen, sonst fehlen Kriegsdaten.</p>':''}
   </div>`;
 }
@@ -245,25 +243,22 @@ function liveWar(c){
   </div>`;
 }
 
+// Mitglieder (Sven, 11.11.): ohne Vergessen, Clanstadt, Clanspiele, Supertruppen; Werte mittig
 const COLS = [
-  ['name','Spieler'],['warPref','Ampel'],['missed','Vergessen'],['th','RH'],['usage','Angriffe genutzt'],['avgStars','Ø Sterne'],
+  ['name','Spieler'],['warPref','Ampel'],['th','RH'],['usage','Angriffe genutzt'],['avgStars','Ø Sterne'],
   ['triple','3-Sterne-Quote'],['defAvg','Ø Sterne kassiert'],['donations','Gespendet'],['received','Erhalten'],['ratio','Quote'],
-  ['raidAtt','Clanstadt (4 Wo.)'],['games','Clanspiele'],['boostsN','Supertruppen'],['activeTs','Zuletzt aktiv'],['joinTs','Im Clan seit'],
+  ['activeTs','Zuletzt aktiv'],['joinTs','Im Clan seit'],
 ];
 
 function memberTable(){
+  if(!COLS.some(([k]) => k === S.sort.key)) S.sort = {key: 'name', dir: 1};
   const rs = rows();
   const multi = S.clan === 'alle';
   const head = COLS.map(([k,l]) => `<th data-k="${k}" class="${S.sort.key===k?'sorted':''}">${l}${S.sort.key===k?(S.sort.dir>0?' ▲':' ▼'):''}</th>`).join('');
   const body = rs.map(r => {
-    const raid = r.raids.map(x => {
-      const c = x.attacks>=x.limit ? 'g' : x.attacks>0 ? 'y' : (x.state==='ongoing' ? 'n' : 'r');
-      return `<span class="${c}" title="${dateDE(x.start)}: ${x.attacks}/${x.limit}"></span>`;
-    }).join('');
     return `<tr data-tag="${esc(r.tag)}" data-clan="${esc(r.clanName)}" class="${r.openNow?'openrow':''}" ${r.openNow?`title="${r.openNow} Angriff(e) im laufenden Krieg offen"`:''}>
       <td><span class="name">${esc(r.name)}</span><span class="role">${ROLE[r.role]||''}</span>${r.openNow?` <span class="openbadge">${r.openNow} offen</span>`:''}${multi?`<div class="muted" style="font-size:11px">${esc(r.clanName)}</div>`:''}</td>
       <td>${ampelHtml((r.profile||{}).warPreference)}</td>
-      <td>${missedHtml(r.war)}</td>
       <td>${r.th??'–'}</td>
       <td>${r.usage==null?'–':r.usage+' %'}</td>
       <td>${r.avgStars==null?'–':r.avgStars.toFixed(2)}</td>
@@ -271,16 +266,13 @@ function memberTable(){
       <td title="${r.war&&r.war.defs?r.war.defs+' Verteidigungen, '+r.war.defTriples+'x 3 Sterne kassiert':''}">${r.defAvg==null?'–':r.defAvg.toFixed(2)}</td>
       <td>${fmtN(r.donations)}</td><td>${fmtN(r.received)}</td>
       <td>${r.ratio==null?'–':(r.ratio>=99?'∞':r.ratio.toFixed(2))}</td>
-      <td class="raiddots">${r.raidAtt} ${raid}</td>
-      <td>${r.games==null?'–':fmtN(r.games)}</td>
-      <td style="text-align:left;font-size:12px">${(r.boosts||[]).map(esc).join(', ')||'<span class="muted">–</span>'}</td>
       <td>${r.lastActive?ago(r.lastActive):'<span class="muted">noch offen</span>'}</td>
       <td>${joinDE(r)}</td>
     </tr>`;
   }).join('');
   return `<div class="card"><input type="search" placeholder="Spieler suchen" value="${esc(S.q)}" id="q">
     <div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
-    <div class="legend">Orange hinterlegt = hat im laufenden Krieg noch Angriffe offen. Ampel = Kriegsbereitschaft, die der Spieler im Spiel selbst stellt (grün/rot, wird alle 30 Minuten abgefragt). Vergessen = vergessene Kriegsangriffe in den letzten 10 abgeschlossenen Kriegen, – = noch keine Daten.
+    <div class="legend">Orange hinterlegt = hat im laufenden Krieg noch Angriffe offen. Ampel = Kriegsbereitschaft, die der Spieler im Spiel selbst stellt (grün/rot, wird alle 30 Minuten abgefragt). – = noch keine Daten.
     Spenden zählen seit Saisonbeginn. „Zuletzt aktiv“ leitet sich aus Änderungen am Spielerprofil ab (Spenden, Siege, Upgrades, Erfolge), die API liefert keinen Online-Status. Spaltenkopf antippen zum Sortieren, Zeile antippen für Details.</div></div>`;
 }
 
@@ -330,6 +322,33 @@ function raidList(){
   }).join('');
 }
 
+// Rathaus-Vergleich Angreifer zu Gegner (Kerstin, 11.11.): pro Angriff und als Zählung in der Liga-Rangliste.
+const rhDiff = (own, opp) => { if(!own || !opp) return ''; const d = opp - own;
+  return d > 0 ? ' (+' + d + ')' : d < 0 ? ' (−' + (-d) + ')' : ' (gleich)'; };
+function rhCount(rounds, tag){
+  let up = 0, eq = 0, dn = 0;
+  (rounds || []).forEach(r => { const l = r.lineup && r.lineup[tag]; if(!l || !l.th) return;
+    l.att.forEach(x => { if(!x[2]) return; x[2] > l.th ? up++ : x[2] < l.th ? dn++ : eq++; }); });
+  const parts = [up ? `<span class="sieg">${up} höher</span>` : '', eq ? `${eq} gleich` : '', dn ? `<span class="niederlage">${dn} tiefer</span>` : ''].filter(Boolean);
+  return parts.length ? parts.join(' · ') : '–';
+}
+
+// Liga-Kurzfassung in der Kopfkarte (Sven, 11.11.): Siege, Niederlagen, Platzierung der letzten/laufenden Liga.
+// Platzierungen vor Dezember 2026 von Hand (die API gibt die Ligagruppe nach Ligaende nicht mehr heraus).
+const PLATZ_HAND = {'#29PU080G': {'2026-11': 2}, '#2PPGPGRL9': {'2026-11': 5}};
+function ligaLine(c){
+  const s = c.cwl; if(!s || !s.rounds || !s.rounds.length) return '';
+  const fin = s.rounds.filter(r => r.final), n = k => fin.filter(r => r.result === k).length;
+  const st = (s.standings || []).find(t => t.tag === c.tag);
+  const rank = st ? st.rank : (PLATZ_HAND[c.tag] || {})[s.season];
+  const [y, m] = s.season.split('-'), mon = new Date(+y, +m-1, 1).toLocaleDateString('de-DE', {month: 'long'});
+  const pl = (k, one, many) => n(k) + ' ' + (n(k) === 1 ? one : many);
+  return `<div class="thdist"><span class="muted">Liga ${mon}${fin.length < 7 ? ' (läuft)' : ''}:</span>
+    <span class="pill ok">${pl('sieg', 'Sieg', 'Siege')}</span> <span class="pill bad">${pl('niederlage', 'Niederlage', 'Niederlagen')}</span>
+    ${n('unentschieden') ? `<span class="pill">${pl('unentschieden', 'Unentschieden', 'Unentschieden')}</span>` : ''}
+    ${rank ? `<span class="pill"><b>${fin.length < 7 ? 'Aktuell ' : 'Endplatzierung: '}Platz ${rank}${st ? ' von ' + s.standings.length : ''}</b></span>` : ''}</div>`;
+}
+
 // ---------- Aussetz-Empfehlung ----------
 // Regeln (Sven, 07.11.): Erst Gesperrte/Freiwillige, dann Pflicht (≤ pflichtBis Sterne am aktuellen Tag),
 // dann wer seltener ausgesetzt hat, dann wer mehr Sterne auf der eigenen Basis kassiert hat, dann wessen Aussetzen am längsten her ist.
@@ -342,7 +361,7 @@ const FAIR_ONLY = ['#2PPGPGRL9'];
 const openToday = (rounds, tag) => { const r = (rounds || []).find(x => x.state === 'inWar'); const l = r && r.lineup[tag];
   return l ? Math.max(0, (r.apm || 1) - l.att.length) : 0; };
 
-// Liga: Wer einen Angriff vergisst, ist für den Rest der Woche raus und setzt am ersten Tag der nächsten Liga aus.
+// Liga: Wer einen Angriff vergisst, ist für den Rest der Woche raus (nicht mehr in der nächsten Liga, Sven 11.11.).
 function cwlBan(rounds, label){
   const ban = {};
   rounds.filter(r => r.final).forEach(r => Object.entries(r.lineup).forEach(([tag, l]) => {
@@ -353,7 +372,7 @@ function cwlBan(rounds, label){
 
 // fair = true: nur gerechtes Wechseln, Angriff und Verteidigung zählen nicht.
 // skip = Anzahl vorangestellter Runden (Vorwoche), die nur für den aktuellen Tag zählen, nicht fürs Aussetz-Konto.
-function benchCalc(rounds, roster, teamSize, vol, ban, fair, skip){
+function benchCalc(rounds, roster, teamSize, vol, ban, fair, skip, carry){
   ban = ban || {};
   const target = rounds.find(r => r.state === 'preparation');
   const past = rounds.filter(r => r.state !== 'preparation');
@@ -373,14 +392,14 @@ function benchCalc(rounds, roster, teamSize, vol, ban, fair, skip){
     else if(!l){ group = 3; why.push({t: 'hat am aktuellen ' + unit + ' ausgesetzt, spielt als Nächstes'}); }
     else if(fair){ group = 1; why.push({t: satWhy}); }
     else {
-      const missed = cur.final ? Math.max(0, apm - l.att.length) : 0;
+      // Neue Liga: Ein vergessener Angriff der Vorwoche zählt nicht mehr, die Sperre in der Woche reicht (Sven, 11.11.).
+      const missed = cur.final && !carry ? Math.max(0, apm - l.att.length) : 0;
       if(missed){ why.push({t: 'Angriff vergessen', bad: true}); pflicht = 'Angriff vergessen'; }
       const weak = l.att.filter(x => x[0] <= W.pflichtBis);
       // Schwacher Angriff auf ein kleineres Rathaus wiegt schwerer (Sven, 07.11., nur Ü40 Pur)
       down = l.th ? weak.filter(x => x[2] && x[2] < l.th).length : 0;
       if(weak.length && !pflicht) pflicht = 'nur ' + Math.min(...weak.map(x => x[0])) + '★' + (down ? ' auf kleineres Rathaus' : '');
-      if(l.att.length) why.push({t: 'Angriff ' + l.att.map(x => x[0] + '★ ' + x[1] + ' %' + (x[2] ? ' auf RH' + x[2] : '')).join(', ')
-        + (down ? ' (selbst RH' + l.th + ')' : ''), bad: !!weak.length});
+      if(l.att.length) why.push({t: 'Angriff ' + l.att.map(x => x[0] + '★ ' + x[1] + ' %' + (x[2] ? ' auf RH' + x[2] + rhDiff(l.th, x[2]) : '')).join(', '), bad: !!weak.length});
       else if(!missed) why.push({t: 'greift noch an'});
       if(l.def) why.push({t: 'Verteidigung ' + l.def[0] + '★ ' + l.def[1] + ' %'});
       if(!pflicht) why.push({t: satWhy});
@@ -524,7 +543,7 @@ function benchCard(title, calc, unit, opt){
     <div class="table-wrap" style="margin-top:8px"><table><thead><tr><th>Spieler</th><th>Angriff aktueller ${unit}</th><th>Verteidigung aktueller ${unit}</th><th>Gespielt</th><th>Ausgesetzt</th><th>Zuletzt ausgesetzt</th>${calc.target?'<th>Aufgestellt</th>':''}</tr></thead><tbody>${table}</tbody></table></div></details>
     ${opt ? benchActions(opt, calc.rows) : ''}
     ${calc.rows.some(r => r.pflicht && !r.sit) ? `<p class="muted" style="font-size:14px">Pflicht, aber kein Aussetz-Platz mehr frei, spielt deshalb: ${calc.rows.filter(r => r.pflicht && !r.sit).map(r => '<b>' + esc(r.name) + '</b>').join(', ')}</p>` : ''}
-    <p class="legend">${unit === 'Tag' ? 'Liga: Wer einen Angriff vergisst, ist für den Rest der Woche raus und setzt auch am ersten Tag der nächsten Liga aus. Am ersten Liga-Tag zählt der letzte Tag der Vorwoche. ' : ''}${calc.fair
+    <p class="legend">${unit === 'Tag' ? 'Liga: Wer einen Angriff vergisst, ist für den Rest der Woche raus. In der nächsten Liga zählt das nicht mehr. Am ersten Liga-Tag zählt der letzte Tag der Vorwoche. ' : ''}${calc.fair
       ? `Hier wird nur gerecht gewechselt, Angriff und Verteidigung zählen nicht. Reihenfolge: ${unit === 'Tag' ? 'zuerst Gesperrte (Angriff vergessen), dann Freiwillige' : 'zuerst Freiwillige'}, dann wer seltener ausgesetzt hat, bei Gleichstand wessen Aussetzen am längsten her ist. Wer am aktuellen ${unit} ausgesetzt hat, spielt als Nächstes.`
       : `Reihenfolge: zuerst wer einen Angriff vergessen hat, dann Freiwillige, dann Pflicht-Aussetzer (Angriff am aktuellen ${unit} mit ${W.pflichtBis} Sternen oder weniger, gilt auch, wenn jemand schon ausgesetzt hat; zuerst wer ein kleineres Rathaus angegriffen hat, dann wer weniger Sterne, dann wer weniger Prozent geholt hat), dann wer seltener ausgesetzt hat. Bei Gleichstand setzt aus, wer am aktuellen ${unit} mehr Sterne auf der eigenen Basis kassiert hat (stärkste gegnerische Attacke), danach wessen Aussetzen am längsten her ist. Wer noch nicht angegriffen hat, wird genauso einsortiert. Wer am aktuellen ${unit} ausgesetzt hat, spielt als Nächstes.`}
     Die Empfehlung ist ein Vorschlag, die Entscheidung trifft die Führung.</p></div>`;
@@ -532,14 +551,9 @@ function benchCard(title, calc, unit, opt){
 
 function cwlView(){
   const clans = S.clan==='alle' ? S.data.clans : [S.data.clans[S.clan]];
-  const resTxt = {sieg:'Sieg', niederlage:'Niederlage', unentschieden:'Unentschieden', offen:'läuft'};
   return clans.map(c => {
     const s = c.cwl;
     if(!s) return `<div class="card"><h2>Clankriegsliga ${esc(c.name)}</h2><span class="muted">Noch keine Ligasaison erfasst. Die Liga läuft jeweils in der ersten Woche des Monats.</span></div>`;
-    const [y,mo] = s.season.split('-');
-    const monat = new Date(+y, +mo-1, 1).toLocaleDateString('de-DE',{month:'long', year:'numeric'});
-    const days = `<ul class="list">${s.rounds.map(r => `<li><span><b>Tag ${r.day}</b> gegen ${esc(r.opponent)}<br><span class="muted">${r.state==='preparation'?'Vorbereitung':r.us+' : '+r.them+' Sterne · '+r.usPct.toFixed(1)+' % : '+r.themPct.toFixed(1)+' %'}</span></span>
-      <b class="${r.result}">${r.state==='preparation'?'':resTxt[r.result]}</b></li>`).join('')}</ul>`;
     // Ausgesetzt = in der Liga-Teilnehmerliste, aber an einem gelaufenen Tag nicht aufgestellt.
     const pastR = s.rounds.filter(r => r.state !== 'preparation');
     const inRoster = new Set((s.roster || []).map(m => m.tag));
@@ -553,6 +567,7 @@ function cwlView(){
       <td style="text-align:center;white-space:nowrap">${p.attacks}${o ? ` <span class="openbadge">${o} offen</span>` : ''}</td><td><b>${p.stars}</b></td>
       <td>${p.attacks?(p.stars/p.attacks).toFixed(2):'–'}</td>
       <td>${p.attacks?(p.pct/p.attacks).toFixed(0)+' %':'–'}</td>
+      <td style="white-space:nowrap">${rhCount(s.rounds, p.tag)}</td>
       <td>${p.missed?`<span class="niederlage">${p.missed}</span>`:'0'}</td>
       <td>${p.defs?(p.defStars/p.defs).toFixed(2):'–'}</td></tr>`; }).join('');
     const teamSize = (s.rounds[s.rounds.length-1] || {}).teamSize;
@@ -564,20 +579,26 @@ function cwlView(){
     const vol = [...new Set([...(((S.fd[c.tag] || {}).freiwillig || {})[volKey] || []), ...rot])];
     // Erster Liga-Tag: Grundlage ist die Vorwoche (Vergessene gesperrt, sonst zählt deren letzter Tag).
     const pv = c.cwlPrev, firstDay = !s.rounds.some(r => r.state !== 'preparation') && pv && pv.rounds.length;
-    const ban = firstDay ? cwlBan(pv.rounds, d => 'in der Vorwoche an Tag ' + d + ' vergessen')
-                         : cwlBan(s.rounds, d => 'Tag ' + d + ' vergessen, raus bis Wochenende');
+    const ban = firstDay ? {} : cwlBan(s.rounds, d => 'Tag ' + d + ' vergessen, raus bis Wochenende');
     const calcRounds = firstDay ? [...pv.rounds.filter(r => r.state !== 'preparation'), ...s.rounds] : s.rounds;
-    const calc = s.rounds.length >= 7 && s.rounds.every(r => r.final) ? null : benchCalc(calcRounds, s.roster || [], teamSize, vol, ban, FAIR_ONLY.includes(c.tag),
-      firstDay ? pv.rounds.filter(r => r.state !== 'preparation').length : 0);
+    // Ab Tag 7 (und nach Wochenende bis zur neuen Liga): Vorschau auf Tag 1 der nächsten Liga, gerechnet wie dort (Sven, 11.11.)
+    const played = s.rounds.filter(r => r.state !== 'preparation').length;
+    const preview = !prep && played >= 7;
+    const calc = preview
+      ? benchCalc(s.rounds, s.roster || [], teamSize, rot, {}, FAIR_ONLY.includes(c.tag), played, true)
+      : benchCalc(calcRounds, s.roster || [], teamSize, vol, ban, FAIR_ONLY.includes(c.tag),
+          firstDay ? pv.rounds.filter(r => r.state !== 'preparation').length : 0, !!firstDay);
     if(calc) calc.rows.forEach(r => { r.rot = rot.includes(r.tag); });
-    if(calc && firstDay) calc.prevNote = 'Erster Liga-Tag: Gewertet wird der letzte Tag der Vorwoche. Wer dort einen Angriff vergessen hat, setzt aus.';
-    const rec = s.rounds.length >= 7 && s.rounds.every(r => r.final)
-      ? `<div class="card"><h2>Aussetz-Empfehlung</h2><span class="muted">Die Ligawoche ist vorbei.</span></div>`
-      : (s.roster ? benchCard(`Aussetz-Empfehlung ${esc(c.name)} für Liga-Tag ${calc ? calc.nextNo : ''}`, calc, 'Tag', {clan: c.tag, key: volKey, label: 'Liga-Tag ' + nextDay}) : '');
-    return rec + `<div class="card"><h2>Clankriegsliga ${esc(c.name)}: ${monat}</h2>${days}</div>
+    if(calc && firstDay) calc.prevNote = 'Erster Liga-Tag: Gewertet wird der letzte Tag der Vorwoche. Vergessene Angriffe der Vorwoche zählen nicht mehr.';
+    if(calc && preview){ calc.nextNo = 1;
+      calc.prevNote = 'Vorschau: Gewertet wird Tag 7. Vergessene Angriffe dieser Woche zählen in der neuen Liga nicht mehr. Teamgröße und Teilnehmer der nächsten Liga stehen noch nicht fest, gerechnet wird mit den aktuellen. Freiwillige Aussetzer trägst du ein, sobald die neue Liga läuft.'; }
+    const rec = !s.roster ? ''
+      : preview ? benchCard(`Aussetz-Empfehlung ${esc(c.name)} für Tag 1 der nächsten Liga (Vorschau)`, calc, 'Tag', null)
+      : benchCard(`Aussetz-Empfehlung ${esc(c.name)} für Liga-Tag ${calc ? calc.nextNo : ''}`, calc, 'Tag', {clan: c.tag, key: volKey, label: 'Liga-Tag ' + nextDay});
+    return rec + `
       <div class="card"><h2>Rangliste Liga ${esc(c.name)}</h2>
-      <div class="table-wrap"><table><thead><tr><th>Spieler</th><th>Ampel</th><th>Ausgesetzt</th><th style="text-align:center">Angriffe</th><th>Sterne</th><th>Ø Sterne</th><th>Ø Zerstörung</th><th>Verpasst</th><th>Ø kassiert</th></tr></thead><tbody>${rows}</tbody></table></div>
-      <p class="legend">Orange hinterlegt = heute noch Angriff offen. Ampel = Kriegsbereitschaft, die der Spieler im Spiel selbst stellt, rot gilt in der Aussetz-Empfehlung als freiwillig. Ausgesetzt = als Liga-Teilnehmer gemeldet, aber an einem gelaufenen Tag nicht aufgestellt. Verpasst = aufgestellt, aber nicht angegriffen (nur abgeschlossene Tage). Ø kassiert = Sterne, die der Gegner im Schnitt auf dieser Basis geholt hat.</p></div>` + bonusCard(c);
+      <div class="table-wrap"><table><thead><tr><th>Spieler</th><th>Ampel</th><th>Ausgesetzt</th><th style="text-align:center">Angriffe</th><th>Sterne</th><th>Ø Sterne</th><th>Ø Zerstörung</th><th>Gegner-RH</th><th>Verpasst</th><th>Ø kassiert</th></tr></thead><tbody>${rows}</tbody></table></div>
+      <p class="legend">Gegner-RH = wie oft ein höheres, gleiches oder tieferes Rathaus als das eigene angegriffen wurde. Orange hinterlegt = heute noch Angriff offen. Ampel = Kriegsbereitschaft, die der Spieler im Spiel selbst stellt, rot gilt in der Aussetz-Empfehlung als freiwillig. Ausgesetzt = als Liga-Teilnehmer gemeldet, aber an einem gelaufenen Tag nicht aufgestellt. Verpasst = aufgestellt, aber nicht angegriffen (nur abgeschlossene Tage). Ø kassiert = Sterne, die der Gegner im Schnitt auf dieser Basis geholt hat.</p></div>`;
   }).join('');
 }
 
@@ -588,6 +609,7 @@ const fdClan = tag => (S.fd[tag] = S.fd[tag] || {});
 function applyBonus(tag, d){
   const B = fdClan(tag);
   B[d.season] = {anzahl: d.anzahl, verzicht: d.verzicht, bonus: d.bonus};
+  if(d.leistung != null) B[d.season].leistung = d.leistung;
   B[d.prev] = Object.assign({anzahl: null, verzicht: []}, B[d.prev], {bonus: d.prevBonus});
 }
 function applyDone(tag, key, v){ const B = fdClan(tag); B.erledigt = Object.assign({}, B.erledigt); if(v) B.erledigt[key] = v; else delete B.erledigt[key]; }
@@ -653,6 +675,7 @@ function fdEvents(app){
     const d = S.edit[el.dataset.form]; if(!d) return;
     const f = el.dataset.f;
     if(f === 'by'){ d.by = el.value; return; }
+    if(f === 'leistung'){ const v = parseInt(el.value, 10); d.leistung = Number.isInteger(v) && v >= 0 && v <= 50 ? v : WB.leistung; return render(); }
     if(f === 'anzahl'){ const v = parseInt(el.value, 10); d.anzahl = Number.isInteger(v) && v >= 0 && v <= 50 ? v : null; return render(); }
     const t = el.dataset.t;
     d[f] = el.checked ? [...new Set([...d[f], t])] : d[f].filter(x => x !== t);
@@ -668,19 +691,30 @@ const WB = {
   gehalten: 3,        // je Stern, den der Gegner auf der eigenen Basis NICHT geholt hat
   letzterBonus: 0.5,  // Faktor, wenn es letzte Saison schon einen Bonus gab
   vorschlaege: 10,    // so viele Spieler vorschlagen (mehr als Boni, falls jemand nicht will)
+  rhStufe: 0.05,      // je Rathaus-Stufe Unterschied: Angriffspunkte +5 % nach oben, -5 % nach unten (Sven, 11.11.)
+  rhMax: 3,           // höchstens so viele Stufen werden gewertet
+  leistung: 2,        // Ü40 Pur 2: Standard für "davon für Leistung" (Kerstin, 11.11.)
+  monate: 6,          // Ü40 Pur 2: so viele Monate zurück wertet die Rotation (eingetragen wird nur der Vormonat, die Historie wächst mit)
 };
+// Ü40 Pur 2 (FAIR_ONLY): 1-2 Boni nach Leistung, der Rest reihum an wer am längsten keinen hatte.
 const prevSeasonOf = s => { let [y,m] = s.split('-').map(Number); m--; if(!m){ m = 12; y--; } return y + '-' + String(m).padStart(2,'0'); };
 const monthDE = s => { const [y,m] = s.split('-'); return new Date(+y, +m-1, 1).toLocaleDateString('de-DE',{month:'long'}); };
+
+// Vormonate, die die Rotation in Ü40 Pur 2 wertet (aus den gespeicherten Boni).
+const bonusMonths = c => { const out = []; let m = c.cwl.season;
+  for(let i = 0; i < WB.monate; i++){ m = prevSeasonOf(m); out.push(m); } return out; };
 
 function bonusInfo(c){
   const s = c.cwl, B = S.fd[c.tag] || {};
   const prev = prevSeasonOf(s.season), cur = B[s.season] || {}, pb = B[prev] || {};
-  return {season: s.season, prev, anzahl: cur.anzahl ?? null,
+  const info = {season: s.season, prev, anzahl: cur.anzahl ?? null, leistung: cur.leistung ?? WB.leistung,
           verzicht: [...(cur.verzicht || [])], bonus: [...(cur.bonus || [])], prevBonus: [...(pb.bonus || [])]};
+  bonusMonths(c).forEach(m => { info['h:' + m] = [...((B[m] || {}).bonus || [])]; });
+  return info;
 }
 
 function bonusCalc(c, info){
-  const s = c.cwl;
+  const s = c.cwl, fair = FAIR_ONLY.includes(c.tag);
   const byTag = {}; s.players.forEach(p => byTag[p.tag] = p);
   const roster = s.roster && s.roster.length ? s.roster : s.players;
   const rows = roster.map(m => {
@@ -690,39 +724,69 @@ function bonusCalc(c, info){
     if(info.verzicht.includes(m.tag)) out = 'verzichtet diese Saison';
     else if(p.missed) out = p.missed + '× Angriff vergessen';
     else if(!p.attacks) out = 'noch kein Angriff';
-    let score = p.stars * WB.stern + p.pct * WB.prozent + held * WB.gehalten;
-    if(p.attacks) why.push(p.attacks + (p.attacks === 1 ? ' Angriff' : ' Angriffe') + ' · ' + p.stars + '★ · Ø ' + (p.pct / p.attacks).toFixed(0) + ' %');
-    if(p.defs) why.push('Verteidigung: ' + held + ' von ' + 3 * p.defs + ' Sternen gehalten');
-    if(info.prevBonus.includes(m.tag)){ score *= WB.letzterBonus; why.push('Bonus im ' + monthDE(info.prev) + ', halbiert'); }
-    return {tag: m.tag, name: m.name || p.name, score, out, why: why.join(' · '), got: info.bonus.includes(m.tag)};
+    // Angriffe einzeln werten, damit der Rathaus-Unterschied je Angriff zählt (beide Clans).
+    let attPts = 0, rhAdj = 0, up = 0, dn = 0, eq = 0;
+    s.rounds.forEach(r => { const l = r.lineup && r.lineup[m.tag]; if(!l) return;
+      l.att.forEach(x => { const base = x[0] * WB.stern + x[1] * WB.prozent;
+        const d = l.th && x[2] ? Math.max(-WB.rhMax, Math.min(WB.rhMax, x[2] - l.th)) : 0;
+        if(l.th && x[2]){ x[2] > l.th ? up++ : x[2] < l.th ? dn++ : eq++; }
+        attPts += base * (1 + d * WB.rhStufe); rhAdj += base * d * WB.rhStufe; }); });
+    if(!attPts && p.stars) attPts = p.stars * WB.stern + p.pct * WB.prozent;
+    let score = attPts + held * WB.gehalten;
+    if(p.attacks) why.push(p.stars + '★ aus ' + p.attacks + (p.attacks === 1 ? ' Angriff' : ' Angriffen') + ' · Ø ' + (p.pct / p.attacks).toFixed(0) + ' %');
+    if(Math.round(rhAdj)) why.push('RH ' + (rhAdj > 0 ? '+' : '−') + Math.abs(Math.round(rhAdj)) + ' Pkt.');
+    if(p.defs) why.push('Vert. ' + held + '/' + 3 * p.defs + ' gehalten');
+    let ago = Infinity, lastTxt = '–';
+    if(fair){
+      const months = bonusMonths(c), i = months.findIndex(mm => (mm === info.prev ? info.prevBonus : info['h:' + mm] || []).includes(m.tag));
+      if(i >= 0){ ago = i + 1; lastTxt = monthDE(months[i]); }
+      why.push(i >= 0 ? 'letzter Bonus ' + monthDE(months[i]) : 'kein Bonus eingetragen');
+    } else if(info.prevBonus.includes(m.tag)){ score *= WB.letzterBonus; why.push('Bonus im ' + monthDE(info.prev) + ', halbiert'); lastTxt = monthDE(info.prev) + ' (halbiert)'; }
+    return {tag: m.tag, name: m.name || p.name, score, ago, out, lastTxt, stars: p.stars, attacks: p.attacks, up, dn, eq, why: why.join(' · '), got: info.bonus.includes(m.tag)};
   });
-  return {roster,
-          ok: rows.filter(r => !r.out).sort((a,b) => b.score - a.score),
-          outs: rows.filter(r => r.out).sort((a,b) => b.score - a.score)};
+  let ok = rows.filter(r => !r.out).sort((a,b) => b.score - a.score);
+  if(fair){
+    // Die besten k nach Leistung, danach reihum: wer am längsten keinen Bonus hatte, bei Gleichstand Leistung.
+    const k = Math.min(info.leistung ?? WB.leistung, info.anzahl ?? Infinity);
+    const top = ok.slice(0, k); top.forEach(r => r.kind = 'Leistung');
+    const rest = ok.slice(k).sort((a,b) => (b.ago - a.ago) || (b.score - a.score)); rest.forEach(r => r.kind = 'Reihe');
+    ok = [...top, ...rest];
+  }
+  return {roster, ok, outs: rows.filter(r => r.out).sort((a,b) => b.score - a.score)};
 }
 
 function bonusCard(c){
   if(!c.cwl || !c.cwl.players.length) return '';
-  const s = c.cwl, form = 'bonus' + c.tag;
+  const s = c.cwl, form = 'bonus' + c.tag, fair = FAIR_ONLY.includes(c.tag);
   S.forms[form] = () => bonusInfo(c);
   S.saves[form] = () => { const d = S.edit[form];
-    postFd(form, {type: 'bonus', clan: c.tag, season: d.season, anzahl: d.anzahl, verzicht: d.verzicht,
-                  bonus: d.bonus, prevSeason: d.prev, prevBonus: d.prevBonus}, () => applyBonus(c.tag, d)); };
+    postFd(form, {type: 'bonus', clan: c.tag, season: d.season, anzahl: d.anzahl, leistung: fair ? d.leistung : null,
+                  verzicht: d.verzicht, bonus: d.bonus, prevSeason: d.prev, prevBonus: d.prevBonus},
+           () => applyBonus(c.tag, d)); };
   const edit = S.edit[form], info = edit || bonusInfo(c), {ok, outs, roster} = bonusCalc(c, info);
   const done = s.rounds.length >= 7 && s.rounds.every(r => r.final);
   const running = s.rounds.find(r => r.state === 'inWar');
   const stand = done ? 'Ligawoche beendet.' : 'Zwischenstand' + (running ? ', Tag ' + running.day + ' läuft.' : ' nach ' + s.rounds.filter(r => r.final).length + ' von 7 Tagen.');
   const n = info.anzahl;
-  const show = ok.slice(0, Math.max(WB.vorschlaege, n ?? 0));
+  // Sind alle Boni verteilt, zählt nur noch, wer tatsächlich einen bekommen hat (auch außerhalb der Vorschläge).
+  const verteilt = n != null && n > 0 && info.bonus.length >= n;
+  const top = ok.slice(0, Math.max(WB.vorschlaege, n ?? 0));
+  const show = verteilt ? [...top, ...ok.slice(top.length).filter(r => r.got)] : top;
   const mark = (r,i) => r.got ? '<span class="pill ok">erhalten</span>'
-    : n == null ? '' : i < n ? '<span class="pill">Bonus</span>' : '<span class="pill">Reserve</span>';
+    : n == null || verteilt ? '' : i < n ? '<span class="pill">Bonus</span>' : '<span class="pill">Reserve</span>';
+  // Kompakte Tabelle (Sven, 11.11.): eine Zeile pro Spieler, Begründung als Spalten
+  const rhTxt = r => [r.up ? `<span class="sieg">${r.up} höher</span>` : '', r.dn ? `<span class="niederlage">${r.dn} tiefer</span>` : ''].filter(Boolean).join(' · ') || (r.eq ? 'gleich' : '–');
   const list = show.length
-    ? `<ul class="list">${show.map((r,i) => `<li><span>${i+1}. <b>${esc(r.name)}</b><br><span class="muted">${esc(r.why)}</span></span><span>${Math.round(r.score)} Pkt. ${mark(r,i)}</span></li>`).join('')}</ul>`
+    ? `<div class="table-wrap"><table class="bonustab"><thead><tr><th>#</th><th class="l">Spieler</th>${fair ? '<th>Art</th>' : ''}<th title="Sterne aus Angriffen">★</th><th title="Wie oft ein höheres oder tieferes Rathaus als das eigene angegriffen wurde">Gegner-RH</th><th>Pkt.</th><th>Letzter Bonus</th><th></th></tr></thead><tbody>
+      ${show.map((r,i) => `<tr><td>${i+1}</td><td class="l"><span class="name">${esc(r.name)}</span></td>${fair ? `<td>${r.kind === 'Leistung' ? 'Leistung' : 'reihum'}</td>` : ''}
+        <td>${r.stars}<span class="muted">/${r.attacks}</span></td><td>${rhTxt(r)}</td><td><b>${Math.round(r.score)}</b></td><td>${esc(r.lastTxt)}</td><td>${mark(r,i)}</td></tr>`).join('')}
+      </tbody></table></div>`
     : '<p class="muted">Noch niemand mit Angriff in dieser Woche.</p>';
   const outList = outs.length
     ? `<details style="margin-top:8px"><summary>Nicht berücksichtigt (${outs.length})</summary><ul class="list">${outs.map(r => `<li><span><b>${esc(r.name)}</b></span><span class="muted">${esc(r.out)}</span></li>`).join('')}</ul></details>` : '';
   const head = `<p class="muted" style="margin-top:-4px">${stand} ` + (n == null
-    ? `Die besten ${WB.vorschlaege}. Anzahl der Boni noch nicht eingetragen.</p>`
+    ? (fair ? `${Math.min(WB.vorschlaege, ok.length)} Vorschläge. Anzahl der Boni noch nicht eingetragen.</p>` : `Die besten ${WB.vorschlaege}. Anzahl der Boni noch nicht eingetragen.</p>`)
+    : fair ? `<b>${n} Boni</b>, davon ${Math.min(info.leistung ?? WB.leistung, n)} für Leistung, der Rest reihum.</p>`
     : `<b>${n} Boni</b>, die besten ${Math.max(WB.vorschlaege, n)} vorgeschlagen.</p>`);
   const given = info.bonus.length, allGiven = n != null && n > 0 && given >= n;
   let body = `<p style="margin-top:10px">${allGiven ? btn('edit', form, 'Boni verteilt (' + given + ' von ' + n + ')', 'okbtn')
@@ -731,6 +795,8 @@ function bonusCard(c){
     const cb = (f, tag) => `<input type="checkbox" data-f="${f}" data-form="${esc(form)}" data-t="${esc(tag)}" ${info[f].includes(tag) ? 'checked' : ''}>`;
     body = `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
       <p><label>Anzahl Boni (steht im Spiel beim Verteilen): <input type="number" min="0" max="50" style="width:70px" data-f="anzahl" data-form="${esc(form)}" value="${n ?? ''}"></label></p>
+      ${fair ? `<p><label>Davon für Leistung: <input type="number" min="0" max="50" style="width:70px" data-f="leistung" data-form="${esc(form)}" value="${info.leistung ?? WB.leistung}"></label></p>
+` : ''}
       <div class="table-wrap"><table><thead><tr><th>Spieler</th><th>Will keinen Bonus</th><th>Bonus ${monthDE(info.season)}</th><th>Bonus ${monthDE(info.prev)}</th></tr></thead><tbody class="fdedit">
       ${[...roster].sort((a,b) => a.name.localeCompare(b.name, 'de')).map(m => `<tr><td><span class="name">${esc(m.name)}</span></td><td>${cb('verzicht', m.tag)}</td><td>${cb('bonus', m.tag)}</td><td>${cb('prevBonus', m.tag)}</td></tr>`).join('')}
       </tbody></table></div>
@@ -738,7 +804,7 @@ function bonusCard(c){
   }
   return `<div class="card"><h2>Bonus-Empfehlung ${esc(c.name)} (Liga ${monthDE(s.season)})</h2>
     ${head}${list}${outList}${msgHtml(form)}${body}
-    <p class="legend">Bewertet wird die ganze Ligawoche: je Stern ${WB.stern}, je Prozent Zerstörung ${WB.prozent}, je gehaltenem Stern auf der eigenen Basis ${WB.gehalten}. Wer letzte Saison einen Bonus bekam, bekommt die Hälfte der Punkte. Wer einen Angriff vergessen hat, keinen Angriff hatte oder verzichtet, fällt raus. Die Empfehlung ist ein Vorschlag, die Entscheidung trifft die Führung.</p></div>`;
+    <p class="legend">Bewertet wird die ganze Ligawoche: je Stern ${WB.stern}, je Prozent Zerstörung ${WB.prozent}, je gehaltenem Stern auf der eigenen Basis ${WB.gehalten}. Angriffe auf ein höheres Rathaus bringen je Stufe ${WB.rhStufe * 100} % mehr, auf ein tieferes ${WB.rhStufe * 100} % weniger (höchstens ${WB.rhMax} Stufen), Spalte „Gegner-RH“. „★“ = Sterne/Angriffe. ${fair ? `Die besten nach Punkten bekommen die Leistungsboni (Feld „Davon für Leistung“). Die übrigen gehen reihum: zuerst wer am längsten keinen Bonus hatte (geschaut wird bis zu ${WB.monate} Monate zurück, soweit Boni im Board eingetragen sind), bei Gleichstand nach Punkten.` : 'Wer letzte Saison einen Bonus bekam, bekommt die Hälfte der Punkte.'} Wer einen Angriff vergessen hat, keinen Angriff hatte oder verzichtet, fällt raus. Die Empfehlung ist ein Vorschlag, die Entscheidung trifft die Führung.</p></div>`;
 }
 
 function gamesList(){
@@ -758,6 +824,34 @@ function logText(l){
     case 'warPref': return `${n}: Kriegsbereitschaft ${l.to==='in'?'<span class="sieg">an</span>':'<span class="niederlage">aus</span>'}`;
   }
   return n;
+}
+
+// Reiter "Mehr": Clanstadt, Clanspiele, Protokoll einklappbar (für die Führung weniger wichtig)
+function moreView(){
+  const sec = (k, title, fn) => `<details data-more="${k}" ${(S.more || {})[k] ? 'open' : ''} style="margin:10px 0">
+    <summary style="font-weight:700;font-size:19px;padding:12px 4px">${title}</summary>${fn()}</details>`;
+  return sec('clanstadt', 'Clanstadt', raidList) + sec('clanspiele', 'Clanspiele', gamesList) + sec('log', 'Protokoll', logList);
+}
+
+// Reiter "Bonus": Empfehlung und Verlauf der eingetragenen Boni
+function bonusView(){
+  const clans = S.clan==='alle' ? S.data.clans : [S.data.clans[S.clan]];
+  return clans.map(c => (bonusCard(c) || `<div class="card"><h2>Bonus ${esc(c.name)}</h2><span class="muted">Noch keine Ligasaison erfasst.</span></div>`) + bonusHistory(c)).join('');
+}
+
+function bonusHistory(c){
+  if(!c.cwl) return '';
+  const B = S.fd[c.tag] || {};
+  const months = [c.cwl.season, ...bonusMonths(c)].filter(m => (B[m] || {}).bonus && B[m].bonus.length);
+  if(!months.length) return `<div class="card"><h2>Bonus-Verlauf ${esc(c.name)}</h2><span class="muted">Noch keine Boni eingetragen. Der Verlauf füllt sich mit jeder Liga, in der die Boni hier eingetragen werden.</span></div>`;
+  // Kompakt (Sven, 11.11.): eine Zeile je Monat, Empfänger als Namen
+  const name = t => { const m = c.memberList.find(x => x.tag === t); return m ? m.name : nameOf(t); };
+  const rowsH = months.map(m => `<li><span><b>${monthDE(m)}</b> <span class="muted">(${B[m].bonus.length})</span><br>${
+    B[m].bonus.map(t => `<span class="pill">${esc(name(t))}</span>`).join(' ')}</span></li>`).join('');
+  const got = new Set(months.flatMap(m => B[m].bonus));
+  const none = c.memberList.filter(m => !got.has(m.tag)).sort((a,b) => a.name.localeCompare(b.name, 'de'));
+  return `<div class="card"><h2>Bonus-Verlauf ${esc(c.name)}</h2><ul class="list">${rowsH}</ul>
+    ${none.length ? `<details style="margin-top:8px"><summary>Noch kein Bonus seit ${monthDE(months[months.length - 1])} (${none.length})</summary><p style="line-height:2">${none.map(m => `<span class="pill">${esc(m.name)}</span>`).join(' ')}</p></details>` : ''}</div>`;
 }
 
 function logList(){
@@ -804,10 +898,14 @@ function render(){
   let html = '';
   if(S.clan !== 'alle'){ const c=S.data.clans[S.clan]; html += clanHead(c) + liveWar(c); }
   else html += S.data.clans.map(liveWar).join('');
-  const views = [['mitglieder','Mitglieder'],['kriege','Kriege'],['liga','Liga'],['clanstadt','Clanstadt'],['clanspiele','Clanspiele'],['log','Protokoll']];
+  // Reiter (Sven, 11.11.): Bonus eigener Reiter, Clanstadt/Clanspiele/Protokoll unter "Mehr"
+  const views = [['mitglieder','Mitglieder'],['kriege','Kriege'],['liga','Liga'],['bonus','Bonus'],['mehr','Mehr']];
+  const fns = {mitglieder:memberTable, kriege:warList, liga:cwlView, bonus:bonusView, mehr:moreView};
+  if(!fns[S.view]) S.view = ['clanstadt','clanspiele','log'].includes(S.view) ? 'mehr' : 'mitglieder';
   html += `<div class="tabs" id="viewTabs">${views.map(([k,l])=>`<button data-v="${k}" class="${S.view===k?'on':''}">${l}</button>`).join('')}</div>`;
-  html += {mitglieder:memberTable, kriege:warList, liga:cwlView, clanstadt:raidList, clanspiele:gamesList, log:logList}[S.view]();
+  html += fns[S.view]();
   app.innerHTML = html;
+  app.querySelectorAll('details[data-more]').forEach(d => d.ontoggle = () => { S.more = Object.assign({}, S.more, {[d.dataset.more]: d.open}); });
   app.querySelector('#viewTabs').onclick = e => { const b=e.target.closest('button'); if(!b) return; S.view=b.dataset.v; save(); render(); };
   const th = app.querySelector('thead');
   if(th) th.onclick = e => { const h=e.target.closest('th'); if(!h) return; const k=h.dataset.k;

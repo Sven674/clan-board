@@ -34,8 +34,10 @@ function clean(b) {
       verzicht: tags(b.verzicht), bonus: tags(b.bonus),
       prevSeason: SEASON.test(b.prevSeason || "") ? b.prevSeason : null,
       prevBonus: tags(b.prevBonus),
+      leistung: b.leistung == null ? null : (Number.isInteger(b.leistung) && b.leistung >= 0 && b.leistung <= 50 ? b.leistung : undefined),
     };
-    return c.season && c.anzahl !== undefined && c.verzicht && c.bonus && c.prevSeason && c.prevBonus ? c : null;
+    return c.season && c.anzahl !== undefined && c.leistung !== undefined
+      && c.verzicht && c.bonus && c.prevSeason && c.prevBonus ? c : null;
   }
   if (b.type === "erledigt") {
     const c = { type: "erledigt", clan, key: KEY.test(b.key || "") ? b.key : null,

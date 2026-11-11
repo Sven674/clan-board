@@ -185,7 +185,11 @@ def fetch_wars(clan_tag, fetched_at):
 
     group = api("/clans/%s/currentwar/leaguegroup" % enc(clan_tag))
     cwl_current = None
+    table = {}
     if group and "_error" not in group and group.get("rounds"):
+        for c in group.get("clans", []):
+            table[c["tag"]] = {"tag": c["tag"], "name": c.get("name"), "stars": 0, "pct": 0.0,
+                               "wins": 0, "losses": 0, "ties": 0}
         for rnd in group["rounds"]:
             for wt in rnd.get("warTags", []):
                 if not wt or wt == "#0":
@@ -193,6 +197,7 @@ def fetch_wars(clan_tag, fetched_at):
                 w = api("/clanwarleagues/wars/%s" % enc(wt))
                 if not w or "_error" in w:
                     continue
+                cwl_table_add(table, w)
                 if clan_tag not in (w.get("clan", {}).get("tag"), w.get("opponent", {}).get("tag")):
                     continue
                 rec = compact_war(w, clan_tag, "cwl", wt)
@@ -200,7 +205,39 @@ def fetch_wars(clan_tag, fetched_at):
                 if rec["state"] in ("inWar", "preparation"):
                     if cwl_current is None or rec["state"] == "inWar":
                         cwl_current = rec
-    return current, cwl_current, (group if group and "_error" not in group else None)
+    return current, cwl_current, (group if group and "_error" not in group else None), cwl_table(table)
+
+
+def cwl_table_add(table, w):
+    """Ligatabelle: Sterne (+10 je Sieg nach Kriegsende), danach Zerstörung, wie im Spiel."""
+    st = w.get("state")
+    if st not in ("inWar", "warEnded"):
+        return
+    a, b = w.get("clan", {}), w.get("opponent", {})
+    for x, y in ((a, b), (b, a)):
+        t = table.get(x.get("tag"))
+        if not t:
+            continue
+        t["stars"] += x.get("stars", 0)
+        t["pct"] += x.get("destructionPercentage", 0)
+        if st == "warEnded":
+            me = (x.get("stars", 0), x.get("destructionPercentage", 0))
+            them = (y.get("stars", 0), y.get("destructionPercentage", 0))
+            if me > them:
+                t["wins"] += 1
+                t["stars"] += 10
+            elif me < them:
+                t["losses"] += 1
+            else:
+                t["ties"] += 1
+
+
+def cwl_table(table):
+    rows = sorted(table.values(), key=lambda t: (-t["stars"], -t["pct"]))
+    for i, t in enumerate(rows, 1):
+        t["rank"] = i
+        t["pct"] = round(t["pct"], 1)
+    return rows
 
 
 # ---------------------------------------------------------------- Clanstadt
@@ -430,6 +467,12 @@ def latest_capital_gold(t):
     return cap[max(cap)].get("gold") if cap else None
 
 
+def with_standings(s, st):
+    if s and st and st.get("season", "")[:7] == s["season"]:
+        s["standings"] = st["table"]
+    return s
+
+
 def cwl_season(wars, roster=None, back=0):
     """Auswertung einer Ligasaison: Tage und Spieler. back=0 neueste, back=1 die davor."""
     cwl = [w for w in wars if w.get("kind") == "cwl" and w.get("preparationStartTime")]
@@ -608,7 +651,8 @@ def build_board(state, live, fetched_at):
                 "totalAttacks", "offensiveReward", "defensiveReward")},
                 participants=len(r["members"]),
                 members=sorted(r["members"], key=lambda x: -x["loot"])) for r in raids_all][::-1],
-            "cwl": cwl_season(wars, state.get("cwlRoster", {}).get(clan_tag)),
+            "cwl": with_standings(cwl_season(wars, state.get("cwlRoster", {}).get(clan_tag)),
+                                  state.get("cwlStandings", {}).get(clan_tag)),
             # Vorwoche: entscheidet am ersten Liga-Tag, wer aussetzt (vergessen, schwächster letzter Tag)
             "cwlPrev": cwl_prev_light(cwl_season(wars, back=1)),
             "regularRounds": regular_rounds(wars),
@@ -630,8 +674,11 @@ def main():
             sys.exit("Clan %s nicht abrufbar: %s" % (clan_tag, info))
         state.setdefault("info", {})[clan_tag] = {k: v for k, v in info.items() if k != "memberList"}
         update_members(info, state, fetched_at)
-        current, cwl, group = fetch_wars(clan_tag, fetched_at)
+        current, cwl, group, standings = fetch_wars(clan_tag, fetched_at)
         # angemeldete Liga-Teilnehmer der Saison merken
+        if group and group.get("season") and standings:
+            # Ligatabelle der Saison merken, die Gruppe verschwindet nach Ligaende aus der API
+            state.setdefault("cwlStandings", {})[clan_tag] = {"season": group["season"], "table": standings}
         if group and group.get("season"):
             ours = next((c for c in group.get("clans", []) if c.get("tag") == clan_tag), None)
             if ours:
