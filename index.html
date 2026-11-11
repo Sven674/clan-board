@@ -361,7 +361,10 @@ const FAIR_ONLY = ['#2PPGPGRL9'];
 const openToday = (rounds, tag) => { const r = (rounds || []).find(x => x.state === 'inWar'); const l = r && r.lineup[tag];
   return l ? Math.max(0, (r.apm || 1) - l.att.length) : 0; };
 
-// Liga: Wer einen Angriff vergisst, ist für den Rest der Woche raus (nicht mehr in der nächsten Liga, Sven 11.11.).
+// Liga: Wer einen Angriff vergisst, ist für den Rest der Woche raus. Nur wer am letzten Tag vergisst,
+// setzt am ersten Tag der nächsten Liga aus (beide Clans, Sven 11.11.).
+const lastDayBan = rounds => { const fin = (rounds || []).filter(r => r.final && r.day); if(!fin.length) return {};
+  const last = fin.reduce((a, r) => r.day > a.day ? r : a); return last.day >= 7 ? cwlBan([last], () => 'am letzten Liga-Tag vergessen, setzt Tag 1 aus') : {}; };
 function cwlBan(rounds, label){
   const ban = {};
   rounds.filter(r => r.final).forEach(r => Object.entries(r.lineup).forEach(([tag, l]) => {
@@ -543,7 +546,7 @@ function benchCard(title, calc, unit, opt){
     <div class="table-wrap" style="margin-top:8px"><table><thead><tr><th>Spieler</th><th>Angriff aktueller ${unit}</th><th>Verteidigung aktueller ${unit}</th><th>Gespielt</th><th>Ausgesetzt</th><th>Zuletzt ausgesetzt</th>${calc.target?'<th>Aufgestellt</th>':''}</tr></thead><tbody>${table}</tbody></table></div></details>
     ${opt ? benchActions(opt, calc.rows) : ''}
     ${calc.rows.some(r => r.pflicht && !r.sit) ? `<p class="muted" style="font-size:14px">Pflicht, aber kein Aussetz-Platz mehr frei, spielt deshalb: ${calc.rows.filter(r => r.pflicht && !r.sit).map(r => '<b>' + esc(r.name) + '</b>').join(', ')}</p>` : ''}
-    <p class="legend">${unit === 'Tag' ? 'Liga: Wer einen Angriff vergisst, ist für den Rest der Woche raus. In der nächsten Liga zählt das nicht mehr. Am ersten Liga-Tag zählt der letzte Tag der Vorwoche. ' : ''}${calc.fair
+    <p class="legend">${unit === 'Tag' ? 'Liga: Wer einen Angriff vergisst, ist für den Rest der Woche raus. Wer am letzten Liga-Tag vergisst, setzt am ersten Tag der nächsten Liga aus. Am ersten Liga-Tag zählt der letzte Tag der Vorwoche. ' : ''}${calc.fair
       ? `Hier wird nur gerecht gewechselt, Angriff und Verteidigung zählen nicht. Reihenfolge: ${unit === 'Tag' ? 'zuerst Gesperrte (Angriff vergessen), dann Freiwillige' : 'zuerst Freiwillige'}, dann wer seltener ausgesetzt hat, bei Gleichstand wessen Aussetzen am längsten her ist. Wer am aktuellen ${unit} ausgesetzt hat, spielt als Nächstes.`
       : `Reihenfolge: zuerst wer einen Angriff vergessen hat, dann Freiwillige, dann Pflicht-Aussetzer (Angriff am aktuellen ${unit} mit ${W.pflichtBis} Sternen oder weniger, gilt auch, wenn jemand schon ausgesetzt hat; zuerst wer ein kleineres Rathaus angegriffen hat, dann wer weniger Sterne, dann wer weniger Prozent geholt hat), dann wer seltener ausgesetzt hat. Bei Gleichstand setzt aus, wer am aktuellen ${unit} mehr Sterne auf der eigenen Basis kassiert hat (stärkste gegnerische Attacke), danach wessen Aussetzen am längsten her ist. Wer noch nicht angegriffen hat, wird genauso einsortiert. Wer am aktuellen ${unit} ausgesetzt hat, spielt als Nächstes.`}
     Die Empfehlung ist ein Vorschlag, die Entscheidung trifft die Führung.</p></div>`;
@@ -579,19 +582,19 @@ function cwlView(){
     const vol = [...new Set([...(((S.fd[c.tag] || {}).freiwillig || {})[volKey] || []), ...rot])];
     // Erster Liga-Tag: Grundlage ist die Vorwoche (Vergessene gesperrt, sonst zählt deren letzter Tag).
     const pv = c.cwlPrev, firstDay = !s.rounds.some(r => r.state !== 'preparation') && pv && pv.rounds.length;
-    const ban = firstDay ? {} : cwlBan(s.rounds, d => 'Tag ' + d + ' vergessen, raus bis Wochenende');
+    const ban = firstDay ? lastDayBan(pv.rounds) : cwlBan(s.rounds, d => 'Tag ' + d + ' vergessen, raus bis Wochenende');
     const calcRounds = firstDay ? [...pv.rounds.filter(r => r.state !== 'preparation'), ...s.rounds] : s.rounds;
     // Ab Tag 7 (und nach Wochenende bis zur neuen Liga): Vorschau auf Tag 1 der nächsten Liga, gerechnet wie dort (Sven, 11.11.)
     const played = s.rounds.filter(r => r.state !== 'preparation').length;
     const preview = !prep && played >= 7;
     const calc = preview
-      ? benchCalc(s.rounds, s.roster || [], teamSize, rot, {}, FAIR_ONLY.includes(c.tag), played, true)
+      ? benchCalc(s.rounds, s.roster || [], teamSize, rot, lastDayBan(s.rounds), FAIR_ONLY.includes(c.tag), played, true)
       : benchCalc(calcRounds, s.roster || [], teamSize, vol, ban, FAIR_ONLY.includes(c.tag),
           firstDay ? pv.rounds.filter(r => r.state !== 'preparation').length : 0, !!firstDay);
     if(calc) calc.rows.forEach(r => { r.rot = rot.includes(r.tag); });
-    if(calc && firstDay) calc.prevNote = 'Erster Liga-Tag: Gewertet wird der letzte Tag der Vorwoche. Vergessene Angriffe der Vorwoche zählen nicht mehr.';
+    if(calc && firstDay) calc.prevNote = 'Erster Liga-Tag: Gewertet wird der letzte Tag der Vorwoche. Wer dort einen Angriff vergessen hat, setzt aus. Vergessene Angriffe an früheren Tagen zählen nicht mehr.';
     if(calc && preview){ calc.nextNo = 1;
-      calc.prevNote = 'Vorschau: Gewertet wird Tag 7. Vergessene Angriffe dieser Woche zählen in der neuen Liga nicht mehr. Teamgröße und Teilnehmer der nächsten Liga stehen noch nicht fest, gerechnet wird mit den aktuellen. Freiwillige Aussetzer trägst du ein, sobald die neue Liga läuft.'; }
+      calc.prevNote = 'Vorschau: Gewertet wird Tag 7. Wer an Tag 7 einen Angriff vergessen hat, setzt an Tag 1 aus. Vergessene Angriffe an Tag 1 bis 6 zählen in der neuen Liga nicht mehr. Teamgröße und Teilnehmer der nächsten Liga stehen noch nicht fest, gerechnet wird mit den aktuellen. Freiwillige Aussetzer trägst du ein, sobald die neue Liga läuft.'; }
     const rec = !s.roster ? ''
       : preview ? benchCard(`Aussetz-Empfehlung ${esc(c.name)} für Tag 1 der nächsten Liga (Vorschau)`, calc, 'Tag', null)
       : benchCard(`Aussetz-Empfehlung ${esc(c.name)} für Liga-Tag ${calc ? calc.nextNo : ''}`, calc, 'Tag', {clan: c.tag, key: volKey, label: 'Liga-Tag ' + nextDay});
