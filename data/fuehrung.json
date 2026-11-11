@@ -50,5 +50,25 @@
     "#PRRQ29JP"
    ]
   }
+ },
+ "#2PPGPGRL9": {
+  "2026-11": {
+   "anzahl": 7,
+   "verzicht": [],
+   "bonus": [
+    "#92RP8G9",
+    "#9GPR28YG",
+    "#GCRY9CGU",
+    "#L08LQ8YJL",
+    "#LQ0YCGLL2",
+    "#P8Q89LYQ9",
+    "#VYQY8VG8"
+   ]
+  },
+  "2026-10": {
+   "anzahl": null,
+   "verzicht": [],
+   "bonus": []
+  }
  }
 }
