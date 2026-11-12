@@ -1,0 +1,146 @@
+{
+ "attacksPerMember": 2,
+ "endTime": "20261114T190353.000Z",
+ "final": false,
+ "kind": "regular",
+ "lastSeen": "2026-11-12T20:19:14Z",
+ "members": [
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Zool",
+   "pos": 10,
+   "tag": "#292UQJ2LJ",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "HaraldKehl",
+   "pos": 7,
+   "tag": "#QJG9CR0Q",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Goldi",
+   "pos": 15,
+   "tag": "#9V2RUVU82",
+   "th": 8
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "NobbyNobbs",
+   "pos": 12,
+   "tag": "#L08LQ8YJL",
+   "th": 17
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Uzii",
+   "pos": 6,
+   "tag": "#2Q8GPVV0",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Odin",
+   "pos": 1,
+   "tag": "#92RP8G9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Alex12",
+   "pos": 11,
+   "tag": "#9GPR28YG",
+   "th": 17
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "das ende naht",
+   "pos": 14,
+   "tag": "#2P0P8JPPG",
+   "th": 14
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Sven",
+   "pos": 9,
+   "tag": "#J0UYJ09P",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Simone",
+   "pos": 5,
+   "tag": "#UGYG0PY9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "LEGENDE",
+   "pos": 13,
+   "tag": "#P8Q89LYQ9",
+   "th": 16
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Zucker",
+   "pos": 4,
+   "tag": "#2CY2GL9J",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "mini1000000",
+   "pos": 3,
+   "tag": "#LQ0YCGLL2",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Lonestar",
+   "pos": 2,
+   "tag": "#28CJUY0G9",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Mone",
+   "pos": 8,
+   "tag": "#L09Y0G0G9",
+   "th": 18
+  }
+ ],
+ "opponent": {
+  "badge": "https://api-assets.clashofclans.com/badges/70/m772uGmnBUU4HX-s-ZNIhFc8UP6JlkeDUT5OTSjNVh4.png",
+  "name": "armagedon",
+  "pct": 0.0,
+  "stars": 0,
+  "tag": "#2QVUV9LLY"
+ },
+ "preparationStartTime": "20261112T200353.000Z",
+ "startTime": "20261113T190353.000Z",
+ "state": "preparation",
+ "teamSize": 15,
+ "us": {
+  "attacks": 0,
+  "pct": 0.0,
+  "stars": 0
+ },
+ "warTag": null
+}
