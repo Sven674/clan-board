@@ -6,6 +6,7 @@ Token: Umgebungsvariable COC_API_TOKEN oder Datei in COC_API_TOKEN_FILE.
 """
 import json
 import os
+import re
 import sys
 import time
 import urllib.error
@@ -413,7 +414,7 @@ def load_records(folder, clan_tag):
     return [r for r in out if r]
 
 
-def war_member_stats(wars, recent_n):
+def war_member_stats(wars, recent_n, getauscht=None):
     """Pro Spieler: Angriffe, verpasste Angriffe, Sterne, 3-Sterne-Quote."""
     stats = {}
     finished = sorted([w for w in wars if w.get("final")],
@@ -459,7 +460,7 @@ def war_member_stats(wars, recent_n):
                         s["sameThTriples"] += 1
                 if w["kind"] == "cwl":
                     s["cwlStars"] += a["stars"]
-    swap_hints(finished, stats)
+    swap_hints(finished, stats, getauscht or {})
     return stats
 
 
@@ -483,11 +484,25 @@ def first_try_triple(defs):
     return False
 
 
-def swap_hints(finished, stats):
-    hist = {}
+def api_time(iso_z):
+    """2026-11-12T13:00:00Z -> 20261112T130000 (Vergleich mit preparationStartTime der API)."""
+    return re.sub(r"[-:]", "", iso_z or "")[:15]
+
+
+def swap_hints(finished, stats, getauscht):
+    hist, last = {}, {}
     for w in finished:
         for m in w["members"]:
+            # Nach "Dorf getauscht" zählen nur Kriege, deren Vorbereitung danach begann
+            seit = getauscht.get(m["tag"])
+            if seit and (w.get("preparationStartTime") or "")[:15] <= api_time(seit):
+                continue
             hist.setdefault(m["tag"], []).append(m.get("defenses", []))
+            last[m["tag"]] = w.get("endTime")
+    for tag, seit in getauscht.items():
+        if tag in stats:
+            stats[tag]["getauscht"] = seit
+            stats[tag].setdefault("swap", None)
     for tag, wars in hist.items():
         s = stats.get(tag)
         if s is None:
@@ -511,6 +526,7 @@ def swap_hints(finished, stats):
         s["tripledRecent"] = tripled
         s["tripledWindow"] = len(window)
         s["swap"] = "; ".join(why) or None
+        s["swapLast"] = last.get(tag)
 
 
 def latest_capital_gold(t):
@@ -620,7 +636,9 @@ def build_board(state, live, fetched_at):
         cs = state.get("clans", {}).get(clan_tag, {})
         wars = load_records("wars", clan_tag)
         raids = load_records("raids", clan_tag)
-        ws = war_member_stats(wars, CONFIG.get("recent_wars", 10))
+        fuehrung = read_json(os.path.join(DATA, "fuehrung.json"), {}) or {}
+        ws = war_member_stats(wars, CONFIG.get("recent_wars", 10),
+                              (fuehrung.get(clan_tag) or {}).get("getauscht"))
         raids_all = sorted(raids, key=lambda r: r.get("startTime") or "")
         # für die Spielerwerte nur Wochenenden mit bekannter Teilnehmerliste
         raids_sorted = [r for r in raids_all if r.get("members")][-4:]

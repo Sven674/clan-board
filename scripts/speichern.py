@@ -4,6 +4,7 @@ Aufbau je Clan-Tag:
   "JJJJ-MM": {"anzahl": int|None, "leistung": int (nur Ü40 Pur 2), "verzicht": [Tags], "bonus": [Tags]}   Bonus je Ligasaison
   "freiwillig": {"liga:JJJJ-MM:Tag" | "krieg:...": [Tags]}              freiwillige Aussetzer
   "erledigt": {"liga:JJJJ-MM:Tag" | "krieg:...": {"by": Tag, "at": Zeit}} Aufstellung fertig gemeldet
+  "getauscht": {Spieler-Tag: Zeit}                                      Dorf getauscht (Zähler ab dann neu)
 """
 import json
 import os
@@ -15,6 +16,7 @@ KEY = re.compile(r"^(liga|krieg):[0-9A-Za-z:.\-]{1,40}$")
 CLANS = {"#29PU080G", "#2PPGPGRL9"}
 PATH = os.path.join(os.path.dirname(__file__), "..", "data", "fuehrung.json")
 KEEP_FREIWILLIG = 30
+KEEP_GETAUSCHT = 100
 
 
 def tags(x):
@@ -68,6 +70,15 @@ def main():
             er[key] = {"by": by, "at": at}
         for old in list(er)[:-KEEP_FREIWILLIG]:
             del er[old]
+    elif p.get("type") == "getauscht":
+        tag, at = p.get("tag") or "", p.get("at") or ""
+        if not TAG.match(tag) or not re.match(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$", at):
+            raise SystemExit("Ungültige Tausch-Meldung")
+        gt = c.setdefault("getauscht", {})
+        gt.pop(tag, None)
+        gt[tag] = at
+        for old in list(gt)[:-KEEP_GETAUSCHT]:
+            del gt[old]
     else:
         raise SystemExit("Unbekannte Art")
 

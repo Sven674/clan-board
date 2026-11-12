@@ -1,5 +1,5 @@
-// Speichert Angaben der Führung: Bonus (Anzahl, Verzicht, erhaltene Boni), freiwillige Aussetzer
-// und die Fertig-Meldung für die Aufstellung.
+// Speichert Angaben der Führung: Bonus (Anzahl, Verzicht, erhaltene Boni), freiwillige Aussetzer,
+// die Fertig-Meldung für die Aufstellung und "Dorf getauscht".
 // Prüft die PIN (Umgebungsvariable BONUS_PIN) und stößt den GitHub-Workflow speichern.yml an,
 // der data/fuehrung.json ins Repo schreibt.
 
@@ -44,6 +44,12 @@ function clean(b) {
                 by: b.by === null ? null : (typeof b.by === "string" && TAG.test(b.by) ? b.by : undefined),
                 at: new Date().toISOString().slice(0, 19) + "Z" };
     return c.key && c.by !== undefined ? c : null;
+  }
+  if (b.type === "getauscht") {
+    // Dorf getauscht (Sven, 12.11.2026): setzt die Zähler für die Empfehlung "Dorf austauschen" zurück
+    const c = { type: "getauscht", clan, tag: typeof b.tag === "string" && TAG.test(b.tag) ? b.tag : null,
+                at: new Date().toISOString().slice(0, 19) + "Z" };
+    return c.tag ? c : null;
   }
   if (b.type === "freiwillig") {
     const c = { type: "freiwillig", clan, key: KEY.test(b.key || "") ? b.key : null, tags: tags(b.tags) };

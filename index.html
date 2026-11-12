@@ -103,6 +103,7 @@ input[type=search]{width:100%;max-width:280px;padding:8px 10px;border-radius:8px
 .banner .claim{font-size:15px;margin-top:4px;color:#f3d991;text-shadow:0 1px 3px rgba(0,0,0,.8)}
 @media (max-width:640px){.banner-in{min-height:0;padding:16px;gap:14px}.coc-logo{height:62px}.titel{padding-left:12px}.banner h1{font-size:23px}.banner .claim{display:none}}
 footer{max-width:1200px;margin:0 auto;padding:0 16px 30px;font-size:11px;color:var(--mut)}
+.reload.act.swapbtn{font-size:13px;padding:6px 12px;min-height:32px;margin:0;background:var(--acc);border-color:var(--acc);color:#fff}
 .note-swap{margin-top:10px;padding:8px 12px;border-left:3px solid #e8833a;background:rgba(232,131,58,.12);border-radius:4px}.note-swap ul{margin:4px 0 0;padding-left:18px}
 </style>
 </head>
@@ -302,12 +303,40 @@ function angriffText(a, offen){
   if(a) return a.stars + '★ ' + a.pct + ' %' + (a.defTh ? ' <span class="muted">RH' + a.defTh + '</span>' : '');
   return offen ? '<span class="openbadge">offen</span>' : '<span class="muted">vergessen</span>';
 }
+// Dorf getauscht (Sven, 12.11.2026): Klick auf "Dorf-Tausch empfohlen" fragt ja/nein, ja speichert mit PIN.
+// Bestätigt gilt, solange danach kein neuer Krieg gezählt wurde (die Zähler fangen nach dem Tausch neu an).
+function applyGt(clan, tag){ const B = fdClan(clan); B.getauscht = Object.assign({}, B.getauscht, {[tag]: new Date().toISOString().slice(0,19) + 'Z'}); }
+function swapState(c, m){
+  const w = m.war || {}, gt = ((S.fd[c.tag] || {}).getauscht || {})[m.tag];
+  const bestaetigt = gt && (!w.swapLast || parseT(gt) > parseT(w.swapLast));
+  return {offen: !!w.swap && !bestaetigt, gt, grund: w.swap};
+}
+function swapCell(c, m){
+  const form = 'swap' + c.tag + m.tag, st = swapState(c, m);
+  S.forms[form] = () => ({});
+  S.saves[form] = () => postFd(form, {type: 'getauscht', clan: c.tag, tag: m.tag}, () => applyGt(c.tag, m.tag));
+  if(S.edit[form]) return btn('cancel', form, 'Dorf-Tausch empfohlen', 'swapbtn');  // Frage ist offen, Meldungen stehen dort
+  if(st.offen) return btn('edit', form, 'Dorf-Tausch empfohlen', 'swapbtn').replace('<button', `<button title="${esc(st.grund)}"`) + msgHtml(form);
+  return (st.gt ? `<span class="muted" style="font-size:13px">Dorf getauscht am ${dateDE(st.gt)}</span>` : '') + msgHtml(form);
+}
+function swapForm(c, m, cols){
+  const inner = swapFrage(c, m);
+  return inner ? `<tr><td colspan="${cols}" style="text-align:left;background:var(--chip)">${inner}</td></tr>` : '';
+}
+function swapFrage(c, m){
+  const form = 'swap' + c.tag + m.tag;
+  if(!S.edit[form]) return '';
+  return `<p><b>Hat ${esc(m.name)} das Dorf getauscht?</b> <span class="muted">(${esc(swapState(c, m).grund || '')})</span><br>
+    <span class="muted" style="font-size:14px">Ja setzt die Zähler zurück: Ab dann zählen nur Kriege, die nach dem Tausch beginnen.</span></p>${msgHtml(form)}
+    <p class="saverow">${pinField(form)}${btn('save', form, 'Ja, getauscht', 'okbtn')} ${btn('cancel', form, 'Nein')}${pinForget(form)}</p>`;
+}
+
 function warMembers(c){
   const cw = c.currentWar;
   const w = cw && cw.state !== 'preparation' ? cw : c.lastWar;
-  const swaps = c.memberList.filter(m => (m.war || {}).swap);
+  const swaps = c.memberList.filter(m => swapState(c, m).offen);
   const tipp = swaps.length ? `<div class="note-swap"><b>Empfehlung: Dorf austauschen</b><ul>${swaps.map(m =>
-      `<li>${esc(m.name)}: ${esc(m.war.swap)}</li>`).join('')}</ul></div>` : '';
+      `<li>${esc(m.name)}: ${esc(m.war.swap)}${w && w.members && w.members.some(x => x.tag === m.tag) ? '' : ' ' + swapCell(c, m) + swapFrage(c, m)}</li>`).join('')}</ul></div>` : '';
   if(!w || !w.members) return `<div class="card"><h2>Mitglieder im Krieg ${esc(c.name)}</h2><span class="muted">Noch kein Krieg mit Mitgliederdaten.</span>${tipp}</div>`;
   const laeuft = w.state === 'inWar';
   const apm = w.apm || 2;
@@ -316,13 +345,13 @@ function warMembers(c){
     const at = (m.attacks || []).slice().sort((a,b) => (a.order||0) - (b.order||0));
     const defs = m.defenses;
     const best = defs && defs.length ? defs.reduce((x,y) => (y.stars > x.stars || (y.stars === x.stars && y.pct > x.pct)) ? y : x) : null;
-    const sw = (byTag[m.tag] && byTag[m.tag].war || {}).swap;
+    const mm = byTag[m.tag] || {tag: m.tag, name: m.name, war: {}};
     return `<tr><td>${m.pos}</td><td class="l"><span class="name">${esc(m.name)}</span></td><td>${m.th ?? '–'}</td>
       <td>${angriffText(at[0], laeuft)}</td>${apm > 1 ? `<td>${angriffText(at[1], laeuft)}</td>` : ''}
       <td>${defs == null ? '–' : best ? best.stars + '★ ' + best.pct + ' %' : '<span class="muted">–</span>'}</td>
       <td>${defs == null ? '–' : defs.length + '×'}</td>
       <td>${defs == null ? '–' : dreierText(defs)}</td>
-      <td>${sw ? `<span class="openbadge" title="${esc(sw)}">Dorf tauschen</span>` : ''}</td></tr>`;
+      <td>${swapCell(c, mm)}</td></tr>` + swapForm(c, mm, apm > 1 ? 9 : 8);
   }).join('');
   const titel = laeuft ? 'laufender Krieg' : 'letzter Krieg, ' + dateDE(w.end);
   return `<div class="card"><h2>Mitglieder im Krieg ${esc(c.name)} <span class="muted" style="font-size:14px">(${titel} gegen ${esc(w.opponent.name)})</span></h2>
@@ -334,7 +363,7 @@ function warMembers(c){
 
 function warList(){
   const clans = S.clan==='alle' ? S.data.clans : [S.data.clans[S.clan]];
-  return clans.map(c => regularBench(c) + warMembers(c) + `<div class="card"><h2>Kriege ${esc(c.name)}</h2>${
+  return clans.map(c => warMembers(c) + regularBench(c) + `<div class="card"><h2>Kriege ${esc(c.name)}</h2>${
     c.wars.length ? `<ul class="list">${c.wars.map(w => `<li><span>
       <b class="${w.result}">${{sieg:'Sieg',niederlage:'Niederlage',unentschieden:'Unentschieden',offen:'läuft'}[w.result]}</b>
       ${w.kind==='cwl'?'<span class="pill">Liga</span>':''} gegen ${esc(w.opponent.name)}<br>
