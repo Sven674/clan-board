@@ -3,26 +3,62 @@
  "endTime": "20261112T190451.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-11T18:37:34Z",
+ "lastSeen": "2026-11-12T01:28:28Z",
  "members": [
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 4,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "theBASTIan",
    "pos": 1,
    "tag": "#92L228UR",
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 11,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "--SVEN--674--",
    "pos": 6,
    "tag": "#200PCP8QQ",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 6,
+     "defTh": 18,
+     "order": 15,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "=RS=",
    "pos": 14,
@@ -30,16 +66,51 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 19,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 15,
+     "defTh": 18,
+     "order": 20,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Chrisdoc",
    "pos": 2,
    "tag": "#9GR80Q9P",
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 16,
+     "defTh": 18,
+     "order": 23,
+     "pct": 68,
+     "stars": 1
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Schlumpfmausi",
    "pos": 19,
    "tag": "#LG09VQ8J",
@@ -47,31 +118,91 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "OlMcGoldi",
    "pos": 15,
    "tag": "#YR0Y90G",
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 18,
+     "order": 6,
+     "pct": 47,
+     "stars": 1
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "EumelTV",
    "pos": 20,
    "tag": "#J2QLL8GY",
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 18,
+     "order": 26,
+     "pct": 90,
+     "stars": 1
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "AGENT 00H",
    "pos": 3,
    "tag": "#80V9Q998",
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 17,
+     "defTh": 18,
+     "order": 9,
+     "pct": 98,
+     "stars": 2
+    },
+    {
+     "defPos": 3,
+     "defTh": 18,
+     "order": 10,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 97,
+     "stars": 2
+    },
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Ertanbabo",
    "pos": 4,
    "tag": "#PRRJY9G9",
@@ -79,7 +210,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Beach",
    "pos": 5,
    "tag": "#8LVUJRQP",
@@ -87,14 +224,28 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 89,
+     "stars": 2
+    }
+   ],
    "name": "Ricky",
    "pos": 7,
    "tag": "#LRYLYPG8",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 11,
+     "defTh": 18,
+     "order": 25,
+     "pct": 85,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "☠️Happy Day ☠️",
    "pos": 12,
@@ -103,7 +254,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Legend Papa",
    "pos": 10,
    "tag": "#9RCY8U0VQ",
@@ -111,7 +268,13 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Filiusberlinius",
    "pos": 13,
    "tag": "#2UCJYGU0",
@@ -119,14 +282,28 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Sir COColores",
    "pos": 9,
    "tag": "#YVCLP0RJ",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 15,
+     "defTh": 18,
+     "order": 2,
+     "pct": 75,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Heisenberg",
    "pos": 17,
@@ -134,8 +311,22 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 19,
+     "defTh": 18,
+     "order": 1,
+     "pct": 69,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Nemesis",
    "pos": 18,
    "tag": "#22C0YRV9C",
@@ -143,7 +334,18 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 83,
+     "stars": 2
+    },
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "1000000",
    "pos": 8,
    "tag": "#V029UQCU",
@@ -151,14 +353,28 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Captain Future",
    "pos": 16,
    "tag": "#8PGGGL2U8",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 18,
+     "order": 24,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "hulk",
    "pos": 11,
@@ -169,18 +385,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/g1gg6djtse8T7VHhMFcpfH9j0WDKY10OCNNUM-QLXo8.png",
   "name": "درع الجزيرة",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 79.45,
+  "stars": 47,
   "tag": "#LV2LL0L8"
  },
  "preparationStartTime": "20261110T200451.000Z",
  "startTime": "20261111T190451.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 14,
+  "pct": 55.5,
+  "stars": 29
  },
  "warTag": null
 }
