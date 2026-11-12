@@ -126,7 +126,7 @@ def compact_war(war, clan_tag, kind, war_tag=None):
         for a in om.get("attacks", []) or []:
             defenses.setdefault(a.get("defenderTag"), []).append({
                 "stars": a.get("stars", 0), "pct": a.get("destructionPercentage", 0),
-                "attTh": om.get("townhallLevel"),
+                "attTh": om.get("townhallLevel"), "order": a.get("order"),
             })
     members = []
     for m in us.get("members", []):
@@ -459,7 +459,58 @@ def war_member_stats(wars, recent_n):
                         s["sameThTriples"] += 1
                 if w["kind"] == "cwl":
                     s["cwlStars"] += a["stars"]
+    swap_hints(finished, stats)
     return stats
+
+
+# Dorf austauschen (Sven, 12.11.2026): Empfehlung, wenn das Dorf in den Kriegen, in denen es
+# angegriffen wurde, 5x hintereinander schon beim ersten Versuch 3 Sterne kassiert hat, oder
+# in den letzten 20 Kriegen des Mitglieds insgesamt 10x gedreiert wurde (je Krieg einmal gezählt).
+SWAP_STREAK = 5
+SWAP_TRIPLES = 10
+SWAP_WINDOW = 20
+
+
+def first_try_triple(defs):
+    """Erster Angriff auf das Dorf brachte 3 Sterne? Mit Reihenfolge exakt, sonst (Kriege vor
+    dem 12.11.2026) nur sicher, wenn es genau einen Angriff gab."""
+    if not defs:
+        return None
+    if all(d.get("order") is not None for d in defs):
+        return min(defs, key=lambda d: d["order"])["stars"] == 3
+    if len(defs) == 1:
+        return defs[0]["stars"] == 3
+    return False
+
+
+def swap_hints(finished, stats):
+    hist = {}
+    for w in finished:
+        for m in w["members"]:
+            hist.setdefault(m["tag"], []).append(m.get("defenses", []))
+    for tag, wars in hist.items():
+        s = stats.get(tag)
+        if s is None:
+            continue
+        window = wars[-SWAP_WINDOW:]
+        tripled = sum(1 for defs in window if any(d["stars"] == 3 for d in defs))
+        streak = 0
+        for defs in reversed(wars):
+            if not defs:
+                continue  # nicht angegriffen: zählt nicht, unterbricht nicht
+            if first_try_triple(defs):
+                streak += 1
+            else:
+                break
+        why = []
+        if streak >= SWAP_STREAK:
+            why.append("%dx hintereinander beim ersten Versuch gedreiert" % streak)
+        if tripled >= SWAP_TRIPLES:
+            why.append("%dx gedreiert in den letzten %d Kriegen" % (tripled, len(window)))
+        s["firstTryStreak"] = streak
+        s["tripledRecent"] = tripled
+        s["tripledWindow"] = len(window)
+        s["swap"] = "; ".join(why) or None
 
 
 def latest_capital_gold(t):
@@ -551,6 +602,15 @@ def regular_rounds(wars, n=6):
              "teamSize": w.get("teamSize"), "apm": w.get("attacksPerMember") or 2,
              "opponent": w["opponent"]["name"], "end": w.get("endTime"),
              "lineup": lineup_detail(w)} for i, w in enumerate(reg, 1)]
+
+
+def last_war_detail(wars_sorted, war_summary):
+    fin = [w for w in wars_sorted if w.get("final")]
+    if not fin:
+        return None
+    d = war_summary(fin[-1])
+    d["members"] = fin[-1]["members"]
+    return d
 
 
 def build_board(state, live, fetched_at):
@@ -645,6 +705,8 @@ def build_board(state, live, fetched_at):
             "points": info.get("clanPoints"), "isWarLogPublic": info.get("isWarLogPublic"),
             "memberList": members,
             "currentWar": current_detail,
+            # Zuletzt beendeter Krieg mit Mitgliedern: für die Kriegsliste, wenn gerade keiner läuft
+            "lastWar": last_war_detail(wars_sorted, war_summary),
             "wars": [war_summary(w) for w in wars_sorted[-20:]][::-1],
             "raids": [dict({k: r.get(k) for k in (
                 "startTime", "endTime", "state", "capitalTotalLoot", "raidsCompleted",

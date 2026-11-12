@@ -103,6 +103,7 @@ input[type=search]{width:100%;max-width:280px;padding:8px 10px;border-radius:8px
 .banner .claim{font-size:15px;margin-top:4px;color:#f3d991;text-shadow:0 1px 3px rgba(0,0,0,.8)}
 @media (max-width:640px){.banner-in{min-height:0;padding:16px;gap:14px}.coc-logo{height:62px}.titel{padding-left:12px}.banner h1{font-size:23px}.banner .claim{display:none}}
 footer{max-width:1200px;margin:0 auto;padding:0 16px 30px;font-size:11px;color:var(--mut)}
+.note-swap{margin-top:10px;padding:8px 12px;border-left:3px solid #e8833a;background:rgba(232,131,58,.12);border-radius:4px}.note-swap ul{margin:4px 0 0;padding-left:18px}
 </style>
 </head>
 <body>
@@ -286,9 +287,54 @@ function regularBench(c){
                    key ? {clan: c.tag, key, label: 'den nächsten Krieg'} : null);
 }
 
+// Mitglieder im Krieg (Sven, 12.11.2026): 1./2. Angriff, Verteidigung, wie oft angegriffen,
+// ob beim ersten Versuch gedreiert. Laufender Krieg, sonst der zuletzt beendete.
+function dreierText(defs){
+  if(!defs || !defs.length) return '<span class="muted">nicht angegriffen</span>';
+  const mitOrder = defs.every(d => d.order != null);
+  const ds = mitOrder ? defs.slice().sort((a,b) => a.order - b.order) : defs;
+  const i = ds.findIndex(d => d.stars === 3);
+  if(i < 0) return 'nicht gedreiert';
+  if(!mitOrder && ds.length > 1) return '<span title="Reihenfolge erst ab 12.11. gespeichert">gedreiert, Versuch unbekannt</span>';
+  return i === 0 ? '<b class="niederlage">beim 1. Versuch</b>' : 'beim ' + (i + 1) + '. Versuch';
+}
+function angriffText(a, offen){
+  if(a) return a.stars + '★ ' + a.pct + ' %' + (a.defTh ? ' <span class="muted">RH' + a.defTh + '</span>' : '');
+  return offen ? '<span class="openbadge">offen</span>' : '<span class="muted">vergessen</span>';
+}
+function warMembers(c){
+  const cw = c.currentWar;
+  const w = cw && cw.state !== 'preparation' ? cw : c.lastWar;
+  const swaps = c.memberList.filter(m => (m.war || {}).swap);
+  const tipp = swaps.length ? `<div class="note-swap"><b>Empfehlung: Dorf austauschen</b><ul>${swaps.map(m =>
+      `<li>${esc(m.name)}: ${esc(m.war.swap)}</li>`).join('')}</ul></div>` : '';
+  if(!w || !w.members) return `<div class="card"><h2>Mitglieder im Krieg ${esc(c.name)}</h2><span class="muted">Noch kein Krieg mit Mitgliederdaten.</span>${tipp}</div>`;
+  const laeuft = w.state === 'inWar';
+  const apm = w.apm || 2;
+  const byTag = {}; c.memberList.forEach(m => byTag[m.tag] = m);
+  const rowsW = w.members.slice().sort((a,b) => a.pos - b.pos).map(m => {
+    const at = (m.attacks || []).slice().sort((a,b) => (a.order||0) - (b.order||0));
+    const defs = m.defenses;
+    const best = defs && defs.length ? defs.reduce((x,y) => (y.stars > x.stars || (y.stars === x.stars && y.pct > x.pct)) ? y : x) : null;
+    const sw = (byTag[m.tag] && byTag[m.tag].war || {}).swap;
+    return `<tr><td>${m.pos}</td><td class="l"><span class="name">${esc(m.name)}</span></td><td>${m.th ?? '–'}</td>
+      <td>${angriffText(at[0], laeuft)}</td>${apm > 1 ? `<td>${angriffText(at[1], laeuft)}</td>` : ''}
+      <td>${defs == null ? '–' : best ? best.stars + '★ ' + best.pct + ' %' : '<span class="muted">–</span>'}</td>
+      <td>${defs == null ? '–' : defs.length + '×'}</td>
+      <td>${defs == null ? '–' : dreierText(defs)}</td>
+      <td>${sw ? `<span class="openbadge" title="${esc(sw)}">Dorf tauschen</span>` : ''}</td></tr>`;
+  }).join('');
+  const titel = laeuft ? 'laufender Krieg' : 'letzter Krieg, ' + dateDE(w.end);
+  return `<div class="card"><h2>Mitglieder im Krieg ${esc(c.name)} <span class="muted" style="font-size:14px">(${titel} gegen ${esc(w.opponent.name)})</span></h2>
+    <div class="table-wrap"><table><thead><tr><th>#</th><th class="l">Spieler</th><th>RH</th><th>1. Angriff</th>${apm > 1 ? '<th>2. Angriff</th>' : ''}<th title="Bester Angriff des Gegners auf das Dorf">Verteidigung</th><th title="Wie oft der Gegner das Dorf angegriffen hat">Angegriffen</th><th title="Ob das Dorf beim ersten Angriff 3 Sterne kassiert hat oder mehrere Versuche nötig waren">Dreier</th><th>Empfehlung</th></tr></thead>
+    <tbody>${rowsW}</tbody></table></div>
+    ${tipp}
+    <p class="legend">Verteidigung = bester Angriff des Gegners auf das Dorf. Empfehlung „Dorf austauschen“ (nur Notiz für die Führung): Das Dorf hat in den Kriegen, in denen es angegriffen wurde, 5× hintereinander schon beim ersten Versuch 3 Sterne kassiert, oder es wurde in den letzten 20 Kriegen des Mitglieds 10× gedreiert. Kriege ohne Angriff auf das Dorf zählen nicht und unterbrechen die Serie nicht. Die Reihenfolge der Angriffe wird erst seit 12.11.2026 gespeichert, davor gilt „beim 1. Versuch“ nur, wenn das Dorf genau einmal angegriffen wurde.</p></div>`;
+}
+
 function warList(){
   const clans = S.clan==='alle' ? S.data.clans : [S.data.clans[S.clan]];
-  return clans.map(c => regularBench(c) + `<div class="card"><h2>Kriege ${esc(c.name)}</h2>${
+  return clans.map(c => regularBench(c) + warMembers(c) + `<div class="card"><h2>Kriege ${esc(c.name)}</h2>${
     c.wars.length ? `<ul class="list">${c.wars.map(w => `<li><span>
       <b class="${w.result}">${{sieg:'Sieg',niederlage:'Niederlage',unentschieden:'Unentschieden',offen:'läuft'}[w.result]}</b>
       ${w.kind==='cwl'?'<span class="pill">Liga</span>':''} gegen ${esc(w.opponent.name)}<br>
@@ -936,7 +982,12 @@ function mergeLive(live){
     const c = S.data.clans.find(x => x.tag === lc.tag);
     if(!c || lc.error) return;
     CLAN_FIELDS.forEach(k => { if(lc[k] !== undefined) c[k] = lc[k]; });
+    const alt = c.currentWar;
     c.currentWar = lc.currentWar;
+    if(alt && lc.currentWar && alt.start === lc.currentWar.start && alt.members){
+      const altDef = {}; alt.members.forEach(m => altDef[m.tag] = m.defenses);
+      lc.currentWar.members.forEach(m => { if(m.defenses === undefined) m.defenses = altDef[m.tag]; });
+    }
     const lp = lc.cwlPrep, cr = c.cwl && c.cwl.rounds;
     if(lp && cr){
       const r = cr.find(x => x.day === lp.day && x.state === 'preparation');

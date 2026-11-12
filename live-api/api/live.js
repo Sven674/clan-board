@@ -28,9 +28,16 @@ function compactWar(war, clanTag, kind) {
   const apm = war.attacksPerMember || (kind === "cwl" ? 1 : 2);
   const oppTh = {};
   (them.members || []).forEach((m) => { oppTh[m.tag] = m.townhallLevel; });
+  // Verteidigungen: Angriffe des Gegners auf unsere Spieler, mit Reihenfolge (erster Versuch, Sven 12.11.2026)
+  const defs = {};
+  (them.members || []).forEach((om) => (om.attacks || []).forEach((a) => {
+    (defs[a.defenderTag] = defs[a.defenderTag] || []).push(
+      { stars: a.stars, pct: a.destructionPercentage, attTh: om.townhallLevel, order: a.order });
+  }));
   const members = (us.members || []).map((m) => ({
     tag: m.tag, name: m.name, th: m.townhallLevel, pos: m.mapPosition,
-    attacks: (m.attacks || []).map((a) => ({ stars: a.stars, pct: a.destructionPercentage, defTh: oppTh[a.defenderTag] })),
+    attacks: (m.attacks || []).map((a) => ({ stars: a.stars, pct: a.destructionPercentage, defTh: oppTh[a.defenderTag], order: a.order })),
+    defenses: defs[m.tag] || [],
   }));
   return {
     kind, state: war.state, final: war.state === "warEnded", teamSize: war.teamSize, apm,
