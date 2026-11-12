@@ -3,7 +3,7 @@
  "endTime": "20261112T190451.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-12T01:28:28Z",
+ "lastSeen": "2026-11-12T08:48:19Z",
  "members": [
   {
    "attacks": [
@@ -13,9 +13,21 @@
      "order": 4,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 4,
+     "defTh": 18,
+     "order": 43,
+     "pct": 94,
+     "stars": 2
     }
    ],
    "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    },
     {
      "attTh": 18,
      "pct": 100,
@@ -59,7 +71,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "=RS=",
    "pos": 14,
    "tag": "#GLPVGVR9",
@@ -83,6 +101,16 @@
     }
    ],
    "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    },
     {
      "attTh": 18,
      "pct": 100,
@@ -209,7 +237,22 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 18,
+     "order": 47,
+     "pct": 88,
+     "stars": 2
+    },
+    {
+     "defPos": 19,
+     "defTh": 18,
+     "order": 48,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -225,6 +268,11 @@
   {
    "attacks": [],
    "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    },
     {
      "attTh": 18,
      "pct": 89,
@@ -246,7 +294,18 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 18,
+     "pct": 89,
+     "stars": 2
+    }
+   ],
    "name": "☠️Happy Day ☠️",
    "pos": 12,
    "tag": "#Y80LGCUPJ",
@@ -267,7 +326,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 20,
+     "defTh": 18,
+     "order": 44,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -281,7 +348,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 7,
+     "defTh": 18,
+     "order": 45,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -304,7 +379,13 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Heisenberg",
    "pos": 17,
    "tag": "#29JR2282",
@@ -333,7 +414,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 16,
+     "defTh": 18,
+     "order": 46,
+     "pct": 68,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -352,7 +441,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 18,
+     "defTh": 18,
+     "order": 37,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -375,7 +472,13 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "hulk",
    "pos": 11,
    "tag": "#GRJU2J92",
@@ -385,8 +488,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/g1gg6djtse8T7VHhMFcpfH9j0WDKY10OCNNUM-QLXo8.png",
   "name": "درع الجزيرة",
-  "pct": 79.45,
-  "stars": 47,
+  "pct": 100.0,
+  "stars": 60,
   "tag": "#LV2LL0L8"
  },
  "preparationStartTime": "20261110T200451.000Z",
@@ -394,9 +497,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 14,
-  "pct": 55.5,
-  "stars": 29
+  "attacks": 21,
+  "pct": 76.65,
+  "stars": 43
  },
  "warTag": null
 }
