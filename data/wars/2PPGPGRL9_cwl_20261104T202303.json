@@ -3,7 +3,7 @@
  "endTime": "20261106T202301.000Z",
  "final": true,
  "kind": "cwl",
- "lastSeen": "2026-11-12T12:25:57Z",
+ "lastSeen": "2026-11-12T12:43:48Z",
  "members": [
   {
    "attacks": [
@@ -18,6 +18,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 6,
      "pct": 99,
      "stars": 2
     }
@@ -40,6 +41,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 26,
      "pct": 100,
      "stars": 3
     }
@@ -62,6 +64,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 29,
      "pct": 100,
      "stars": 3
     }
@@ -100,6 +103,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 11,
      "pct": 100,
      "stars": 3
     }
@@ -122,6 +126,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 2,
      "pct": 88,
      "stars": 2
     }
@@ -144,6 +149,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 4,
      "pct": 100,
      "stars": 3
     }
@@ -166,6 +172,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 27,
      "pct": 100,
      "stars": 3
     }
@@ -188,6 +195,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 18,
      "pct": 73,
      "stars": 1
     }
@@ -210,6 +218,7 @@
    "defenses": [
     {
      "attTh": 17,
+     "order": 1,
      "pct": 100,
      "stars": 3
     }
@@ -232,6 +241,7 @@
    "defenses": [
     {
      "attTh": 17,
+     "order": 10,
      "pct": 100,
      "stars": 3
     }
@@ -254,6 +264,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 28,
      "pct": 78,
      "stars": 2
     }
@@ -276,6 +287,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 7,
      "pct": 89,
      "stars": 2
     }
@@ -298,6 +310,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 19,
      "pct": 89,
      "stars": 2
     }
@@ -320,6 +333,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 17,
      "pct": 80,
      "stars": 2
     }

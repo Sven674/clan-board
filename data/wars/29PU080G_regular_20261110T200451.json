@@ -3,7 +3,7 @@
  "endTime": "20261112T190451.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-12T12:25:57Z",
+ "lastSeen": "2026-11-12T12:43:48Z",
  "members": [
   {
    "attacks": [
@@ -25,16 +25,19 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 49,
      "pct": 64,
      "stars": 2
     },
     {
      "attTh": 18,
+     "order": 41,
      "pct": 100,
      "stars": 3
     },
     {
      "attTh": 18,
+     "order": 12,
      "pct": 100,
      "stars": 3
     }
@@ -64,6 +67,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 16,
      "pct": 100,
      "stars": 3
     }
@@ -93,6 +97,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 36,
      "pct": 100,
      "stars": 3
     }
@@ -122,16 +127,19 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 13,
      "pct": 100,
      "stars": 3
     },
     {
      "attTh": 18,
+     "order": 42,
      "pct": 100,
      "stars": 3
     },
     {
      "attTh": 18,
+     "order": 40,
      "pct": 100,
      "stars": 3
     }
@@ -154,6 +162,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 8,
      "pct": 100,
      "stars": 3
     }
@@ -168,6 +177,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 29,
      "pct": 100,
      "stars": 3
     }
@@ -197,6 +207,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 7,
      "pct": 100,
      "stars": 3
     }
@@ -214,11 +225,19 @@
      "order": 26,
      "pct": 90,
      "stars": 1
+    },
+    {
+     "defPos": 13,
+     "defTh": 18,
+     "order": 56,
+     "pct": 75,
+     "stars": 2
     }
    ],
    "defenses": [
     {
      "attTh": 18,
+     "order": 14,
      "pct": 100,
      "stars": 3
     }
@@ -248,11 +267,13 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 17,
      "pct": 97,
      "stars": 2
     },
     {
      "attTh": 18,
+     "order": 31,
      "pct": 100,
      "stars": 3
     }
@@ -282,6 +303,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 3,
      "pct": 100,
      "stars": 3
     }
@@ -296,11 +318,13 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 35,
      "pct": 100,
      "stars": 3
     },
     {
      "attTh": 18,
+     "order": 18,
      "pct": 89,
      "stars": 2
     }
@@ -323,11 +347,13 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 39,
      "pct": 100,
      "stars": 3
     },
     {
      "attTh": 18,
+     "order": 34,
      "pct": 89,
      "stars": 2
     }
@@ -357,6 +383,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 28,
      "pct": 100,
      "stars": 3
     }
@@ -379,6 +406,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 30,
      "pct": 100,
      "stars": 3
     }
@@ -401,6 +429,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 27,
      "pct": 100,
      "stars": 3
     }
@@ -423,6 +452,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 38,
      "pct": 100,
      "stars": 3
     }
@@ -445,6 +475,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 22,
      "pct": 100,
      "stars": 3
     }
@@ -467,11 +498,13 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 5,
      "pct": 83,
      "stars": 2
     },
     {
      "attTh": 18,
+     "order": 32,
      "pct": 100,
      "stars": 3
     }
@@ -494,6 +527,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 21,
      "pct": 100,
      "stars": 3
     }
@@ -511,11 +545,19 @@
      "order": 24,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 12,
+     "defTh": 18,
+     "order": 55,
+     "pct": 98,
+     "stars": 2
     }
    ],
    "defenses": [
     {
      "attTh": 18,
+     "order": 33,
      "pct": 100,
      "stars": 3
     }
@@ -538,9 +580,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 26,
-  "pct": 88.9,
-  "stars": 50
+  "attacks": 28,
+  "pct": 93.4,
+  "stars": 52
  },
  "warTag": null
 }

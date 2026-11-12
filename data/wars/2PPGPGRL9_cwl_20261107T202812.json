@@ -3,7 +3,7 @@
  "endTime": "20261109T202810.000Z",
  "final": true,
  "kind": "cwl",
- "lastSeen": "2026-11-12T12:25:57Z",
+ "lastSeen": "2026-11-12T12:43:48Z",
  "members": [
   {
    "attacks": [
@@ -18,6 +18,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 15,
      "pct": 80,
      "stars": 2
     }
@@ -40,6 +41,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 24,
      "pct": 72,
      "stars": 2
     }
@@ -62,6 +64,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 7,
      "pct": 100,
      "stars": 3
     }
@@ -84,6 +87,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 9,
      "pct": 80,
      "stars": 2
     }
@@ -106,6 +110,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 27,
      "pct": 75,
      "stars": 2
     }
@@ -128,6 +133,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 12,
      "pct": 86,
      "stars": 2
     }
@@ -150,6 +156,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 11,
      "pct": 100,
      "stars": 3
     }
@@ -172,6 +179,7 @@
    "defenses": [
     {
      "attTh": 17,
+     "order": 25,
      "pct": 100,
      "stars": 3
     }
@@ -194,6 +202,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 23,
      "pct": 100,
      "stars": 3
     }
@@ -216,6 +225,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 8,
      "pct": 75,
      "stars": 2
     }
@@ -238,6 +248,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 28,
      "pct": 100,
      "stars": 3
     }
@@ -260,6 +271,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 10,
      "pct": 100,
      "stars": 3
     }
@@ -282,6 +294,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 1,
      "pct": 71,
      "stars": 1
     }
@@ -304,6 +317,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 6,
      "pct": 100,
      "stars": 3
     }
@@ -318,6 +332,7 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 26,
      "pct": 86,
      "stars": 2
     }
