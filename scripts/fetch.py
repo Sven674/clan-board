@@ -560,7 +560,7 @@ def cwl_season(wars, roster=None, back=0):
         rounds.append({"day": i, "state": w["state"], "result": res, "opponent": b["name"],
                        "us": a["stars"], "them": b["stars"], "usPct": a["pct"], "themPct": b["pct"],
                        "final": bool(w.get("final")), "teamSize": w.get("teamSize"),
-                       "apm": w.get("attacksPerMember") or 1,
+                       "apm": w.get("attacksPerMember") or 1, "end": w.get("endTime"),
                        "lineup": lineup_detail(w)})
         for m in w["members"]:
             p = players.setdefault(m["tag"], {"tag": m["tag"], "name": m["name"], "th": m.get("th"),
@@ -737,6 +737,7 @@ def build_board(state, live, fetched_at):
             "warWins": info.get("warWins"), "warLosses": info.get("warLosses"),
             "warTies": info.get("warTies"), "warWinStreak": info.get("warWinStreak"),
             "warLeague": (info.get("warLeague") or {}).get("name"),
+            "warLeagueId": (info.get("warLeague") or {}).get("id"),
             "capitalLeague": (info.get("capitalLeague") or {}).get("name"),
             "capitalHall": (info.get("clanCapital") or {}).get("capitalHallLevel"),
             "points": info.get("clanPoints"), "isWarLogPublic": info.get("isWarLogPublic"),
@@ -751,6 +752,7 @@ def build_board(state, live, fetched_at):
                 "totalAttacks", "offensiveReward", "defensiveReward")},
                 participants=len(r["members"]),
                 members=sorted(r["members"], key=lambda x: -x["loot"])) for r in raids_all][::-1],
+            "cwlLeague": None,  # wird unten mit der Saison der Liga gefüllt
             "cwl": with_standings(cwl_season(wars, state.get("cwlRoster", {}).get(clan_tag)),
                                   state.get("cwlStandings", {}).get(clan_tag)),
             # Vorwoche: entscheidet am ersten Liga-Tag, wer aussetzt (vergessen, schwächster letzter Tag)
@@ -758,6 +760,9 @@ def build_board(state, live, fetched_at):
             "regularRounds": regular_rounds(wars),
             "log": cs.get("log", [])[-60:][::-1],
         })
+        cb = board["clans"][-1]
+        if cb.get("cwl") and cb["cwl"].get("season"):
+            cb["cwlLeague"] = (state.get("cwlLeague", {}).get(clan_tag) or {}).get(cb["cwl"]["season"][:7])
     return board
 
 
@@ -780,6 +785,11 @@ def main():
             # Ligatabelle der Saison merken, die Gruppe verschwindet nach Ligaende aus der API
             state.setdefault("cwlStandings", {})[clan_tag] = {"season": group["season"], "table": standings}
         if group and group.get("season"):
+            # Kriegsliga zu Beginn der Liga merken, nach Ligaende zeigt der Vergleich Auf-/Abstieg (Sven, 13.11.2026)
+            wl = info.get("warLeague") or {}
+            if wl.get("id"):
+                state.setdefault("cwlLeague", {}).setdefault(clan_tag, {}).setdefault(
+                    group["season"][:7], {"id": wl["id"], "name": wl.get("name")})
             ours = next((c for c in group.get("clans", []) if c.get("tag") == clan_tag), None)
             if ours:
                 state.setdefault("cwlRoster", {})[clan_tag] = {

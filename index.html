@@ -10,18 +10,20 @@
 :root{
   --bg:#f4f1ea;--card:#fffdf8;--ink:#1f1d1a;--mut:#6d675e;--line:#e3ddd1;
   --acc:#b5651d;--acc2:#2f5d8a;--ok:#2e7d4f;--warn:#c58a00;--bad:#b23a2e;--chip:#efe9dd;
+  --liga:#7a5bb5;--krieg:#1f7f86;--bonus:#a87400;--tausch:#c0447a;
 }
 @media (prefers-color-scheme:dark){:root{
   --bg:#15171b;--card:#1d2026;--ink:#ece8e1;--mut:#9a958c;--line:#2d313a;
   --acc:#e0913f;--acc2:#6fa3d6;--ok:#4fb47a;--warn:#e2b23c;--bad:#e0675a;--chip:#272b33;
+  --liga:#9d82d6;--krieg:#3fa9b0;--bonus:#d2a12e;--tausch:#df6a9c;
 }}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-header{padding:10px 16px 8px;max-width:1200px;margin:0 auto}
+header{padding:10px 16px 8px;max-width:1800px;margin:0 auto}
 h1{margin:0;font-size:22px;letter-spacing:.2px}
 h2{font-size:17px;margin:0 0 10px}
 .sub{color:var(--mut);font-size:13px}
-main{max-width:1200px;margin:0 auto;padding:0 16px 40px}
+main{max-width:1800px;margin:0 auto;padding:0 16px 40px}
 .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
 .tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:10px 18px;min-height:44px;font:inherit;font-size:16px;font-weight:600;border-radius:999px;cursor:pointer}
 .tabs button.on{background:var(--acc);border-color:var(--acc);color:#fff}
@@ -30,7 +32,29 @@ main{max-width:1200px;margin:0 auto;padding:0 16px 40px}
 .kpi b{display:block;font-size:20px}
 .kpi span{color:var(--mut);font-size:12px}
 .clanhead{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.clanhead img{width:52px;height:52px}
+.clanhead img{width:64px;height:64px}
+.headgrid{display:flex;flex-wrap:wrap;justify-content:space-evenly;gap:12px 24px}@media (max-width:760px){.headgrid .kpi:has(.thkpi){flex-basis:100%;order:5}}.headgrid .kpi:has(.thkpi){text-align:center}.headgrid .kpi b.thkpi{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 36px;margin-bottom:2px}.headgrid .kpi b.thkpi .pill.pill{display:inline-flex;flex-direction:column-reverse;align-items:center;font-size:20px;line-height:1.1}.thkpi .thl{color:var(--mut);font-weight:600;font-size:11px;margin-top:2px}
+.grid.tiles{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-top:12px}
+.tile{background:var(--chip);border-radius:12px;padding:10px 14px}.tile > b{display:block;font-size:14px;font-weight:600;line-height:1.35}.tile > span{font-size:12px;color:var(--mut)}
+.tile small{font-size:12px;color:var(--mut);font-weight:600}
+.card.krieg .tile{background:color-mix(in srgb,var(--krieg) 10%,var(--card))}.card.liga .tile{background:color-mix(in srgb,var(--liga) 10%,var(--card))}
+.ligatxt{color:var(--liga)}
+.sec{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px}
+.tag{display:inline-block;border-radius:999px;padding:3px 12px;font-size:14px;font-weight:700;color:#fff}.tag.krieg{background:var(--krieg)}.tag.liga{background:var(--liga)}
+.card.small{padding:10px 16px}.card.small .grid.tiles{margin-top:8px}.card.small .tile{padding:6px 12px}.card.small .tile > b{font-size:14px}
+.duel{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px;margin-top:12px}
+.duel .side{display:flex;align-items:center;gap:10px;min-width:0}.duel .side.gegner{justify-content:flex-end;text-align:right}
+.duel img{width:40px;height:40px;flex:none}.duel .nm{font-weight:700;font-size:15px;overflow-wrap:anywhere}
+.dscore{font-size:20px;font-weight:700;white-space:nowrap}
+.dbar{height:6px;border-radius:999px;background:color-mix(in srgb,var(--bad) 30%,var(--card));overflow:hidden;margin-top:8px}.dbar i{display:block;height:100%;background:var(--ok)}
+@media (max-width:600px){.dscore{font-size:18px}.duel img{width:36px;height:36px}.duel .nm{font-size:14px}}
+.clanname{margin:0;font-size:26px;line-height:1.15}.leagues{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.pill.lg{font-size:13px;padding:2px 10px}
+.headgrid .kpi b{font-size:26px}.headgrid .kpi b.thkpi .pill{font-size:26px}.kpi b .kpisub,.ligakpi b .kpisub{font-size:20px;font-weight:700;color:var(--mut)}
+.ligabox{margin-top:14px;border-left:4px solid var(--liga);background:color-mix(in srgb,var(--liga) 9%,transparent);border-radius:8px;padding:10px 14px}
+.ligatitle{font-weight:700;color:var(--liga);font-size:15px;margin-bottom:6px}
+.ligarow{display:flex;flex-wrap:wrap;gap:8px 28px}.ligakpi b{display:block;font-size:24px}.ligakpi span{color:var(--mut);font-size:12px}
+.ligakpi b.liga{color:var(--liga)}
 .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px}
 table{border-collapse:collapse;width:100%;font-size:14px}
 th,td{padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap;text-align:center}
@@ -71,7 +95,16 @@ input[data-pin]{width:230px!important;font-size:28px!important;letter-spacing:8p
 .pincount{font-size:16px;font-weight:600;min-width:130px}
 .pinbox.ok{background:var(--chip);border-color:var(--ok)}
 .pill.warn{background:var(--warn);color:#fff}
-.pill.liga{background:#7a5bb5;color:#fff;font-weight:600}  /* Liga-Kriege in der Kriegsliste (Sven, 13.11.2026) */
+/* Farben je Funktion (Sven, 13.11.2026): Liga lila, normaler Krieg petrol, Bonus gold, Dorftausch pink,
+   Aktualisieren blau, erledigt/bestätigen grün, Abbrechen neutral. Erledigt bleibt überall grün. */
+.pill.liga{background:var(--liga);color:#fff;font-weight:600}
+.reload.act.ligabtn{background:var(--liga);border-color:var(--liga);color:#fff}
+.reload.act.kriegbtn{background:var(--krieg);border-color:var(--krieg);color:#fff}
+.reload.act.bonusbtn{background:var(--bonus);border-color:var(--bonus);color:#fff}
+.tabs button.liga{border-color:var(--liga);color:var(--liga)}.tabs button.liga.on{background:var(--liga);color:#fff}
+.tabs button.krieg{border-color:var(--krieg);color:var(--krieg)}.tabs button.krieg.on{background:var(--krieg);color:#fff}
+.tabs button.bonus{border-color:var(--bonus);color:var(--bonus)}.tabs button.bonus.on{background:var(--bonus);color:#fff}
+.tabs button.nav{border-color:var(--acc);color:var(--acc)}.tabs button.nav.on{background:var(--acc);color:#fff}  /* Liga-Kriege in der Kriegsliste (Sven, 13.11.2026) */
 .pill.big{font-size:14px;font-weight:600;padding:3px 10px}
 .benchright{display:flex;flex-direction:column;align-items:flex-end;gap:4px;text-align:right;white-space:nowrap}
 select.bigsel{font:inherit;font-size:17px;padding:9px 12px;min-height:46px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
@@ -81,6 +114,7 @@ select.bigsel{font:inherit;font-size:17px;padding:9px 12px;min-height:46px;borde
 .list{margin:0;padding:0;list-style:none}
 .list li{padding:8px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .list li:last-child{border-bottom:0}
+.list li.benchli{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(0,1fr);align-items:center}.benchmid{font-size:14px;text-align:center}
 .list li.warli{display:grid;grid-template-columns:minmax(0,1.3fr) auto minmax(0,1fr);align-items:center}.warres{text-align:center;white-space:nowrap}
 .muted{color:var(--mut)}
 .open-attacks{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
@@ -95,19 +129,20 @@ dialog h3{margin:0 0 4px}
 .dl span:nth-child(odd){color:var(--mut)}
 .close{float:right;border:0;background:none;color:var(--mut);font-size:22px;cursor:pointer}
 .err{color:var(--bad)}
+.kpi b.thkpi{display:flex;flex-wrap:wrap;gap:2px 12px}.kpi b.thkpi .pill{background:none;padding:0;font-size:20px;font-weight:700;color:var(--ink)}
 .thdist{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;align-items:center;font-size:13px}
 details summary{cursor:pointer;list-style-position:outside}
 input[type=search]{width:100%;max-width:280px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;margin-bottom:10px}
 .banner{position:relative;overflow:hidden;color:#fff7e6;border-bottom:3px solid #e6b43c;background:#2a0f2e url("img/coc-banner.webp") center 32%/cover no-repeat}
 .banner::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,6,24,.88) 0%,rgba(18,6,24,.62) 38%,rgba(18,6,24,.08) 70%,rgba(18,6,24,.25) 100%)}
-.banner-in{max-width:1200px;margin:0 auto;padding:22px 16px;min-height:190px;display:flex;align-items:center;gap:22px;position:relative;z-index:1}
+.banner-in{max-width:1800px;margin:0 auto;padding:22px 16px;min-height:190px;display:flex;align-items:center;gap:22px;position:relative;z-index:1}
 .coc-logo{height:120px;width:auto;flex-shrink:0;filter:drop-shadow(0 4px 8px rgba(0,0,0,.6))}
 .titel{border-left:2px solid rgba(230,180,60,.7);padding-left:20px}
 .banner h1{font-size:40px;line-height:1.1;color:#fff7e6;text-shadow:0 2px 6px rgba(0,0,0,.8)}
 .banner .claim{font-size:15px;margin-top:4px;color:#f3d991;text-shadow:0 1px 3px rgba(0,0,0,.8)}
 @media (max-width:640px){.banner-in{min-height:0;padding:16px;gap:14px}.coc-logo{height:62px}.titel{padding-left:12px}.banner h1{font-size:23px}.banner .claim{display:none}}
-footer{max-width:1200px;margin:0 auto;padding:0 16px 30px;font-size:11px;color:var(--mut)}
-.reload.act.swapbtn{font-size:13px;padding:6px 12px;min-height:32px;margin:0;background:var(--acc);border-color:var(--acc);color:#fff}
+footer{max-width:1800px;margin:0 auto;padding:0 16px 30px;font-size:11px;color:var(--mut)}
+.reload.act.swapbtn{font-size:13px;padding:6px 12px;min-height:32px;margin:0;background:var(--tausch);border-color:var(--tausch);color:#fff}
 .note-swap{margin-top:10px;padding:8px 12px;border-left:3px solid #e8833a;background:rgba(232,131,58,.12);border-radius:4px}.note-swap ul{margin:4px 0 0;padding-left:18px}
 </style>
 </head>
@@ -213,40 +248,60 @@ function renderTabs(){
 
 function thDist(list){
   const n = {}; list.forEach(m => { if(m.th) n[m.th] = (n[m.th]||0) + 1; });
-  return Object.keys(n).sort((a,b)=>b-a).map(t => `<span class="pill">RH${t}: ${n[t]}</span>`).join(' ');
+  return Object.keys(n).sort((a,b)=>b-a).map(t => `<span class="pill"><span class="thl">RH${t}</span> ${n[t]}</span>`).join(' ');
 }
 
 function clanHead(c){
-  const games = c.memberList.reduce((a,m)=>a+(m.games||0),0);
-  return `<div class="card">
+  // Kopfkachel (Sven, 13.11.2026): größerer Name, Ligen als Hinweise, vier Kennzahlen, Liga als eigener Block.
+  // Clanpunkte und Clanspiele stehen seit 13.11.2026 unter "Mehr".
+  const lg = (t, v) => v ? `<span class="pill lg">${t} ${esc(v)}</span>` : '';
+  return `<div class="card headcard">
     <div class="clanhead">${c.badge?`<img src="${esc(c.badge)}" alt="">`:''}
-      <div><h2 style="margin:0">${esc(c.name)} <span class="muted" style="font-weight:400;font-size:13px">${esc(c.tag)}</span></h2>
-      <div class="sub">Level ${fmtN(c.level)} · ${esc(c.warLeague||'')} · Clanstadt ${esc(c.capitalLeague||'')}</div></div></div>
-    <div class="grid">
+      <div><h2 class="clanname">${esc(c.name)} <span class="muted" style="font-weight:400;font-size:14px">${esc(c.tag)}</span></h2>
+      <div class="leagues"><span class="pill lg">Level ${fmtN(c.level)}</span>${lg('Krieg:', c.warLeague)}${lg('Clanstadt:', c.capitalLeague)}</div></div></div>
+    <div class="grid headgrid">
       <div class="kpi"><b>${fmtN(c.members)}/50</b><span>Mitglieder</span></div>
-      <div class="kpi"><b>${fmtN(c.warWins)}</b><span>Kriegssiege${c.warLosses!=null?` · ${fmtN(c.warLosses)} Niederl.`:''}</span></div>
+      <div class="kpi"><b class="thkpi">${thDist(c.memberList)}</b><span>Rathäuser</span></div>
+      <div class="kpi"><b>${fmtN(c.warWins)}${c.warLosses!=null?` <span class="kpisub">/ ${fmtN(c.warLosses)}</span>`:''}</b><span>Kriege gewonnen${c.warLosses!=null?' / verloren':''}</span></div>
       <div class="kpi"><b>${fmtN(c.warWinStreak)}</b><span>Siegesserie</span></div>
-      <div class="kpi"><b>${fmtN(c.points)}</b><span>Clanpunkte</span></div>
-      <div class="kpi"><b>${fmtN(games)}</b><span>Clanspiele (Monat)</span></div>
     </div>
-    <div class="thdist"><span class="muted">Rathäuser:</span> ${thDist(c.memberList)}</div>
-    ${ligaLine(c)}
     ${c.isWarLogPublic===false?'<p class="err">Kriegsprotokoll ist privat. In den Clan-Einstellungen auf öffentlich stellen, sonst fehlen Kriegsdaten.</p>':''}
   </div>`;
 }
 
+function warDuel(c, w){
+  // Duell (Sven, 13.11.2026): beide Wappen, Spielstand groß, schmaler Balken, Kennzahlen darunter gut lesbar
+  const lead = w.us.stars > w.opponent.stars ? 'sieg' : w.us.stars < w.opponent.stars ? 'niederlage' : '';
+  const total = w.us.stars + w.opponent.stars, share = total ? Math.round(100 * w.us.stars / total) : 50;
+  const prep = w.state === 'preparation';
+  const made = w.us.attacks != null ? w.us.attacks : (w.members || []).reduce((a, m) => a + m.attacks.length, 0);
+  const tile = (v, t) => `<div class="tile"><b>${v}</b><span>${t}</span></div>`;
+  const open = (w.members || []).filter(m => m.attacks.length < w.apm).sort((a, b) => a.pos - b.pos);
+  return `<div class="duel">
+      <div class="side">${c.badge ? `<img src="${esc(c.badge)}" alt="">` : ''}<div class="nm">${esc(c.name)}</div></div>
+      <div class="dscore"><span class="${lead}">${w.us.stars}</span> : ${w.opponent.stars}</div>
+      <div class="side gegner"><div class="nm">${esc(w.opponent.name)}</div>${w.opponent.badge ? `<img src="${esc(w.opponent.badge)}" alt="">` : ''}</div>
+    </div>
+    ${prep ? '' : `<div class="dbar"><i style="width:${share}%"></i></div>`}
+    <div class="grid tiles">
+      ${prep ? tile(until(w.start).replace('noch ', ''), 'bis Kriegsbeginn') + tile(w.teamSize + ' gegen ' + w.teamSize, 'Aufstellung')
+             + tile(w.teamSize * w.apm, 'Angriffe ausstehend')
+             : tile(w.us.pct.toFixed(1).replace('.', ',') + ' % <small>: ' + w.opponent.pct.toFixed(1).replace('.', ',') + ' %</small>', 'Zerstörung')
+             + tile(made + ' <small>/ ' + w.teamSize * w.apm + '</small>', 'Angriffe gemacht')
+             + tile(`<span class="${w.teamSize * w.apm - made ? 'niederlage' : 'sieg'}">${w.teamSize * w.apm - made}</span>`, 'Angriffe ausstehend')
+             + tile(w.state === 'inWar' ? until(w.end).replace('noch ', '') : 'beendet', w.state === 'inWar' ? 'bis Kriegsende' : dateDE(w.end))}
+    </div>
+    ${!prep ? `<div style="margin-top:10px"><b>${open.length ? 'Noch offen bei ' + open.length + (open.length === 1 ? ' Spieler' : ' Spielern') : 'Alle haben angegriffen'}</b>
+      <div class="open-attacks">${open.map(m => `<span>${m.pos}. ${esc(m.name)} · RH${m.th} · ${w.apm - m.attacks.length} offen</span>`).join('')}</div></div>` : ''}`;
+}
+
+// Kriegskachel: groß mit Duell, wenn ein normaler Krieg läuft, sonst eine schmale Zeile
 function liveWar(c){
-  const w = c.currentWar;
-  if(!w) return `<div class="card"><h2>Aktueller Krieg</h2><span class="muted">Gerade kein Krieg.</span></div>`;
-  const label = {preparation:'Vorbereitung', inWar:'Kampftag läuft', warEnded:'Beendet'}[w.state] || w.state;
-  const open = (w.members||[]).filter(m => m.attacks.length < w.apm).sort((a,b)=>a.pos-b.pos);
-  const time = w.state==='preparation' ? 'Start ' + until(w.start).replace('noch ','in ') : until(w.end);
-  return `<div class="card"><h2>${w.kind==='cwl'?'Clankriegsliga':'Clankrieg'}: ${label}</h2>
-    <div class="warbar"><span class="score">${w.us.stars} : ${w.opponent.stars}</span>
-      <span>gegen <b>${esc(w.opponent.name)}</b><br><span class="muted">${w.us.pct.toFixed(1)} % : ${w.opponent.pct.toFixed(1)} % · ${w.teamSize} gegen ${w.teamSize} · ${time}</span></span></div>
-    ${w.state!=='preparation' ? `<div style="margin-top:10px"><b>${open.length? 'Noch Angriffe offen ('+open.length+')':'Alle haben angegriffen'}</b>
-      <div class="open-attacks">${open.map(m=>`<span>${m.pos}. ${esc(m.name)} · RH${m.th} · ${w.apm-m.attacks.length} offen</span>`).join('')}</div></div>` : ''}
-  </div>`;
+  const w = c.currentWar && c.currentWar.kind !== 'cwl' ? c.currentWar : null;
+  const label = w ? ({preparation: 'Vorbereitung', inWar: 'Kampftag läuft', warEnded: 'Beendet'}[w.state] || w.state) : '';
+  if(!w) return `<div class="card krieg small"><div class="sec"><span class="tag krieg">Clankrieg</span><span class="muted">${ligaRunning(c) ? 'Gerade läuft die Liga, kein normaler Krieg.' : 'Gerade kein Krieg.'}</span></div></div>`;
+  return `<div class="card krieg"><div class="sec"><span class="tag krieg">Clankrieg</span><b>${label}</b><span class="muted">${w.teamSize} gegen ${w.teamSize}</span></div>
+    ${warDuel(c, w)}</div>`;
 }
 
 // Mitglieder (Sven, 11.11.): ohne Vergessen, Clanstadt, Clanspiele, Supertruppen; Werte mittig
@@ -353,15 +408,15 @@ function warMembers(c){
     const defs = m.defenses;
     const best = defs && defs.length ? defs.reduce((x,y) => (y.stars > x.stars || (y.stars === x.stars && y.pct > x.pct)) ? y : x) : null;
     const mm = byTag[m.tag] || {tag: m.tag, name: m.name, war: {}};
-    return `<tr><td>${m.pos}</td><td class="l"><span class="name">${esc(m.name)}</span></td><td>${m.th ?? '–'}</td>
+    return `<tr><td>${m.pos}</td><td class="l"><span class="name">${esc(m.name)}</span></td><td>${ampelHtml(warPrefOf(m.tag))}</td><td>${m.th ?? '–'}</td>
       <td>${angriffText(at[0], laeuft, w.incomplete)}</td>${apm > 1 ? `<td>${angriffText(at[1], laeuft, w.incomplete)}</td>` : ''}
       <td>${defs == null ? '–' : best ? best.stars + '★ ' + best.pct + ' %' : '<span class="muted">–</span>'}</td>
       <td>${defs == null ? '–' : dreierText(defs)}</td>
-      <td>${swapCell(c, mm)}</td></tr>` + swapForm(c, mm, apm > 1 ? 8 : 7);
+      <td>${swapCell(c, mm)}</td></tr>` + swapForm(c, mm, apm > 1 ? 9 : 8);
   }).join('');
   const titel = laeuft ? 'laufender Krieg' : 'letzter Krieg, ' + dateDE(w.end) + (w.incomplete ? ', Ende nicht vollständig erfasst' : '');
   return `<div class="card"><h2>Mitglieder im Krieg ${esc(c.name)} <span class="muted" style="font-size:14px">(${titel} gegen ${esc(w.opponent.name)})</span></h2>
-    <div class="table-wrap"><table><thead><tr><th>#</th><th class="l">Spieler</th><th>RH</th><th>1. Angriff</th>${apm > 1 ? '<th>2. Angriff</th>' : ''}<th title="Bester Angriff des Gegners auf das Dorf">Verteidigung</th><th title="Wie oft der Gegner das Dorf angegriffen hat und bei welchem Versuch es 3 Sterne kassiert hat">Gegner-Angriffe</th><th>Empfehlung</th></tr></thead>
+    <div class="table-wrap"><table><thead><tr><th>#</th><th class="l">Spieler</th><th title="Kriegsbereitschaft im Spiel">Ampel</th><th>RH</th><th>1. Angriff</th>${apm > 1 ? '<th>2. Angriff</th>' : ''}<th title="Bester Angriff des Gegners auf das Dorf">Verteidigung</th><th title="Wie oft der Gegner das Dorf angegriffen hat und bei welchem Versuch es 3 Sterne kassiert hat">Gegner-Angriffe</th><th>Empfehlung</th></tr></thead>
     <tbody>${rowsW}</tbody></table></div>
     ${tipp}
     <p class="legend">Verteidigung = bester Angriff des Gegners auf das Dorf. Gegner-Angriffe = wie oft angegriffen, dahinter „3★ sofort“ (beim ersten Versuch gedreiert), „3★ im 2.“ (erst beim zweiten Versuch) oder „hält“ (nie gedreiert). Empfehlung „Dorf austauschen“ (nur Notiz für die Führung): Das Dorf hat in den Kriegen, in denen es angegriffen wurde, 5× hintereinander schon beim ersten Versuch 3 Sterne kassiert, oder es wurde in den letzten 20 Kriegen des Mitglieds 10× gedreiert. Kriege ohne Angriff auf das Dorf zählen nicht und unterbrechen die Serie nicht. Die Reihenfolge der Angriffe wird erst seit 12.11.2026 gespeichert, davor gilt „beim 1. Versuch“ nur, wenn das Dorf genau einmal angegriffen wurde.</p></div>`;
@@ -418,17 +473,58 @@ function rhCount(rounds, tag){
 // Liga-Kurzfassung in der Kopfkarte (Sven, 11.11.): Siege, Niederlagen, Platzierung der letzten/laufenden Liga.
 // Platzierungen vor Dezember 2026 von Hand (die API gibt die Ligagruppe nach Ligaende nicht mehr heraus).
 const PLATZ_HAND = {'#29PU080G': {'2026-11': 2}, '#2PPGPGRL9': {'2026-11': 5}};
-function ligaLine(c){
+function ligaLine(c){ return ''; }  // seit 13.11.2026 eigene Kachel (ligaCard)
+
+// Kriegsliga vor der Ligawoche, solange fetch.py sie noch nicht gespeichert hat (aus dem Git-Verlauf belegt)
+const LIGA_HAND = {'#29PU080G': {'2026-11': {id: 48000015, name: 'Master League I'}}, '#2PPGPGRL9': {'2026-11': {id: 48000013, name: 'Master League III'}}};
+// Auf-/Abstiegsplätze bei 8 Clans, Stand Saison ab Oktober 2026 (Recherche 13.11.2026; Master I belegt,
+// Master II/III und Crystal nur aus einer Community-Tabelle abgeleitet). Nur für die Prognose während der Liga.
+function ligaSlots(name){
+  name = name || '';
+  if(/Bronze League III/.test(name)) return [3, 0];
+  if(/Bronze/.test(name)) return [3, 1];
+  if(/Silver League III/.test(name)) return [2, 1];
+  if(/Legend/.test(name)) return [0, 2];
+  if(/Master League I$|Champion|Titan/.test(name)) return [1, 2];
+  return [2, 2];
+}
+const ligaRunning = c => { const s = c.cwl; return !!(s && s.rounds && s.rounds.length && s.rounds.filter(r => r.final).length < 7
+  && (s.rounds.some(r => r.state === 'inWar' || r.state === 'preparation'))); };
+
+function ligaCard(c){
   const s = c.cwl; if(!s || !s.rounds || !s.rounds.length) return '';
   const fin = s.rounds.filter(r => r.final), n = k => fin.filter(r => r.result === k).length;
   const st = (s.standings || []).find(t => t.tag === c.tag);
   const rank = st ? st.rank : (PLATZ_HAND[c.tag] || {})[s.season];
+  const size = s.standings ? s.standings.length : 8;
   const [y, m] = s.season.split('-'), mon = new Date(+y, +m-1, 1).toLocaleDateString('de-DE', {month: 'long'});
-  const pl = (k, one, many) => n(k) + ' ' + (n(k) === 1 ? one : many);
-  return `<div class="thdist"><span class="muted">Liga ${mon}${fin.length < 7 ? ' (läuft)' : ''}:</span>
-    <span class="pill ok">${pl('sieg', 'Sieg', 'Siege')}</span> <span class="pill bad">${pl('niederlage', 'Niederlage', 'Niederlagen')}</span>
-    ${n('unentschieden') ? `<span class="pill">${pl('unentschieden', 'Unentschieden', 'Unentschieden')}</span>` : ''}
-    ${rank ? `<span class="pill"><b>${fin.length < 7 ? 'Aktuell ' : 'Endplatzierung: '}Platz ${rank}${st ? ' von ' + s.standings.length : ''}</b></span>` : ''}</div>`;
+  const laeuft = ligaRunning(c);
+  const tile = (v, t) => `<div class="tile"><b>${v}</b><span>${t}</span></div>`;
+  // Auf-/Abstieg: nach der Liga aus dem Vergleich der Kriegsliga vorher/nachher, während der Liga als Prognose
+  const vorher = c.cwlLeague || (LIGA_HAND[c.tag] || {})[s.season];
+  const lastEnd = fin.length ? Math.max(...fin.map(r => +parseT(r.end) || 0)) : 0;
+  let move = null;
+  if(!laeuft && vorher && c.warLeagueId && lastEnd && Date.now() - lastEnd > 36 * 3600e3){
+    move = c.warLeagueId > vorher.id ? ['Aufstieg', 'nach ' + c.warLeague, 'sieg']
+         : c.warLeagueId < vorher.id ? ['Abstieg', 'nach ' + c.warLeague, 'niederlage']
+         : ['Klassenerhalt', 'bleibt ' + c.warLeague, ''];
+  } else if(!laeuft && vorher && !c.warLeagueId && c.warLeague){
+    move = c.warLeague === vorher.name ? ['Klassenerhalt', 'bleibt ' + c.warLeague, ''] : null;
+  } else if(rank){
+    const [up, down] = ligaSlots(vorher ? vorher.name : c.warLeague);
+    move = rank <= up ? ['Aufstiegsplatz', 'Prognose', 'sieg'] : rank > size - down ? ['Abstiegsplatz', 'Prognose', 'niederlage'] : ['Klassenerhalt', 'Prognose', ''];
+  }
+  const kpis = `<div class="grid tiles">
+      ${rank ? tile(`<span class="ligatxt">Platz ${rank}</span> <small>von ${size}</small>`, laeuft ? 'aktuell' : 'Endplatzierung') : ''}
+      ${tile(`<span class="sieg">${n('sieg')}</span> <small>:</small> <span class="niederlage">${n('niederlage')}</span>`, 'Siege : Niederlagen')}
+      ${move ? tile(`<span class="${move[2]}">${move[0]}</span>`, move[1]) : ''}
+    </div>`;
+  const w = c.currentWar && c.currentWar.kind === 'cwl' ? c.currentWar : null;
+  const day = laeuft ? (s.rounds.find(r => r.state === 'inWar') || s.rounds.find(r => r.state === 'preparation') || {}).day : null;
+  const label = w ? ({preparation: 'Vorbereitung', inWar: 'Kampftag läuft', warEnded: 'Beendet'}[w.state] || '') : '';
+  return `<div class="card liga${laeuft ? '' : ' small'}"><div class="sec"><span class="tag liga">Liga ${mon}${day ? ' · Tag ' + day + ' von 7' : ''}</span>${laeuft ? `<b>${label}</b>` : '<span class="muted">beendet</span>'}</div>
+    ${laeuft && w ? warDuel(c, w) : ''}
+    ${kpis}</div>`;
 }
 
 // ---------- Aussetz-Empfehlung ----------
@@ -484,9 +580,9 @@ function benchCalc(rounds, roster, teamSize, vol, ban, fair, skip, carry){
       // Schwacher Angriff auf ein kleineres Rathaus wiegt schwerer (Sven, 07.11., nur Ü40 Pur)
       down = l.th ? weak.filter(x => x[2] && x[2] < l.th).length : 0;
       if(weak.length && !pflicht) pflicht = 'nur ' + Math.min(...weak.map(x => x[0])) + '★' + (down ? ' auf kleineres Rathaus' : '');
-      if(l.att.length) why.push({t: 'Angriff ' + l.att.map(x => x[0] + '★ ' + x[1] + ' %' + (x[2] ? ' auf RH' + x[2] + rhDiff(l.th, x[2]) : '')).join(', '), bad: !!weak.length});
-      else if(!missed) why.push({t: 'greift noch an'});
-      if(l.def) why.push({t: 'Verteidigung ' + l.def[0] + '★ ' + l.def[1] + ' %'});
+      if(l.att.length) why.push({mid: true, t: 'Angriff ' + l.att.map(x => x[0] + '★ ' + x[1] + ' %' + (x[2] ? ' auf RH' + x[2] + rhDiff(l.th, x[2]) : '')).join(', '), bad: !!weak.length});
+      else if(!missed) why.push({mid: true, t: 'greift noch an'});
+      if(l.def) why.push({mid: true, t: 'Verteidigung ' + l.def[0] + '★ ' + l.def[1] + ' %'});
       if(!pflicht) why.push({t: satWhy});
       group = missed ? -1 : pflicht ? 0 : 1;   // Vergesser ganz vorn (Sven, 07.11.)
     }
@@ -561,7 +657,7 @@ function doneForm(opt){
         `<option value="${esc(m.tag)}" ${m.tag === edit.by ? 'selected' : ''}>${esc(m.name)}${m.clan !== opt.clan ? ' (' + esc(m.clanName) + ')' : ''}</option>`).join('')}</select></label></p>`;
   return `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
     ${ask}${msgHtml(form)}
-    <p class="saverow">${pinField(form)}${btn('save', form, edit.undo ? 'Zurücknehmen' : 'Als fertig melden')} ${btn('cancel', form, 'Abbrechen')}${pinForget(form)}</p></div>`;
+    <p class="saverow">${pinField(form)}${btn('save', form, edit.undo ? 'Zurücknehmen' : 'Als fertig melden', edit.undo ? '' : 'okbtn')} ${btn('cancel', form, 'Abbrechen')}${pinForget(form)}</p></div>`;
 }
 
 function benchActions(opt, rows){
@@ -569,7 +665,8 @@ function benchActions(opt, rows){
   const v = volForm(opt, rows), d = doneForm(opt);
   if(v) return v;
   if(d) return d;
-  return msgHtml(vf) + msgHtml(df) + `<p style="margin-top:10px">${volCount(opt) ? btn('edit', vf, 'Freiwillige Aussetzer: ' + volCount(opt) + ' eingetragen', 'okbtn') : btn('edit', vf, 'Freiwillige Aussetzer eintragen')} ${doneOf(opt) ? btn('edit', df, 'Aufstellung ist fertig', 'okbtn') : btn('edit', df, 'Aufstellung fertig melden')}</p>`;
+  const fc = /^Liga/.test(opt.label) ? 'ligabtn' : 'kriegbtn';
+  return msgHtml(vf) + msgHtml(df) + `<p style="margin-top:10px">${volCount(opt) ? btn('edit', vf, 'Freiwillige Aussetzer: ' + volCount(opt) + ' eingetragen', 'okbtn') : btn('edit', vf, 'Freiwillige Aussetzer eintragen', fc)} ${doneOf(opt) ? btn('edit', df, 'Aufstellung ist fertig', 'okbtn') : btn('edit', df, 'Aufstellung fertig melden', fc)}</p>`;
 }
 
 function volForm(opt, rows){
@@ -585,7 +682,7 @@ function volForm(opt, rows){
     <div class="volgrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:2px 12px">
     ${names.map(r => `<label><input type="checkbox" data-f="tags" data-form="${esc(form)}" data-t="${esc(r.tag)}" ${edit.tags.includes(r.tag) ? 'checked' : ''}> ${esc(r.name)}</label>`).join('')}
     </div>${msgHtml(form)}
-    <p class="saverow">${pinField(form)}${btn('save', form, 'Speichern')} ${btn('cancel', form, 'Abbrechen')}${pinForget(form)}</p></div>`;
+    <p class="saverow">${pinField(form)}${btn('save', form, 'Speichern', 'okbtn')} ${btn('cancel', form, 'Abbrechen')}${pinForget(form)}</p></div>`;
 }
 
 function benchCard(title, calc, unit, opt){
@@ -597,17 +694,20 @@ function benchCard(title, calc, unit, opt){
   const fertig = !!(opt && doneOf(opt) && calc.target);
   const clash = calc.target && !fertig ? sit.filter(r => r.inTarget) : [];
   const actual = fertig ? [...calc.rows.filter(r => r.inTarget === false && r.vol), ...calc.rows.filter(r => r.inTarget === false && !r.vol)] : [];
-  const whyHtml = r => r.why.map(w => `<span class="${w.bad ? 'err' : 'muted'}"${w.bad ? ' style="font-weight:600"' : ''}>${esc(w.t)}</span>`).join('<span class="muted"> · </span>');
+  // Drei Spalten (Sven, 13.11.2026): links Spieler und Grund, Mitte Angriff und Verteidigung, rechts Status
+  const whyOne = w => `<span class="${w.bad ? 'err' : 'muted'}"${w.bad ? ' style="font-weight:600"' : ''}>${esc(w.t)}</span>`;
+  const whyHtml = r => r.why.filter(w => !w.mid).map(whyOne).join('<span class="muted"> · </span>');
+  const midHtml = r => `<span class="benchmid">${r.why.filter(w => w.mid).map(whyOne).join('<br>')}</span>`;
   const volTag = r => r.rot ? ' <span class="pill">freiwillig / Ampel</span> ' + ampelHtml('out') : r.vol ? ' <span class="pill">freiwillig</span>' : '';
-  const left = r => `<span><b>${esc(r.name)}</b>${volTag(r)}${r.open ? ' <span class="openbadge">noch nicht angegriffen</span>' : ''}<br><span style="font-size:14px">${whyHtml(r)}</span></span>`;
+  const left = r => `<span><b>${esc(r.name)}</b>${volTag(r)}${r.open ? ' <span class="openbadge">noch nicht angegriffen</span>' : ''}<br><span style="font-size:14px">${whyHtml(r)}</span></span>${midHtml(r)}`;
   const satTxt = r => `<span class="muted" style="font-size:12px">${r.sat ? r.sat + '× ausgesetzt' : 'nie ausgesetzt'}</span>`;
   const right = (r, status) => `<span class="benchright"><span>${status}</span>${satTxt(r)}</span>`;
   const list = fertig
-    ? (actual.length ? `<ul class="list">${actual.map(r => `<li>${left(r)}${right(Object.assign({}, r, {group: 9}), '<span class="pill ok">setzt aus</span>')}</li>`).join('')}</ul>`
+    ? (actual.length ? `<ul class="list">${actual.map(r => `<li class="benchli">${left(r)}${right(Object.assign({}, r, {group: 9}), '<span class="pill ok">setzt aus</span>')}</li>`).join('')}</ul>`
                      : '<p>Niemand setzt aus.</p>')
     : calc.bench === 0
     ? '<p>Alle können spielen, es muss niemand aussetzen.</p>'
-    : `<ul class="list">${sit.map(r => `<li>${left(r)}${right(r, r.inTarget===true?'<span class="pill bad">noch aufgestellt</span>':r.inTarget===false?'<span class="pill ok">umgesetzt</span>':'')}</li>`).join('')}</ul>`;
+    : `<ul class="list">${sit.map(r => `<li class="benchli">${left(r)}${right(r, r.inTarget===true?'<span class="pill bad">noch aufgestellt</span>':r.inTarget===false?'<span class="pill ok">umgesetzt</span>':'')}</li>`).join('')}</ul>`;
   const table = calc.rows.map((r,i) => `<tr class="${r.sit?'openrow':''}">
     <td>${i+1}. <span class="name">${esc(r.name)}</span>${r.open ? ` <span class="openbadge">${r.open} offen</span>` : ''}${volTag(r)}${r.pflicht ? ` <span class="pill bad">Pflicht</span>` : ''}</td>
     <td>${r.lastAtt ? r.lastAtt.map(x => x[0]+'★ '+x[1]+' %').join(', ') : '–'}</td>
@@ -875,7 +975,7 @@ function bonusCard(c){
     : `<b>${n} Boni</b>, die besten ${Math.max(WB.vorschlaege, n)} vorgeschlagen.</p>`);
   const given = info.bonus.length, allGiven = n != null && n > 0 && given >= n;
   let body = `<p style="margin-top:10px">${allGiven ? btn('edit', form, 'Boni verteilt (' + given + ' von ' + n + ')', 'okbtn')
-    : btn('edit', form, 'Bonus-Angaben bearbeiten' + (n ? ' (' + given + ' von ' + n + ' verteilt)' : ''))}</p>`;
+    : btn('edit', form, 'Bonus-Angaben bearbeiten' + (n ? ' (' + given + ' von ' + n + ' verteilt)' : ''), 'bonusbtn')}</p>`;
   if(edit){
     const cb = (f, tag) => `<input type="checkbox" data-f="${f}" data-form="${esc(form)}" data-t="${esc(tag)}" ${info[f].includes(tag) ? 'checked' : ''}>`;
     body = `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
@@ -885,7 +985,7 @@ function bonusCard(c){
       <div class="table-wrap"><table><thead><tr><th>Spieler</th><th>Will keinen Bonus</th><th>Bonus ${monthDE(info.season)}</th><th>Bonus ${monthDE(info.prev)}</th></tr></thead><tbody class="fdedit">
       ${[...roster].sort((a,b) => a.name.localeCompare(b.name, 'de')).map(m => `<tr><td><span class="name">${esc(m.name)}</span></td><td>${cb('verzicht', m.tag)}</td><td>${cb('bonus', m.tag)}</td><td>${cb('prevBonus', m.tag)}</td></tr>`).join('')}
       </tbody></table></div>
-      <p class="saverow">${pinField(form)}${btn('save', form, 'Speichern')} ${btn('cancel', form, 'Abbrechen')}${pinForget(form)}</p></div>`;
+      <p class="saverow">${pinField(form)}${btn('save', form, 'Speichern', 'okbtn')} ${btn('cancel', form, 'Abbrechen')}${pinForget(form)}</p></div>`;
   }
   return `<div class="card"><h2>Bonus-Empfehlung ${esc(c.name)} (Liga ${monthDE(s.season)})</h2>
     ${head}${list}${outList}${msgHtml(form)}${body}
@@ -915,7 +1015,14 @@ function logText(l){
 function moreView(){
   const sec = (k, title, fn) => `<details data-more="${k}" ${(S.more || {})[k] ? 'open' : ''} style="margin:10px 0">
     <summary style="font-weight:700;font-size:19px;padding:12px 4px">${title}</summary>${fn()}</details>`;
-  return sec('clanstadt', 'Clanstadt', raidList) + sec('clanspiele', 'Clanspiele', gamesList) + sec('log', 'Protokoll', logList);
+  return sec('clanwerte', 'Clanpunkte und Clanspiele', clanWerte) + sec('clanstadt', 'Clanstadt', raidList) + sec('clanspiele', 'Clanspiele', gamesList) + sec('log', 'Protokoll', logList);
+}
+function clanWerte(){
+  const clans = S.clan==='alle' ? S.data.clans : [S.data.clans[S.clan]];
+  return clans.map(c => { const games = c.memberList.reduce((a,m)=>a+(m.games||0),0);
+    return `<div class="card"><h2>${esc(c.name)}</h2><div class="grid">
+      <div class="kpi"><b>${fmtN(c.points)}</b><span>Clanpunkte (aus den Trophäen der Mitglieder)</span></div>
+      <div class="kpi"><b>${fmtN(games)}</b><span>Clanspiele-Punkte diesen Monat (22. bis 28.)</span></div></div></div>`; }).join('');
 }
 
 // Reiter "Bonus": Empfehlung und Verlauf der eingetragenen Boni
@@ -981,13 +1088,15 @@ function render(){
   renderTabs();
   const app = document.getElementById('app');
   let html = '';
-  if(S.clan !== 'alle'){ const c=S.data.clans[S.clan]; html += clanHead(c) + liveWar(c); }
-  else html += S.data.clans.map(liveWar).join('');
+  // Kacheln (Sven, 13.11.2026): Was gerade läuft (Liga oder Krieg), steht groß oben, das andere klein darunter
+  const top = c => ligaRunning(c) ? ligaCard(c) + liveWar(c) : liveWar(c) + ligaCard(c);
+  if(S.clan !== 'alle'){ const c=S.data.clans[S.clan]; html += clanHead(c) + top(c); }
+  else html += S.data.clans.map(top).join('');
   // Reiter (Sven, 11.11.): Bonus eigener Reiter, Clanstadt/Clanspiele/Protokoll unter "Mehr"
   const views = [['mitglieder','Mitglieder'],['kriege','Kriege'],['liga','Liga'],['bonus','Bonus'],['mehr','Mehr']];
   const fns = {mitglieder:memberTable, kriege:warList, liga:cwlView, bonus:bonusView, mehr:moreView};
   if(!fns[S.view]) S.view = ['clanstadt','clanspiele','log'].includes(S.view) ? 'mehr' : 'mitglieder';
-  html += `<div class="tabs" id="viewTabs">${views.map(([k,l])=>`<button data-v="${k}" class="${S.view===k?'on':''}">${l}</button>`).join('')}</div>`;
+  html += `<div class="tabs" id="viewTabs">${views.map(([k,l])=>`<button data-v="${k}" class="${S.view===k?'on':''}${({liga:' liga',kriege:' krieg',bonus:' bonus',mitglieder:' nav',mehr:' nav'})[k]||''}">${l}</button>`).join('')}</div>`;
   html += fns[S.view]();
   app.innerHTML = html;
   app.querySelectorAll('details[data-more]').forEach(d => d.ontoggle = () => { S.more = Object.assign({}, S.more, {[d.dataset.more]: d.open}); });
