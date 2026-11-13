@@ -367,10 +367,10 @@ function warList(){
   const clans = S.clan==='alle' ? S.data.clans : [S.data.clans[S.clan]];
   return clans.map(c => warMembers(c) + regularBench(c) + `<div class="card"><h2>Kriege ${esc(c.name)}</h2>${
     c.wars.length ? `<ul class="list">${c.wars.map(w => `<li><span>
-      <b class="${w.result}">${{sieg:'Sieg',niederlage:'Niederlage',unentschieden:'Unentschieden',offen:'läuft'}[w.result]}</b>
+      <b class="${w.result}">${w.result === 'offen' && w.state === 'preparation' ? 'Vorbereitung' : {sieg:'Sieg',niederlage:'Niederlage',unentschieden:'Unentschieden',offen:'läuft',unklar:'beendet'}[w.result]}</b>
       ${w.kind==='cwl'?'<span class="pill">Liga</span>':''} gegen ${esc(w.opponent.name)}<br>
       <span class="muted">${dateDE(w.end)} · ${w.us.stars}:${w.opponent.stars} Sterne · ${w.teamSize} gegen ${w.teamSize}</span></span>
-      <span class="muted" style="text-align:right">${w.final ? (w.missed.length ? 'Vergessen: '+w.missed.map(m=>esc(m.name)+(m.missed>1?' ('+m.missed+')':'')).join(', ') : 'Keiner vergessen') : ''}</span></li>`).join('')}</ul>`
+      <span class="muted" style="text-align:right">${w.incomplete ? 'Ende nicht vollständig erfasst, Ergebnis unklar' : w.final ? (w.missed.length ? 'Vergessen: '+w.missed.map(m=>esc(m.name)+(m.missed>1?' ('+m.missed+')':'')).join(', ') : 'Keiner vergessen') : ''}</span></li>`).join('')}</ul>`
     : '<span class="muted">Noch keine Kriege erfasst. Die Aufzeichnung beginnt mit dem ersten Abruf.</span>'}</div>`).join('');
 }
 

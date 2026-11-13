@@ -627,11 +627,8 @@ def last_war_detail(wars_sorted, war_summary):
     fin = [w for i, w in enumerate(wars_sorted) if w.get("final") or i < len(wars_sorted) - 1]
     if not fin:
         return None
-    d = war_summary(fin[-1])
+    d = war_summary(fin[-1], True)  # setzt bei fehlendem Kriegsende incomplete und state "warEnded"
     d["members"] = fin[-1]["members"]
-    if not fin[-1].get("final"):
-        d["incomplete"] = True
-        d["state"] = "warEnded"  # sonst zeigt die Kriegsliste ihn als "laufender Krieg"
     return d
 
 
@@ -686,9 +683,13 @@ def build_board(state, live, fetched_at):
                 "boosts": (t.get("profile") or {}).get("boosts", []),
             })
 
-        def war_summary(w):
+        def war_summary(w, ended=False):
+            # ended: danach hat schon ein neuer Krieg begonnen, das Kriegsende wurde aber nicht
+            # mehr abgerufen (13.11.2026). Ergebnis dann unklar, Stand ist nur der letzte Abruf.
             res = "offen"
-            if w.get("final"):
+            if not w.get("final") and ended:
+                res = "unklar"
+            elif w.get("final"):
                 a, b = w["us"], w["opponent"]
                 if (a["stars"], a["pct"]) > (b["stars"], b["pct"]):
                     res = "sieg"
@@ -699,8 +700,10 @@ def build_board(state, live, fetched_at):
             apm = w.get("attacksPerMember") or 2
             missed = [{"name": m["name"], "tag": m["tag"], "missed": apm - len(m["attacks"])}
                       for m in w["members"] if len(m["attacks"]) < apm]
+            incomplete = ended and not w.get("final")
             return {
-                "kind": w["kind"], "state": w["state"], "final": w.get("final"),
+                "kind": w["kind"], "state": "warEnded" if incomplete else w["state"],
+                "final": w.get("final"), "incomplete": incomplete,
                 "start": w.get("startTime"), "end": w.get("endTime"),
                 "teamSize": w.get("teamSize"), "apm": apm,
                 "us": w["us"], "opponent": w["opponent"], "result": res,
@@ -731,7 +734,8 @@ def build_board(state, live, fetched_at):
             "currentWar": current_detail,
             # Zuletzt beendeter Krieg mit Mitgliedern: für die Kriegsliste, wenn gerade keiner läuft
             "lastWar": last_war_detail(wars_sorted, war_summary),
-            "wars": [war_summary(w) for w in wars_sorted[-20:]][::-1],
+            "wars": [war_summary(w, i < len(wars_sorted) - 1)
+                     for i, w in enumerate(wars_sorted)][-20:][::-1],
             "raids": [dict({k: r.get(k) for k in (
                 "startTime", "endTime", "state", "capitalTotalLoot", "raidsCompleted",
                 "totalAttacks", "offensiveReward", "defensiveReward")},
