@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 73387,
+ "capitalTotalLoot": 127322,
  "defensiveReward": 0,
  "endTime": "20261116T070000.000Z",
  "members": [
@@ -11,6 +11,13 @@
    "tag": "#92L228UR"
   },
   {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 21297,
+   "name": "--SVEN--674--",
+   "tag": "#200PCP8QQ"
+  },
+  {
    "attacks": 3,
    "limit": 6,
    "loot": 12045,
@@ -18,23 +25,30 @@
    "tag": "#2UCJYGU0"
   },
   {
-   "attacks": 5,
+   "attacks": 6,
    "limit": 6,
-   "loot": 23180,
+   "loot": 25442,
    "name": "grautvornixe",
    "tag": "#PRRQ29JP"
   },
   {
-   "attacks": 3,
+   "attacks": 6,
    "limit": 6,
-   "loot": 12137,
+   "loot": 19797,
+   "name": "1000000",
+   "tag": "#V029UQCU"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 22716,
    "name": "Captain Future",
    "tag": "#8PGGGL2U8"
   }
  ],
  "offensiveReward": 0,
- "raidsCompleted": 1,
+ "raidsCompleted": 2,
  "startTime": "20261113T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 17
+ "totalAttacks": 33
 }
