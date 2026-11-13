@@ -320,7 +320,7 @@ function swapCell(c, m){
   S.saves[form] = () => postFd(form, {type: 'getauscht', clan: c.tag, tag: m.tag}, () => applyGt(c.tag, m.tag));
   if(S.edit[form]) return btn('cancel', form, 'Dorftausch empfehlen', 'swapbtn');  // Frage ist offen, Meldungen stehen dort
   if(st.offen) return btn('edit', form, 'Dorftausch empfehlen', 'swapbtn').replace('<button', `<button title="${esc(st.grund)}"`) + msgHtml(form);
-  return (st.gt ? `<span style="font-size:13px;font-weight:600;color:var(--ok)">Tausch empfohlen am ${dateDE(st.gt)}</span>` : '') + msgHtml(form);
+  return (st.gt ? `<span style="font-size:13px;font-weight:600;color:var(--ok)">Tausch empfohlen am ${dateDE(st.gt)}</span>` : '') + ((S.msg[form] || {}).err ? msgHtml(form) : '');  // Erfolgsmeldung reicht als grüner Text (Sven, 13.11.)
 }
 function swapForm(c, m, cols){
   const inner = swapFrage(c, m);
