@@ -621,11 +621,17 @@ def regular_rounds(wars, n=6):
 
 
 def last_war_detail(wars_sorted, war_summary):
-    fin = [w for w in wars_sorted if w.get("final")]
+    # Vorbei ist ein Krieg auch dann, wenn danach schon ein neuer begonnen hat. Fällt der
+    # Abruf rund ums Kriegsende aus (GitHub lässt geplante Läufe ausfallen), bleibt der
+    # gespeicherte Stand sonst auf "inWar" stehen und das Board zeigt einen älteren Krieg (13.11.2026).
+    fin = [w for i, w in enumerate(wars_sorted) if w.get("final") or i < len(wars_sorted) - 1]
     if not fin:
         return None
     d = war_summary(fin[-1])
     d["members"] = fin[-1]["members"]
+    if not fin[-1].get("final"):
+        d["incomplete"] = True
+        d["state"] = "warEnded"  # sonst zeigt die Kriegsliste ihn als "laufender Krieg"
     return d
 
 
