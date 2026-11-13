@@ -71,6 +71,7 @@ input[data-pin]{width:230px!important;font-size:28px!important;letter-spacing:8p
 .pincount{font-size:16px;font-weight:600;min-width:130px}
 .pinbox.ok{background:var(--chip);border-color:var(--ok)}
 .pill.warn{background:var(--warn);color:#fff}
+.pill.liga{background:#7a5bb5;color:#fff;font-weight:600}  /* Liga-Kriege in der Kriegsliste (Sven, 13.11.2026) */
 .pill.big{font-size:14px;font-weight:600;padding:3px 10px}
 .benchright{display:flex;flex-direction:column;align-items:flex-end;gap:4px;text-align:right;white-space:nowrap}
 select.bigsel{font:inherit;font-size:17px;padding:9px 12px;min-height:46px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
@@ -370,7 +371,7 @@ function warList(){
   const clans = S.clan==='alle' ? S.data.clans : [S.data.clans[S.clan]];
   return clans.map(c => warMembers(c) + regularBench(c) + `<div class="card"><h2>Kriege ${esc(c.name)}</h2>${
     c.wars.length ? `<ul class="list">${c.wars.map(w => `<li class="warli"><span>
-      ${w.kind==='cwl'?'<span class="pill">Liga</span> ':''}gegen <b>${esc(w.opponent.name)}</b><br>
+      ${w.kind==='cwl'?'<span class="pill liga">Liga</span> ':''}gegen <b>${esc(w.opponent.name)}</b><br>
       <span class="muted">${dateDE(w.end)} · ${w.teamSize} gegen ${w.teamSize}</span></span>
       <span class="warres"><b class="${w.result}">${w.result === 'offen' && w.state === 'preparation' ? 'Vorbereitung' : {sieg:'Sieg',niederlage:'Niederlage',unentschieden:'Unentschieden',offen:'läuft',unklar:'beendet'}[w.result]}</b><br>
       ${w.state === 'preparation' ? '' : `<span>${w.us.stars} : ${w.opponent.stars} ★</span>`}</span>
