@@ -23,7 +23,7 @@ h2{font-size:17px;margin:0 0 10px}
 .sub{color:var(--mut);font-size:13px}
 main{max-width:1200px;margin:0 auto;padding:0 16px 40px}
 .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
-.tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 12px;border-radius:999px;font:inherit;cursor:pointer}
+.tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:10px 18px;min-height:44px;font:inherit;font-size:16px;font-weight:600;border-radius:999px;cursor:pointer}
 .tabs button.on{background:var(--acc);border-color:var(--acc);color:#fff}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
@@ -57,6 +57,8 @@ tbody tr.openrow:hover td{background:var(--openbg);filter:brightness(.97)}
 .pill.ok{background:var(--ok);color:#fff}.pill.bad{background:var(--bad);color:#fff}
 .reload{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:4px 12px;margin-left:8px;cursor:pointer}
 .reload:disabled{opacity:.6}
+/* Aktualisieren: gleich groß wie die Reiter, kräftiges Blau (Sven, 13.11.2026) */
+#reload{font-size:16px;padding:10px 18px;min-height:44px;background:var(--acc2);border-color:var(--acc2);color:#fff}
 .reload.okbtn{background:var(--ok);border-color:var(--ok);color:#fff}
 .reload.act{font-size:16px;padding:11px 20px;min-height:46px;margin:4px 8px 4px 0}
 input[data-f][type=checkbox]{width:26px;height:26px;vertical-align:middle;cursor:pointer;accent-color:var(--ok)}
