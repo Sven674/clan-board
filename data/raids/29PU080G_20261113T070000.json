@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 189153,
+ "capitalTotalLoot": 211823,
  "defensiveReward": 0,
  "endTime": "20261116T070000.000Z",
  "members": [
@@ -23,6 +23,20 @@
    "loot": 10428,
    "name": "=RS=",
    "tag": "#GLPVGVR9"
+  },
+  {
+   "attacks": 1,
+   "limit": 5,
+   "loot": 5450,
+   "name": "Schlumpfmausi",
+   "tag": "#LG09VQ8J"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 17220,
+   "name": "pflegephall",
+   "tag": "#LQLVPQ00"
   },
   {
    "attacks": 6,
@@ -75,8 +89,8 @@
   }
  ],
  "offensiveReward": 0,
- "raidsCompleted": 2,
+ "raidsCompleted": 3,
  "startTime": "20261113T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 49
+ "totalAttacks": 56
 }
