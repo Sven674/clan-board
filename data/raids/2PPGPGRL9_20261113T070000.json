@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 32248,
+ "capitalTotalLoot": 42484,
  "defensiveReward": 0,
  "endTime": "20261116T070000.000Z",
  "members": [
@@ -9,11 +9,18 @@
    "loot": 32248,
    "name": "Zool",
    "tag": "#292UQJ2LJ"
+  },
+  {
+   "attacks": 2,
+   "limit": 6,
+   "loot": 10236,
+   "name": "Odin",
+   "tag": "#92RP8G9"
   }
  ],
  "offensiveReward": 0,
  "raidsCompleted": 1,
  "startTime": "20261113T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 6
+ "totalAttacks": 8
 }
