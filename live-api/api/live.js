@@ -43,7 +43,8 @@ function compactWar(war, clanTag, kind) {
     kind, state: war.state, final: war.state === "warEnded", teamSize: war.teamSize, apm,
     start: war.startTime, end: war.endTime,
     us: { stars: us.stars || 0, pct: us.destructionPercentage || 0, attacks: us.attacks || 0 },
-    opponent: { name: them.name, tag: them.tag, stars: them.stars || 0, pct: them.destructionPercentage || 0 },
+    opponent: { name: them.name, tag: them.tag, stars: them.stars || 0, pct: them.destructionPercentage || 0,
+                badge: (them.badgeUrls || {}).small },
     members,
   };
 }

@@ -1129,6 +1129,9 @@ function mergeLive(live){
     CLAN_FIELDS.forEach(k => { if(lc[k] !== undefined) c[k] = lc[k]; });
     const alt = c.currentWar;
     c.currentWar = lc.currentWar;
+    // Gegnerwappen aus dem gespeicherten Stand übernehmen, falls die Live-Abfrage keins liefert (13.11.2026)
+    if(alt && lc.currentWar && lc.currentWar.opponent && !lc.currentWar.opponent.badge && alt.opponent && alt.opponent.tag === lc.currentWar.opponent.tag)
+      lc.currentWar.opponent.badge = alt.opponent.badge;
     if(alt && lc.currentWar && alt.start === lc.currentWar.start && alt.members){
       const altDef = {}; alt.members.forEach(m => altDef[m.tag] = m.defenses);
       lc.currentWar.members.forEach(m => { if(m.defenses === undefined) m.defenses = altDef[m.tag]; });
