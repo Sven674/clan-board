@@ -78,6 +78,7 @@ select.bigsel{font:inherit;font-size:17px;padding:9px 12px;min-height:46px;borde
 .list{margin:0;padding:0;list-style:none}
 .list li{padding:8px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .list li:last-child{border-bottom:0}
+.list li.warli{display:grid;grid-template-columns:minmax(0,1.3fr) auto minmax(0,1fr);align-items:center}.warres{text-align:center;white-space:nowrap}
 .muted{color:var(--mut)}
 .open-attacks{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .open-attacks span{background:var(--chip);border-radius:6px;padding:3px 8px;font-size:13px}
@@ -366,11 +367,12 @@ function warMembers(c){
 function warList(){
   const clans = S.clan==='alle' ? S.data.clans : [S.data.clans[S.clan]];
   return clans.map(c => warMembers(c) + regularBench(c) + `<div class="card"><h2>Kriege ${esc(c.name)}</h2>${
-    c.wars.length ? `<ul class="list">${c.wars.map(w => `<li><span>
-      <b class="${w.result}">${w.result === 'offen' && w.state === 'preparation' ? 'Vorbereitung' : {sieg:'Sieg',niederlage:'Niederlage',unentschieden:'Unentschieden',offen:'läuft',unklar:'beendet'}[w.result]}</b>
-      ${w.kind==='cwl'?'<span class="pill">Liga</span>':''} gegen ${esc(w.opponent.name)}<br>
-      <span class="muted">${dateDE(w.end)} · ${w.us.stars}:${w.opponent.stars} Sterne · ${w.teamSize} gegen ${w.teamSize}</span></span>
-      <span class="muted" style="text-align:right">${w.incomplete ? 'Ende nicht vollständig erfasst, Ergebnis unklar' : w.final ? (w.missed.length ? 'Vergessen: '+w.missed.map(m=>esc(m.name)+(m.missed>1?' ('+m.missed+')':'')).join(', ') : 'Keiner vergessen') : ''}</span></li>`).join('')}</ul>`
+    c.wars.length ? `<ul class="list">${c.wars.map(w => `<li class="warli"><span>
+      ${w.kind==='cwl'?'<span class="pill">Liga</span> ':''}gegen <b>${esc(w.opponent.name)}</b><br>
+      <span class="muted">${dateDE(w.end)} · ${w.teamSize} gegen ${w.teamSize}</span></span>
+      <span class="warres"><b class="${w.result}">${w.result === 'offen' && w.state === 'preparation' ? 'Vorbereitung' : {sieg:'Sieg',niederlage:'Niederlage',unentschieden:'Unentschieden',offen:'läuft',unklar:'beendet'}[w.result]}</b><br>
+      ${w.state === 'preparation' ? '' : `<span>${w.us.stars} : ${w.opponent.stars} ★</span>`}</span>
+      <span class="muted" style="text-align:right">${w.incomplete && !w.manual ? 'Ende nicht vollständig erfasst, Ergebnis unklar' : (w.final || w.manual) ? (w.missed.length ? 'Vergessen: '+w.missed.map(m=>esc(m.name)+(m.missed>1?' ('+m.missed+')':'')).join(', ') : 'Keiner vergessen') + (w.manual ? '<br>Ergebnis nachgetragen' : '') : ''}</span></li>`).join('')}</ul>`
     : '<span class="muted">Noch keine Kriege erfasst. Die Aufzeichnung beginnt mit dem ersten Abruf.</span>'}</div>`).join('');
 }
 

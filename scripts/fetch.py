@@ -701,12 +701,22 @@ def build_board(state, live, fetched_at):
             missed = [{"name": m["name"], "tag": m["tag"], "missed": apm - len(m["attacks"])}
                       for m in w["members"] if len(m["attacks"]) < apm]
             incomplete = ended and not w.get("final")
+            us, opp = w["us"], w["opponent"]
+            # Von Hand nachgetragenes Ergebnis, wenn das Kriegsende nicht abgerufen wurde (Sven, 13.11.2026).
+            # Steht als "manual" im Kriegsdatensatz, store_war fasst beendete Kriege nicht mehr an.
+            man = w.get("manual") if incomplete else None
+            if man:
+                res = man.get("result", res)
+                us = dict(us, stars=man.get("usStars", us.get("stars")))
+                opp = dict(opp, stars=man.get("oppStars", opp.get("stars")))
+                if man.get("keinerVergessen"):
+                    missed = []
             return {
                 "kind": w["kind"], "state": "warEnded" if incomplete else w["state"],
-                "final": w.get("final"), "incomplete": incomplete,
+                "final": w.get("final"), "incomplete": incomplete, "manual": bool(man),
                 "start": w.get("startTime"), "end": w.get("endTime"),
                 "teamSize": w.get("teamSize"), "apm": apm,
-                "us": w["us"], "opponent": w["opponent"], "result": res,
+                "us": us, "opponent": opp, "result": res,
                 "missed": missed,
             }
 
