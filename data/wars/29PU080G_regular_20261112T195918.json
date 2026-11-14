@@ -3,11 +3,18 @@
  "endTime": "20261114T185918.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-13T18:42:25Z",
+ "lastSeen": "2026-11-14T00:17:36Z",
  "members": [
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 10,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "theBASTIan",
    "pos": 1,
    "tag": "#92L228UR",
@@ -22,7 +29,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 8,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "=RS=",
    "pos": 14,
@@ -38,7 +53,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 7,
+     "defTh": 18,
+     "order": 1,
+     "pct": 87,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "OlMcGoldi",
    "pos": 15,
@@ -54,7 +77,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 19,
+     "defTh": 18,
+     "order": 2,
+     "pct": 69,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "EumelTV",
    "pos": 19,
@@ -94,8 +125,23 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 13,
+     "defTh": 18,
+     "order": 7,
+     "pct": 76,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 9,
+     "pct": 72,
+     "stars": 2
+    }
+   ],
    "name": "☠️Happy Day ☠️",
    "pos": 13,
    "tag": "#Y80LGCUPJ",
@@ -118,7 +164,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 4,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Sir COColores",
    "pos": 9,
@@ -134,7 +188,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 15,
+     "defTh": 18,
+     "order": 5,
+     "pct": 95,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Nemesis",
    "pos": 18,
@@ -142,7 +204,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 18,
+     "order": 6,
+     "pct": 93,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "1000000",
    "pos": 8,
@@ -150,7 +220,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 16,
+     "defTh": 18,
+     "order": 3,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Captain Future",
    "pos": 16,
@@ -169,18 +247,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/YskudZwvi9i78erY_t9f5N2mC0r4NXHjbwdgFO6LS0A.png",
   "name": "choo choo train",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 8.6,
+  "stars": 5,
   "tag": "#2GYRQ0UGC"
  },
  "preparationStartTime": "20261112T195918.000Z",
  "startTime": "20261113T185918.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 8,
+  "pct": 36.0,
+  "stars": 19
  },
  "warTag": null
 }

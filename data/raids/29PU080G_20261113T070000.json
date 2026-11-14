@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 211823,
+ "capitalTotalLoot": 267225,
  "defensiveReward": 0,
  "endTime": "20261116T070000.000Z",
  "members": [
@@ -25,9 +25,9 @@
    "tag": "#GLPVGVR9"
   },
   {
-   "attacks": 1,
-   "limit": 5,
-   "loot": 5450,
+   "attacks": 6,
+   "limit": 6,
+   "loot": 29479,
    "name": "Schlumpfmausi",
    "tag": "#LG09VQ8J"
   },
@@ -86,11 +86,18 @@
    "loot": 22716,
    "name": "Captain Future",
    "tag": "#8PGGGL2U8"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 31373,
+   "name": "Sue",
+   "tag": "#UR0Y8JU0"
   }
  ],
  "offensiveReward": 0,
  "raidsCompleted": 3,
  "startTime": "20261113T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 56
+ "totalAttacks": 67
 }

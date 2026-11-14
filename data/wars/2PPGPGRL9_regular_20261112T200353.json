@@ -3,7 +3,7 @@
  "endTime": "20261114T190353.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-13T18:42:25Z",
+ "lastSeen": "2026-11-14T00:17:36Z",
  "members": [
   {
    "attacks": [],
@@ -46,7 +46,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 3,
+     "pct": 61,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Odin",
    "pos": 1,
@@ -55,7 +63,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 6,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Alex12",
    "pos": 11,
    "tag": "#9GPR28YG",
@@ -63,14 +78,29 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "order": 1,
+     "pct": 95,
+     "stars": 2
+    }
+   ],
    "name": "das ende naht",
    "pos": 14,
    "tag": "#2P0P8JPPG",
    "th": 14
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 9,
+     "defTh": 18,
+     "order": 4,
+     "pct": 65,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Sven",
    "pos": 9,
@@ -94,7 +124,15 @@
    "th": 16
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 5,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Zucker",
    "pos": 4,
@@ -102,7 +140,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 7,
+     "pct": 75,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "mini1000000",
    "pos": 3,
@@ -110,7 +156,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 18,
+     "order": 2,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Lonestar",
    "pos": 2,
@@ -129,18 +183,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/m772uGmnBUU4HX-s-ZNIhFc8UP6JlkeDUT5OTSjNVh4.png",
   "name": "armagedon",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 13.0,
+  "stars": 5,
   "tag": "#2QVUV9LLY"
  },
  "preparationStartTime": "20261112T200353.000Z",
  "startTime": "20261113T190353.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 5,
+  "pct": 26.733334,
+  "stars": 12
  },
  "warTag": null
 }
