@@ -3,7 +3,7 @@
  "endTime": "20261114T190353.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-14T06:57:19Z",
+ "lastSeen": "2026-11-14T09:05:29Z",
  "members": [
   {
    "attacks": [],
@@ -30,7 +30,15 @@
    "th": 8
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 13,
+     "defTh": 18,
+     "order": 8,
+     "pct": 92,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "NobbyNobbs",
    "pos": 12,
@@ -38,7 +46,22 @@
    "th": 17
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 6,
+     "defTh": 18,
+     "order": 9,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 11,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Uzii",
    "pos": 6,
@@ -108,7 +131,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 7,
+     "defTh": 18,
+     "order": 13,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Simone",
    "pos": 5,
@@ -172,7 +203,22 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 18,
+     "order": 10,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 9,
+     "defTh": 18,
+     "order": 12,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Mone",
    "pos": 8,
@@ -192,9 +238,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 5,
-  "pct": 26.733334,
-  "stars": 12
+  "attacks": 11,
+  "pct": 57.8,
+  "stars": 25
  },
  "warTag": null
 }

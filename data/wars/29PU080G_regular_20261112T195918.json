@@ -3,10 +3,25 @@
  "endTime": "20261114T185918.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-14T06:57:19Z",
+ "lastSeen": "2026-11-14T09:05:29Z",
  "members": [
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 19,
+     "pct": 80,
+     "stars": 2
+    },
+    {
+     "defPos": 4,
+     "defTh": 18,
+     "order": 20,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -21,8 +36,30 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 11,
+     "defTh": 18,
+     "order": 31,
+     "pct": 99,
+     "stars": 2
+    },
+    {
+     "defPos": 8,
+     "defTh": 18,
+     "order": 32,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 26,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "--SVEN--674--",
    "pos": 6,
    "tag": "#200PCP8QQ",
@@ -144,7 +181,22 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 6,
+     "defTh": 18,
+     "order": 24,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 25,
+     "pct": 72,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -159,8 +211,29 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 18,
+     "order": 30,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 15,
+     "defTh": 18,
+     "order": 34,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
+    {
+     "attTh": 18,
+     "order": 35,
+     "pct": 96,
+     "stars": 2
+    },
     {
      "attTh": 18,
      "order": 15,
@@ -197,15 +270,52 @@
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 18,
+     "order": 29,
+     "pct": 95,
+     "stars": 1
+    },
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 33,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 27,
+     "pct": 74,
+     "stars": 2
+    }
+   ],
    "name": "Legend Papa",
    "pos": 10,
    "tag": "#9RCY8U0VQ",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 9,
+     "defTh": 18,
+     "order": 21,
+     "pct": 85,
+     "stars": 2
+    },
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 22,
+     "pct": 93,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Filiusberlinius",
    "pos": 12,
@@ -222,7 +332,14 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 23,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Sir COColores",
    "pos": 9,
    "tag": "#YVCLP0RJ",
@@ -294,7 +411,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 28,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "hulk",
    "pos": 11,
    "tag": "#GRJU2J92",
@@ -304,8 +428,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/YskudZwvi9i78erY_t9f5N2mC0r4NXHjbwdgFO6LS0A.png",
   "name": "choo choo train",
-  "pct": 33.0,
-  "stars": 18,
+  "pct": 52.1,
+  "stars": 30,
   "tag": "#2GYRQ0UGC"
  },
  "preparationStartTime": "20261112T195918.000Z",
@@ -313,9 +437,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 10,
-  "pct": 45.8,
-  "stars": 24
+  "attacks": 22,
+  "pct": 75.6,
+  "stars": 42
  },
  "warTag": null
 }
