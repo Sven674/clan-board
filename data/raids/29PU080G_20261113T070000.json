@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 364126,
+ "capitalTotalLoot": 383222,
  "defensiveReward": 0,
  "endTime": "20261116T070000.000Z",
  "members": [
@@ -23,6 +23,13 @@
    "loot": 32486,
    "name": "=RS=",
    "tag": "#GLPVGVR9"
+  },
+  {
+   "attacks": 4,
+   "limit": 6,
+   "loot": 19096,
+   "name": "Chrisdoc",
+   "tag": "#9GR80Q9P"
   },
   {
    "attacks": 6,
@@ -134,5 +141,5 @@
  "raidsCompleted": 5,
  "startTime": "20261113T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 88
+ "totalAttacks": 92
 }
