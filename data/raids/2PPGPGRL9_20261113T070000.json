@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 201029,
+ "capitalTotalLoot": 221172,
  "defensiveReward": 0,
  "endTime": "20261116T070000.000Z",
  "members": [
@@ -18,9 +18,9 @@
    "tag": "#92RP8G9"
   },
   {
-   "attacks": 2,
+   "attacks": 4,
    "limit": 6,
-   "loot": 9908,
+   "loot": 20261,
    "name": "Azog",
    "tag": "#QQCCR8RC"
   },
@@ -46,9 +46,9 @@
    "tag": "#L9QQRVGP"
   },
   {
-   "attacks": 4,
+   "attacks": 6,
    "limit": 6,
-   "loot": 21608,
+   "loot": 31398,
    "name": "Zucker",
    "tag": "#2CY2GL9J"
   },
@@ -71,5 +71,5 @@
  "raidsCompleted": 3,
  "startTime": "20261113T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 46
+ "totalAttacks": 50
 }
