@@ -1,9 +1,9 @@
 {
  "attacksPerMember": 2,
  "endTime": "20261114T185918.000Z",
- "final": false,
+ "final": true,
  "kind": "regular",
- "lastSeen": "2026-11-14T14:04:19Z",
+ "lastSeen": "2026-11-14T19:05:30Z",
  "members": [
   {
    "attacks": [
@@ -25,9 +25,33 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 61,
+     "pct": 13,
+     "stars": 1
+    },
+    {
+     "attTh": 18,
+     "order": 65,
+     "pct": 12,
+     "stars": 1
+    },
+    {
+     "attTh": 18,
      "order": 10,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "attTh": 18,
+     "order": 66,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 18,
+     "order": 59,
+     "pct": 62,
+     "stars": 2
     }
    ],
    "name": "theBASTIan",
@@ -109,6 +133,24 @@
      "order": 12,
      "pct": 96,
      "stars": 2
+    },
+    {
+     "attTh": 18,
+     "order": 62,
+     "pct": 23,
+     "stars": 1
+    },
+    {
+     "attTh": 18,
+     "order": 67,
+     "pct": 74,
+     "stars": 2
+    },
+    {
+     "attTh": 18,
+     "order": 63,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "name": "Chrisdoc",
@@ -124,6 +166,13 @@
      "order": 1,
      "pct": 87,
      "stars": 2
+    },
+    {
+     "defPos": 17,
+     "defTh": 18,
+     "order": 68,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -141,7 +190,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 58,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Klinki",
    "pos": 20,
    "tag": "#JCPRC0L0",
@@ -164,7 +220,14 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 57,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "EumelTV",
    "pos": 19,
    "tag": "#J2QLL8GY",
@@ -208,6 +271,13 @@
      "order": 42,
      "pct": 87,
      "stars": 2
+    },
+    {
+     "defPos": 19,
+     "defTh": 18,
+     "order": 60,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -311,6 +381,12 @@
      "order": 9,
      "pct": 72,
      "stars": 2
+    },
+    {
+     "attTh": 18,
+     "order": 54,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "name": "☠️Happy Day ☠️",
@@ -431,7 +507,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 56,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Heisenberg",
    "pos": 17,
    "tag": "#29JR2282",
@@ -444,6 +527,13 @@
      "defTh": 18,
      "order": 5,
      "pct": 95,
+     "stars": 2
+    },
+    {
+     "defPos": 14,
+     "defTh": 18,
+     "order": 64,
+     "pct": 99,
      "stars": 2
     }
    ],
@@ -467,6 +557,13 @@
      "defTh": 18,
      "order": 6,
      "pct": 93,
+     "stars": 2
+    },
+    {
+     "defPos": 17,
+     "defTh": 18,
+     "order": 55,
+     "pct": 59,
      "stars": 2
     }
    ],
@@ -497,6 +594,13 @@
      "order": 3,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 14,
+     "defTh": 18,
+     "order": 69,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -505,6 +609,12 @@
      "order": 51,
      "pct": 98,
      "stars": 2
+    },
+    {
+     "attTh": 18,
+     "order": 53,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "name": "Captain Future",
@@ -546,18 +656,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/YskudZwvi9i78erY_t9f5N2mC0r4NXHjbwdgFO6LS0A.png",
   "name": "choo choo train",
-  "pct": 83.5,
-  "stars": 49,
+  "pct": 100.0,
+  "stars": 60,
   "tag": "#2GYRQ0UGC"
  },
  "preparationStartTime": "20261112T195918.000Z",
  "startTime": "20261113T185918.000Z",
- "state": "inWar",
+ "state": "warEnded",
  "teamSize": 20,
  "us": {
-  "attacks": 30,
-  "pct": 93.65,
-  "stars": 53
+  "attacks": 35,
+  "pct": 97.8,
+  "stars": 56
  },
  "warTag": null
 }
