@@ -3,7 +3,7 @@
  "endTime": "20261114T185918.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-14T09:05:29Z",
+ "lastSeen": "2026-11-14T13:38:20Z",
  "members": [
   {
    "attacks": [
@@ -73,9 +73,23 @@
      "order": 8,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 7,
+     "defTh": 18,
+     "order": 44,
+     "pct": 76,
+     "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 38,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "=RS=",
    "pos": 14,
    "tag": "#GLPVGVR9",
@@ -112,7 +126,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 40,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "OlMcGoldi",
    "pos": 15,
    "tag": "#YR0Y90G",
@@ -134,6 +155,13 @@
      "order": 2,
      "pct": 69,
      "stars": 2
+    },
+    {
+     "defPos": 20,
+     "defTh": 17,
+     "order": 48,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [],
@@ -150,6 +178,13 @@
      "order": 18,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 7,
+     "defTh": 18,
+     "order": 46,
+     "pct": 91,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -166,7 +201,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 14,
+     "defTh": 18,
+     "order": 42,
+     "pct": 87,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -230,6 +273,12 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 49,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 18,
      "order": 35,
      "pct": 96,
      "stars": 2
@@ -289,6 +338,12 @@
    "defenses": [
     {
      "attTh": 18,
+     "order": 41,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 18,
      "order": 27,
      "pct": 74,
      "stars": 2
@@ -316,7 +371,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 37,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Filiusberlinius",
    "pos": 12,
    "tag": "#2UCJYGU0",
@@ -328,6 +390,13 @@
      "defPos": 1,
      "defTh": 18,
      "order": 4,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 7,
+     "defTh": 18,
+     "order": 50,
      "pct": 100,
      "stars": 3
     }
@@ -346,7 +415,22 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 17,
+     "defTh": 18,
+     "order": 39,
+     "pct": 59,
+     "stars": 2
+    },
+    {
+     "defPos": 19,
+     "defTh": 18,
+     "order": 43,
+     "pct": 71,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Heisenberg",
    "pos": 17,
@@ -379,7 +463,20 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 45,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 18,
+     "order": 36,
+     "pct": 98,
+     "stars": 2
+    }
+   ],
    "name": "1000000",
    "pos": 8,
    "tag": "#V029UQCU",
@@ -409,6 +506,13 @@
      "order": 11,
      "pct": 96,
      "stars": 2
+    },
+    {
+     "defPos": 18,
+     "defTh": 18,
+     "order": 47,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -428,8 +532,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/YskudZwvi9i78erY_t9f5N2mC0r4NXHjbwdgFO6LS0A.png",
   "name": "choo choo train",
-  "pct": 52.1,
-  "stars": 30,
+  "pct": 73.6,
+  "stars": 44,
   "tag": "#2GYRQ0UGC"
  },
  "preparationStartTime": "20261112T195918.000Z",
@@ -437,9 +541,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 22,
-  "pct": 75.6,
-  "stars": 42
+  "attacks": 30,
+  "pct": 93.65,
+  "stars": 53
  },
  "warTag": null
 }

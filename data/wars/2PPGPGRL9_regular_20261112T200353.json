@@ -3,7 +3,7 @@
  "endTime": "20261114T190353.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-14T09:05:29Z",
+ "lastSeen": "2026-11-14T13:38:20Z",
  "members": [
   {
    "attacks": [],
@@ -14,7 +14,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 11,
+     "defTh": 18,
+     "order": 20,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "HaraldKehl",
    "pos": 7,
@@ -76,9 +84,23 @@
      "order": 3,
      "pct": 61,
      "stars": 2
+    },
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 17,
+     "pct": 70,
+     "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 14,
+     "pct": 94,
+     "stars": 2
+    }
+   ],
    "name": "Odin",
    "pos": 1,
    "tag": "#92RP8G9",
@@ -138,6 +160,13 @@
      "order": 13,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 13,
+     "defTh": 18,
+     "order": 15,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [],
@@ -148,7 +177,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "order": 16,
+     "pct": 91,
+     "stars": 1
+    }
+   ],
    "name": "LEGENDE",
    "pos": 13,
    "tag": "#P8Q89LYQ9",
@@ -180,7 +216,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 19,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "mini1000000",
    "pos": 3,
    "tag": "#LQ0YCGLL2",
@@ -196,7 +239,14 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Lonestar",
    "pos": 2,
    "tag": "#28CJUY0G9",
@@ -229,8 +279,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/m772uGmnBUU4HX-s-ZNIhFc8UP6JlkeDUT5OTSjNVh4.png",
   "name": "armagedon",
-  "pct": 13.0,
-  "stars": 5,
+  "pct": 38.666668,
+  "stars": 14,
   "tag": "#2QVUV9LLY"
  },
  "preparationStartTime": "20261112T200353.000Z",
@@ -238,9 +288,9 @@
  "state": "inWar",
  "teamSize": 15,
  "us": {
-  "attacks": 11,
-  "pct": 57.8,
-  "stars": 25
+  "attacks": 14,
+  "pct": 65.0,
+  "stars": 29
  },
  "warTag": null
 }
