@@ -3,7 +3,7 @@
  "endTime": "20261114T185918.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-14T13:38:20Z",
+ "lastSeen": "2026-11-14T14:04:19Z",
  "members": [
   {
    "attacks": [
@@ -447,7 +447,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 52,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Nemesis",
    "pos": 18,
    "tag": "#22C0YRV9C",
@@ -492,7 +499,14 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 51,
+     "pct": 98,
+     "stars": 2
+    }
+   ],
    "name": "Captain Future",
    "pos": 16,
    "tag": "#8PGGGL2U8",
@@ -532,8 +546,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/YskudZwvi9i78erY_t9f5N2mC0r4NXHjbwdgFO6LS0A.png",
   "name": "choo choo train",
-  "pct": 73.6,
-  "stars": 44,
+  "pct": 83.5,
+  "stars": 49,
   "tag": "#2GYRQ0UGC"
  },
  "preparationStartTime": "20261112T195918.000Z",
