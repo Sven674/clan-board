@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 551799,
+ "capitalTotalLoot": 576265,
  "defensiveReward": 0,
  "endTime": "20261116T070000.000Z",
  "members": [
@@ -88,9 +88,9 @@
    "tag": "#LRYLYPG8"
   },
   {
-   "attacks": 3,
+   "attacks": 6,
    "limit": 6,
-   "loot": 12486,
+   "loot": 25267,
    "name": "☠️Happy Day ☠️",
    "tag": "#Y80LGCUPJ"
   },
@@ -158,9 +158,9 @@
    "tag": "#8PGGGL2U8"
   },
   {
-   "attacks": 3,
+   "attacks": 6,
    "limit": 6,
-   "loot": 12045,
+   "loot": 23730,
    "name": "hulk",
    "tag": "#GRJU2J92"
   },
@@ -176,5 +176,5 @@
  "raidsCompleted": 7,
  "startTime": "20261113T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 134
+ "totalAttacks": 140
 }

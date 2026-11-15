@@ -3,18 +3,41 @@
  "endTime": "20261116T183717.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-15T16:58:46Z",
+ "lastSeen": "2026-11-15T19:59:24Z",
  "members": [
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 6,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 3,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "theBASTIan",
    "pos": 1,
    "tag": "#92L228UR",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 5,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "--SVEN--674--",
    "pos": 5,
@@ -55,7 +78,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 2,
+     "pct": 82,
+     "stars": 1
+    }
+   ],
    "name": "AGENT 00H",
    "pos": 2,
    "tag": "#80V9Q998",
@@ -63,7 +93,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 1,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Ertanbabo",
    "pos": 3,
    "tag": "#PRRJY9G9",
@@ -71,7 +108,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 4,
+     "pct": 78,
+     "stars": 2
+    }
+   ],
    "name": "Beach",
    "pos": 4,
    "tag": "#8LVUJRQP",
@@ -94,7 +138,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 18,
+     "order": 9,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Legend Papa",
    "pos": 9,
@@ -111,7 +163,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 8,
+     "pct": 73,
+     "stars": 1
+    }
+   ],
    "name": "grautvornixe",
    "pos": 18,
    "tag": "#PRRQ29JP",
@@ -134,7 +193,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 15,
+     "defTh": 18,
+     "order": 7,
+     "pct": 70,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Nemesis",
    "pos": 17,
@@ -169,18 +236,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/nAj3dhoGVZeY1rVvxba9ztdBbW8r4BAASaUglbzDbSg.png",
   "name": "کلن عشق",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 21.65,
+  "stars": 10,
   "tag": "#UUC9009"
  },
  "preparationStartTime": "20261114T193717.000Z",
  "startTime": "20261115T183717.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 4,
+  "pct": 18.5,
+  "stars": 11
  },
  "warTag": null
 }
