@@ -3,7 +3,7 @@
  "endTime": "20261116T183717.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-15T22:56:44Z",
+ "lastSeen": "2026-11-15T23:38:32Z",
  "members": [
   {
    "attacks": [
@@ -45,7 +45,22 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 19,
+     "pct": 82,
+     "stars": 2
+    },
+    {
+     "defPos": 7,
+     "defTh": 18,
+     "order": 21,
+     "pct": 96,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -69,7 +84,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 20,
+     "pct": 97,
+     "stars": 1
+    }
+   ],
    "name": "Klinki",
    "pos": 20,
    "tag": "#JCPRC0L0",
@@ -302,8 +324,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/nAj3dhoGVZeY1rVvxba9ztdBbW8r4BAASaUglbzDbSg.png",
   "name": "کلن عشق",
-  "pct": 34.5,
-  "stars": 18,
+  "pct": 39.35,
+  "stars": 19,
   "tag": "#UUC9009"
  },
  "preparationStartTime": "20261114T193717.000Z",
@@ -311,9 +333,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 9,
-  "pct": 37.25,
-  "stars": 22
+  "attacks": 11,
+  "pct": 42.4,
+  "stars": 24
  },
  "warTag": null
 }
