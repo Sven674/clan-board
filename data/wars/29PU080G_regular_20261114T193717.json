@@ -1,9 +1,9 @@
 {
  "attacksPerMember": 2,
  "endTime": "20261116T192559.000Z",
- "final": false,
+ "final": true,
  "kind": "regular",
- "lastSeen": "2026-11-16T18:38:30Z",
+ "lastSeen": "2026-11-16T19:48:54Z",
  "members": [
   {
    "attacks": [
@@ -103,9 +103,23 @@
      "order": 55,
      "pct": 95,
      "stars": 2
+    },
+    {
+     "defPos": 2,
+     "defTh": 18,
+     "order": 62,
+     "pct": 100,
+     "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 59,
+     "pct": 92,
+     "stars": 2
+    }
+   ],
    "name": "OlMcGoldi",
    "pos": 14,
    "tag": "#YR0Y90G",
@@ -182,6 +196,12 @@
     {
      "attTh": 18,
      "order": 2,
+     "pct": 82,
+     "stars": 1
+    },
+    {
+     "attTh": 18,
+     "order": 61,
      "pct": 82,
      "stars": 1
     },
@@ -274,7 +294,14 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 60,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Ricky",
    "pos": 6,
    "tag": "#LRYLYPG8",
@@ -590,16 +617,16 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/nAj3dhoGVZeY1rVvxba9ztdBbW8r4BAASaUglbzDbSg.png",
   "name": "کلن عشق",
-  "pct": 73.55,
-  "stars": 37,
+  "pct": 83.15,
+  "stars": 42,
   "tag": "#UUC9009"
  },
  "preparationStartTime": "20261114T193717.000Z",
  "startTime": "20261115T183717.000Z",
- "state": "inWar",
+ "state": "warEnded",
  "teamSize": 20,
  "us": {
-  "attacks": 36,
+  "attacks": 37,
   "pct": 100.0,
   "stars": 60
  },
