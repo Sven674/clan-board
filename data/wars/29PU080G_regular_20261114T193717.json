@@ -1,9 +1,9 @@
 {
  "attacksPerMember": 2,
- "endTime": "20261116T183717.000Z",
+ "endTime": "20261116T192559.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-16T09:28:44Z",
+ "lastSeen": "2026-11-16T13:57:43Z",
  "members": [
   {
    "attacks": [
@@ -126,6 +126,12 @@
      "order": 10,
      "pct": 83,
      "stars": 2
+    },
+    {
+     "attTh": 18,
+     "order": 37,
+     "pct": 81,
+     "stars": 1
     }
    ],
    "name": "EumelTV",
@@ -170,6 +176,13 @@
      "order": 34,
      "pct": 98,
      "stars": 2
+    },
+    {
+     "defPos": 13,
+     "defTh": 18,
+     "order": 43,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -241,7 +254,14 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 38,
+     "pct": 46,
+     "stars": 1
+    }
+   ],
    "name": "☠️Happy Day ☠️",
    "pos": 11,
    "tag": "#Y80LGCUPJ",
@@ -253,6 +273,13 @@
      "defPos": 3,
      "defTh": 18,
      "order": 9,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 6,
+     "defTh": 18,
+     "order": 42,
      "pct": 100,
      "stars": 3
     }
@@ -273,7 +300,14 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 41,
+     "pct": 53,
+     "stars": 1
+    }
+   ],
    "name": "Filiusberlinius",
    "pos": 13,
    "tag": "#2UCJYGU0",
@@ -333,7 +367,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 40,
+     "pct": 77,
+     "stars": 1
+    }
+   ],
    "name": "Heisenberg",
    "pos": 16,
    "tag": "#29JR2282",
@@ -377,6 +418,13 @@
      "order": 11,
      "pct": 59,
      "stars": 2
+    },
+    {
+     "defPos": 19,
+     "defTh": 18,
+     "order": 39,
+     "pct": 99,
+     "stars": 2
     }
    ],
    "defenses": [],
@@ -393,9 +441,23 @@
      "order": 28,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 17,
+     "defTh": 18,
+     "order": 36,
+     "pct": 100,
+     "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 35,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Captain Future",
    "pos": 15,
    "tag": "#8PGGGL2U8",
@@ -407,6 +469,13 @@
      "defPos": 14,
      "defTh": 18,
      "order": 32,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 12,
+     "defTh": 18,
+     "order": 44,
      "pct": 100,
      "stars": 3
     }
@@ -421,8 +490,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/nAj3dhoGVZeY1rVvxba9ztdBbW8r4BAASaUglbzDbSg.png",
   "name": "کلن عشق",
-  "pct": 39.5,
-  "stars": 21,
+  "pct": 53.3,
+  "stars": 27,
   "tag": "#UUC9009"
  },
  "preparationStartTime": "20261114T193717.000Z",
@@ -430,9 +499,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 22,
-  "pct": 84.65,
-  "stars": 48
+  "attacks": 27,
+  "pct": 99.85,
+  "stars": 58
  },
  "warTag": null
 }
