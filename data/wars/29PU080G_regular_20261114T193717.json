@@ -3,7 +3,7 @@
  "endTime": "20261116T192559.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-16T17:17:42Z",
+ "lastSeen": "2026-11-16T18:38:30Z",
  "members": [
   {
    "attacks": [
@@ -52,7 +52,14 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 58,
+     "pct": 77,
+     "stars": 2
+    }
+   ],
    "name": "--SVEN--674--",
    "pos": 5,
    "tag": "#200PCP8QQ",
@@ -583,8 +590,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/nAj3dhoGVZeY1rVvxba9ztdBbW8r4BAASaUglbzDbSg.png",
   "name": "کلن عشق",
-  "pct": 69.7,
-  "stars": 35,
+  "pct": 73.55,
+  "stars": 37,
   "tag": "#UUC9009"
  },
  "preparationStartTime": "20261114T193717.000Z",
