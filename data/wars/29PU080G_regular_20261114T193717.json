@@ -3,7 +3,7 @@
  "endTime": "20261116T192559.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-16T13:57:43Z",
+ "lastSeen": "2026-11-16T17:17:42Z",
  "members": [
   {
    "attacks": [
@@ -41,6 +41,13 @@
      "defPos": 2,
      "defTh": 18,
      "order": 5,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 51,
      "pct": 100,
      "stars": 3
     }
@@ -82,7 +89,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 55,
+     "pct": 95,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "OlMcGoldi",
    "pos": 14,
@@ -147,6 +162,13 @@
      "order": 29,
      "pct": 97,
      "stars": 2
+    },
+    {
+     "defPos": 8,
+     "defTh": 18,
+     "order": 46,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -236,6 +258,13 @@
      "order": 12,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 20,
+     "defTh": 18,
+     "order": 52,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [],
@@ -250,6 +279,13 @@
      "defPos": 9,
      "defTh": 18,
      "order": 18,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 19,
+     "defTh": 18,
+     "order": 45,
      "pct": 100,
      "stars": 3
     }
@@ -284,7 +320,14 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 56,
+     "pct": 98,
+     "stars": 2
+    }
+   ],
    "name": "Legend Papa",
    "pos": 9,
    "tag": "#9RCY8U0VQ",
@@ -296,6 +339,13 @@
      "defPos": 16,
      "defTh": 18,
      "order": 30,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 1,
+     "defTh": 18,
+     "order": 47,
      "pct": 100,
      "stars": 3
     }
@@ -319,6 +369,13 @@
      "defPos": 20,
      "defTh": 18,
      "order": 14,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 16,
+     "defTh": 18,
+     "order": 50,
      "pct": 100,
      "stars": 3
     }
@@ -359,14 +416,36 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 54,
+     "pct": 62,
+     "stars": 2
+    }
+   ],
    "name": "Sir COColores",
    "pos": 8,
    "tag": "#YVCLP0RJ",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 20,
+     "defTh": 18,
+     "order": 48,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 15,
+     "defTh": 18,
+     "order": 49,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 18,
@@ -427,7 +506,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 53,
+     "pct": 70,
+     "stars": 2
+    }
+   ],
    "name": "1000000",
    "pos": 7,
    "tag": "#V029UQCU",
@@ -480,7 +566,14 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 57,
+     "pct": 98,
+     "stars": 2
+    }
+   ],
    "name": "hulk",
    "pos": 10,
    "tag": "#GRJU2J92",
@@ -490,8 +583,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/nAj3dhoGVZeY1rVvxba9ztdBbW8r4BAASaUglbzDbSg.png",
   "name": "کلن عشق",
-  "pct": 53.3,
-  "stars": 27,
+  "pct": 69.7,
+  "stars": 35,
   "tag": "#UUC9009"
  },
  "preparationStartTime": "20261114T193717.000Z",
@@ -499,9 +592,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 27,
-  "pct": 99.85,
-  "stars": 58
+  "attacks": 36,
+  "pct": 100.0,
+  "stars": 60
  },
  "warTag": null
 }
