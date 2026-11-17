@@ -3,11 +3,18 @@
  "endTime": "20261118T190238.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-17T18:13:28Z",
+ "lastSeen": "2026-11-17T20:47:32Z",
  "members": [
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 4,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "theBASTIan",
    "pos": 3,
    "tag": "#92L228UR",
@@ -15,7 +22,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 9,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "--SVEN--674--",
    "pos": 5,
    "tag": "#200PCP8QQ",
@@ -27,11 +41,18 @@
    "name": "=RS=",
    "pos": 16,
    "tag": "#GLPVGVR9",
-   "th": 18
+   "th": 19
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 1,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Chrisdoc",
    "pos": 1,
    "tag": "#9GR80Q9P",
@@ -43,11 +64,18 @@
    "name": "OlMcGoldi",
    "pos": 17,
    "tag": "#YR0Y90G",
-   "th": 18
+   "th": 19
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 13,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Klinki",
    "pos": 20,
    "tag": "#JCPRC0L0",
@@ -55,23 +83,58 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 14,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "EumelTV",
    "pos": 19,
    "tag": "#J2QLL8GY",
-   "th": 18
+   "th": 19
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 20,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
+     "order": 5,
+     "pct": 95,
+     "stars": 1
+    }
+   ],
    "name": "AGENT 00H",
    "pos": 4,
    "tag": "#80V9Q998",
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 17,
+     "defTh": 18,
+     "order": 11,
+     "pct": 86,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Ertanbabo",
    "pos": 9,
    "tag": "#PRRJY9G9",
@@ -79,7 +142,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 2,
+     "pct": 88,
+     "stars": 2
+    }
+   ],
    "name": "Beach",
    "pos": 2,
    "tag": "#8LVUJRQP",
@@ -94,8 +164,30 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 19,
+     "order": 7,
+     "pct": 92,
+     "stars": 1
+    },
+    {
+     "defPos": 17,
+     "defTh": 18,
+     "order": 12,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 3,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Legend Papa",
    "pos": 6,
    "tag": "#9RCY8U0VQ",
@@ -110,23 +202,61 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 16,
+     "defTh": 19,
+     "order": 19,
+     "pct": 88,
+     "stars": 1
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 17,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "grautvornixe",
    "pos": 8,
    "tag": "#PRRQ29JP",
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 9,
+     "defTh": 19,
+     "order": 6,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 16,
+     "defTh": 19,
+     "order": 21,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Sir COColores",
    "pos": 15,
    "tag": "#YVCLP0RJ",
-   "th": 18
+   "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 6,
+     "defTh": 19,
+     "order": 16,
+     "pct": 75,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Heisenberg",
    "pos": 12,
@@ -135,22 +265,59 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 23,
+     "pct": 99,
+     "stars": 2
+    }
+   ],
    "name": "Nemesis",
    "pos": 18,
    "tag": "#22C0YRV9C",
    "th": 18
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 19,
+     "order": 10,
+     "pct": 83,
+     "stars": 2
+    },
+    {
+     "defPos": 7,
+     "defTh": 19,
+     "order": 15,
+     "pct": 93,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 8,
+     "pct": 78,
+     "stars": 2
+    }
+   ],
    "name": "1000000",
    "pos": 7,
    "tag": "#V029UQCU",
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 13,
+     "defTh": 18,
+     "order": 22,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Captain Future",
    "pos": 13,
@@ -169,18 +336,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/mvohS_K95RH3S9-sD-cfeb0vc1DdIq2El4TaCsdEAvg.png",
   "name": "KARARGAH",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 58.25,
+  "stars": 33,
   "tag": "#2LRPUUPQ"
  },
  "preparationStartTime": "20261116T200238.000Z",
  "startTime": "20261117T190238.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 10,
+  "pct": 32.55,
+  "stars": 18
  },
  "warTag": null
 }
