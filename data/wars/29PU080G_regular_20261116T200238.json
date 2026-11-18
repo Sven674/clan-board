@@ -3,7 +3,7 @@
  "endTime": "20261118T190238.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-17T20:47:32Z",
+ "lastSeen": "2026-11-18T02:50:38Z",
  "members": [
   {
    "attacks": [],
@@ -36,15 +36,52 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 19,
+     "order": 31,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 5,
+     "defTh": 19,
+     "order": 33,
+     "pct": 78,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 27,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "=RS=",
    "pos": 16,
    "tag": "#GLPVGVR9",
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 19,
+     "order": 25,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 4,
+     "defTh": 19,
+     "order": 32,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -60,7 +97,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 24,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "OlMcGoldi",
    "pos": 17,
    "tag": "#YR0Y90G",
@@ -156,7 +200,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 19,
+     "order": 28,
+     "pct": 60,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "☠️Happy Day ☠️",
    "pos": 11,
@@ -241,7 +293,14 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 30,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Sir COColores",
    "pos": 15,
    "tag": "#YVCLP0RJ",
@@ -301,6 +360,12 @@
      "order": 8,
      "pct": 78,
      "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 29,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "name": "1000000",
@@ -325,8 +390,23 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 12,
+     "defTh": 19,
+     "order": 34,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 26,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "hulk",
    "pos": 10,
    "tag": "#GRJU2J92",
@@ -336,8 +416,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/mvohS_K95RH3S9-sD-cfeb0vc1DdIq2El4TaCsdEAvg.png",
   "name": "KARARGAH",
-  "pct": 58.25,
-  "stars": 33,
+  "pct": 79.35,
+  "stars": 46,
   "tag": "#2LRPUUPQ"
  },
  "preparationStartTime": "20261116T200238.000Z",
@@ -345,9 +425,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 10,
-  "pct": 32.55,
-  "stars": 18
+  "attacks": 16,
+  "pct": 52.55,
+  "stars": 30
  },
  "warTag": null
 }
