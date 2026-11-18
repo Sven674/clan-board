@@ -1,9 +1,9 @@
 {
  "attacksPerMember": 2,
  "endTime": "20261118T193037.000Z",
- "final": false,
+ "final": true,
  "kind": "regular",
- "lastSeen": "2026-11-18T13:43:09Z",
+ "lastSeen": "2026-11-18T19:32:21Z",
  "members": [
   {
    "attacks": [
@@ -114,6 +114,12 @@
    ],
    "defenses": [
     {
+     "attTh": 18,
+     "order": 65,
+     "pct": 84,
+     "stars": 2
+    },
+    {
      "attTh": 19,
      "order": 1,
      "pct": 100,
@@ -136,6 +142,12 @@
      "order": 56,
      "pct": 20,
      "stars": 1
+    },
+    {
+     "attTh": 19,
+     "order": 62,
+     "pct": 35,
+     "stars": 1
     }
    ],
    "name": "Chrisdoc",
@@ -149,6 +161,13 @@
      "defPos": 15,
      "defTh": 18,
      "order": 53,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 6,
+     "defTh": 19,
+     "order": 71,
      "pct": 100,
      "stars": 3
     }
@@ -219,6 +238,13 @@
      "order": 50,
      "pct": 91,
      "stars": 2
+    },
+    {
+     "defPos": 2,
+     "defTh": 19,
+     "order": 61,
+     "pct": 98,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -270,12 +296,33 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 19,
+     "order": 67,
+     "pct": 83,
+     "stars": 2
+    },
+    {
+     "defPos": 5,
+     "defTh": 19,
+     "order": 68,
+     "pct": 92,
+     "stars": 1
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
      "order": 2,
      "pct": 88,
+     "stars": 2
+    },
+    {
+     "attTh": 18,
+     "order": 66,
+     "pct": 63,
      "stars": 2
     },
     {
@@ -295,6 +342,12 @@
      "order": 57,
      "pct": 15,
      "stars": 1
+    },
+    {
+     "attTh": 19,
+     "order": 63,
+     "pct": 68,
+     "stars": 2
     }
    ],
    "name": "Beach",
@@ -309,6 +362,13 @@
      "defTh": 19,
      "order": 28,
      "pct": 60,
+     "stars": 2
+    },
+    {
+     "defPos": 7,
+     "defTh": 19,
+     "order": 60,
+     "pct": 87,
      "stars": 2
     }
    ],
@@ -363,6 +423,13 @@
      "order": 38,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 5,
+     "defTh": 19,
+     "order": 70,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -386,6 +453,13 @@
      "order": 19,
      "pct": 88,
      "stars": 1
+    },
+    {
+     "defPos": 19,
+     "defTh": 19,
+     "order": 59,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -438,6 +512,13 @@
      "defTh": 19,
      "order": 16,
      "pct": 75,
+     "stars": 2
+    },
+    {
+     "defPos": 5,
+     "defTh": 19,
+     "order": 64,
+     "pct": 83,
      "stars": 2
     }
    ],
@@ -525,6 +606,13 @@
      "order": 22,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 20,
+     "defTh": 18,
+     "order": 69,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -554,6 +642,13 @@
      "order": 34,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 18,
+     "defTh": 18,
+     "order": 58,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -579,12 +674,12 @@
  },
  "preparationStartTime": "20261116T200238.000Z",
  "startTime": "20261117T190238.000Z",
- "state": "inWar",
+ "state": "warEnded",
  "teamSize": 20,
  "us": {
-  "attacks": 25,
-  "pct": 86.25,
-  "stars": 49
+  "attacks": 35,
+  "pct": 99.55,
+  "stars": 58
  },
  "warTag": null
 }
