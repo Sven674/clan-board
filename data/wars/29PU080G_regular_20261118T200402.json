@@ -3,7 +3,7 @@
  "endTime": "20261120T190402.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-20T08:24:49Z",
+ "lastSeen": "2026-11-20T09:40:14Z",
  "members": [
   {
    "attacks": [
@@ -36,7 +36,22 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 19,
+     "order": 45,
+     "pct": 86,
+     "stars": 2
+    },
+    {
+     "defPos": 13,
+     "defTh": 19,
+     "order": 48,
+     "pct": 83,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -53,6 +68,12 @@
   {
    "attacks": [],
    "defenses": [
+    {
+     "attTh": 19,
+     "order": 44,
+     "pct": 100,
+     "stars": 3
+    },
     {
      "attTh": 19,
      "order": 33,
@@ -140,7 +161,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 19,
+     "order": 46,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -219,8 +248,20 @@
    "defenses": [
     {
      "attTh": 19,
+     "order": 50,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
      "order": 21,
      "pct": 92,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 49,
+     "pct": 94,
      "stars": 2
     }
    ],
@@ -295,6 +336,12 @@
    "defenses": [
     {
      "attTh": 19,
+     "order": 41,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
      "order": 30,
      "pct": 90,
      "stars": 2
@@ -347,6 +394,18 @@
    "defenses": [
     {
      "attTh": 19,
+     "order": 43,
+     "pct": 81,
+     "stars": 1
+    },
+    {
+     "attTh": 19,
+     "order": 42,
+     "pct": 61,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
      "order": 28,
      "pct": 97,
      "stars": 2
@@ -388,7 +447,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 19,
+     "order": 47,
+     "pct": 61,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -456,8 +523,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/Zqn6JFF0bf_7ysgFkfX9sOrbKbD4vCyvvis7k19HyRg.png",
   "name": "ü30-Spezial",
-  "pct": 88.85,
-  "stars": 48,
+  "pct": 90.0,
+  "stars": 51,
   "tag": "#Q9CJ8LCU"
  },
  "preparationStartTime": "20261118T200402.000Z",
@@ -465,9 +532,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 16,
-  "pct": 55.3,
-  "stars": 31
+  "attacks": 20,
+  "pct": 68.0,
+  "stars": 38
  },
  "warTag": null
 }

@@ -1,8 +1,15 @@
 {
- "capitalTotalLoot": 67493,
+ "capitalTotalLoot": 85070,
  "defensiveReward": 0,
  "endTime": "20261123T070000.000Z",
  "members": [
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 17577,
+   "name": "theBASTIan",
+   "tag": "#92L228UR"
+  },
   {
    "attacks": 6,
    "limit": 6,
@@ -29,5 +36,5 @@
  "raidsCompleted": 0,
  "startTime": "20261120T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 14
+ "totalAttacks": 20
 }
