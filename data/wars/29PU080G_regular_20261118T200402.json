@@ -3,7 +3,7 @@
  "endTime": "20261120T190402.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-20T09:40:14Z",
+ "lastSeen": "2026-11-20T17:12:23Z",
  "members": [
   {
    "attacks": [
@@ -27,6 +27,12 @@
      "attTh": 19,
      "order": 35,
      "pct": 73,
+     "stars": 2
+    },
+    {
+     "attTh": 18,
+     "order": 70,
+     "pct": 70,
      "stars": 2
     }
    ],
@@ -55,8 +61,20 @@
    "defenses": [
     {
      "attTh": 19,
+     "order": 66,
+     "pct": 86,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
      "order": 31,
      "pct": 93,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 72,
+     "pct": 83,
      "stars": 2
     }
    ],
@@ -66,7 +84,22 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 19,
+     "order": 73,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 5,
+     "defTh": 19,
+     "order": 75,
+     "pct": 88,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -106,8 +139,20 @@
    "defenses": [
     {
      "attTh": 19,
+     "order": 51,
+     "pct": 94,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
      "order": 17,
      "pct": 95,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 76,
+     "pct": 68,
      "stars": 2
     }
    ],
@@ -117,7 +162,22 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 19,
+     "order": 77,
+     "pct": 46,
+     "stars": 0
+    },
+    {
+     "defPos": 5,
+     "defTh": 19,
+     "order": 78,
+     "pct": 70,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -138,6 +198,13 @@
      "defTh": 19,
      "order": 20,
      "pct": 71,
+     "stars": 2
+    },
+    {
+     "defPos": 7,
+     "defTh": 19,
+     "order": 59,
+     "pct": 77,
      "stars": 2
     }
    ],
@@ -168,6 +235,13 @@
      "order": 46,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 7,
+     "defTh": 19,
+     "order": 74,
+     "pct": 87,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -176,6 +250,12 @@
      "order": 23,
      "pct": 62,
      "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 65,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "name": "AGENT 00H",
@@ -191,6 +271,13 @@
      "order": 39,
      "pct": 76,
      "stars": 2
+    },
+    {
+     "defPos": 14,
+     "defTh": 19,
+     "order": 63,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -220,6 +307,13 @@
      "order": 16,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 9,
+     "defTh": 19,
+     "order": 55,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -241,6 +335,13 @@
      "defPos": 6,
      "defTh": 19,
      "order": 34,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 11,
+     "defTh": 19,
+     "order": 71,
      "pct": 100,
      "stars": 3
     }
@@ -271,7 +372,22 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 15,
+     "defTh": 19,
+     "order": 52,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 20,
+     "defTh": 19,
+     "order": 53,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -323,16 +439,38 @@
      "order": 32,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 3,
+     "defTh": 19,
+     "order": 67,
+     "pct": 66,
+     "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 61,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Filiusberlinius",
    "pos": 19,
    "tag": "#2UCJYGU0",
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 19,
+     "order": 56,
+     "pct": 74,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -366,6 +504,13 @@
      "order": 19,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 8,
+     "defTh": 19,
+     "order": 69,
+     "pct": 82,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -374,6 +519,12 @@
      "order": 4,
      "pct": 80,
      "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 62,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "name": "Sir COColores",
@@ -389,9 +540,22 @@
      "order": 3,
      "pct": 64,
      "stars": 2
+    },
+    {
+     "defPos": 11,
+     "defTh": 19,
+     "order": 64,
+     "pct": 63,
+     "stars": 2
     }
    ],
    "defenses": [
+    {
+     "attTh": 19,
+     "order": 60,
+     "pct": 100,
+     "stars": 3
+    },
     {
      "attTh": 19,
      "order": 43,
@@ -454,6 +618,13 @@
      "order": 47,
      "pct": 61,
      "stars": 2
+    },
+    {
+     "defPos": 11,
+     "defTh": 19,
+     "order": 54,
+     "pct": 55,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -477,6 +648,13 @@
      "order": 38,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 11,
+     "defTh": 19,
+     "order": 68,
+     "pct": 96,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -505,7 +683,22 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 13,
+     "defTh": 19,
+     "order": 57,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 16,
+     "defTh": 19,
+     "order": 58,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -523,8 +716,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/Zqn6JFF0bf_7ysgFkfX9sOrbKbD4vCyvvis7k19HyRg.png",
   "name": "ü30-Spezial",
-  "pct": 90.0,
-  "stars": 51,
+  "pct": 98.05,
+  "stars": 57,
   "tag": "#Q9CJ8LCU"
  },
  "preparationStartTime": "20261118T200402.000Z",
@@ -532,9 +725,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 20,
-  "pct": 68.0,
-  "stars": 38
+  "attacks": 39,
+  "pct": 97.7,
+  "stars": 56
  },
  "warTag": null
 }
