@@ -3,10 +3,18 @@
  "endTime": "20261120T190402.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-19T18:36:54Z",
+ "lastSeen": "2026-11-20T00:54:15Z",
  "members": [
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 19,
+     "order": 15,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "theBASTIan",
    "pos": 3,
@@ -30,8 +38,30 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 19,
+     "order": 6,
+     "pct": 97,
+     "stars": 2
+    },
+    {
+     "defPos": 14,
+     "defTh": 19,
+     "order": 8,
+     "pct": 84,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 17,
+     "pct": 95,
+     "stars": 2
+    }
+   ],
    "name": "Chrisdoc",
    "pos": 2,
    "tag": "#9GR80Q9P",
@@ -46,7 +76,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 16,
+     "defTh": 19,
+     "order": 20,
+     "pct": 71,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "EumelTV",
    "pos": 8,
@@ -55,7 +93,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 23,
+     "pct": 62,
+     "stars": 2
+    }
+   ],
    "name": "AGENT 00H",
    "pos": 1,
    "tag": "#80V9Q998",
@@ -63,15 +108,37 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 14,
+     "pct": 85,
+     "stars": 2
+    }
+   ],
    "name": "TaLuDa",
    "pos": 14,
    "tag": "#22UU2J8Y8",
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 19,
+     "defTh": 18,
+     "order": 16,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 13,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Ertanbabo",
    "pos": 9,
    "tag": "#PRRJY9G9",
@@ -79,7 +146,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 21,
+     "pct": 92,
+     "stars": 2
+    }
+   ],
    "name": "Beach",
    "pos": 5,
    "tag": "#8LVUJRQP",
@@ -87,15 +161,44 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 1,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "☠️Happy Day ☠️",
    "pos": 18,
    "tag": "#Y80LGCUPJ",
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 12,
+     "defTh": 19,
+     "order": 9,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 3,
+     "defTh": 19,
+     "order": 11,
+     "pct": 88,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 12,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Legend Papa",
    "pos": 11,
    "tag": "#9RCY8U0VQ",
@@ -111,22 +214,52 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 2,
+     "pct": 93,
+     "stars": 2
+    }
+   ],
    "name": "grautvornixe",
    "pos": 16,
    "tag": "#PRRQ29JP",
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 19,
+     "order": 19,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 4,
+     "pct": 80,
+     "stars": 2
+    }
+   ],
    "name": "Sir COColores",
    "pos": 6,
    "tag": "#YVCLP0RJ",
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 14,
+     "defTh": 19,
+     "order": 3,
+     "pct": 64,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Heisenberg",
    "pos": 15,
@@ -134,7 +267,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 20,
+     "defTh": 19,
+     "order": 5,
+     "pct": 78,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Nemesis",
    "pos": 20,
@@ -143,7 +284,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 10,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "1000000",
    "pos": 10,
    "tag": "#V029UQCU",
@@ -151,7 +299,20 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 7,
+     "pct": 94,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 22,
+     "pct": 98,
+     "stars": 2
+    }
+   ],
    "name": "Captain Future",
    "pos": 17,
    "tag": "#8PGGGL2U8",
@@ -159,7 +320,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 18,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "hulk",
    "pos": 13,
    "tag": "#GRJU2J92",
@@ -169,18 +337,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/Zqn6JFF0bf_7ysgFkfX9sOrbKbD4vCyvvis7k19HyRg.png",
   "name": "ü30-Spezial",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 55.25,
+  "stars": 29,
   "tag": "#Q9CJ8LCU"
  },
  "preparationStartTime": "20261118T200402.000Z",
  "startTime": "20261119T190402.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 10,
+  "pct": 36.5,
+  "stars": 20
  },
  "warTag": null
 }
