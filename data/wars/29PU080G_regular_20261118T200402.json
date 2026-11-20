@@ -3,7 +3,7 @@
  "endTime": "20261120T190402.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-20T17:43:08Z",
+ "lastSeen": "2026-11-20T18:39:33Z",
  "members": [
   {
    "attacks": [
@@ -28,6 +28,12 @@
      "order": 35,
      "pct": 73,
      "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 79,
+     "pct": 100,
+     "stars": 3
     },
     {
      "attTh": 18,
@@ -469,6 +475,13 @@
      "order": 56,
      "pct": 74,
      "stars": 2
+    },
+    {
+     "defPos": 5,
+     "defTh": 19,
+     "order": 80,
+     "pct": 86,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -716,8 +729,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/Zqn6JFF0bf_7ysgFkfX9sOrbKbD4vCyvvis7k19HyRg.png",
   "name": "ü30-Spezial",
-  "pct": 98.05,
-  "stars": 57,
+  "pct": 99.4,
+  "stars": 58,
   "tag": "#Q9CJ8LCU"
  },
  "preparationStartTime": "20261118T200402.000Z",
@@ -725,7 +738,7 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 39,
+  "attacks": 40,
   "pct": 97.7,
   "stars": 56
  },
