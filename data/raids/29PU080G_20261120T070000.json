@@ -1,0 +1,33 @@
+{
+ "capitalTotalLoot": 67493,
+ "defensiveReward": 0,
+ "endTime": "20261123T070000.000Z",
+ "members": [
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 27754,
+   "name": "TaLuDa",
+   "tag": "#22UU2J8Y8"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 29874,
+   "name": "Despina",
+   "tag": "#R8098YCU"
+  },
+  {
+   "attacks": 2,
+   "limit": 6,
+   "loot": 9865,
+   "name": "Captain Future",
+   "tag": "#8PGGGL2U8"
+  }
+ ],
+ "offensiveReward": 0,
+ "raidsCompleted": 0,
+ "startTime": "20261120T070000.000Z",
+ "state": "ongoing",
+ "totalAttacks": 14
+}
