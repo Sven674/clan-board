@@ -1,0 +1,106 @@
+{
+ "attacksPerMember": 2,
+ "endTime": "20261122T190319.000Z",
+ "final": false,
+ "kind": "regular",
+ "lastSeen": "2026-11-20T23:18:54Z",
+ "members": [
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Zool",
+   "pos": 5,
+   "tag": "#292UQJ2LJ",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "HaraldKehl",
+   "pos": 8,
+   "tag": "#QJG9CR0Q",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Goldi",
+   "pos": 10,
+   "tag": "#9V2RUVU82",
+   "th": 8
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "NobbyNobbs",
+   "pos": 7,
+   "tag": "#L08LQ8YJL",
+   "th": 17
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Uzii",
+   "pos": 2,
+   "tag": "#2Q8GPVV0",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Alex12",
+   "pos": 6,
+   "tag": "#9GPR28YG",
+   "th": 17
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "das ende naht",
+   "pos": 9,
+   "tag": "#2P0P8JPPG",
+   "th": 14
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Zucker",
+   "pos": 4,
+   "tag": "#2CY2GL9J",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "mini1000000",
+   "pos": 1,
+   "tag": "#LQ0YCGLL2",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Lonestar",
+   "pos": 3,
+   "tag": "#28CJUY0G9",
+   "th": 19
+  }
+ ],
+ "opponent": {
+  "badge": "https://api-assets.clashofclans.com/badges/70/8lnaeqnGiwfQ5rQwKoCRu2hD_5MR0XE1-fy-Vk-AoKg.png",
+  "name": "Dãrk térrôrs",
+  "pct": 0.0,
+  "stars": 0,
+  "tag": "#YLCRY0RV"
+ },
+ "preparationStartTime": "20261120T200319.000Z",
+ "startTime": "20261121T190319.000Z",
+ "state": "preparation",
+ "teamSize": 10,
+ "us": {
+  "attacks": 0,
+  "pct": 0.0,
+  "stars": 0
+ },
+ "warTag": null
+}
