@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 245077,
+ "capitalTotalLoot": 257971,
  "defensiveReward": 0,
  "endTime": "20261123T070000.000Z",
  "members": [
@@ -11,9 +11,9 @@
    "tag": "#92L228UR"
   },
   {
-   "attacks": 3,
+   "attacks": 6,
    "limit": 6,
-   "loot": 12066,
+   "loot": 22762,
    "name": "meister Greindl",
    "tag": "#C9QPLP02"
   },
@@ -30,6 +30,13 @@
    "loot": 26930,
    "name": "pflegephall",
    "tag": "#LQLVPQ00"
+  },
+  {
+   "attacks": 1,
+   "limit": 6,
+   "loot": 2198,
+   "name": "EumelTV",
+   "tag": "#J2QLL8GY"
   },
   {
    "attacks": 6,
@@ -99,5 +106,5 @@
  "raidsCompleted": 2,
  "startTime": "20261120T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 60
+ "totalAttacks": 64
 }
