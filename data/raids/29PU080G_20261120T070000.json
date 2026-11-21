@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 291657,
+ "capitalTotalLoot": 302007,
  "defensiveReward": 0,
  "endTime": "20261123T070000.000Z",
  "members": [
@@ -88,9 +88,9 @@
    "tag": "#2UCJYGU0"
   },
   {
-   "attacks": 2,
+   "attacks": 4,
    "limit": 6,
-   "loot": 10142,
+   "loot": 20492,
    "name": "Elussa",
    "tag": "#J9CLGUR0"
   },
@@ -120,5 +120,5 @@
  "raidsCompleted": 4,
  "startTime": "20261120T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 73
+ "totalAttacks": 75
 }
