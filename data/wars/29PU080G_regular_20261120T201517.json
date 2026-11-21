@@ -3,7 +3,7 @@
  "endTime": "20261122T191517.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-21T16:51:01Z",
+ "lastSeen": "2026-11-21T19:31:58Z",
  "members": [
   {
    "attacks": [],
@@ -14,7 +14,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 19,
+     "order": 1,
+     "pct": 90,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "meister Greindl",
    "pos": 14,
@@ -62,7 +70,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 14,
+     "defTh": 19,
+     "order": 3,
+     "pct": 82,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "TaLuDa",
    "pos": 15,
@@ -126,7 +142,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 15,
+     "defTh": 19,
+     "order": 2,
+     "pct": 69,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Heisenberg",
    "pos": 16,
@@ -175,12 +199,12 @@
  },
  "preparationStartTime": "20261120T201517.000Z",
  "startTime": "20261121T191517.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 3,
+  "pct": 12.05,
+  "stars": 6
  },
  "warTag": null
 }

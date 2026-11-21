@@ -3,7 +3,7 @@
  "endTime": "20261122T190319.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-21T16:51:01Z",
+ "lastSeen": "2026-11-21T19:31:58Z",
  "members": [
   {
    "attacks": [],
@@ -95,7 +95,7 @@
  },
  "preparationStartTime": "20261120T200319.000Z",
  "startTime": "20261121T190319.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 10,
  "us": {
   "attacks": 0,
