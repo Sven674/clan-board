@@ -3,10 +3,25 @@
  "endTime": "20261122T191517.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-21T20:01:56Z",
+ "lastSeen": "2026-11-21T21:04:27Z",
  "members": [
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 19,
+     "order": 9,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 2,
+     "defTh": 19,
+     "order": 13,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "theBASTIan",
    "pos": 4,
@@ -23,7 +38,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 15,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "meister Greindl",
    "pos": 14,
    "tag": "#C9QPLP02",
@@ -69,7 +91,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 16,
+     "defTh": 19,
+     "order": 8,
+     "pct": 71,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "EumelTV",
    "pos": 8,
@@ -156,7 +186,22 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 19,
+     "order": 7,
+     "pct": 96,
+     "stars": 2
+    },
+    {
+     "defPos": 16,
+     "defTh": 19,
+     "order": 10,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "Sir COColores",
    "pos": 6,
@@ -180,15 +225,38 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 20,
+     "defTh": 19,
+     "order": 12,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 14,
+     "pct": 85,
+     "stars": 1
+    }
+   ],
    "name": "Elussa",
    "pos": 20,
    "tag": "#J9CLGUR0",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 12,
+     "defTh": 19,
+     "order": 11,
+     "pct": 53,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "1000000",
    "pos": 12,
@@ -215,8 +283,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/_9eK8572xwoCHmrA4WbkgmE3eNd6GqMzHa3Rlx5QHiI.png",
   "name": "AL AS6EER",
-  "pct": 10.0,
-  "stars": 6,
+  "pct": 19.25,
+  "stars": 10,
   "tag": "#2YRY9V9LR"
  },
  "preparationStartTime": "20261120T201517.000Z",
@@ -224,9 +292,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 4,
-  "pct": 15.5,
-  "stars": 8
+  "attacks": 11,
+  "pct": 38.15,
+  "stars": 22
  },
  "warTag": null
 }

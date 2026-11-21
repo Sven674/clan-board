@@ -3,7 +3,7 @@
  "endTime": "20261122T190319.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-21T20:01:56Z",
+ "lastSeen": "2026-11-21T21:04:27Z",
  "members": [
   {
    "attacks": [],
@@ -23,7 +23,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "order": 4,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Goldi",
    "pos": 10,
    "tag": "#9V2RUVU82",
@@ -62,7 +69,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 17,
+     "order": 3,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "das ende naht",
    "pos": 9,
    "tag": "#2P0P8JPPG",
@@ -70,7 +84,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 6,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Zucker",
    "pos": 4,
    "tag": "#2CY2GL9J",
@@ -93,7 +114,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 5,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Lonestar",
    "pos": 3,
    "tag": "#28CJUY0G9",
@@ -103,8 +131,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/8lnaeqnGiwfQ5rQwKoCRu2hD_5MR0XE1-fy-Vk-AoKg.png",
   "name": "Dãrk térrôrs",
-  "pct": 20.0,
-  "stars": 6,
+  "pct": 60.0,
+  "stars": 18,
   "tag": "#YLCRY0RV"
  },
  "preparationStartTime": "20261120T200319.000Z",
