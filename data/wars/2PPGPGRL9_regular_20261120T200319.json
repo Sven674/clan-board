@@ -3,10 +3,18 @@
  "endTime": "20261122T190319.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-21T21:04:27Z",
+ "lastSeen": "2026-11-21T22:08:02Z",
  "members": [
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 7,
+     "pct": 25,
+     "stars": 1
+    }
+   ],
    "defenses": [],
    "name": "Zool",
    "pos": 5,
@@ -140,9 +148,9 @@
  "state": "inWar",
  "teamSize": 10,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 1,
+  "pct": 2.5,
+  "stars": 1
  },
  "warTag": null
 }

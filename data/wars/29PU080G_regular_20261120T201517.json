@@ -3,7 +3,7 @@
  "endTime": "20261122T191517.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-21T21:04:27Z",
+ "lastSeen": "2026-11-21T22:08:02Z",
  "members": [
   {
    "attacks": [
@@ -138,8 +138,23 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 6,
+     "defTh": 19,
+     "order": 16,
+     "pct": 86,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 18,
+     "pct": 73,
+     "stars": 2
+    }
+   ],
    "name": "Ertanbabo",
    "pos": 9,
    "tag": "#PRRJY9G9",
@@ -163,7 +178,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 17,
+     "pct": 93,
+     "stars": 2
+    }
+   ],
    "name": "Legend Papa",
    "pos": 10,
    "tag": "#9RCY8U0VQ",
@@ -283,8 +305,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/_9eK8572xwoCHmrA4WbkgmE3eNd6GqMzHa3Rlx5QHiI.png",
   "name": "AL AS6EER",
-  "pct": 19.25,
-  "stars": 10,
+  "pct": 27.55,
+  "stars": 14,
   "tag": "#2YRY9V9LR"
  },
  "preparationStartTime": "20261120T201517.000Z",
@@ -292,9 +314,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 11,
-  "pct": 38.15,
-  "stars": 22
+  "attacks": 12,
+  "pct": 42.45,
+  "stars": 24
  },
  "warTag": null
 }

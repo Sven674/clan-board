@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 440191,
+ "capitalTotalLoot": 463692,
  "defensiveReward": 0,
  "endTime": "20261123T070000.000Z",
  "members": [
@@ -125,6 +125,13 @@
   {
    "attacks": 6,
    "limit": 6,
+   "loot": 23501,
+   "name": "Nemesis",
+   "tag": "#22C0YRV9C"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
    "loot": 23668,
    "name": "Captain Future",
    "tag": "#8PGGGL2U8"
@@ -148,5 +155,5 @@
  "raidsCompleted": 5,
  "startTime": "20261120T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 106
+ "totalAttacks": 112
 }
