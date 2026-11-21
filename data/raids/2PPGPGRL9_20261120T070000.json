@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 138531,
+ "capitalTotalLoot": 163868,
  "defensiveReward": 0,
  "endTime": "20261123T070000.000Z",
  "members": [
@@ -51,11 +51,18 @@
    "loot": 22312,
    "name": "Sven",
    "tag": "#J0UYJ09P"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 25337,
+   "name": "Lonestar",
+   "tag": "#28CJUY0G9"
   }
  ],
  "offensiveReward": 0,
  "raidsCompleted": 1,
  "startTime": "20261120T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 34
+ "totalAttacks": 40
 }
