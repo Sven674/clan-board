@@ -3,7 +3,7 @@
  "endTime": "20261122T190319.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-21T19:31:58Z",
+ "lastSeen": "2026-11-21T20:01:56Z",
  "members": [
   {
    "attacks": [],
@@ -39,7 +39,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 2,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Uzii",
    "pos": 2,
    "tag": "#2Q8GPVV0",
@@ -71,7 +78,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 1,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "mini1000000",
    "pos": 1,
    "tag": "#LQ0YCGLL2",
@@ -89,8 +103,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/8lnaeqnGiwfQ5rQwKoCRu2hD_5MR0XE1-fy-Vk-AoKg.png",
   "name": "Dãrk térrôrs",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 20.0,
+  "stars": 6,
   "tag": "#YLCRY0RV"
  },
  "preparationStartTime": "20261120T200319.000Z",

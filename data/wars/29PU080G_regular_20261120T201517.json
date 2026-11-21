@@ -3,7 +3,7 @@
  "endTime": "20261122T191517.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-21T19:31:58Z",
+ "lastSeen": "2026-11-21T20:01:56Z",
  "members": [
   {
    "attacks": [],
@@ -30,8 +30,23 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 19,
+     "order": 6,
+     "pct": 69,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 4,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "--SVEN--674--",
    "pos": 1,
    "tag": "#200PCP8QQ",
@@ -63,7 +78,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 5,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "AGENT 00H",
    "pos": 2,
    "tag": "#80V9Q998",
@@ -193,8 +215,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/_9eK8572xwoCHmrA4WbkgmE3eNd6GqMzHa3Rlx5QHiI.png",
   "name": "AL AS6EER",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 10.0,
+  "stars": 6,
   "tag": "#2YRY9V9LR"
  },
  "preparationStartTime": "20261120T201517.000Z",
@@ -202,9 +224,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 3,
-  "pct": 12.05,
-  "stars": 6
+  "attacks": 4,
+  "pct": 15.5,
+  "stars": 8
  },
  "warTag": null
 }
