@@ -3,7 +3,7 @@
  "endTime": "20261122T191517.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-22T00:03:06Z",
+ "lastSeen": "2026-11-22T00:16:26Z",
  "members": [
   {
    "attacks": [
@@ -333,7 +333,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 24,
+     "pct": 74,
+     "stars": 2
+    }
+   ],
    "name": "hulk",
    "pos": 11,
    "tag": "#GRJU2J92",
@@ -343,8 +350,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/_9eK8572xwoCHmrA4WbkgmE3eNd6GqMzHa3Rlx5QHiI.png",
   "name": "AL AS6EER",
-  "pct": 34.45,
-  "stars": 18,
+  "pct": 38.15,
+  "stars": 20,
   "tag": "#2YRY9V9LR"
  },
  "preparationStartTime": "20261120T201517.000Z",
