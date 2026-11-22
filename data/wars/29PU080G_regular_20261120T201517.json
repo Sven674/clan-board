@@ -3,7 +3,7 @@
  "endTime": "20261122T191517.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-22T14:08:20Z",
+ "lastSeen": "2026-11-22T15:37:11Z",
  "members": [
   {
    "attacks": [
@@ -125,7 +125,22 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 19,
+     "order": 61,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 11,
+     "defTh": 19,
+     "order": 62,
+     "pct": 80,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -176,6 +191,13 @@
      "defTh": 19,
      "order": 50,
      "pct": 94,
+     "stars": 2
+    },
+    {
+     "defPos": 1,
+     "defTh": 19,
+     "order": 60,
+     "pct": 86,
      "stars": 2
     }
    ],
@@ -485,6 +507,12 @@
    "defenses": [
     {
      "attTh": 19,
+     "order": 63,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
      "order": 14,
      "pct": 85,
      "stars": 1
@@ -588,8 +616,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/_9eK8572xwoCHmrA4WbkgmE3eNd6GqMzHa3Rlx5QHiI.png",
   "name": "AL AS6EER",
-  "pct": 96.8,
-  "stars": 56,
+  "pct": 97.55,
+  "stars": 58,
   "tag": "#2YRY9V9LR"
  },
  "preparationStartTime": "20261120T201517.000Z",
@@ -597,9 +625,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 28,
-  "pct": 95.2,
-  "stars": 54
+  "attacks": 31,
+  "pct": 97.1,
+  "stars": 55
  },
  "warTag": null
 }
