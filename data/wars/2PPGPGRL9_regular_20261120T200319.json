@@ -1,9 +1,9 @@
 {
  "attacksPerMember": 2,
  "endTime": "20261122T190319.000Z",
- "final": false,
+ "final": true,
  "kind": "regular",
- "lastSeen": "2026-11-22T15:37:11Z",
+ "lastSeen": "2026-11-22T19:51:32Z",
  "members": [
   {
    "attacks": [
@@ -95,7 +95,22 @@
    "th": 17
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 7,
+     "defTh": 18,
+     "order": 26,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 6,
+     "defTh": 18,
+     "order": 27,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -108,6 +123,12 @@
      "order": 13,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "attTh": 18,
+     "order": 25,
+     "pct": 10,
+     "stars": 1
     }
    ],
    "name": "Uzii",
@@ -213,6 +234,12 @@
      "order": 1,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "attTh": 18,
+     "order": 24,
+     "pct": 13,
+     "stars": 1
     }
    ],
    "name": "mini1000000",
@@ -260,12 +287,12 @@
  },
  "preparationStartTime": "20261120T200319.000Z",
  "startTime": "20261121T190319.000Z",
- "state": "inWar",
+ "state": "warEnded",
  "teamSize": 10,
  "us": {
-  "attacks": 11,
-  "pct": 81.5,
-  "stars": 23
+  "attacks": 13,
+  "pct": 87.3,
+  "stars": 25
  },
  "warTag": null
 }

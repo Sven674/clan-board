@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 554444,
+ "capitalTotalLoot": 592128,
  "defensiveReward": 0,
  "endTime": "20261123T070000.000Z",
  "members": [
@@ -25,9 +25,9 @@
    "tag": "#200PCP8QQ"
   },
   {
-   "attacks": 3,
+   "attacks": 5,
    "limit": 6,
-   "loot": 12098,
+   "loot": 20112,
    "name": "=RS=",
    "tag": "#GLPVGVR9"
   },
@@ -74,6 +74,13 @@
    "tag": "#22UU2J8Y8"
   },
   {
+   "attacks": 1,
+   "limit": 5,
+   "loot": 3095,
+   "name": "timo",
+   "tag": "#CC0CPG8Y"
+  },
+  {
    "attacks": 6,
    "limit": 6,
    "loot": 18451,
@@ -107,6 +114,13 @@
    "loot": 15529,
    "name": "Legend Papa",
    "tag": "#9RCY8U0VQ"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 26575,
+   "name": "~~HིOིLིJིEི~~",
+   "tag": "#RY2JPQCR"
   },
   {
    "attacks": 6,
@@ -176,5 +190,5 @@
  "raidsCompleted": 7,
  "startTime": "20261120T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 134
+ "totalAttacks": 143
 }

@@ -1,9 +1,9 @@
 {
  "attacksPerMember": 2,
  "endTime": "20261122T191517.000Z",
- "final": false,
+ "final": true,
  "kind": "regular",
- "lastSeen": "2026-11-22T15:37:11Z",
+ "lastSeen": "2026-11-22T19:51:32Z",
  "members": [
   {
    "attacks": [
@@ -23,6 +23,12 @@
     }
    ],
    "defenses": [
+    {
+     "attTh": 19,
+     "order": 74,
+     "pct": 10,
+     "stars": 1
+    },
     {
      "attTh": 19,
      "order": 28,
@@ -109,6 +115,13 @@
      "order": 23,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 10,
+     "defTh": 19,
+     "order": 70,
+     "pct": 80,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -142,6 +155,12 @@
     }
    ],
    "defenses": [
+    {
+     "attTh": 19,
+     "order": 73,
+     "pct": 23,
+     "stars": 1
+    },
     {
      "attTh": 19,
      "order": 26,
@@ -324,9 +343,22 @@
      "order": 22,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 11,
+     "defTh": 19,
+     "order": 68,
+     "pct": 69,
+     "stars": 2
     }
    ],
    "defenses": [
+    {
+     "attTh": 19,
+     "order": 66,
+     "pct": 100,
+     "stars": 3
+    },
     {
      "attTh": 19,
      "order": 51,
@@ -400,8 +432,29 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 13,
+     "defTh": 19,
+     "order": 71,
+     "pct": 69,
+     "stars": 2
+    },
+    {
+     "defPos": 11,
+     "defTh": 19,
+     "order": 72,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
+    {
+     "attTh": 19,
+     "order": 67,
+     "pct": 100,
+     "stars": 3
+    },
     {
      "attTh": 19,
      "order": 52,
@@ -421,7 +474,22 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 11,
+     "defTh": 19,
+     "order": 64,
+     "pct": 89,
+     "stars": 2
+    },
+    {
+     "defPos": 6,
+     "defTh": 19,
+     "order": 65,
+     "pct": 87,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -473,6 +541,13 @@
      "order": 2,
      "pct": 69,
      "stars": 2
+    },
+    {
+     "defPos": 6,
+     "defTh": 19,
+     "order": 76,
+     "pct": 66,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -502,6 +577,13 @@
      "order": 12,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 13,
+     "defTh": 19,
+     "order": 75,
+     "pct": 95,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -591,6 +673,13 @@
      "order": 58,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 1,
+     "defTh": 19,
+     "order": 69,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -616,18 +705,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/_9eK8572xwoCHmrA4WbkgmE3eNd6GqMzHa3Rlx5QHiI.png",
   "name": "AL AS6EER",
-  "pct": 97.55,
-  "stars": 58,
+  "pct": 100.0,
+  "stars": 60,
   "tag": "#2YRY9V9LR"
  },
  "preparationStartTime": "20261120T201517.000Z",
  "startTime": "20261121T191517.000Z",
- "state": "inWar",
+ "state": "warEnded",
  "teamSize": 20,
  "us": {
-  "attacks": 31,
-  "pct": 97.1,
-  "stars": 55
+  "attacks": 40,
+  "pct": 98.8,
+  "stars": 57
  },
  "warTag": null
 }

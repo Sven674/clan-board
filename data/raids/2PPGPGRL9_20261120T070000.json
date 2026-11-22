@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 365926,
+ "capitalTotalLoot": 381009,
  "defensiveReward": 0,
  "endTime": "20261123T070000.000Z",
  "members": [
@@ -16,6 +16,13 @@
    "loot": 24327,
    "name": "HaraldKehl",
    "tag": "#QJG9CR0Q"
+  },
+  {
+   "attacks": 3,
+   "limit": 6,
+   "loot": 15083,
+   "name": "mimi",
+   "tag": "#2YLVQRY9"
   },
   {
    "attacks": 6,
@@ -113,5 +120,5 @@
  "raidsCompleted": 4,
  "startTime": "20261120T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 88
+ "totalAttacks": 91
 }
