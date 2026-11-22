@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 209935,
+ "capitalTotalLoot": 349499,
  "defensiveReward": 0,
  "endTime": "20261123T070000.000Z",
  "members": [
@@ -9,6 +9,13 @@
    "loot": 36036,
    "name": "Zool",
    "tag": "#292UQJ2LJ"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 24327,
+   "name": "HaraldKehl",
+   "tag": "#QJG9CR0Q"
   },
   {
    "attacks": 6,
@@ -25,18 +32,32 @@
    "tag": "#L08LQ8YJL"
   },
   {
-   "attacks": 2,
+   "attacks": 6,
    "limit": 6,
-   "loot": 10594,
+   "loot": 30551,
    "name": "Odin",
    "tag": "#92RP8G9"
   },
   {
-   "attacks": 2,
+   "attacks": 6,
    "limit": 6,
-   "loot": 10574,
+   "loot": 27890,
+   "name": "der. Cool.",
+   "tag": "#QCJY9QPC"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 29938,
    "name": "Azog",
    "tag": "#QQCCR8RC"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 25573,
+   "name": "Alex12",
+   "tag": "#9GPR28YG"
   },
   {
    "attacks": 6,
@@ -60,6 +81,13 @@
    "tag": "#PRQUCQ0VY"
   },
   {
+   "attacks": 4,
+   "limit": 6,
+   "loot": 22453,
+   "name": "Zucker",
+   "tag": "#2CY2GL9J"
+  },
+  {
    "attacks": 6,
    "limit": 6,
    "loot": 24263,
@@ -75,8 +103,8 @@
   }
  ],
  "offensiveReward": 0,
- "raidsCompleted": 3,
+ "raidsCompleted": 4,
  "startTime": "20261120T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 52
+ "totalAttacks": 82
 }
