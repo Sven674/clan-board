@@ -3,7 +3,7 @@
  "endTime": "20261122T190319.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-22T07:22:32Z",
+ "lastSeen": "2026-11-22T08:15:37Z",
  "members": [
   {
    "attacks": [
@@ -15,7 +15,14 @@
      "stars": 1
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 17,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Zool",
    "pos": 5,
    "tag": "#292UQJ2LJ",
@@ -204,8 +211,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/8lnaeqnGiwfQ5rQwKoCRu2hD_5MR0XE1-fy-Vk-AoKg.png",
   "name": "Dãrk térrôrs",
-  "pct": 90.0,
-  "stars": 27,
+  "pct": 100.0,
+  "stars": 30,
   "tag": "#YLCRY0RV"
  },
  "preparationStartTime": "20261120T200319.000Z",
