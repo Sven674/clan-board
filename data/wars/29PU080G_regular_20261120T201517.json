@@ -3,7 +3,7 @@
  "endTime": "20261122T191517.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-22T00:16:26Z",
+ "lastSeen": "2026-11-22T06:06:07Z",
  "members": [
   {
    "attacks": [
@@ -22,7 +22,20 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 28,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
+     "order": 27,
+     "pct": 87,
+     "stars": 1
+    }
+   ],
    "name": "theBASTIan",
    "pos": 4,
    "tag": "#92L228UR",
@@ -84,7 +97,14 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 31,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "=RS=",
    "pos": 7,
    "tag": "#GLPVGVR9",
@@ -92,7 +112,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 26,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Chrisdoc",
    "pos": 3,
    "tag": "#9GR80Q9P",
@@ -108,7 +135,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 32,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "EumelTV",
    "pos": 8,
    "tag": "#J2QLL8GY",
@@ -142,6 +176,12 @@
    "defenses": [
     {
      "attTh": 19,
+     "order": 38,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
      "order": 20,
      "pct": 82,
      "stars": 2
@@ -165,6 +205,12 @@
    "defenses": [
     {
      "attTh": 19,
+     "order": 33,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
      "order": 18,
      "pct": 73,
      "stars": 2
@@ -177,7 +223,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 29,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Beach",
    "pos": 5,
    "tag": "#8LVUJRQP",
@@ -193,7 +246,20 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 40,
+     "pct": 88,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 43,
+     "pct": 95,
+     "stars": 2
+    }
+   ],
    "name": "☠️Happy Day ☠️",
    "pos": 18,
    "tag": "#Y80LGCUPJ",
@@ -212,8 +278,20 @@
    "defenses": [
     {
      "attTh": 19,
+     "order": 36,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
      "order": 17,
      "pct": 93,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 34,
+     "pct": 97,
      "stars": 2
     }
    ],
@@ -239,7 +317,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 42,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "grautvornixe",
    "pos": 17,
    "tag": "#PRRQ29JP",
@@ -262,7 +347,14 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 30,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Sir COColores",
    "pos": 6,
    "tag": "#YVCLP0RJ",
@@ -278,7 +370,20 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 41,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
+     "order": 39,
+     "pct": 97,
+     "stars": 2
+    }
+   ],
    "name": "Heisenberg",
    "pos": 16,
    "tag": "#29JR2282",
@@ -317,7 +422,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 25,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "1000000",
    "pos": 12,
    "tag": "#V029UQCU",
@@ -325,7 +437,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 37,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Captain Future",
    "pos": 13,
    "tag": "#8PGGGL2U8",
@@ -339,6 +458,12 @@
      "order": 24,
      "pct": 74,
      "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 35,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "name": "hulk",
@@ -350,8 +475,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/_9eK8572xwoCHmrA4WbkgmE3eNd6GqMzHa3Rlx5QHiI.png",
   "name": "AL AS6EER",
-  "pct": 38.15,
-  "stars": 20,
+  "pct": 96.8,
+  "stars": 56,
   "tag": "#2YRY9V9LR"
  },
  "preparationStartTime": "20261120T201517.000Z",

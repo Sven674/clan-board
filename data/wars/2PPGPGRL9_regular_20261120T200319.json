@@ -3,7 +3,7 @@
  "endTime": "20261122T190319.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-22T00:16:26Z",
+ "lastSeen": "2026-11-22T06:06:07Z",
  "members": [
   {
    "attacks": [
@@ -23,7 +23,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 11,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "HaraldKehl",
    "pos": 8,
    "tag": "#QJG9CR0Q",
@@ -61,7 +68,14 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 10,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "NobbyNobbs",
    "pos": 7,
    "tag": "#L08LQ8YJL",
@@ -75,6 +89,12 @@
      "order": 2,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "attTh": 18,
+     "order": 13,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "name": "Uzii",
@@ -84,7 +104,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 12,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Alex12",
    "pos": 6,
    "tag": "#9GPR28YG",
@@ -121,7 +148,15 @@
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 19,
+     "order": 14,
+     "pct": 59,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -154,8 +189,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/8lnaeqnGiwfQ5rQwKoCRu2hD_5MR0XE1-fy-Vk-AoKg.png",
   "name": "Dãrk térrôrs",
-  "pct": 60.0,
-  "stars": 18,
+  "pct": 90.0,
+  "stars": 27,
   "tag": "#YLCRY0RV"
  },
  "preparationStartTime": "20261120T200319.000Z",
@@ -163,9 +198,9 @@
  "state": "inWar",
  "teamSize": 10,
  "us": {
-  "attacks": 3,
-  "pct": 22.5,
-  "stars": 7
+  "attacks": 4,
+  "pct": 28.4,
+  "stars": 9
  },
  "warTag": null
 }
