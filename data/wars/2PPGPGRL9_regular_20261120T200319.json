@@ -3,7 +3,7 @@
  "endTime": "20261122T190319.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-22T06:06:07Z",
+ "lastSeen": "2026-11-22T07:22:32Z",
  "members": [
   {
    "attacks": [
@@ -171,7 +171,22 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 2,
+     "defTh": 19,
+     "order": 15,
+     "pct": 94,
+     "stars": 2
+    },
+    {
+     "defPos": 5,
+     "defTh": 18,
+     "order": 16,
+     "pct": 72,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -198,9 +213,9 @@
  "state": "inWar",
  "teamSize": 10,
  "us": {
-  "attacks": 4,
-  "pct": 28.4,
-  "stars": 9
+  "attacks": 6,
+  "pct": 42.5,
+  "stars": 12
  },
  "warTag": null
 }
