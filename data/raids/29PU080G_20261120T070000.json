@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 463692,
+ "capitalTotalLoot": 485192,
  "defensiveReward": 0,
  "endTime": "20261123T070000.000Z",
  "members": [
@@ -144,9 +144,9 @@
    "tag": "#GRJU2J92"
   },
   {
-   "attacks": 2,
+   "attacks": 6,
    "limit": 6,
-   "loot": 11541,
+   "loot": 33041,
    "name": "Sue",
    "tag": "#UR0Y8JU0"
   }
@@ -155,5 +155,5 @@
  "raidsCompleted": 5,
  "startTime": "20261120T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 112
+ "totalAttacks": 116
 }

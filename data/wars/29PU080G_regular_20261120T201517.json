@@ -3,7 +3,7 @@
  "endTime": "20261122T191517.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-21T22:08:02Z",
+ "lastSeen": "2026-11-22T00:03:06Z",
  "members": [
   {
    "attacks": [
@@ -75,7 +75,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 9,
+     "defTh": 19,
+     "order": 23,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "=RS=",
    "pos": 7,
@@ -131,7 +139,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 20,
+     "pct": 82,
+     "stars": 2
+    }
+   ],
    "name": "TaLuDa",
    "pos": 15,
    "tag": "#22UU2J8Y8",
@@ -169,7 +184,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 17,
+     "defTh": 19,
+     "order": 22,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "☠️Happy Day ☠️",
    "pos": 18,
@@ -177,7 +200,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 19,
+     "order": 19,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -193,7 +224,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 21,
+     "pct": 56,
+     "stars": 2
+    }
+   ],
    "name": "Filiusberlinius",
    "pos": 19,
    "tag": "#2UCJYGU0",
@@ -305,8 +343,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/_9eK8572xwoCHmrA4WbkgmE3eNd6GqMzHa3Rlx5QHiI.png",
   "name": "AL AS6EER",
-  "pct": 27.55,
-  "stars": 14,
+  "pct": 34.45,
+  "stars": 18,
   "tag": "#2YRY9V9LR"
  },
  "preparationStartTime": "20261120T201517.000Z",
@@ -314,9 +352,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 12,
-  "pct": 42.45,
-  "stars": 24
+  "attacks": 15,
+  "pct": 57.45,
+  "stars": 33
  },
  "warTag": null
 }
