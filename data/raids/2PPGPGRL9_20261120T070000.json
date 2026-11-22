@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 381009,
+ "capitalTotalLoot": 403971,
  "defensiveReward": 0,
  "endTime": "20261123T070000.000Z",
  "members": [
@@ -104,6 +104,13 @@
   {
    "attacks": 6,
    "limit": 6,
+   "loot": 22962,
+   "name": "mini1000000",
+   "tag": "#LQ0YCGLL2"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
    "loot": 24263,
    "name": "Herr Zwerg",
    "tag": "#2UUP0LC0L"
@@ -117,8 +124,8 @@
   }
  ],
  "offensiveReward": 0,
- "raidsCompleted": 4,
+ "raidsCompleted": 5,
  "startTime": "20261120T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 91
+ "totalAttacks": 97
 }

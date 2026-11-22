@@ -1,0 +1,186 @@
+{
+ "attacksPerMember": 2,
+ "endTime": "20261124T190445.000Z",
+ "final": false,
+ "kind": "regular",
+ "lastSeen": "2026-11-22T21:03:53Z",
+ "members": [
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "theBASTIan",
+   "pos": 7,
+   "tag": "#92L228UR",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "meister Greindl",
+   "pos": 15,
+   "tag": "#C9QPLP02",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "--SVEN--674--",
+   "pos": 1,
+   "tag": "#200PCP8QQ",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "=RS=",
+   "pos": 10,
+   "tag": "#GLPVGVR9",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Chrisdoc",
+   "pos": 5,
+   "tag": "#9GR80Q9P",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "OlMcGoldi",
+   "pos": 11,
+   "tag": "#YR0Y90G",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "EumelTV",
+   "pos": 12,
+   "tag": "#J2QLL8GY",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "AGENT 00H",
+   "pos": 3,
+   "tag": "#80V9Q998",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "TaLuDa",
+   "pos": 16,
+   "tag": "#22UU2J8Y8",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Ertanbabo",
+   "pos": 2,
+   "tag": "#PRRJY9G9",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Beach",
+   "pos": 6,
+   "tag": "#8LVUJRQP",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "☠️Happy Day ☠️",
+   "pos": 19,
+   "tag": "#Y80LGCUPJ",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Legend Papa",
+   "pos": 13,
+   "tag": "#9RCY8U0VQ",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Filiusberlinius",
+   "pos": 20,
+   "tag": "#2UCJYGU0",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "grautvornixe",
+   "pos": 18,
+   "tag": "#PRRQ29JP",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Sir COColores",
+   "pos": 8,
+   "tag": "#YVCLP0RJ",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Heisenberg",
+   "pos": 17,
+   "tag": "#29JR2282",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "1000000",
+   "pos": 4,
+   "tag": "#V029UQCU",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Captain Future",
+   "pos": 14,
+   "tag": "#8PGGGL2U8",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "hulk",
+   "pos": 9,
+   "tag": "#GRJU2J92",
+   "th": 19
+  }
+ ],
+ "opponent": {
+  "badge": "https://api-assets.clashofclans.com/badges/70/ipPYX5GW21w5iVC3zA3z_VbBvuxLGzdWTVbm5oMjaag.png",
+  "name": "PERSHIAN GULF✌",
+  "pct": 0.0,
+  "stars": 0,
+  "tag": "#YCYUGCCY"
+ },
+ "preparationStartTime": "20261122T200445.000Z",
+ "startTime": "20261123T190445.000Z",
+ "state": "preparation",
+ "teamSize": 20,
+ "us": {
+  "attacks": 0,
+  "pct": 0.0,
+  "stars": 0
+ },
+ "warTag": null
+}
