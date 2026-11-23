@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 403971,
+ "capitalTotalLoot": 433005,
  "defensiveReward": 0,
  "endTime": "20261123T070000.000Z",
  "members": [
@@ -95,6 +95,13 @@
    "tag": "#PRQUCQ0VY"
   },
   {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 29034,
+   "name": "LEGENDE",
+   "tag": "#P8Q89LYQ9"
+  },
+  {
    "attacks": 4,
    "limit": 6,
    "loot": 22453,
@@ -127,5 +134,5 @@
  "raidsCompleted": 5,
  "startTime": "20261120T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 97
+ "totalAttacks": 103
 }
