@@ -3,7 +3,7 @@
  "endTime": "20261124T190445.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-23T11:11:26Z",
+ "lastSeen": "2026-11-23T20:25:11Z",
  "members": [
   {
    "attacks": [],
@@ -14,7 +14,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 19,
+     "order": 5,
+     "pct": 99,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "meister Greindl",
    "pos": 15,
@@ -22,15 +30,38 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 19,
+     "order": 9,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 1,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "--SVEN--674--",
    "pos": 1,
    "tag": "#200PCP8QQ",
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 19,
+     "order": 7,
+     "pct": 90,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "=RS=",
    "pos": 10,
@@ -38,7 +69,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 19,
+     "order": 6,
+     "pct": 87,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Chrisdoc",
    "pos": 5,
@@ -78,8 +117,23 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 1,
+     "defTh": 19,
+     "order": 8,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 2,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Ertanbabo",
    "pos": 2,
    "tag": "#PRRJY9G9",
@@ -118,7 +172,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 14,
+     "defTh": 19,
+     "order": 3,
+     "pct": 89,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "grautvornixe",
    "pos": 18,
@@ -134,7 +196,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 19,
+     "order": 4,
+     "pct": 65,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "Heisenberg",
    "pos": 17,
@@ -169,18 +239,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/ipPYX5GW21w5iVC3zA3z_VbBvuxLGzdWTVbm5oMjaag.png",
   "name": "PERSHIAN GULF✌",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 10.0,
+  "stars": 6,
   "tag": "#YCYUGCCY"
  },
  "preparationStartTime": "20261122T200445.000Z",
  "startTime": "20261123T190445.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 7,
+  "pct": 31.5,
+  "stars": 16
  },
  "warTag": null
 }
