@@ -3,11 +3,33 @@
  "endTime": "20261124T190445.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-24T06:54:19Z",
+ "lastSeen": "2026-11-24T13:02:43Z",
  "members": [
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 11,
+     "defTh": 19,
+     "order": 33,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 6,
+     "defTh": 19,
+     "order": 38,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 37,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "theBASTIan",
    "pos": 7,
    "tag": "#92L228UR",
@@ -21,9 +43,23 @@
      "order": 5,
      "pct": 99,
      "stars": 2
+    },
+    {
+     "defPos": 12,
+     "defTh": 19,
+     "order": 54,
+     "pct": 100,
+     "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 50,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "meister Greindl",
    "pos": 15,
    "tag": "#C9QPLP02",
@@ -37,14 +73,33 @@
      "order": 9,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 9,
+     "defTh": 19,
+     "order": 39,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
     {
      "attTh": 19,
+     "order": 56,
+     "pct": 10,
+     "stars": 1
+    },
+    {
+     "attTh": 19,
      "order": 1,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "attTh": 19,
+     "order": 58,
+     "pct": 16,
+     "stars": 1
     }
    ],
    "name": "--SVEN--674--",
@@ -69,7 +124,20 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 42,
+     "pct": 97,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 48,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "=RS=",
    "pos": 10,
    "tag": "#GLPVGVR9",
@@ -106,8 +174,23 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 19,
+     "defTh": 19,
+     "order": 45,
+     "pct": 87,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 43,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "OlMcGoldi",
    "pos": 11,
    "tag": "#YR0Y90G",
@@ -123,7 +206,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 44,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "EumelTV",
    "pos": 12,
    "tag": "#J2QLL8GY",
@@ -155,6 +245,12 @@
     },
     {
      "attTh": 19,
+     "order": 34,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
      "order": 18,
      "pct": 89,
      "stars": 2
@@ -175,7 +271,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 51,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "TaLuDa",
    "pos": 16,
    "tag": "#22UU2J8Y8",
@@ -204,6 +307,12 @@
      "order": 2,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "attTh": 19,
+     "order": 59,
+     "pct": 25,
+     "stars": 1
     }
    ],
    "name": "Ertanbabo",
@@ -228,7 +337,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 36,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Beach",
    "pos": 6,
    "tag": "#8LVUJRQP",
@@ -257,6 +373,12 @@
      "order": 21,
      "pct": 73,
      "stars": 1
+    },
+    {
+     "attTh": 19,
+     "order": 47,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "name": "☠️Happy Day ☠️",
@@ -281,15 +403,37 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 46,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Legend Papa",
    "pos": 13,
    "tag": "#9RCY8U0VQ",
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 18,
+     "defTh": 19,
+     "order": 31,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 52,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Filiusberlinius",
    "pos": 20,
    "tag": "#2UCJYGU0",
@@ -305,7 +449,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 53,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "grautvornixe",
    "pos": 18,
    "tag": "#PRRQ29JP",
@@ -328,7 +479,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 40,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Sir COColores",
    "pos": 8,
    "tag": "#YVCLP0RJ",
@@ -344,7 +502,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 55,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Heisenberg",
    "pos": 17,
    "tag": "#29JR2282",
@@ -358,9 +523,23 @@
      "order": 12,
      "pct": 74,
      "stars": 2
+    },
+    {
+     "defPos": 20,
+     "defTh": 18,
+     "order": 57,
+     "pct": 60,
+     "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 35,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "1000000",
    "pos": 4,
    "tag": "#V029UQCU",
@@ -376,15 +555,44 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 49,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Captain Future",
    "pos": 14,
    "tag": "#8PGGGL2U8",
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 17,
+     "defTh": 19,
+     "order": 32,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 19,
+     "defTh": 19,
+     "order": 60,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 41,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "hulk",
    "pos": 9,
    "tag": "#GRJU2J92",
@@ -394,8 +602,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/ipPYX5GW21w5iVC3zA3z_VbBvuxLGzdWTVbm5oMjaag.png",
   "name": "PERSHIAN GULF✌",
-  "pct": 23.1,
-  "stars": 12,
+  "pct": 100.0,
+  "stars": 60,
   "tag": "#YCYUGCCY"
  },
  "preparationStartTime": "20261122T200445.000Z",
@@ -403,9 +611,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 24,
-  "pct": 76.7,
-  "stars": 41
+  "attacks": 33,
+  "pct": 97.3,
+  "stars": 56
  },
  "warTag": null
 }
