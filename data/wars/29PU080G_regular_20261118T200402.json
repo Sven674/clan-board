@@ -4,6 +4,13 @@
  "final": false,
  "kind": "regular",
  "lastSeen": "2026-11-20T18:39:33Z",
+ "manual": {
+  "keinerVergessen": true,
+  "oppStars": 58,
+  "result": "niederlage",
+  "usStars": 56,
+  "von": "Sven, 23.11.2026 (Kriegsende nicht abgerufen, letzter Stand 20.11. 18:39 UTC = Endstand laut Sven)"
+ },
  "members": [
   {
    "attacks": [
