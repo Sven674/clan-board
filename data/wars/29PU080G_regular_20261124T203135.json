@@ -3,7 +3,7 @@
  "endTime": "20261126T193135.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-25T12:37:58Z",
+ "lastSeen": "2026-11-25T19:44:41Z",
  "members": [
   {
    "attacks": [],
@@ -71,7 +71,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 2,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "TaLuDa",
    "pos": 16,
    "tag": "#22UU2J8Y8",
@@ -103,7 +110,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 1,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "~~HིOིLིJིEི~~",
    "pos": 19,
    "tag": "#RY2JPQCR",
@@ -118,7 +132,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 20,
+     "defTh": 19,
+     "order": 3,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [],
    "name": "grautvornixe",
    "pos": 20,
@@ -169,18 +191,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/wL9_qtxUpcoVjbqneBCVFNKNra3unbfpjgUwk7jylyc.png",
   "name": "Zentralfriedhof",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 10.0,
+  "stars": 6,
   "tag": "#2YVLVYL"
  },
  "preparationStartTime": "20261124T203135.000Z",
  "startTime": "20261125T193135.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 1,
+  "pct": 5.0,
+  "stars": 3
  },
  "warTag": null
 }
