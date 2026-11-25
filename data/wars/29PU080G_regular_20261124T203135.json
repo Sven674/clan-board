@@ -3,7 +3,7 @@
  "endTime": "20261126T193135.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-25T19:44:41Z",
+ "lastSeen": "2026-11-25T20:18:17Z",
  "members": [
   {
    "attacks": [],
@@ -22,7 +22,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 19,
+     "order": 8,
+     "pct": 83,
+     "stars": 2
+    }
+   ],
    "defenses": [],
    "name": "--SVEN--674--",
    "pos": 3,
@@ -86,7 +94,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 5,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Ertanbabo",
    "pos": 1,
    "tag": "#PRRJY9G9",
@@ -101,8 +116,23 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 19,
+     "order": 4,
+     "pct": 73,
+     "stars": 1
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 7,
+     "pct": 70,
+     "stars": 2
+    }
+   ],
    "name": "Legend Papa",
    "pos": 10,
    "tag": "#9RCY8U0VQ",
@@ -165,7 +195,14 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 6,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "1000000",
    "pos": 5,
    "tag": "#V029UQCU",
@@ -191,8 +228,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/wL9_qtxUpcoVjbqneBCVFNKNra3unbfpjgUwk7jylyc.png",
   "name": "Zentralfriedhof",
-  "pct": 10.0,
-  "stars": 6,
+  "pct": 23.5,
+  "stars": 14,
   "tag": "#2YVLVYL"
  },
  "preparationStartTime": "20261124T203135.000Z",
@@ -200,9 +237,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 1,
-  "pct": 5.0,
-  "stars": 3
+  "attacks": 3,
+  "pct": 12.8,
+  "stars": 6
  },
  "warTag": null
 }
