@@ -3,7 +3,7 @@
  "endTime": "20261126T193135.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-26T12:43:31Z",
+ "lastSeen": "2026-11-26T14:08:31Z",
  "members": [
   {
    "attacks": [
@@ -31,6 +31,12 @@
     },
     {
      "attTh": 19,
+     "order": 60,
+     "pct": 80,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
      "order": 54,
      "pct": 81,
      "stars": 1
@@ -49,6 +55,13 @@
      "order": 12,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 12,
+     "defTh": 19,
+     "order": 58,
+     "pct": 72,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -57,6 +70,12 @@
      "order": 43,
      "pct": 93,
      "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 59,
+     "pct": 100,
+     "stars": 3
     },
     {
      "attTh": 19,
@@ -525,6 +544,13 @@
      "order": 22,
      "pct": 92,
      "stars": 2
+    },
+    {
+     "defPos": 16,
+     "defTh": 19,
+     "order": 61,
+     "pct": 81,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -574,8 +600,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/wL9_qtxUpcoVjbqneBCVFNKNra3unbfpjgUwk7jylyc.png",
   "name": "Zentralfriedhof",
-  "pct": 95.05,
-  "stars": 54,
+  "pct": 95.95,
+  "stars": 55,
   "tag": "#2YVLVYL"
  },
  "preparationStartTime": "20261124T203135.000Z",
@@ -583,9 +609,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 27,
-  "pct": 78.65,
-  "stars": 43
+  "attacks": 29,
+  "pct": 86.3,
+  "stars": 47
  },
  "warTag": null
 }
