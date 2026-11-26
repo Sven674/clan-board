@@ -1,0 +1,186 @@
+{
+ "attacksPerMember": 2,
+ "endTime": "20261128T192445.000Z",
+ "final": false,
+ "kind": "regular",
+ "lastSeen": "2026-11-26T23:15:19Z",
+ "members": [
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "theBASTIan",
+   "pos": 8,
+   "tag": "#92L228UR",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "meister Greindl",
+   "pos": 9,
+   "tag": "#C9QPLP02",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "--SVEN--674--",
+   "pos": 3,
+   "tag": "#200PCP8QQ",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "=RS=",
+   "pos": 12,
+   "tag": "#GLPVGVR9",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Chrisdoc",
+   "pos": 2,
+   "tag": "#9GR80Q9P",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "OlMcGoldi",
+   "pos": 13,
+   "tag": "#YR0Y90G",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Klinki",
+   "pos": 20,
+   "tag": "#JCPRC0L0",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "AGENT 00H",
+   "pos": 4,
+   "tag": "#80V9Q998",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "TaLuDa",
+   "pos": 16,
+   "tag": "#22UU2J8Y8",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Ertanbabo",
+   "pos": 1,
+   "tag": "#PRRJY9G9",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Beach",
+   "pos": 5,
+   "tag": "#8LVUJRQP",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Legend Papa",
+   "pos": 11,
+   "tag": "#9RCY8U0VQ",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Filiusberlinius",
+   "pos": 17,
+   "tag": "#2UCJYGU0",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "grautvornixe",
+   "pos": 14,
+   "tag": "#PRRQ29JP",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Sir COColores",
+   "pos": 10,
+   "tag": "#YVCLP0RJ",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Heisenberg",
+   "pos": 18,
+   "tag": "#29JR2282",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "1000000",
+   "pos": 6,
+   "tag": "#V029UQCU",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Captain Future",
+   "pos": 15,
+   "tag": "#8PGGGL2U8",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "hulk",
+   "pos": 7,
+   "tag": "#GRJU2J92",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Sue",
+   "pos": 19,
+   "tag": "#UR0Y8JU0",
+   "th": 18
+  }
+ ],
+ "opponent": {
+  "badge": "https://api-assets.clashofclans.com/badges/70/qNvtUHo11b4SOZrCPzqwRIk5R0hPbhTVhqEiAD9_3LA.png",
+  "name": "NEUTRAL WARR",
+  "pct": 0.0,
+  "stars": 0,
+  "tag": "#C0YLRCP2"
+ },
+ "preparationStartTime": "20261126T202445.000Z",
+ "startTime": "20261127T192445.000Z",
+ "state": "preparation",
+ "teamSize": 20,
+ "us": {
+  "attacks": 0,
+  "pct": 0.0,
+  "stars": 0
+ },
+ "warTag": null
+}
