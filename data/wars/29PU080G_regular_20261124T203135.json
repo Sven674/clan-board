@@ -3,7 +3,7 @@
  "endTime": "20261126T193135.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-26T04:19:33Z",
+ "lastSeen": "2026-11-26T09:01:08Z",
  "members": [
   {
    "attacks": [
@@ -41,6 +41,12 @@
    "defenses": [
     {
      "attTh": 19,
+     "order": 43,
+     "pct": 93,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
      "order": 25,
      "pct": 76,
      "stars": 2
@@ -67,7 +73,20 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 45,
+     "pct": 74,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 33,
+     "pct": 85,
+     "stars": 2
+    }
+   ],
    "name": "--SVEN--674--",
    "pos": 3,
    "tag": "#200PCP8QQ",
@@ -104,7 +123,22 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 6,
+     "defTh": 19,
+     "order": 34,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 10,
+     "defTh": 19,
+     "order": 39,
+     "pct": 88,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -129,9 +163,21 @@
    "defenses": [
     {
      "attTh": 19,
+     "order": 46,
+     "pct": 59,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
      "order": 17,
      "pct": 56,
      "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 47,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "name": "OlMcGoldi",
@@ -170,7 +216,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 17,
+     "defTh": 19,
+     "order": 40,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -185,7 +239,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 19,
+     "defTh": 19,
+     "order": 48,
+     "pct": 98,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -200,8 +262,30 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 19,
+     "order": 35,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 5,
+     "defTh": 19,
+     "order": 36,
+     "pct": 78,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 38,
+     "pct": 91,
+     "stars": 2
+    }
+   ],
    "name": "Beach",
    "pos": 6,
    "tag": "#8LVUJRQP",
@@ -253,7 +337,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 15,
+     "defTh": 19,
+     "order": 42,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -275,9 +367,23 @@
      "order": 3,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 7,
+     "defTh": 19,
+     "order": 41,
+     "pct": 100,
+     "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 37,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "grautvornixe",
    "pos": 20,
    "tag": "#PRRQ29JP",
@@ -291,6 +397,13 @@
      "order": 11,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 10,
+     "defTh": 19,
+     "order": 32,
+     "pct": 79,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -375,7 +488,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 18,
+     "defTh": 19,
+     "order": 44,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -393,8 +514,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/wL9_qtxUpcoVjbqneBCVFNKNra3unbfpjgUwk7jylyc.png",
   "name": "Zentralfriedhof",
-  "pct": 76.1,
-  "stars": 45,
+  "pct": 92.1,
+  "stars": 53,
   "tag": "#2YVLVYL"
  },
  "preparationStartTime": "20261124T203135.000Z",
@@ -402,9 +523,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 12,
-  "pct": 42.2,
-  "stars": 22
+  "attacks": 22,
+  "pct": 73.65,
+  "stars": 40
  },
  "warTag": null
 }
