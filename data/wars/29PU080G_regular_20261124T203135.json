@@ -3,7 +3,7 @@
  "endTime": "20261126T193135.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-26T09:01:08Z",
+ "lastSeen": "2026-11-26T12:43:31Z",
  "members": [
   {
    "attacks": [
@@ -13,6 +13,13 @@
      "order": 9,
      "pct": 87,
      "stars": 2
+    },
+    {
+     "defPos": 4,
+     "defTh": 19,
+     "order": 55,
+     "pct": 71,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -21,6 +28,12 @@
      "order": 30,
      "pct": 69,
      "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 54,
+     "pct": 81,
+     "stars": 1
     }
    ],
    "name": "theBASTIan",
@@ -71,6 +84,13 @@
      "order": 8,
      "pct": 83,
      "stars": 2
+    },
+    {
+     "defPos": 9,
+     "defTh": 19,
+     "order": 50,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -84,6 +104,12 @@
      "attTh": 19,
      "order": 33,
      "pct": 85,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 51,
+     "pct": 88,
      "stars": 2
     }
    ],
@@ -201,7 +227,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 9,
+     "defTh": 19,
+     "order": 49,
+     "pct": 71,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -223,6 +257,13 @@
      "order": 40,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 14,
+     "defTh": 19,
+     "order": 56,
+     "pct": 72,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -313,6 +354,12 @@
      "attTh": 19,
      "order": 7,
      "pct": 70,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 53,
+     "pct": 88,
      "stars": 2
     }
    ],
@@ -409,6 +456,12 @@
    "defenses": [
     {
      "attTh": 19,
+     "order": 52,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
      "order": 27,
      "pct": 62,
      "stars": 2
@@ -495,6 +548,13 @@
      "order": 44,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 10,
+     "defTh": 19,
+     "order": 57,
+     "pct": 82,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -514,8 +574,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/wL9_qtxUpcoVjbqneBCVFNKNra3unbfpjgUwk7jylyc.png",
   "name": "Zentralfriedhof",
-  "pct": 92.1,
-  "stars": 53,
+  "pct": 95.05,
+  "stars": 54,
   "tag": "#2YVLVYL"
  },
  "preparationStartTime": "20261124T203135.000Z",
@@ -523,9 +583,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 22,
-  "pct": 73.65,
-  "stars": 40
+  "attacks": 27,
+  "pct": 78.65,
+  "stars": 43
  },
  "warTag": null
 }
