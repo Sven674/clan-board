@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 142954,
+ "capitalTotalLoot": 185817,
  "defensiveReward": 0,
  "endTime": "20261130T070000.000Z",
  "members": [
@@ -25,11 +25,18 @@
    "tag": "#GLPVGVR9"
   },
   {
-   "attacks": 2,
+   "attacks": 6,
    "limit": 6,
-   "loot": 10063,
+   "loot": 30925,
    "name": "pflegephall",
    "tag": "#LQLVPQ00"
+  },
+  {
+   "attacks": 3,
+   "limit": 6,
+   "loot": 11487,
+   "name": "EumelTV",
+   "tag": "#J2QLL8GY"
   },
   {
    "attacks": 6,
@@ -51,11 +58,18 @@
    "loot": 9619,
    "name": "Elussa",
    "tag": "#J9CLGUR0"
+  },
+  {
+   "attacks": 2,
+   "limit": 6,
+   "loot": 10514,
+   "name": "Nemesis",
+   "tag": "#22C0YRV9C"
   }
  ],
  "offensiveReward": 0,
  "raidsCompleted": 1,
  "startTime": "20261127T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 32
+ "totalAttacks": 41
 }
