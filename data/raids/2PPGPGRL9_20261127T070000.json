@@ -1,0 +1,19 @@
+{
+ "capitalTotalLoot": 11886,
+ "defensiveReward": 0,
+ "endTime": "20261130T070000.000Z",
+ "members": [
+  {
+   "attacks": 3,
+   "limit": 6,
+   "loot": 11886,
+   "name": "Azog",
+   "tag": "#QQCCR8RC"
+  }
+ ],
+ "offensiveReward": 0,
+ "raidsCompleted": 0,
+ "startTime": "20261127T070000.000Z",
+ "state": "ongoing",
+ "totalAttacks": 3
+}

@@ -1,5 +1,5 @@
 {
- "capitalTotalLoot": 54919,
+ "capitalTotalLoot": 142954,
  "defensiveReward": 0,
  "endTime": "20261130T070000.000Z",
  "members": [
@@ -13,14 +13,49 @@
   {
    "attacks": 6,
    "limit": 6,
+   "loot": 19659,
+   "name": "--SVEN--674--",
+   "tag": "#200PCP8QQ"
+  },
+  {
+   "attacks": 4,
+   "limit": 6,
+   "loot": 22188,
+   "name": "=RS=",
+   "tag": "#GLPVGVR9"
+  },
+  {
+   "attacks": 2,
+   "limit": 6,
+   "loot": 10063,
+   "name": "pflegephall",
+   "tag": "#LQLVPQ00"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
    "loot": 21998,
    "name": "Ertanbabo",
    "tag": "#PRRJY9G9"
+  },
+  {
+   "attacks": 6,
+   "limit": 6,
+   "loot": 26506,
+   "name": "Filiusberlinius",
+   "tag": "#2UCJYGU0"
+  },
+  {
+   "attacks": 2,
+   "limit": 6,
+   "loot": 9619,
+   "name": "Elussa",
+   "tag": "#J9CLGUR0"
   }
  ],
  "offensiveReward": 0,
- "raidsCompleted": 0,
+ "raidsCompleted": 1,
  "startTime": "20261127T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 12
+ "totalAttacks": 32
 }
