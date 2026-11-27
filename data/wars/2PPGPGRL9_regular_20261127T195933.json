@@ -1,0 +1,66 @@
+{
+ "attacksPerMember": 2,
+ "endTime": "20261129T185933.000Z",
+ "final": false,
+ "kind": "regular",
+ "lastSeen": "2026-11-27T23:41:31Z",
+ "members": [
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "NobbyNobbs",
+   "pos": 5,
+   "tag": "#L08LQ8YJL",
+   "th": 17
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Uzii",
+   "pos": 2,
+   "tag": "#2Q8GPVV0",
+   "th": 19
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Alex12",
+   "pos": 4,
+   "tag": "#9GPR28YG",
+   "th": 17
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "Zucker",
+   "pos": 3,
+   "tag": "#2CY2GL9J",
+   "th": 18
+  },
+  {
+   "attacks": [],
+   "defenses": [],
+   "name": "mini1000000",
+   "pos": 1,
+   "tag": "#LQ0YCGLL2",
+   "th": 19
+  }
+ ],
+ "opponent": {
+  "badge": "https://api-assets.clashofclans.com/badges/70/rNG36YK4VVqj-N2haNbO0VJgIu2ffjbLkd3lymOAGtA.png",
+  "name": "M.A.D",
+  "pct": 0.0,
+  "stars": 0,
+  "tag": "#8V8J9RLU"
+ },
+ "preparationStartTime": "20261127T195933.000Z",
+ "startTime": "20261128T185933.000Z",
+ "state": "preparation",
+ "teamSize": 5,
+ "us": {
+  "attacks": 0,
+  "pct": 0.0,
+  "stars": 0
+ },
+ "warTag": null
+}
