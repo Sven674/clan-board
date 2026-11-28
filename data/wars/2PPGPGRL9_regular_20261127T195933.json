@@ -3,11 +3,18 @@
  "endTime": "20261129T185933.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-28T16:22:54Z",
+ "lastSeen": "2026-11-28T20:52:30Z",
  "members": [
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 6,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "NobbyNobbs",
    "pos": 5,
    "tag": "#L08LQ8YJL",
@@ -15,7 +22,20 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 4,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
+     "order": 8,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Uzii",
    "pos": 2,
    "tag": "#2Q8GPVV0",
@@ -23,15 +43,37 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 18,
+     "order": 5,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Alex12",
    "pos": 4,
    "tag": "#9GPR28YG",
    "th": 17
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 3,
+     "defTh": 18,
+     "order": 3,
+     "pct": 71,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 2,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Zucker",
    "pos": 3,
    "tag": "#2CY2GL9J",
@@ -39,7 +81,26 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 7,
+     "pct": 88,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 1,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
+     "order": 9,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "mini1000000",
    "pos": 1,
    "tag": "#LQ0YCGLL2",
@@ -49,18 +110,18 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/rNG36YK4VVqj-N2haNbO0VJgIu2ffjbLkd3lymOAGtA.png",
   "name": "M.A.D",
-  "pct": 0.0,
-  "stars": 0,
+  "pct": 100.0,
+  "stars": 15,
   "tag": "#8V8J9RLU"
  },
  "preparationStartTime": "20261127T195933.000Z",
  "startTime": "20261128T185933.000Z",
- "state": "preparation",
+ "state": "inWar",
  "teamSize": 5,
  "us": {
-  "attacks": 0,
-  "pct": 0.0,
-  "stars": 0
+  "attacks": 1,
+  "pct": 14.2,
+  "stars": 2
  },
  "warTag": null
 }

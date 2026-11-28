@@ -1,9 +1,9 @@
 {
  "attacksPerMember": 2,
  "endTime": "20261128T192445.000Z",
- "final": false,
+ "final": true,
  "kind": "regular",
- "lastSeen": "2026-11-28T16:22:54Z",
+ "lastSeen": "2026-11-28T20:52:30Z",
  "members": [
   {
    "attacks": [
@@ -136,6 +136,12 @@
      "order": 19,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "attTh": 19,
+     "order": 75,
+     "pct": 95,
+     "stars": 2
     }
    ],
    "name": "=RS=",
@@ -161,6 +167,18 @@
     }
    ],
    "defenses": [
+    {
+     "attTh": 19,
+     "order": 74,
+     "pct": 97,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 72,
+     "pct": 78,
+     "stars": 2
+    },
     {
      "attTh": 19,
      "order": 6,
@@ -303,6 +321,24 @@
    "defenses": [
     {
      "attTh": 19,
+     "order": 70,
+     "pct": 92,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 73,
+     "pct": 79,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 71,
+     "pct": 64,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
      "order": 4,
      "pct": 100,
      "stars": 3
@@ -320,6 +356,13 @@
      "defTh": 19,
      "order": 24,
      "pct": 99,
+     "stars": 2
+    },
+    {
+     "defPos": 14,
+     "defTh": 19,
+     "order": 76,
+     "pct": 78,
      "stars": 2
     }
    ],
@@ -663,11 +706,11 @@
  },
  "preparationStartTime": "20261126T202445.000Z",
  "startTime": "20261127T192445.000Z",
- "state": "inWar",
+ "state": "warEnded",
  "teamSize": 20,
  "us": {
-  "attacks": 35,
-  "pct": 97.95,
+  "attacks": 36,
+  "pct": 98.05,
   "stars": 56
  },
  "warTag": null
