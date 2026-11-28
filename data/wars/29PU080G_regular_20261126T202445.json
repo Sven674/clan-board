@@ -3,7 +3,7 @@
  "endTime": "20261128T192445.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-28T10:53:03Z",
+ "lastSeen": "2026-11-28T16:22:54Z",
  "members": [
   {
    "attacks": [
@@ -28,6 +28,24 @@
      "order": 28,
      "pct": 58,
      "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 66,
+     "pct": 90,
+     "stars": 1
+    },
+    {
+     "attTh": 19,
+     "order": 67,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
+     "order": 60,
+     "pct": 77,
+     "stars": 1
     }
    ],
    "name": "theBASTIan",
@@ -73,6 +91,13 @@
      "order": 47,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 14,
+     "defTh": 19,
+     "order": 48,
+     "pct": 76,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -94,6 +119,13 @@
      "defPos": 2,
      "defTh": 19,
      "order": 2,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 5,
+     "defTh": 19,
+     "order": 51,
      "pct": 100,
      "stars": 3
     }
@@ -149,6 +181,13 @@
      "order": 7,
      "pct": 99,
      "stars": 2
+    },
+    {
+     "defPos": 17,
+     "defTh": 19,
+     "order": 59,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -169,6 +208,12 @@
    "defenses": [
     {
      "attTh": 19,
+     "order": 52,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
      "order": 27,
      "pct": 94,
      "stars": 2
@@ -187,6 +232,13 @@
      "order": 36,
      "pct": 73,
      "stars": 2
+    },
+    {
+     "defPos": 13,
+     "defTh": 19,
+     "order": 55,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "defenses": [
@@ -210,9 +262,22 @@
      "order": 29,
      "pct": 76,
      "stars": 2
+    },
+    {
+     "defPos": 17,
+     "defTh": 19,
+     "order": 57,
+     "pct": 54,
+     "stars": 2
     }
    ],
    "defenses": [
+    {
+     "attTh": 19,
+     "order": 50,
+     "pct": 100,
+     "stars": 3
+    },
     {
      "attTh": 19,
      "order": 40,
@@ -294,6 +359,18 @@
      "order": 12,
      "pct": 76,
      "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 58,
+     "pct": 96,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 62,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "name": "Legend Papa",
@@ -309,6 +386,13 @@
      "order": 32,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 12,
+     "defTh": 19,
+     "order": 64,
+     "pct": 92,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -317,6 +401,18 @@
      "order": 18,
      "pct": 78,
      "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 56,
+     "pct": 55,
+     "stars": 2
+    },
+    {
+     "attTh": 18,
+     "order": 63,
+     "pct": 100,
+     "stars": 3
     }
    ],
    "name": "Filiusberlinius",
@@ -331,6 +427,13 @@
      "defTh": 19,
      "order": 44,
      "pct": 86,
+     "stars": 2
+    },
+    {
+     "defPos": 17,
+     "defTh": 19,
+     "order": 53,
+     "pct": 97,
      "stars": 2
     }
    ],
@@ -385,6 +488,13 @@
      "order": 39,
      "pct": 65,
      "stars": 2
+    },
+    {
+     "defPos": 12,
+     "defTh": 19,
+     "order": 69,
+     "pct": 68,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -396,9 +506,21 @@
     },
     {
      "attTh": 19,
+     "order": 65,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
      "order": 34,
      "pct": 69,
      "stars": 2
+    },
+    {
+     "attTh": 18,
+     "order": 61,
+     "pct": 84,
+     "stars": 1
     }
    ],
    "name": "Heisenberg",
@@ -414,6 +536,13 @@
      "order": 31,
      "pct": 47,
      "stars": 1
+    },
+    {
+     "defPos": 13,
+     "defTh": 19,
+     "order": 54,
+     "pct": 54,
+     "stars": 2
     }
    ],
    "defenses": [
@@ -439,7 +568,14 @@
      "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 49,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Captain Future",
    "pos": 15,
    "tag": "#8PGGGL2U8",
@@ -504,6 +640,12 @@
      "order": 35,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "attTh": 19,
+     "order": 68,
+     "pct": 63,
+     "stars": 2
     }
    ],
    "name": "Sue",
@@ -515,8 +657,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/qNvtUHo11b4SOZrCPzqwRIk5R0hPbhTVhqEiAD9_3LA.png",
   "name": "NEUTRAL WARR",
-  "pct": 88.15,
-  "stars": 51,
+  "pct": 100.0,
+  "stars": 60,
   "tag": "#C0YLRCP2"
  },
  "preparationStartTime": "20261126T202445.000Z",
@@ -524,9 +666,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 26,
-  "pct": 93.85,
-  "stars": 53
+  "attacks": 35,
+  "pct": 97.95,
+  "stars": 56
  },
  "warTag": null
 }
