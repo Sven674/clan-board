@@ -3,7 +3,7 @@
  "endTime": "20261128T192445.000Z",
  "final": false,
  "kind": "regular",
- "lastSeen": "2026-11-28T07:34:52Z",
+ "lastSeen": "2026-11-28T10:53:03Z",
  "members": [
   {
    "attacks": [
@@ -13,16 +13,45 @@
      "order": 25,
      "pct": 100,
      "stars": 3
+    },
+    {
+     "defPos": 4,
+     "defTh": 19,
+     "order": 33,
+     "pct": 100,
+     "stars": 3
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 28,
+     "pct": 58,
+     "stars": 2
+    }
+   ],
    "name": "theBASTIan",
    "pos": 8,
    "tag": "#92L228UR",
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 10,
+     "defTh": 19,
+     "order": 45,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 20,
+     "defTh": 18,
+     "order": 46,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -37,7 +66,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 8,
+     "defTh": 19,
+     "order": 47,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -129,14 +166,29 @@
   },
   {
    "attacks": [],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 27,
+     "pct": 94,
+     "stars": 2
+    }
+   ],
    "name": "Klinki",
    "pos": 20,
    "tag": "#JCPRC0L0",
    "th": 18
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 5,
+     "defTh": 19,
+     "order": 36,
+     "pct": 73,
+     "stars": 2
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -151,8 +203,23 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 13,
+     "defTh": 19,
+     "order": 29,
+     "pct": 76,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 40,
+     "pct": 76,
+     "stars": 2
+    }
+   ],
    "name": "TaLuDa",
    "pos": 16,
    "tag": "#22UU2J8Y8",
@@ -235,7 +302,15 @@
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 7,
+     "defTh": 19,
+     "order": 32,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -250,8 +325,23 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 12,
+     "defTh": 19,
+     "order": 44,
+     "pct": 86,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 37,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "grautvornixe",
    "pos": 14,
    "tag": "#PRRQ29JP",
@@ -288,15 +378,44 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 14,
+     "defTh": 19,
+     "order": 39,
+     "pct": 65,
+     "stars": 2
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 41,
+     "pct": 81,
+     "stars": 2
+    },
+    {
+     "attTh": 19,
+     "order": 34,
+     "pct": 69,
+     "stars": 2
+    }
+   ],
    "name": "Heisenberg",
    "pos": 18,
    "tag": "#29JR2282",
    "th": 19
   },
   {
-   "attacks": [],
+   "attacks": [
+    {
+     "defPos": 4,
+     "defTh": 19,
+     "order": 31,
+     "pct": 47,
+     "stars": 1
+    }
+   ],
    "defenses": [
     {
      "attTh": 19,
@@ -327,8 +446,36 @@
    "th": 19
   },
   {
-   "attacks": [],
-   "defenses": [],
+   "attacks": [
+    {
+     "defPos": 16,
+     "defTh": 19,
+     "order": 42,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "defPos": 18,
+     "defTh": 19,
+     "order": 43,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 38,
+     "pct": 100,
+     "stars": 3
+    },
+    {
+     "attTh": 19,
+     "order": 30,
+     "pct": 55,
+     "stars": 2
+    }
+   ],
    "name": "hulk",
    "pos": 7,
    "tag": "#GRJU2J92",
@@ -351,7 +498,14 @@
      "stars": 2
     }
    ],
-   "defenses": [],
+   "defenses": [
+    {
+     "attTh": 19,
+     "order": 35,
+     "pct": 100,
+     "stars": 3
+    }
+   ],
    "name": "Sue",
    "pos": 19,
    "tag": "#UR0Y8JU0",
@@ -361,8 +515,8 @@
  "opponent": {
   "badge": "https://api-assets.clashofclans.com/badges/70/qNvtUHo11b4SOZrCPzqwRIk5R0hPbhTVhqEiAD9_3LA.png",
   "name": "NEUTRAL WARR",
-  "pct": 57.7,
-  "stars": 34,
+  "pct": 88.15,
+  "stars": 51,
   "tag": "#C0YLRCP2"
  },
  "preparationStartTime": "20261126T202445.000Z",
@@ -370,9 +524,9 @@
  "state": "inWar",
  "teamSize": 20,
  "us": {
-  "attacks": 14,
-  "pct": 48.8,
-  "stars": 26
+  "attacks": 26,
+  "pct": 93.85,
+  "stars": 53
  },
  "warTag": null
 }

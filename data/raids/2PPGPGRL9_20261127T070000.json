@@ -1,8 +1,15 @@
 {
- "capitalTotalLoot": 61510,
+ "capitalTotalLoot": 69187,
  "defensiveReward": 0,
  "endTime": "20261130T070000.000Z",
  "members": [
+  {
+   "attacks": 2,
+   "limit": 6,
+   "loot": 7677,
+   "name": "mimi",
+   "tag": "#2YLVQRY9"
+  },
   {
    "attacks": 1,
    "limit": 6,
@@ -36,5 +43,5 @@
  "raidsCompleted": 0,
  "startTime": "20261127T070000.000Z",
  "state": "ongoing",
- "totalAttacks": 16
+ "totalAttacks": 18
 }
